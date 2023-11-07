@@ -9,8 +9,8 @@ abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
   @GET('/titles')
-  Future getAllTitles();
+  Future getTitles();
 
   @GET('/titles/utils/genres')
-  Future<void> getAllUtilGenre();
+  Future getUtilGenres();
 }
