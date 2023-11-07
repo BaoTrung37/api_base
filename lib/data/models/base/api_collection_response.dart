@@ -6,7 +6,7 @@ part 'api_collection_response.freezed.dart';
 @Freezed(genericArgumentFactories: true)
 abstract class ApiCollectionResponse<T> with _$ApiCollectionResponse<T> {
   const factory ApiCollectionResponse({
-    required int entries,
+    int? entries,
     required List<T> results,
   }) = _ApiCollectionResponse<T>;
 

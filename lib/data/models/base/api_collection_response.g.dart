@@ -11,7 +11,7 @@ _$ApiCollectionResponseImpl<T> _$$ApiCollectionResponseImplFromJson<T>(
   T Function(Object? json) fromJsonT,
 ) =>
     _$ApiCollectionResponseImpl<T>(
-      entries: json['entries'] as int,
+      entries: json['entries'] as int?,
       results: (json['results'] as List<dynamic>).map(fromJsonT).toList(),
     );
 

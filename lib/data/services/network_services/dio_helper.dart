@@ -1,9 +1,12 @@
 import 'package:api_base/data/services/network_services/interceptors/common_header_interceptor.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+@module
 abstract class DioHelper {
-  static Dio configApiDio() => _createDio(
+  @factoryMethod
+  Dio configApiDio() => _createDio(
         options: BaseOptions(
           connectTimeout: const Duration(seconds: 10),
           receiveTimeout: const Duration(seconds: 10),
@@ -13,7 +16,8 @@ abstract class DioHelper {
         ],
         loggerEnable: true,
       );
-  static Dio _createDio({
+
+  Dio _createDio({
     required BaseOptions options,
     List<Interceptor>? interceptors,
     bool loggerEnable = false,

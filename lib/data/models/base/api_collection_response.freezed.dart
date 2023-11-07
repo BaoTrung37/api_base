@@ -21,7 +21,7 @@ ApiCollectionResponse<T> _$ApiCollectionResponseFromJson<T>(
 
 /// @nodoc
 mixin _$ApiCollectionResponse<T> {
-  int get entries => throw _privateConstructorUsedError;
+  int? get entries => throw _privateConstructorUsedError;
   List<T> get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
@@ -37,7 +37,7 @@ abstract class $ApiCollectionResponseCopyWith<T, $Res> {
           $Res Function(ApiCollectionResponse<T>) then) =
       _$ApiCollectionResponseCopyWithImpl<T, $Res, ApiCollectionResponse<T>>;
   @useResult
-  $Res call({int entries, List<T> results});
+  $Res call({int? entries, List<T> results});
 }
 
 /// @nodoc
@@ -54,14 +54,14 @@ class _$ApiCollectionResponseCopyWithImpl<T, $Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? entries = null,
+    Object? entries = freezed,
     Object? results = null,
   }) {
     return _then(_value.copyWith(
-      entries: null == entries
+      entries: freezed == entries
           ? _value.entries
           : entries // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       results: null == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
@@ -79,7 +79,7 @@ abstract class _$$ApiCollectionResponseImplCopyWith<T, $Res>
       __$$ApiCollectionResponseImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({int entries, List<T> results});
+  $Res call({int? entries, List<T> results});
 }
 
 /// @nodoc
@@ -95,14 +95,14 @@ class __$$ApiCollectionResponseImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? entries = null,
+    Object? entries = freezed,
     Object? results = null,
   }) {
     return _then(_$ApiCollectionResponseImpl<T>(
-      entries: null == entries
+      entries: freezed == entries
           ? _value.entries
           : entries // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       results: null == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
@@ -115,7 +115,7 @@ class __$$ApiCollectionResponseImplCopyWithImpl<T, $Res>
 @JsonSerializable(genericArgumentFactories: true)
 class _$ApiCollectionResponseImpl<T> implements _ApiCollectionResponse<T> {
   const _$ApiCollectionResponseImpl(
-      {required this.entries, required final List<T> results})
+      {this.entries, required final List<T> results})
       : _results = results;
 
   factory _$ApiCollectionResponseImpl.fromJson(
@@ -123,7 +123,7 @@ class _$ApiCollectionResponseImpl<T> implements _ApiCollectionResponse<T> {
       _$$ApiCollectionResponseImplFromJson(json, fromJsonT);
 
   @override
-  final int entries;
+  final int? entries;
   final List<T> _results;
   @override
   List<T> get results {
@@ -166,7 +166,7 @@ class _$ApiCollectionResponseImpl<T> implements _ApiCollectionResponse<T> {
 
 abstract class _ApiCollectionResponse<T> implements ApiCollectionResponse<T> {
   const factory _ApiCollectionResponse(
-      {required final int entries,
+      {final int? entries,
       required final List<T> results}) = _$ApiCollectionResponseImpl<T>;
 
   factory _ApiCollectionResponse.fromJson(
@@ -174,7 +174,7 @@ abstract class _ApiCollectionResponse<T> implements ApiCollectionResponse<T> {
       _$ApiCollectionResponseImpl<T>.fromJson;
 
   @override
-  int get entries;
+  int? get entries;
   @override
   List<T> get results;
   @override

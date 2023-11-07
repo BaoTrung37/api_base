@@ -8,6 +8,10 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:api_base/data/services/network_services/dio_helper.dart' as _i5;
+import 'package:api_base/data/services/network_services/rest_client.dart'
+    as _i4;
+import 'package:dio/dio.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
@@ -17,11 +21,19 @@ extension GetItInjectableX on _i1.GetIt {
     String? environment,
     _i2.EnvironmentFilter? environmentFilter,
   }) {
-    _i2.GetItHelper(
+    final gh = _i2.GetItHelper(
       this,
       environment,
       environmentFilter,
     );
+    final dioHelper = _$DioHelper();
+    gh.factory<_i3.Dio>(() => dioHelper.configApiDio());
+    gh.factory<_i4.RestClient>(() => _i4.RestClient(
+          gh<_i3.Dio>(),
+          baseUrl: gh<String>(),
+        ));
     return this;
   }
 }
+
+class _$DioHelper extends _i5.DioHelper {}

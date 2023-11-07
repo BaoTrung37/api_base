@@ -47,28 +47,32 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<dynamic> getUtilGenres() async {
+  Future<ApiResponse<UtilGenresResponse>> getUtilGenres() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ApiResponse<UtilGenresResponse>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/titles/utils/genres',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
-    final value = _result.data;
+            .compose(
+              _dio.options,
+              '/titles/utils/genres',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ApiResponse<UtilGenresResponse>.fromJson(
+      _result.data!,
+      (json) => UtilGenresResponse.fromJson(json as Map<String, dynamic>),
+    );
     return value;
   }
 
