@@ -1,3 +1,5 @@
+import 'package:api_base/data/services/network_services/rest_client.dart';
+import 'package:api_base/injection/di.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -24,6 +26,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  void testApi() async {
+    final rest = await getIt<RestClient>().getUtilGenres();
+    print(rest);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,12 +38,15 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Flutter Demo Home Page'),
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            GestureDetector(
+              onTap: testApi,
+              child: const Text(
+                'Test',
+              ),
             ),
           ],
         ),

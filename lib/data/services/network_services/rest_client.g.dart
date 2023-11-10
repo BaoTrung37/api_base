@@ -13,7 +13,7 @@ class _RestClient implements RestClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://moviesdatabase.p.rapidapi.com/';
+    baseUrl ??= 'https://moviesdatabase.p.rapidapi.com';
   }
 
   final Dio _dio;

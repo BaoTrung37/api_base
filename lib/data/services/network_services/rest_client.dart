@@ -11,7 +11,7 @@ part 'rest_client.g.dart';
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class RestClient {
   @factoryMethod
-  factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
+  factory RestClient(Dio dio, {@factoryParam String? baseUrl}) = _RestClient;
 
   @GET('/titles')
   Future getTitles();
