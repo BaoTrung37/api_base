@@ -15,6 +15,6 @@ class AppConfig {
   }
 
   Future<void> _loadEnv() async {
-    await dotenv.load();
+    await dotenv.load(fileName: '.env');
   }
 }
