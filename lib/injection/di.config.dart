@@ -28,9 +28,13 @@ extension GetItInjectableX on _i1.GetIt {
     );
     final dioHelper = _$DioHelper();
     gh.factory<_i3.Dio>(() => dioHelper.configApiDio());
-    gh.factory<_i4.RestClient>(() => _i4.RestClient(
+    gh.factoryParam<_i4.RestClient, String?, dynamic>((
+      baseUrl,
+      _,
+    ) =>
+        _i4.RestClient(
           gh<_i3.Dio>(),
-          baseUrl: gh<String>(),
+          baseUrl: baseUrl,
         ));
     return this;
   }
