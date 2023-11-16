@@ -1,4 +1,4 @@
-import 'package:api_base/data/services/network_services/api_constants.dart';
+import 'package:api_base/presentation/utilities/helpers/env_params.dart';
 import 'package:dio/dio.dart';
 
 class CommonHeaderInterceptor extends Interceptor {
@@ -6,8 +6,8 @@ class CommonHeaderInterceptor extends Interceptor {
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    options.headers['X-RapidAPI-Key'] = ApiConstants.apiKey;
-    options.headers['X-RapidAPI-Host'] = ApiConstants.apiHost;
+    options.headers['X-RapidAPI-Key'] = EnvParams.apiKey;
+    options.headers['X-RapidAPI-Host'] = EnvParams.apiHost;
 
     return handler.next(options);
   }

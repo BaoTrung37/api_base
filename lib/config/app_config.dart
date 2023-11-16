@@ -1,4 +1,5 @@
 import 'package:api_base/injection/di.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class AppConfig {
   factory AppConfig.getInstance() {
@@ -10,5 +11,10 @@ class AppConfig {
 
   Future<void> init() async {
     configureDependencies();
+    await _loadEnv();
+  }
+
+  Future<void> _loadEnv() async {
+    await dotenv.load();
   }
 }
