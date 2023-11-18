@@ -1,9 +1,9 @@
-import 'package:api_base/data/models/base/api_response.dart';
-import 'package:api_base/data/models/responses/utils/util_genres_response.dart';
 import 'package:api_base/data/services/network_services/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
+
+import '../../models/base/api_collection_response.dart';
 
 part 'rest_client.g.dart';
 
@@ -17,5 +17,5 @@ abstract class RestClient {
   Future getTitles();
 
   @GET('/titles/utils/genres')
-  Future<ApiResponse<UtilGenresResponse>> getUtilGenres();
+  Future<ApiCollectionResponse<String?>> getUtilGenres();
 }

@@ -1,6 +1,7 @@
-import 'package:api_base/data/services/network_services/rest_client.dart';
 import 'package:api_base/injection/di.dart';
 import 'package:flutter/material.dart';
+
+import 'domain/use_cases/genres/get_genres_use_case.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,11 +27,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void testApi() async {
-    final rest = await getIt<RestClient>().getUtilGenres();
-    print(rest);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,11 +38,25 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            GestureDetector(
-              onTap: testApi,
-              child: const Text(
-                'Test',
-              ),
+            FutureBuilder<List<String?>?>(
+              future: getIt<GetGenresUseCase>().run(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return const Text('Error');
+                }
+                final list = snapshot.data ?? [];
+                return SizedBox(
+                  height: 400,
+                  child: ListView.builder(
+                    itemCount: list.length,
+                    itemBuilder: (context, index) {
+                      return Text('index-$index: ${list[index]}');
+                    },
+                  ),
+                );
+              },
             ),
           ],
         ),

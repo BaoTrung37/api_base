@@ -8,11 +8,10 @@ part of 'util_genres_response.dart';
 
 UtilGenresResponse _$UtilGenresResponseFromJson(Map<String, dynamic> json) =>
     UtilGenresResponse(
-      results:
-          (json['results'] as List<dynamic>).map((e) => e as String).toList(),
+      genres: json['genres'] as String?,
     );
 
 Map<String, dynamic> _$UtilGenresResponseToJson(UtilGenresResponse instance) =>
     <String, dynamic>{
-      'results': instance.results,
+      'genres': instance.genres,
     };
