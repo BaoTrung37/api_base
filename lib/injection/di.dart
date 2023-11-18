@@ -1,3 +1,5 @@
+import 'package:api_base/presentation/navigation/app_router.dart';
+import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
@@ -5,5 +7,12 @@ import 'di.config.dart';
 
 final getIt = GetIt.instance;
 
-@InjectableInit()
-void configureDependencies() => getIt.init();
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
+@InjectableInit(
+  preferRelativeImports: true,
+)
+void configureDependencies() {
+  getIt.init();
+  getIt.registerSingleton(AppRouter(navigatorKey: navigatorKey));
+}
