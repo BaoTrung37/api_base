@@ -47,13 +47,13 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<ApiResponse<UtilGenresResponse>> getUtilGenres() async {
+  Future<ApiCollectionResponse<String?>> getUtilGenres() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<ApiResponse<UtilGenresResponse>>(Options(
+        _setStreamType<ApiCollectionResponse<String>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -69,9 +69,9 @@ class _RestClient implements RestClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ApiResponse<UtilGenresResponse>.fromJson(
+    final value = ApiCollectionResponse<String?>.fromJson(
       _result.data!,
-      (json) => UtilGenresResponse.fromJson(json as Map<String, dynamic>),
+      (json) => json as String?,
     );
     return value;
   }

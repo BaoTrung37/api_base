@@ -5,9 +5,9 @@ part 'util_genres_response.g.dart';
 
 @JsonSerializable()
 class UtilGenresResponse {
-  final List<String> results;
+  final String? genres;
   UtilGenresResponse({
-    required this.results,
+    this.genres,
   });
 
   factory UtilGenresResponse.fromJson(Map<String, dynamic> json) =>
