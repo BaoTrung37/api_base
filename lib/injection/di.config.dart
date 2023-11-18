@@ -8,16 +8,14 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:api_base/data/iml_repositories/genres_repository_imp.dart'
-    as _i5;
-import 'package:api_base/data/services/network_services/dio_helper.dart' as _i7;
-import 'package:api_base/data/services/network_services/rest_client.dart'
-    as _i4;
-import 'package:api_base/domain/use_cases/genres/get_genres_use_case.dart'
-    as _i6;
 import 'package:dio/dio.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
+
+import '../data/iml_repositories/genres_repository_imp.dart' as _i5;
+import '../data/services/network_services/dio_helper.dart' as _i7;
+import '../data/services/network_services/rest_client.dart' as _i4;
+import '../domain/use_cases/genres/get_genres_use_case.dart' as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
