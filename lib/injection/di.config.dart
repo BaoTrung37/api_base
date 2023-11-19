@@ -12,10 +12,10 @@ import 'package:dio/dio.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../data/iml_repositories/genres_repository_imp.dart' as _i5;
+import '../data/iml_repositories/utils_repository_imp.dart' as _i5;
 import '../data/services/network_services/dio_helper.dart' as _i7;
 import '../data/services/network_services/rest_client.dart' as _i4;
-import '../domain/use_cases/genres/get_genres_use_case.dart' as _i6;
+import '../domain/use_cases/utils/get_genres_use_case.dart' as _i6;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -38,10 +38,10 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i3.Dio>(),
           baseUrl: baseUrl,
         ));
-    gh.factory<_i5.GenresRepositoryImp>(
-        () => _i5.GenresRepositoryImp(restClient: gh<_i4.RestClient>()));
-    gh.factory<_i6.GetGenresUseCase>(() => _i6.GetGenresUseCase(
-        genresRepositoryImp: gh<_i5.GenresRepositoryImp>()));
+    gh.factory<_i5.UtilsRepositoryImp>(
+        () => _i5.UtilsRepositoryImp(restClient: gh<_i4.RestClient>()));
+    gh.factory<_i6.GetGenresUseCase>(() =>
+        _i6.GetGenresUseCase(utilsRepositoryImp: gh<_i5.UtilsRepositoryImp>()));
     return this;
   }
 }
