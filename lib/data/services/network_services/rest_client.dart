@@ -18,4 +18,7 @@ abstract class RestClient {
 
   @GET('/titles/utils/genres')
   Future<ApiCollectionResponse<String?>> getUtilGenres();
+
+  @GET('/titles/utils/lists')
+  Future<ApiCollectionResponse<String?>> getUtilLists();
 }

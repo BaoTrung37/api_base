@@ -18,4 +18,10 @@ class UtilsRepositoryImp implements UtilsRepository {
     final response = await restClient.getUtilGenres();
     return response.results;
   }
+
+  @override
+  Future<List<String?>?> getLists() async {
+    final response = await restClient.getUtilLists();
+    return response.results;
+  }
 }
