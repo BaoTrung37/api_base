@@ -2,8 +2,6 @@ import 'package:api_base/injection/di.dart';
 import 'package:api_base/presentation/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 
-import 'domain/use_cases/utils/get_genres_use_case.dart';
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

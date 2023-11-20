@@ -13,38 +13,12 @@ class _RestClient implements RestClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://moviesdatabase.p.rapidapi.com';
+    baseUrl ??= 'https://api.themoviedb.org/3';
   }
 
   final Dio _dio;
 
   String? baseUrl;
-
-  @override
-  Future<dynamic> getTitles() async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/titles',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
-    final value = _result.data;
-    return value;
-  }
 
   @override
   Future<ApiCollectionResponse<String?>> getUtilGenres() async {
@@ -60,7 +34,7 @@ class _RestClient implements RestClient {
     )
             .compose(
               _dio.options,
-              '/titles/utils/genres',
+              '/authentication',
               queryParameters: queryParameters,
               data: _data,
             )
