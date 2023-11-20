@@ -1,3 +1,3 @@
 class ApiConstants {
-  static const baseUrl = 'https://moviesdatabase.p.rapidapi.com';
+  static const baseUrl = 'https://api.themoviedb.org/3';
 }

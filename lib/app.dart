@@ -1,7 +1,4 @@
-import 'package:api_base/injection/di.dart';
 import 'package:flutter/material.dart';
-
-import 'domain/use_cases/genres/get_genres_use_case.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -34,31 +31,10 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Flutter Demo Home Page'),
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FutureBuilder<List<String?>?>(
-              future: getIt<GetGenresUseCase>().run(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator();
-                } else if (snapshot.hasError) {
-                  return const Text('Error');
-                }
-                final list = snapshot.data ?? [];
-                return SizedBox(
-                  height: 400,
-                  child: ListView.builder(
-                    itemCount: list.length,
-                    itemBuilder: (context, index) {
-                      return Text('index-$index: ${list[index]}');
-                    },
-                  ),
-                );
-              },
-            ),
-          ],
+          children: <Widget>[],
         ),
       ),
     );
