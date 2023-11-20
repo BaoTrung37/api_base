@@ -13,9 +13,10 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../data/iml_repositories/utils_repository_imp.dart' as _i5;
-import '../data/services/network_services/dio_helper.dart' as _i7;
+import '../data/services/network_services/dio_helper.dart' as _i8;
 import '../data/services/network_services/rest_client.dart' as _i4;
 import '../domain/use_cases/utils/get_genres_use_case.dart' as _i6;
+import '../domain/use_cases/utils/get_lists_use_case.dart' as _i7;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -42,8 +43,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i5.UtilsRepositoryImp(restClient: gh<_i4.RestClient>()));
     gh.factory<_i6.GetGenresUseCase>(() =>
         _i6.GetGenresUseCase(utilsRepositoryImp: gh<_i5.UtilsRepositoryImp>()));
+    gh.factory<_i7.GetListsUseCase>(() =>
+        _i7.GetListsUseCase(utilsRepositoryImp: gh<_i5.UtilsRepositoryImp>()));
     return this;
   }
 }
 
-class _$DioHelper extends _i7.DioHelper {}
+class _$DioHelper extends _i8.DioHelper {}
