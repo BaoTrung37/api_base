@@ -13,10 +13,9 @@ abstract class RestClient {
   @factoryMethod
   factory RestClient(Dio dio, {@factoryParam String? baseUrl}) = _RestClient;
 
-  @GET('/authentication')
-  Future<ApiCollectionResponse<String?>> getUtilGenres();
+  // @GET('/authentication')
+  // Future<ApiCollectionResponse<String?>> getUtilGenres();
 
-  @GET('/titles/utils/lists')
-  Future<ApiCollectionResponse<String?>> getUtilLists();
+  // @GET('/titles/utils/lists')
+  // Future<ApiCollectionResponse<String?>> getUtilLists();
 }
-  
