@@ -1,7 +1,2 @@
-abstract class FutureUseCase<Input, Output> {
-  Future<Output> run(Input input);
-}
-
-abstract class FutureOutputUseCase<Output> {
-  Future<Output> run();
-}
+export 'authentication/authentication.dart';
+export 'base/use_case.dart';
