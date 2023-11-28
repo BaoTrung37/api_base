@@ -12,9 +12,16 @@ import 'package:dio/dio.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../data/iml_repositories/ex_repository_imp.dart' as _i5;
-import '../data/services/network_services/dio_helper.dart' as _i6;
+import '../data/iml_repositories/authentication/authentication.dart' as _i7;
+import '../data/iml_repositories/authentication/authentication_repository.dart'
+    as _i5;
+import '../data/iml_repositories/iml_repositories.dart' as _i9;
+import '../data/services/network_services/dio_helper.dart' as _i10;
 import '../data/services/network_services/rest_client.dart' as _i4;
+import '../domain/use_cases/authentication/get_guest_session_use_case.dart'
+    as _i6;
+import '../domain/use_cases/authentication/get_request_token_use_case.dart'
+    as _i8;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -37,10 +44,14 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i3.Dio>(),
           baseUrl: baseUrl,
         ));
-    gh.factory<_i5.ExRepositoryImp>(
-        () => _i5.ExRepositoryImp(restClient: gh<_i4.RestClient>()));
+    gh.factory<_i5.AuthenticationRepositoryIml>(() =>
+        _i5.AuthenticationRepositoryIml(restClient: gh<_i4.RestClient>()));
+    gh.factory<_i6.GetGuestSessionUseCase>(() => _i6.GetGuestSessionUseCase(
+        authenticationRepositoryIml: gh<_i7.AuthenticationRepositoryIml>()));
+    gh.factory<_i8.GetRequestTokenUseCase>(() => _i8.GetRequestTokenUseCase(
+        authenticationRepositoryIml: gh<_i9.AuthenticationRepositoryIml>()));
     return this;
   }
 }
 
-class _$DioHelper extends _i6.DioHelper {}
+class _$DioHelper extends _i10.DioHelper {}

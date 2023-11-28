@@ -1,7 +1,9 @@
-import 'package:api_base/data/services/network_services/api_constants.dart';
+import 'package:api_base/data/models/responses/responses.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
+
+import 'package:api_base/data/services/network_services/api_constants.dart';
 
 part 'rest_client.g.dart';
 
@@ -11,9 +13,9 @@ abstract class RestClient {
   @factoryMethod
   factory RestClient(Dio dio, {@factoryParam String? baseUrl}) = _RestClient;
 
-  // @GET('/authentication')
-  // Future<ApiCollectionResponse<String?>> getUtilGenres();
+  @GET('/authentication/guest_session/new')
+  Future<GuestSessionResponse> getGuestSession();
 
-  // @GET('/titles/utils/lists')
-  // Future<ApiCollectionResponse<String?>> getUtilLists();
+  @GET('/authentication/token/new')
+  Future<RequestTokenResponse> getRequestToken();
 }
