@@ -14,7 +14,9 @@ class HomeScreen extends StatelessWidget {
       ),
       body: const Center(
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[]),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[],
+        ),
       ),
     );
   }

@@ -3,8 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 
-import '../../models/base/api_collection_response.dart';
-
 part 'rest_client.g.dart';
 
 @injectable

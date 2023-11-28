@@ -12,7 +12,7 @@ import 'package:dio/dio.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../data/iml_repositories/utils_repository_imp.dart' as _i5;
+import '../data/iml_repositories/ex_repository_imp.dart' as _i5;
 import '../data/services/network_services/dio_helper.dart' as _i6;
 import '../data/services/network_services/rest_client.dart' as _i4;
 
@@ -37,8 +37,8 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i3.Dio>(),
           baseUrl: baseUrl,
         ));
-    gh.factory<_i5.UtilsRepositoryImp>(
-        () => _i5.UtilsRepositoryImp(restClient: gh<_i4.RestClient>()));
+    gh.factory<_i5.ExRepositoryImp>(
+        () => _i5.ExRepositoryImp(restClient: gh<_i4.RestClient>()));
     return this;
   }
 }

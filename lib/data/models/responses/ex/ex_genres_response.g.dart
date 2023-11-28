@@ -1,17 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'util_genres_response.dart';
+part of 'ex_genres_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-UtilGenresResponse _$UtilGenresResponseFromJson(Map<String, dynamic> json) =>
-    UtilGenresResponse(
+ExGenresResponse _$ExGenresResponseFromJson(Map<String, dynamic> json) =>
+    ExGenresResponse(
       genres: json['genres'] as String?,
     );
 
-Map<String, dynamic> _$UtilGenresResponseToJson(UtilGenresResponse instance) =>
+Map<String, dynamic> _$ExGenresResponseToJson(ExGenresResponse instance) =>
     <String, dynamic>{
       'genres': instance.genres,
     };
