@@ -20,5 +20,7 @@ abstract class RestClient {
   Future<RequestTokenResponse> getRequestToken();
 
   @POST('/authentication/session/new')
-  Future<void> postSession();
+  Future<SessionResponse> postCreateSession(
+    @Body() SessionRequest body,
+  );
 }

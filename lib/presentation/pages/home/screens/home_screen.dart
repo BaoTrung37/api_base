@@ -1,3 +1,5 @@
+import 'package:api_base/data/services/preference_services/shared_preference_manager.dart';
+import 'package:api_base/domain/use_cases/authentication/post_create_session_use_case.dart';
 import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +32,16 @@ class HomeScreen extends StatelessWidget {
               child: const Text('Get Request Token Session'),
               onPressed: () async {
                 final response = await getIt<GetRequestTokenUseCase>().run();
+                getIt<SharedPreferencesManager>()
+                    .saveRequestToken(param: response.requestToken);
+                print(response.toString());
+              },
+            ),
+            TextButton(
+              child: const Text('Post Create Session'),
+              onPressed: () async {
+                final response = await getIt<PostCreateSessionUseCase>().run();
+
                 print(response.toString());
               },
             ),

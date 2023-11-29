@@ -9,4 +9,6 @@ class SessionRequest {
   });
   factory SessionRequest.fromJson(Map<String, dynamic> json) =>
       _$SessionRequestFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SessionRequestToJson(this);
 }
