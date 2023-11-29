@@ -61,7 +61,12 @@ dependencies:
   # Local
   shared_preferences: ^2.2.2
 
+  # Web
+  url_launcher: ^6.1.12
+
   either_dart: ^1.0.0
+
+  # Annotation
   json_annotation: ^4.8.1
   freezed_annotation: ^2.4.1
 

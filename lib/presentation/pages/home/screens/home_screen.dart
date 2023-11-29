@@ -5,6 +5,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import 'package:api_base/injection/di.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -32,8 +33,13 @@ class HomeScreen extends StatelessWidget {
               child: const Text('Get Request Token Session'),
               onPressed: () async {
                 final response = await getIt<GetRequestTokenUseCase>().run();
-                getIt<SharedPreferencesManager>()
+                await getIt<SharedPreferencesManager>()
                     .saveRequestToken(param: response.requestToken);
+                launchUrl(
+                  Uri.parse(
+                      'https://www.themoviedb.org/authenticate/${response.requestToken}?redirect_to=http://www.yourapp.com'),
+                  mode: LaunchMode.externalApplication,
+                );
                 print(response.toString());
               },
             ),
