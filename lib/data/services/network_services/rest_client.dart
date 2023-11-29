@@ -1,4 +1,4 @@
-import 'package:api_base/data/models/responses/responses.dart';
+import 'package:api_base/data/models/authentication/authentication.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
@@ -18,4 +18,14 @@ abstract class RestClient {
 
   @GET('/authentication/token/new')
   Future<RequestTokenResponse> getRequestToken();
+
+  @POST('/authentication/session/new')
+  Future<SessionResponse> postCreateSession(
+    @Body() SessionRequest body,
+  );
+
+  @POST('/authentication/token/validate_with_login')
+  Future<RequestTokenResponse> postCreateSessionWithLogin(
+    @Body() SessionWithLoginRequest body,
+  );
 }
