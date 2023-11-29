@@ -17,7 +17,7 @@ import '../data/iml_repositories/authentication/authentication.dart' as _i9;
 import '../data/iml_repositories/authentication/authentication_repository.dart'
     as _i7;
 import '../data/iml_repositories/iml_repositories.dart' as _i11;
-import '../data/services/network_services/dio_helper.dart' as _i13;
+import '../data/services/network_services/dio_helper.dart' as _i14;
 import '../data/services/network_services/rest_client.dart' as _i4;
 import '../data/services/preference_services/shared_preference_manager.dart'
     as _i5;
@@ -27,6 +27,8 @@ import '../domain/use_cases/authentication/get_request_token_use_case.dart'
     as _i10;
 import '../domain/use_cases/authentication/post_create_session_use_case.dart'
     as _i12;
+import '../domain/use_cases/authentication/post_create_session_with_login_use_case.dart'
+    as _i13;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -64,8 +66,12 @@ extension GetItInjectableX on _i1.GetIt {
         _i12.PostCreateSessionUseCase(
             authenticationRepositoryIml:
                 gh<_i11.AuthenticationRepositoryIml>()));
+    gh.factory<_i13.PostCreateSessionWithLoginUseCase>(() =>
+        _i13.PostCreateSessionWithLoginUseCase(
+            authenticationRepositoryIml:
+                gh<_i11.AuthenticationRepositoryIml>()));
     return this;
   }
 }
 
-class _$DioHelper extends _i13.DioHelper {}
+class _$DioHelper extends _i14.DioHelper {}

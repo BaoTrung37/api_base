@@ -23,4 +23,9 @@ abstract class RestClient {
   Future<SessionResponse> postCreateSession(
     @Body() SessionRequest body,
   );
+
+  @POST('/authentication/token/validate_with_login')
+  Future<RequestTokenResponse> postCreateSessionWithLogin(
+    @Body() SessionWithLoginRequest body,
+  );
 }

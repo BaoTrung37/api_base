@@ -2,6 +2,7 @@ import 'package:api_base/data/models/authentication/authentication.dart';
 import 'package:api_base/data/services/network_services/rest_client.dart';
 import 'package:api_base/data/services/preference_services/shared_preference_manager.dart';
 import 'package:api_base/domain/repositories/repositories.dart';
+import 'package:api_base/domain/use_cases/authentication/post_create_session_with_login_use_case.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -26,8 +27,22 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
   @override
   Future<SessionResponse> postCreateSession() async {
     final requestToken = await sharedPreferencesManager.getRequestToken() ?? '';
-    print('requestToken: $requestToken');
-    return restClient
-        .postCreateSession(SessionRequest(requestToken: requestToken));
+    return restClient.postCreateSession(
+      SessionRequest(requestToken: requestToken),
+    );
+  }
+
+  @override
+  Future<RequestTokenResponse> postCreateSessionWithLogin(
+      PostCreateSessionInput input) async {
+    final requestToken = await sharedPreferencesManager.getRequestToken() ?? '';
+
+    return restClient.postCreateSessionWithLogin(
+      SessionWithLoginRequest(
+        username: input.username,
+        password: input.password,
+        requestToken: requestToken,
+      ),
+    );
   }
 }
