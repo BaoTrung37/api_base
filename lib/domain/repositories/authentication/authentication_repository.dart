@@ -1,4 +1,4 @@
-import 'package:api_base/data/models/responses/responses.dart';
+import 'package:api_base/data/models/authentication/authentication.dart';
 
 abstract class AuthenticationRepository {
   Future<GuestSessionResponse> getGuestSession();
