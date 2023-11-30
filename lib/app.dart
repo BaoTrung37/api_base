@@ -1,6 +1,5 @@
 import 'package:api_base/injection/di.dart';
-import 'package:api_base/presentation/navigation/app_router.dart';
-import 'package:api_base/presentation/utilities/constant/app_constant.dart';
+import 'package:api_base/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,10 +14,9 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: MaterialApp.router(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: getAppTheme(Brightness.light),
+        darkTheme: getAppTheme(Brightness.dark),
+        themeMode: ThemeMode.light,
         routerConfig: getIt<AppRouter>().config(),
       ),
     );
