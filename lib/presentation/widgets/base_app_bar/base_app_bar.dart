@@ -1,3 +1,5 @@
+import 'package:api_base/gen/assets.gen.dart';
+import 'package:api_base/presentation/resources/resources.dart';
 import 'package:flutter/material.dart';
 
 const appBarHeight = 42.0;
@@ -13,8 +15,8 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.shouldShowBackButton = true,
     this.textColor,
     this.navigationTitle,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   const BaseAppBar.customTitleView({
     required this.title,
@@ -24,10 +26,9 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.widgets,
     this.shouldShowBottomDivider = true,
     this.textColor,
-    Key? key,
+    super.key,
   })  : navigationTitle = null,
-        shouldShowBackButton = true,
-        super(key: key);
+        shouldShowBackButton = true;
 
   const BaseAppBar.titleAndBackButton({
     required String title,
@@ -37,11 +38,10 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.buttonTintColor,
     this.shouldShowBottomDivider = true,
     this.widgets,
-    Key? key,
+    super.key,
   })  : title = null,
         navigationTitle = title,
-        shouldShowBackButton = true,
-        super(key: key);
+        shouldShowBackButton = true;
 
   const BaseAppBar.titleOnly({
     required String title,
@@ -49,13 +49,12 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.textColor,
     this.shouldShowBottomDivider = true,
     this.widgets,
-    Key? key,
+    super.key,
   })  : title = null,
         onBackButtonTap = null,
         navigationTitle = title,
         buttonTintColor = null,
-        shouldShowBackButton = false,
-        super(key: key);
+        shouldShowBackButton = false;
 
   final Widget? title;
   final String? navigationTitle;
@@ -77,23 +76,24 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: title ??
           Text(
             navigationTitle ?? '',
-            // style: AppTextStyles.headingXSmall
-            //     .copyWith(color: textColor ?? context.colors.textPrimary),
+            style: AppTextStyles.headingXSmall
+                .copyWith(color: textColor ?? context.colors.textPrimary),
           ),
       centerTitle: true,
       elevation: 0,
-      // backgroundColor: backgroundColor ?? context.colors.backgroundPrimary,
-      // leading: shouldShowBackButton
-      //     ? IconButton(
-      //         onPressed: onBackButtonTap ??
-      //             () {
-      //               Navigator.of(context).pop();
-      //             },
-      //         icon: AppIcons.back(
-      //           color: buttonTintColor ?? context.colors.textPrimary,
-      //         ),
-      //       )
-      //     : Container(),
+      backgroundColor: backgroundColor ?? context.colors.backgroundPrimary,
+      leading: shouldShowBackButton
+          ? IconButton(
+              onPressed: onBackButtonTap ??
+                  () {
+                    Navigator.of(context).pop();
+                  },
+              // icon: AppIcons.back(
+              //   color: buttonTintColor ?? context.colors.textPrimary,
+              // ),
+              icon: Assets.icons.icBack.svg(),
+            )
+          : Container(),
       actions: widgets,
       bottom: shouldShowBottomDivider ? const AppBarDivider() : null,
     );
@@ -104,7 +104,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class AppBarDivider extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarDivider({Key? key}) : super(key: key);
+  const AppBarDivider({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -117,10 +117,10 @@ class AppBarDivider extends StatelessWidget implements PreferredSizeWidget {
 
 class AppDivider extends StatelessWidget {
   const AppDivider({
-    Key? key,
+    super.key,
     this.height = 0.5,
     this.thickness = 0.5,
-  }) : super(key: key);
+  });
 
   final double thickness;
   final double height;

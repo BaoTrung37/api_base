@@ -10,7 +10,10 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BaseAppBar.titleAndBackButton(title: 'Sign In'),
+      appBar: const BaseAppBar.titleAndBackButton(
+        title: '',
+        shouldShowBottomDivider: false,
+      ),
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 30.h),
@@ -23,7 +26,7 @@ class SignInScreen extends StatelessWidget {
               ),
               16.verticalSpace,
               Text(
-                'Let\'s You In',
+                'Let\'s you In',
                 style: AppTextStyles.headingLarge.copyWith(
                   color: context.colors.textPrimary,
                 ),

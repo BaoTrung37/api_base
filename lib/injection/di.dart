@@ -16,7 +16,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 void configureDependencies() {
   getIt.init();
   getIt.registerSingleton(AppRouter(navigatorKey: navigatorKey));
-  getIt.registerSingletonAsync<SharedPreferences>(() async {
+  getIt.registerLazySingletonAsync<SharedPreferences>(() async {
     return SharedPreferences.getInstance();
   });
 }
