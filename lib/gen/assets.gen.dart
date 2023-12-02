@@ -14,11 +14,21 @@ import 'package:flutter/services.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/ic_apple.svg
+  SvgGenImage get icApple => const SvgGenImage('assets/icons/ic_apple.svg');
+
   /// File path: assets/icons/ic_back.svg
   SvgGenImage get icBack => const SvgGenImage('assets/icons/ic_back.svg');
 
+  /// File path: assets/icons/ic_facebook.svg
+  SvgGenImage get icFacebook =>
+      const SvgGenImage('assets/icons/ic_facebook.svg');
+
+  /// File path: assets/icons/ic_google.svg
+  SvgGenImage get icGoogle => const SvgGenImage('assets/icons/ic_google.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [icBack];
+  List<SvgGenImage> get values => [icApple, icBack, icFacebook, icGoogle];
 }
 
 class Assets {
