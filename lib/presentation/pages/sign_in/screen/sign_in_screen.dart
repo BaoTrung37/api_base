@@ -4,8 +4,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../widgets/app_button/app_button.dart';
-
 @RoutePage()
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -74,7 +72,7 @@ class SignInScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'Don\'t have an account?',
+          "Don't have an account?",
           style: AppTextStyles.labelMediumLight
               .copyWith(color: context.colors.textSecondary),
         ),
@@ -102,7 +100,7 @@ class SignInScreen extends StatelessWidget {
 
   Widget _buildTitle(BuildContext context) {
     return Text(
-      'Let\'s you In',
+      "Let's you In",
       style: AppTextStyles.headingLarge.copyWith(
         color: context.colors.textPrimary,
       ),
