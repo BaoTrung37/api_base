@@ -6,8 +6,8 @@ class LightColors {
   LightColors._();
 
   /// Primary
-  static const primaryMain = Color(0xFF9428E8);
-  static const primaryText = Color(0xFF5B089C);
+  static const primaryMain = Color(0xFFE21221);
+  static const primaryText = Color(0xFF212121);
   static const primaryTextOnContrast = Color(0xFFBF84ED);
   static const primaryBackground = Color(0xFFF6EBFF);
 

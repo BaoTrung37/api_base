@@ -8,36 +8,33 @@
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
-class $AssetsL10nGen {
-  const $AssetsL10nGen();
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
 
-  /// File path: assets/l10n/app_de.arb
-  String get appDe => 'assets/l10n/app_de.arb';
+  /// File path: assets/icons/ic_apple.svg
+  SvgGenImage get icApple => const SvgGenImage('assets/icons/ic_apple.svg');
 
-  /// File path: assets/l10n/app_en.arb
-  String get appEn => 'assets/l10n/app_en.arb';
+  /// File path: assets/icons/ic_back.svg
+  SvgGenImage get icBack => const SvgGenImage('assets/icons/ic_back.svg');
 
-  /// File path: assets/l10n/app_fr.arb
-  String get appFr => 'assets/l10n/app_fr.arb';
+  /// File path: assets/icons/ic_facebook.svg
+  SvgGenImage get icFacebook =>
+      const SvgGenImage('assets/icons/ic_facebook.svg');
 
-  /// File path: assets/l10n/app_hi.arb
-  String get appHi => 'assets/l10n/app_hi.arb';
-
-  /// File path: assets/l10n/app_in.arb
-  String get appIn => 'assets/l10n/app_in.arb';
-
-  /// File path: assets/l10n/app_zh.arb
-  String get appZh => 'assets/l10n/app_zh.arb';
+  /// File path: assets/icons/ic_google.svg
+  SvgGenImage get icGoogle => const SvgGenImage('assets/icons/ic_google.svg');
 
   /// List of all assets
-  List<String> get values => [appDe, appEn, appFr, appHi, appIn, appZh];
+  List<SvgGenImage> get values => [icApple, icBack, icFacebook, icGoogle];
 }
 
 class Assets {
   Assets._();
 
-  static const $AssetsL10nGen l10n = $AssetsL10nGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
 }
 
 class AssetGenImage {
@@ -106,6 +103,59 @@ class AssetGenImage {
       _assetName,
       bundle: bundle,
       package: package,
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}
+
+class SvgGenImage {
+  const SvgGenImage(this._assetName);
+
+  final String _assetName;
+
+  SvgPicture svg({
+    Key? key,
+    bool matchTextDirection = false,
+    AssetBundle? bundle,
+    String? package,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    bool allowDrawingOutsideViewBox = false,
+    WidgetBuilder? placeholderBuilder,
+    String? semanticsLabel,
+    bool excludeFromSemantics = false,
+    SvgTheme theme = const SvgTheme(),
+    ColorFilter? colorFilter,
+    Clip clipBehavior = Clip.hardEdge,
+    @deprecated Color? color,
+    @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
+    @deprecated bool cacheColorFilter = false,
+  }) {
+    return SvgPicture.asset(
+      _assetName,
+      key: key,
+      matchTextDirection: matchTextDirection,
+      bundle: bundle,
+      package: package,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      placeholderBuilder: placeholderBuilder,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      theme: theme,
+      colorFilter: colorFilter,
+      color: color,
+      colorBlendMode: colorBlendMode,
+      clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
     );
   }
 
