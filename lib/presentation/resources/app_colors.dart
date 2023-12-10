@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../../config/color_config.dart';
+import 'package:api_base/config/color_config.dart';
 
 class AppColors {
   /// Used for buttons colors, filled tags etc.
