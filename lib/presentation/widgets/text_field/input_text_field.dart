@@ -1,5 +1,4 @@
 import 'package:api_base/presentation/presentation.dart';
-import 'package:api_base/presentation/resources/resources.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -307,7 +306,7 @@ class _TextBoxState extends State<InputTextField> {
                       focusNode: _focusNode,
                       textInputAction: widget.textInputAction,
                       style: widget.textStyle ??
-                          AppTextStyles.textMedium.copyWith(
+                          AppTextStyles.textMediumBold.copyWith(
                             color: context.colors.textPrimary,
                           ),
                       cursorColor: context.colors.primaryMain,
@@ -331,7 +330,7 @@ class _TextBoxState extends State<InputTextField> {
                         prefixIcon: widget.prefixIcon,
                         prefixIconColor: _isFocus
                             ? context.colors.contentSpecialMain
-                            : context.colors.backdropPrimary,
+                            : context.colors.backgroundContrast,
                       ),
                       onTap: widget.onTap,
                     ),
