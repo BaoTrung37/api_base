@@ -8,6 +8,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class LetInYouScreen extends StatelessWidget {
   const LetInYouScreen({super.key});
 
+  void onGoToSignInWithPassword(BuildContext context) {
+    context.pushRoute(const SignInRoute());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +59,7 @@ class LetInYouScreen extends StatelessWidget {
               AppButton(
                 isExpanded: true,
                 title: 'Sign in with password',
-                onTap: () {},
+                onTap: () => onGoToSignInWithPassword(context),
               ),
               const Spacer(),
               _buildSignUp(context),
