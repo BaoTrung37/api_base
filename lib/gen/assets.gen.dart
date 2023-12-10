@@ -27,8 +27,15 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_google.svg
   SvgGenImage get icGoogle => const SvgGenImage('assets/icons/ic_google.svg');
 
+  /// File path: assets/icons/ic_lock.svg
+  SvgGenImage get icLock => const SvgGenImage('assets/icons/ic_lock.svg');
+
+  /// File path: assets/icons/ic_mail.svg
+  SvgGenImage get icMail => const SvgGenImage('assets/icons/ic_mail.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [icApple, icBack, icFacebook, icGoogle];
+  List<SvgGenImage> get values =>
+      [icApple, icBack, icFacebook, icGoogle, icLock, icMail];
 }
 
 class Assets {
