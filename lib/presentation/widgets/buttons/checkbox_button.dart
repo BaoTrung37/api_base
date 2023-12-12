@@ -1,8 +1,16 @@
+import 'package:api_base/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CheckboxButton extends StatelessWidget {
+class CheckboxButton extends StatefulWidget {
   const CheckboxButton({super.key});
+
+  @override
+  State<CheckboxButton> createState() => _CheckboxButtonState();
+}
+
+class _CheckboxButtonState extends State<CheckboxButton> {
+  final ValueNotifier<bool> onChange = ValueNotifier<bool>(false);
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +31,18 @@ class CheckboxButton extends StatelessWidget {
   }
 
   Widget _checkboxView(BuildContext context) {
-    return Theme(
-      data: Theme.of(context).copyWith(
-          checkboxTheme: const CheckboxThemeData(
-        side: BorderSide(color: Colors.red),
-      )),
-      child: SizedBox(
-        height: 16.h,
-        width: 16.h,
+    return SizedBox(
+      height: 20.h,
+      width: 20.w,
+      child: Transform.scale(
+        scale: 1.2,
         child: Checkbox(
-          value: true,
-          onChanged: (_) {},
+          activeColor: context.colors.primaryMain,
+          side: BorderSide(color: context.colors.primaryMain, width: 3.w),
+          value: onChange.value,
+          onChanged: (value) {
+            onChange.value = value!;
+          },
         ),
       ),
     );

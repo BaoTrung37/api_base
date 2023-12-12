@@ -40,7 +40,7 @@ class SignInScreen extends StatelessWidget {
               isPassword: true,
             ),
             13.verticalSpace,
-            const CheckboxButton(),
+            CheckboxButton(),
           ],
         ),
       ),
