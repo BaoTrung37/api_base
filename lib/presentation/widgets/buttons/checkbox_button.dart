@@ -1,10 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CheckboxButton extends StatefulWidget {
-  const CheckboxButton({super.key});
+  const CheckboxButton({
+    required this.onValueChanged,
+    super.key,
+  });
 
+  final ValueChanged<bool> onValueChanged;
   @override
   State<CheckboxButton> createState() => _CheckboxButtonState();
 }
@@ -14,19 +19,17 @@ class _CheckboxButtonState extends State<CheckboxButton> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _checkboxView(context),
-          8.horizontalSpace,
-          const Expanded(
-            child: Text('Remember me'),
-          ),
-        ],
-      ),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _checkboxView(context),
+        8.horizontalSpace,
+        const Text(
+          'Remember me',
+          style: AppTextStyles.labelMedium,
+        ),
+      ],
     );
   }
 
@@ -38,10 +41,16 @@ class _CheckboxButtonState extends State<CheckboxButton> {
         scale: 1.2,
         child: Checkbox(
           activeColor: context.colors.primaryMain,
-          side: BorderSide(color: context.colors.primaryMain, width: 3.w),
+          side: BorderSide(
+            color: context.colors.primaryMain,
+            width: 3.w,
+          ),
           value: onChange.value,
           onChanged: (value) {
-            onChange.value = value!;
+            setState(() {
+              onChange.value = value!;
+              widget.onValueChanged.call(onChange.value);
+            });
           },
         ),
       ),

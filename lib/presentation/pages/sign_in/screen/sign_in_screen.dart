@@ -16,6 +16,7 @@ class SignInScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _buildLogo(context),
             24.verticalSpace,
@@ -39,8 +40,12 @@ class SignInScreen extends StatelessWidget {
               autoCorrect: false,
               isPassword: true,
             ),
-            13.verticalSpace,
-            CheckboxButton(),
+            16.verticalSpace,
+            CheckboxButton(
+              onValueChanged: (value) {
+                print('$value');
+              },
+            ),
           ],
         ),
       ),
