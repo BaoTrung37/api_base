@@ -46,6 +46,14 @@ class SignInScreen extends StatelessWidget {
                 print('$value');
               },
             ),
+            16.verticalSpace,
+            AppButton(
+              isExpanded: true,
+              onTap: () {
+                //
+              },
+              title: 'Sign up',
+            ),
           ],
         ),
       ),
