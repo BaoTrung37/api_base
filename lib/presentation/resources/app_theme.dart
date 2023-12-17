@@ -1,6 +1,5 @@
+import 'package:api_base/presentation/resources/resources.dart';
 import 'package:flutter/material.dart';
-
-import 'resources.dart';
 
 ThemeData getAppTheme(Brightness brightness) {
   final colors = brightness == Brightness.light ? colorsLight : colorsDark;

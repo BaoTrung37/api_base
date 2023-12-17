@@ -1,10 +1,9 @@
+import 'package:api_base/injection/di.config.dart';
 import 'package:api_base/presentation/navigation/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'di.config.dart';
 
 final getIt = GetIt.instance;
 

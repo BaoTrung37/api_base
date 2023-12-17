@@ -1,8 +1,7 @@
+import 'package:api_base/data/services/network_services/interceptors/interceptors.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
-import 'interceptors/interceptors.dart';
 
 @module
 abstract class DioHelper {

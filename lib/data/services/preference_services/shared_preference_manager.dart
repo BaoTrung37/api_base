@@ -4,9 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 @injectable
 class SharedPreferencesManager {
-  final SharedPreferences _sharedPreferences;
-
   SharedPreferencesManager(this._sharedPreferences);
+  final SharedPreferences _sharedPreferences;
 
   ///Request Token
   Future<void> saveRequestToken({required String param}) async =>

@@ -1,9 +1,8 @@
 import 'package:api_base/data/services/preference_services/shared_preference_manager.dart';
 import 'package:api_base/domain/use_cases/use_cases.dart';
+import 'package:api_base/injection/di.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
-import 'package:api_base/injection/di.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {

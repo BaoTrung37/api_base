@@ -18,10 +18,6 @@ part 'request_token_response.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class RequestTokenResponse {
-  final bool success;
-  final String requestToken;
-  final String expiresAt;
-
   RequestTokenResponse({
     required this.success,
     required this.requestToken,
@@ -30,6 +26,9 @@ class RequestTokenResponse {
 
   factory RequestTokenResponse.fromJson(Map<String, dynamic> json) =>
       _$RequestTokenResponseFromJson(json);
+  final bool success;
+  final String requestToken;
+  final String expiresAt;
 
   Map<String, dynamic> toJson() => _$RequestTokenResponseToJson(this);
 }
