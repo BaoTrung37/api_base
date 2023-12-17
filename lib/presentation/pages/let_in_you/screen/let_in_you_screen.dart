@@ -15,7 +15,8 @@ class LetInYouScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BaseAppBar(
+      appBar: const BaseAppBar.titleOnly(
+        title: '',
         shouldShowBottomDivider: false,
       ),
       body: Center(
@@ -111,11 +112,7 @@ class LetInYouScreen extends StatelessWidget {
   }
 
   Widget _buildLogo(BuildContext context) {
-    return Container(
-      height: 200.h,
-      width: 200.w,
-      color: context.colors.backdropPrimary,
-    );
+    return const AppLogo();
   }
 
   Widget _buildLoginButton(
