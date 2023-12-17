@@ -30,7 +30,13 @@ abstract class _$AppRouter extends RootStackRouter {
     SignInRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SignUnScreen(),
+        child: const SignInScreen(),
+      );
+    },
+    SignUpRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SignUpScreen(),
       );
     },
     SplashRoute.name: (routeData) {
@@ -71,7 +77,7 @@ class LetInYouRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SignUnScreen]
+/// [SignInScreen]
 class SignInRoute extends PageRouteInfo<void> {
   const SignInRoute({List<PageRouteInfo>? children})
       : super(
@@ -80,6 +86,20 @@ class SignInRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SignInRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SignUpScreen]
+class SignUpRoute extends PageRouteInfo<void> {
+  const SignUpRoute({List<PageRouteInfo>? children})
+      : super(
+          SignUpRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SignUpRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
