@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
-  void onGoToSignUpScreen(BuildContext context) {
-    context.pushRoute(const SignUpRoute());
+  void onGoToSignInWithPassword(BuildContext context) {
+    context.pushRoute(const SignInRoute());
   }
 
   @override
@@ -53,26 +53,13 @@ class SignInScreen extends StatelessWidget {
                   autoCorrect: false,
                   isPassword: true,
                 ),
-                16.verticalSpace,
-                CheckboxButton(
-                  onValueChanged: (value) {
-                    print('$value');
-                  },
-                ),
-                16.verticalSpace,
+                24.verticalSpace,
                 AppButton(
                   isExpanded: true,
                   onTap: () {
                     // TODO: Implement sign up method
                   },
-                  title: 'Sign in',
-                ),
-                16.verticalSpace,
-                AppTextButton(
-                  title: 'Forgot the password?',
-                  onTap: () {
-                    // TODO: Implement the forgot the password method?
-                  },
+                  title: 'Sign up',
                 ),
                 24.verticalSpace,
                 const AppVerticalDivider(
@@ -81,9 +68,9 @@ class SignInScreen extends StatelessWidget {
                   ),
                 ),
                 24.verticalSpace,
-                _buildSignInOptions(context),
+                _buildSignUpOptions(context),
                 16.verticalSpace,
-                _buildSignUp(context),
+                _buildSignIn(context),
               ],
             ),
           ),
@@ -92,7 +79,7 @@ class SignInScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSignUp(BuildContext context) {
+  Widget _buildSignIn(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -103,14 +90,14 @@ class SignInScreen extends StatelessWidget {
         ),
         4.horizontalSpace,
         AppTextButton(
-          onTap: () => onGoToSignUpScreen(context),
-          title: 'Sign up',
+          onTap: () => onGoToSignInWithPassword(context),
+          title: 'Sign In',
         ),
       ],
     );
   }
 
-  Widget _buildSignInOptions(BuildContext context) {
+  Widget _buildSignUpOptions(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -160,7 +147,7 @@ class SignInScreen extends StatelessWidget {
 
   Widget _buildHeadingTitle() {
     return const Text(
-      'Login to Your Account',
+      'Create your account',
       style: AppTextStyles.headingLarge,
     );
   }

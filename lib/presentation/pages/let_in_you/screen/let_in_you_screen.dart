@@ -12,6 +12,10 @@ class LetInYouScreen extends StatelessWidget {
     context.pushRoute(const SignInRoute());
   }
 
+  void onGoToSignUpScreen(BuildContext context) {
+    context.pushRoute(const SignUpRoute());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,9 +87,7 @@ class LetInYouScreen extends StatelessWidget {
         ),
         4.horizontalSpace,
         AppTextButton(
-          onTap: () {
-            //
-          },
+          onTap: () => onGoToSignUpScreen(context),
           title: 'Sign up',
         ),
       ],

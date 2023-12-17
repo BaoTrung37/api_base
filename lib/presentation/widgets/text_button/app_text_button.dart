@@ -1,13 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/material.dart';
-
 import 'package:api_base/presentation/resources/resources.dart';
+import 'package:flutter/material.dart';
 
 class AppTextButton extends StatelessWidget {
   const AppTextButton({
-    super.key,
     required this.title,
     required this.onTap,
+    super.key,
     this.style,
   });
 
@@ -17,7 +16,7 @@ class AppTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onTap,
       child: Text(
         title,
