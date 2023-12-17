@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+class SignUnScreen extends StatelessWidget {
+  const SignUnScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

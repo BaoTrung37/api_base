@@ -30,7 +30,7 @@ abstract class _$AppRouter extends RootStackRouter {
     SignInRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SignInScreen(),
+        child: const SignUnScreen(),
       );
     },
     SplashRoute.name: (routeData) {
@@ -71,7 +71,7 @@ class LetInYouRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SignInScreen]
+/// [SignUnScreen]
 class SignInRoute extends PageRouteInfo<void> {
   const SignInRoute({List<PageRouteInfo>? children})
       : super(
