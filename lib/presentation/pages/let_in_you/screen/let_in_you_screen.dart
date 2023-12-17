@@ -19,7 +19,8 @@ class LetInYouScreen extends StatelessWidget {
         title: '',
         shouldShowBottomDivider: false,
       ),
-      body: Center(
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 24.w),
           child: Column(
@@ -62,7 +63,7 @@ class LetInYouScreen extends StatelessWidget {
                 title: 'Sign in with password',
                 onTap: () => onGoToSignInWithPassword(context),
               ),
-              const Spacer(),
+              16.verticalSpace,
               _buildSignUp(context),
             ],
           ),

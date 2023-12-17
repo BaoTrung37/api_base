@@ -71,6 +71,7 @@ class SignInScreen extends StatelessWidget {
                 ),
                 24.verticalSpace,
                 _buildSignUpOptions(context),
+                16.verticalSpace,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
