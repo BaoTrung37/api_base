@@ -9,7 +9,7 @@ class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
 
   void onGoToSignUpScreen(BuildContext context) {
-    context.pushRoute(const SignUpRoute());
+    context.replaceRoute(const SignUpRoute());
   }
 
   @override
