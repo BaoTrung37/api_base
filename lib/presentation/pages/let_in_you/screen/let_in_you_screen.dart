@@ -9,8 +9,9 @@ class LetInYouScreen extends StatelessWidget {
   const LetInYouScreen({super.key});
 
   void onGoToSignInWithPassword(BuildContext context) {
-    // context.pushRoute(const SignInRoute());
+    context.pushRoute(const SignInRoute());
   }
+
   void onGoToSignUpScreen(BuildContext context) {
     context.pushRoute(const SignUpRoute());
   }
@@ -86,7 +87,7 @@ class LetInYouScreen extends StatelessWidget {
         ),
         4.horizontalSpace,
         AppTextButton(
-          onTap: () => onGoToSignUpScreen,
+          onTap: () => onGoToSignUpScreen(context),
           title: 'Sign up',
         ),
       ],

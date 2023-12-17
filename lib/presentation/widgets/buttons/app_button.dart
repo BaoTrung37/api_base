@@ -25,6 +25,7 @@ class AppButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(30.r),
         ),
         child: InkWell(
+          splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onTap: onTap,
           child: isExpanded

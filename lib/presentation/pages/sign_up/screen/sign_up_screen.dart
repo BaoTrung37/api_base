@@ -8,6 +8,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
+  void onGoToSignInWithPassword(BuildContext context) {
+    context.pushRoute(const SignInRoute());
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -49,13 +53,7 @@ class SignUpScreen extends StatelessWidget {
                   autoCorrect: false,
                   isPassword: true,
                 ),
-                16.verticalSpace,
-                CheckboxButton(
-                  onValueChanged: (value) {
-                    print('$value');
-                  },
-                ),
-                16.verticalSpace,
+                24.verticalSpace,
                 AppButton(
                   isExpanded: true,
                   onTap: () {
@@ -72,29 +70,30 @@ class SignUpScreen extends StatelessWidget {
                 24.verticalSpace,
                 _buildSignUpOptions(context),
                 16.verticalSpace,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Already have an account?',
-                      style: AppTextStyles.textMedium.copyWith(
-                        color: context.colors.textPrimary,
-                      ),
-                    ),
-                    4.horizontalSpace,
-                    Text(
-                      'Sign in',
-                      style: AppTextStyles.textMedium.copyWith(
-                        color: context.colors.contentSpecialText,
-                      ),
-                    ),
-                  ],
-                ),
+                _buildSignIn(context),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildSignIn(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          "Don't have an account?",
+          style: AppTextStyles.labelMediumLight
+              .copyWith(color: context.colors.textSecondary),
+        ),
+        4.horizontalSpace,
+        AppTextButton(
+          onTap: () => onGoToSignInWithPassword(context),
+          title: 'Sign In',
+        ),
+      ],
     );
   }
 
