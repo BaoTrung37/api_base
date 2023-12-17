@@ -20,7 +20,7 @@ class LetInYouScreen extends StatelessWidget {
       ),
       body: Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 16.w),
+          padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 24.w),
           child: Column(
             children: [
               _buildLogo(context),
