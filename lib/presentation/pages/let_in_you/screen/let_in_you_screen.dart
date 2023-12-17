@@ -8,15 +8,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class LetInYouScreen extends StatelessWidget {
   const LetInYouScreen({super.key});
 
+  void onGoToSignInWithPassword(BuildContext context) {
+    context.pushRoute(const SignInRoute());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BaseAppBar(
+      appBar: const BaseAppBar.titleOnly(
+        title: '',
         shouldShowBottomDivider: false,
       ),
-      body: Center(
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 16.w),
+          padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 24.w),
           child: Column(
             children: [
               _buildLogo(context),
@@ -55,9 +61,9 @@ class LetInYouScreen extends StatelessWidget {
               AppButton(
                 isExpanded: true,
                 title: 'Sign in with password',
-                onTap: () {},
+                onTap: () => onGoToSignInWithPassword(context),
               ),
-              const Spacer(),
+              16.verticalSpace,
               _buildSignUp(context),
             ],
           ),
@@ -107,11 +113,7 @@ class LetInYouScreen extends StatelessWidget {
   }
 
   Widget _buildLogo(BuildContext context) {
-    return Container(
-      height: 200.h,
-      width: 200.w,
-      color: context.colors.backdropPrimary,
-    );
+    return const AppLogo();
   }
 
   Widget _buildLoginButton(

@@ -7,12 +7,12 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class AuthenticationRepositoryIml extends AuthenticationRepository {
-  final RestClient restClient;
-  final SharedPreferencesManager sharedPreferencesManager;
   AuthenticationRepositoryIml({
     required this.restClient,
     required this.sharedPreferencesManager,
   });
+  final RestClient restClient;
+  final SharedPreferencesManager sharedPreferencesManager;
 
   @override
   Future<GuestSessionResponse> getGuestSession() {
