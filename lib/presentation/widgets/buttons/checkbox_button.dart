@@ -40,6 +40,8 @@ class _CheckboxButtonState extends State<CheckboxButton> {
       child: Transform.scale(
         scale: 1.2,
         child: Checkbox(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.r)),
           activeColor: context.colors.primaryMain,
           side: BorderSide(
             color: context.colors.primaryMain,
