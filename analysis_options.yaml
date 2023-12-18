@@ -124,6 +124,7 @@ linter:
     - prefer_const_constructors # https://dart-lang.github.io/linter/lints/prefer_const_constructors.html
     - only_throw_errors # https://dart-lang.github.io/linter/lints/only_throw_errors.html
     - no_logic_in_create_state # https://dart-lang.github.io/linter/lints/no_logic_in_create_state.html
+    - collection_methods_unrelated_type # https://dart-lang.github.io/linter/lints/list_remove_unrelated_type.html
     - avoid_web_libraries_in_flutter # https://dart-lang.github.io/linter/lints/avoid_web_libraries_in_flutter.html
     - avoid_bool_literals_in_conditional_expressions # https://dart-lang.github.io/linter/lints/avoid_bool_literals_in_conditional_expressions.html
     - always_require_non_null_named_parameters # https://dart-lang.github.io/linter/lints/always_require_non_null_named_parameters.html
