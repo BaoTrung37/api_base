@@ -42,12 +42,14 @@ class SignInScreen extends StatelessWidget {
                       24.verticalSpace,
                       InputTextField.singleLine(
                         placeholder: 'Email',
+                        initialText: state.email,
                         prefixIcon: const Icon(
                           Icons.mail,
                         ),
                         enableSuggestions: false,
                         autoCorrect: false,
                         textInputAction: TextInputAction.next,
+                        validator: Validator().required().build(),
                         onSubmit: (_) => FocusScope.of(context).nextFocus(),
                         onTextChange: (value) {
                           context.read<SignInBloc>().add(
@@ -61,6 +63,7 @@ class SignInScreen extends StatelessWidget {
                         prefixIcon: const Icon(
                           Icons.lock_rounded,
                         ),
+                        validator: Validator().required().build(),
                         enableSuggestions: false,
                         autoCorrect: false,
                         isPassword: true,

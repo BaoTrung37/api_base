@@ -69,6 +69,7 @@ dependencies:
   url_launcher: ^6.1.12
 
   either_dart: ^1.0.0
+  form_validator: ^2.1.1
   flutter_svg: ^2.0.9
 
   # Annotation

@@ -1084,7 +1084,7 @@ class _$SignInStateImpl implements _SignInState {
   const _$SignInStateImpl(
       {this.loginStatus = LoadingStatus.initial,
       this.status = LoadingStatus.initial,
-      this.email = '',
+      this.email = 'baotrung',
       this.password = '',
       this.isRemember = false});
 
