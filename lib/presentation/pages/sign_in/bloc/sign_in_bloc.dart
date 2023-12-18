@@ -16,7 +16,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           signInSubmitted: (event) => _signInSubmitted(emit),
           signUpSubmitted: (_) => {},
           rememberMeChanged: (event) => _rememberMeChanged(event, emit),
-          emailChanged: (event) => _emailChanged(event, emit),
+          usernameChanged: (event) => _usernameChanged(event, emit),
           passwordChanged: (event) => _passwordChanged(event, emit),
         );
       },
@@ -34,7 +34,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     try {
       emit(state.copyWith(loginStatus: LoadingStatus.inProgress));
 
-      debugPrint('1:${state.email} 2:${state.password} 3:${state.isRemember}');
+      debugPrint(
+          '1:${state.username} 2:${state.password} 3:${state.isRemember}');
 
       emit(state.copyWith(loginStatus: LoadingStatus.success));
     } catch (e) {
@@ -42,10 +43,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     }
   }
 
-  Future<void> _emailChanged(
-      _EmailChanged event, Emitter<SignInState> emit) async {
+  Future<void> _usernameChanged(
+      _UsernameChanged event, Emitter<SignInState> emit) async {
     emit(
-      state.copyWith(email: event.email),
+      state.copyWith(username: event.username),
     );
   }
 

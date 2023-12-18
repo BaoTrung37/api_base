@@ -41,8 +41,8 @@ class SignInScreen extends StatelessWidget {
                       _buildHeadingTitle(),
                       24.verticalSpace,
                       InputTextField.singleLine(
-                        placeholder: 'Email',
-                        initialText: state.email,
+                        placeholder: 'Username',
+                        initialText: state.username,
                         prefixIcon: const Icon(
                           Icons.mail,
                         ),
@@ -53,7 +53,7 @@ class SignInScreen extends StatelessWidget {
                         onSubmit: (_) => FocusScope.of(context).nextFocus(),
                         onTextChange: (value) {
                           context.read<SignInBloc>().add(
-                                SignInEvent.emailChanged(value!),
+                                SignInEvent.usernameChanged(value!),
                               );
                         },
                       ),

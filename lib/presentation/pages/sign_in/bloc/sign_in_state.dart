@@ -5,7 +5,7 @@ class SignInState with _$SignInState {
   const factory SignInState({
     @Default(LoadingStatus.initial) LoadingStatus loginStatus,
     @Default(LoadingStatus.initial) LoadingStatus status,
-    @Default('baotrung') String email,
+    @Default('baotrung') String username,
     @Default('') String password,
     @Default(false) bool isRemember,
   }) = _SignInState;

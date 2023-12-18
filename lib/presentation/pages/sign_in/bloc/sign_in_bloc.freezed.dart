@@ -22,7 +22,7 @@ mixin _$SignInEvent {
     required TResult Function() signInSubmitted,
     required TResult Function() signUpSubmitted,
     required TResult Function(bool value) rememberMeChanged,
-    required TResult Function(String email) emailChanged,
+    required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +32,7 @@ mixin _$SignInEvent {
     TResult? Function()? signInSubmitted,
     TResult? Function()? signUpSubmitted,
     TResult? Function(bool value)? rememberMeChanged,
-    TResult? Function(String email)? emailChanged,
+    TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ mixin _$SignInEvent {
     TResult Function()? signInSubmitted,
     TResult Function()? signUpSubmitted,
     TResult Function(bool value)? rememberMeChanged,
-    TResult Function(String email)? emailChanged,
+    TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
     required TResult orElse(),
   }) =>
@@ -53,7 +53,7 @@ mixin _$SignInEvent {
     required TResult Function(_SignInSubmitted value) signInSubmitted,
     required TResult Function(_SignUpSubmitted value) signUpSubmitted,
     required TResult Function(_RememberMe value) rememberMeChanged,
-    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +63,7 @@ mixin _$SignInEvent {
     TResult? Function(_SignInSubmitted value)? signInSubmitted,
     TResult? Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult? Function(_RememberMe value)? rememberMeChanged,
-    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -73,7 +73,7 @@ mixin _$SignInEvent {
     TResult Function(_SignInSubmitted value)? signInSubmitted,
     TResult Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult Function(_RememberMe value)? rememberMeChanged,
-    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     required TResult orElse(),
   }) =>
@@ -140,7 +140,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() signInSubmitted,
     required TResult Function() signUpSubmitted,
     required TResult Function(bool value) rememberMeChanged,
-    required TResult Function(String email) emailChanged,
+    required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
   }) {
     return started();
@@ -153,7 +153,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? signInSubmitted,
     TResult? Function()? signUpSubmitted,
     TResult? Function(bool value)? rememberMeChanged,
-    TResult? Function(String email)? emailChanged,
+    TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
   }) {
     return started?.call();
@@ -166,7 +166,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? signInSubmitted,
     TResult Function()? signUpSubmitted,
     TResult Function(bool value)? rememberMeChanged,
-    TResult Function(String email)? emailChanged,
+    TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
     required TResult orElse(),
   }) {
@@ -183,7 +183,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_SignInSubmitted value) signInSubmitted,
     required TResult Function(_SignUpSubmitted value) signUpSubmitted,
     required TResult Function(_RememberMe value) rememberMeChanged,
-    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
   }) {
     return started(this);
@@ -196,7 +196,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_SignInSubmitted value)? signInSubmitted,
     TResult? Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult? Function(_RememberMe value)? rememberMeChanged,
-    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
   }) {
     return started?.call(this);
@@ -209,7 +209,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_SignInSubmitted value)? signInSubmitted,
     TResult Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult Function(_RememberMe value)? rememberMeChanged,
-    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     required TResult orElse(),
   }) {
@@ -266,7 +266,7 @@ class _$SignInSubmittedImpl implements _SignInSubmitted {
     required TResult Function() signInSubmitted,
     required TResult Function() signUpSubmitted,
     required TResult Function(bool value) rememberMeChanged,
-    required TResult Function(String email) emailChanged,
+    required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
   }) {
     return signInSubmitted();
@@ -279,7 +279,7 @@ class _$SignInSubmittedImpl implements _SignInSubmitted {
     TResult? Function()? signInSubmitted,
     TResult? Function()? signUpSubmitted,
     TResult? Function(bool value)? rememberMeChanged,
-    TResult? Function(String email)? emailChanged,
+    TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
   }) {
     return signInSubmitted?.call();
@@ -292,7 +292,7 @@ class _$SignInSubmittedImpl implements _SignInSubmitted {
     TResult Function()? signInSubmitted,
     TResult Function()? signUpSubmitted,
     TResult Function(bool value)? rememberMeChanged,
-    TResult Function(String email)? emailChanged,
+    TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
     required TResult orElse(),
   }) {
@@ -309,7 +309,7 @@ class _$SignInSubmittedImpl implements _SignInSubmitted {
     required TResult Function(_SignInSubmitted value) signInSubmitted,
     required TResult Function(_SignUpSubmitted value) signUpSubmitted,
     required TResult Function(_RememberMe value) rememberMeChanged,
-    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
   }) {
     return signInSubmitted(this);
@@ -322,7 +322,7 @@ class _$SignInSubmittedImpl implements _SignInSubmitted {
     TResult? Function(_SignInSubmitted value)? signInSubmitted,
     TResult? Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult? Function(_RememberMe value)? rememberMeChanged,
-    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
   }) {
     return signInSubmitted?.call(this);
@@ -335,7 +335,7 @@ class _$SignInSubmittedImpl implements _SignInSubmitted {
     TResult Function(_SignInSubmitted value)? signInSubmitted,
     TResult Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult Function(_RememberMe value)? rememberMeChanged,
-    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     required TResult orElse(),
   }) {
@@ -392,7 +392,7 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     required TResult Function() signInSubmitted,
     required TResult Function() signUpSubmitted,
     required TResult Function(bool value) rememberMeChanged,
-    required TResult Function(String email) emailChanged,
+    required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
   }) {
     return signUpSubmitted();
@@ -405,7 +405,7 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     TResult? Function()? signInSubmitted,
     TResult? Function()? signUpSubmitted,
     TResult? Function(bool value)? rememberMeChanged,
-    TResult? Function(String email)? emailChanged,
+    TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
   }) {
     return signUpSubmitted?.call();
@@ -418,7 +418,7 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     TResult Function()? signInSubmitted,
     TResult Function()? signUpSubmitted,
     TResult Function(bool value)? rememberMeChanged,
-    TResult Function(String email)? emailChanged,
+    TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
     required TResult orElse(),
   }) {
@@ -435,7 +435,7 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     required TResult Function(_SignInSubmitted value) signInSubmitted,
     required TResult Function(_SignUpSubmitted value) signUpSubmitted,
     required TResult Function(_RememberMe value) rememberMeChanged,
-    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
   }) {
     return signUpSubmitted(this);
@@ -448,7 +448,7 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     TResult? Function(_SignInSubmitted value)? signInSubmitted,
     TResult? Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult? Function(_RememberMe value)? rememberMeChanged,
-    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
   }) {
     return signUpSubmitted?.call(this);
@@ -461,7 +461,7 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     TResult Function(_SignInSubmitted value)? signInSubmitted,
     TResult Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult Function(_RememberMe value)? rememberMeChanged,
-    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     required TResult orElse(),
   }) {
@@ -544,7 +544,7 @@ class _$RememberMeImpl implements _RememberMe {
     required TResult Function() signInSubmitted,
     required TResult Function() signUpSubmitted,
     required TResult Function(bool value) rememberMeChanged,
-    required TResult Function(String email) emailChanged,
+    required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
   }) {
     return rememberMeChanged(value);
@@ -557,7 +557,7 @@ class _$RememberMeImpl implements _RememberMe {
     TResult? Function()? signInSubmitted,
     TResult? Function()? signUpSubmitted,
     TResult? Function(bool value)? rememberMeChanged,
-    TResult? Function(String email)? emailChanged,
+    TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
   }) {
     return rememberMeChanged?.call(value);
@@ -570,7 +570,7 @@ class _$RememberMeImpl implements _RememberMe {
     TResult Function()? signInSubmitted,
     TResult Function()? signUpSubmitted,
     TResult Function(bool value)? rememberMeChanged,
-    TResult Function(String email)? emailChanged,
+    TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
     required TResult orElse(),
   }) {
@@ -587,7 +587,7 @@ class _$RememberMeImpl implements _RememberMe {
     required TResult Function(_SignInSubmitted value) signInSubmitted,
     required TResult Function(_SignUpSubmitted value) signUpSubmitted,
     required TResult Function(_RememberMe value) rememberMeChanged,
-    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
   }) {
     return rememberMeChanged(this);
@@ -600,7 +600,7 @@ class _$RememberMeImpl implements _RememberMe {
     TResult? Function(_SignInSubmitted value)? signInSubmitted,
     TResult? Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult? Function(_RememberMe value)? rememberMeChanged,
-    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
   }) {
     return rememberMeChanged?.call(this);
@@ -613,7 +613,7 @@ class _$RememberMeImpl implements _RememberMe {
     TResult Function(_SignInSubmitted value)? signInSubmitted,
     TResult Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult Function(_RememberMe value)? rememberMeChanged,
-    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     required TResult orElse(),
   }) {
@@ -634,31 +634,31 @@ abstract class _RememberMe implements SignInEvent {
 }
 
 /// @nodoc
-abstract class _$$EmailChangedImplCopyWith<$Res> {
-  factory _$$EmailChangedImplCopyWith(
-          _$EmailChangedImpl value, $Res Function(_$EmailChangedImpl) then) =
-      __$$EmailChangedImplCopyWithImpl<$Res>;
+abstract class _$$UsernameChangedImplCopyWith<$Res> {
+  factory _$$UsernameChangedImplCopyWith(_$UsernameChangedImpl value,
+          $Res Function(_$UsernameChangedImpl) then) =
+      __$$UsernameChangedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email});
+  $Res call({String username});
 }
 
 /// @nodoc
-class __$$EmailChangedImplCopyWithImpl<$Res>
-    extends _$SignInEventCopyWithImpl<$Res, _$EmailChangedImpl>
-    implements _$$EmailChangedImplCopyWith<$Res> {
-  __$$EmailChangedImplCopyWithImpl(
-      _$EmailChangedImpl _value, $Res Function(_$EmailChangedImpl) _then)
+class __$$UsernameChangedImplCopyWithImpl<$Res>
+    extends _$SignInEventCopyWithImpl<$Res, _$UsernameChangedImpl>
+    implements _$$UsernameChangedImplCopyWith<$Res> {
+  __$$UsernameChangedImplCopyWithImpl(
+      _$UsernameChangedImpl _value, $Res Function(_$UsernameChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
+    Object? username = null,
   }) {
-    return _then(_$EmailChangedImpl(
-      null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+    return _then(_$UsernameChangedImpl(
+      null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -666,33 +666,35 @@ class __$$EmailChangedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EmailChangedImpl implements _EmailChanged {
-  const _$EmailChangedImpl(this.email);
+class _$UsernameChangedImpl implements _UsernameChanged {
+  const _$UsernameChangedImpl(this.username);
 
   @override
-  final String email;
+  final String username;
 
   @override
   String toString() {
-    return 'SignInEvent.emailChanged(email: $email)';
+    return 'SignInEvent.usernameChanged(username: $username)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EmailChangedImpl &&
-            (identical(other.email, email) || other.email == email));
+            other is _$UsernameChangedImpl &&
+            (identical(other.username, username) ||
+                other.username == username));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email);
+  int get hashCode => Object.hash(runtimeType, username);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EmailChangedImplCopyWith<_$EmailChangedImpl> get copyWith =>
-      __$$EmailChangedImplCopyWithImpl<_$EmailChangedImpl>(this, _$identity);
+  _$$UsernameChangedImplCopyWith<_$UsernameChangedImpl> get copyWith =>
+      __$$UsernameChangedImplCopyWithImpl<_$UsernameChangedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -701,10 +703,10 @@ class _$EmailChangedImpl implements _EmailChanged {
     required TResult Function() signInSubmitted,
     required TResult Function() signUpSubmitted,
     required TResult Function(bool value) rememberMeChanged,
-    required TResult Function(String email) emailChanged,
+    required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
   }) {
-    return emailChanged(email);
+    return usernameChanged(username);
   }
 
   @override
@@ -714,10 +716,10 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult? Function()? signInSubmitted,
     TResult? Function()? signUpSubmitted,
     TResult? Function(bool value)? rememberMeChanged,
-    TResult? Function(String email)? emailChanged,
+    TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
   }) {
-    return emailChanged?.call(email);
+    return usernameChanged?.call(username);
   }
 
   @override
@@ -727,12 +729,12 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult Function()? signInSubmitted,
     TResult Function()? signUpSubmitted,
     TResult Function(bool value)? rememberMeChanged,
-    TResult Function(String email)? emailChanged,
+    TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
     required TResult orElse(),
   }) {
-    if (emailChanged != null) {
-      return emailChanged(email);
+    if (usernameChanged != null) {
+      return usernameChanged(username);
     }
     return orElse();
   }
@@ -744,10 +746,10 @@ class _$EmailChangedImpl implements _EmailChanged {
     required TResult Function(_SignInSubmitted value) signInSubmitted,
     required TResult Function(_SignUpSubmitted value) signUpSubmitted,
     required TResult Function(_RememberMe value) rememberMeChanged,
-    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
   }) {
-    return emailChanged(this);
+    return usernameChanged(this);
   }
 
   @override
@@ -757,10 +759,10 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult? Function(_SignInSubmitted value)? signInSubmitted,
     TResult? Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult? Function(_RememberMe value)? rememberMeChanged,
-    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
   }) {
-    return emailChanged?.call(this);
+    return usernameChanged?.call(this);
   }
 
   @override
@@ -770,23 +772,23 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult Function(_SignInSubmitted value)? signInSubmitted,
     TResult Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult Function(_RememberMe value)? rememberMeChanged,
-    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     required TResult orElse(),
   }) {
-    if (emailChanged != null) {
-      return emailChanged(this);
+    if (usernameChanged != null) {
+      return usernameChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _EmailChanged implements SignInEvent {
-  const factory _EmailChanged(final String email) = _$EmailChangedImpl;
+abstract class _UsernameChanged implements SignInEvent {
+  const factory _UsernameChanged(final String username) = _$UsernameChangedImpl;
 
-  String get email;
+  String get username;
   @JsonKey(ignore: true)
-  _$$EmailChangedImplCopyWith<_$EmailChangedImpl> get copyWith =>
+  _$$UsernameChangedImplCopyWith<_$UsernameChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -860,7 +862,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     required TResult Function() signInSubmitted,
     required TResult Function() signUpSubmitted,
     required TResult Function(bool value) rememberMeChanged,
-    required TResult Function(String email) emailChanged,
+    required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
   }) {
     return passwordChanged(password);
@@ -873,7 +875,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult? Function()? signInSubmitted,
     TResult? Function()? signUpSubmitted,
     TResult? Function(bool value)? rememberMeChanged,
-    TResult? Function(String email)? emailChanged,
+    TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
   }) {
     return passwordChanged?.call(password);
@@ -886,7 +888,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult Function()? signInSubmitted,
     TResult Function()? signUpSubmitted,
     TResult Function(bool value)? rememberMeChanged,
-    TResult Function(String email)? emailChanged,
+    TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
     required TResult orElse(),
   }) {
@@ -903,7 +905,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     required TResult Function(_SignInSubmitted value) signInSubmitted,
     required TResult Function(_SignUpSubmitted value) signUpSubmitted,
     required TResult Function(_RememberMe value) rememberMeChanged,
-    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
   }) {
     return passwordChanged(this);
@@ -916,7 +918,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult? Function(_SignInSubmitted value)? signInSubmitted,
     TResult? Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult? Function(_RememberMe value)? rememberMeChanged,
-    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
   }) {
     return passwordChanged?.call(this);
@@ -929,7 +931,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult Function(_SignInSubmitted value)? signInSubmitted,
     TResult Function(_SignUpSubmitted value)? signUpSubmitted,
     TResult Function(_RememberMe value)? rememberMeChanged,
-    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     required TResult orElse(),
   }) {
@@ -953,7 +955,7 @@ abstract class _PasswordChanged implements SignInEvent {
 mixin _$SignInState {
   LoadingStatus get loginStatus => throw _privateConstructorUsedError;
   LoadingStatus get status => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   bool get isRemember => throw _privateConstructorUsedError;
 
@@ -971,7 +973,7 @@ abstract class $SignInStateCopyWith<$Res> {
   $Res call(
       {LoadingStatus loginStatus,
       LoadingStatus status,
-      String email,
+      String username,
       String password,
       bool isRemember});
 }
@@ -991,7 +993,7 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
   $Res call({
     Object? loginStatus = null,
     Object? status = null,
-    Object? email = null,
+    Object? username = null,
     Object? password = null,
     Object? isRemember = null,
   }) {
@@ -1004,9 +1006,9 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as LoadingStatus,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -1031,7 +1033,7 @@ abstract class _$$SignInStateImplCopyWith<$Res>
   $Res call(
       {LoadingStatus loginStatus,
       LoadingStatus status,
-      String email,
+      String username,
       String password,
       bool isRemember});
 }
@@ -1049,7 +1051,7 @@ class __$$SignInStateImplCopyWithImpl<$Res>
   $Res call({
     Object? loginStatus = null,
     Object? status = null,
-    Object? email = null,
+    Object? username = null,
     Object? password = null,
     Object? isRemember = null,
   }) {
@@ -1062,9 +1064,9 @@ class __$$SignInStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as LoadingStatus,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       password: null == password
           ? _value.password
@@ -1084,7 +1086,7 @@ class _$SignInStateImpl implements _SignInState {
   const _$SignInStateImpl(
       {this.loginStatus = LoadingStatus.initial,
       this.status = LoadingStatus.initial,
-      this.email = 'baotrung',
+      this.username = 'baotrung',
       this.password = '',
       this.isRemember = false});
 
@@ -1096,7 +1098,7 @@ class _$SignInStateImpl implements _SignInState {
   final LoadingStatus status;
   @override
   @JsonKey()
-  final String email;
+  final String username;
   @override
   @JsonKey()
   final String password;
@@ -1106,7 +1108,7 @@ class _$SignInStateImpl implements _SignInState {
 
   @override
   String toString() {
-    return 'SignInState(loginStatus: $loginStatus, status: $status, email: $email, password: $password, isRemember: $isRemember)';
+    return 'SignInState(loginStatus: $loginStatus, status: $status, username: $username, password: $password, isRemember: $isRemember)';
   }
 
   @override
@@ -1117,7 +1119,8 @@ class _$SignInStateImpl implements _SignInState {
             (identical(other.loginStatus, loginStatus) ||
                 other.loginStatus == loginStatus) &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.email, email) || other.email == email) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.isRemember, isRemember) ||
@@ -1126,7 +1129,7 @@ class _$SignInStateImpl implements _SignInState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, loginStatus, status, email, password, isRemember);
+      runtimeType, loginStatus, status, username, password, isRemember);
 
   @JsonKey(ignore: true)
   @override
@@ -1139,7 +1142,7 @@ abstract class _SignInState implements SignInState {
   const factory _SignInState(
       {final LoadingStatus loginStatus,
       final LoadingStatus status,
-      final String email,
+      final String username,
       final String password,
       final bool isRemember}) = _$SignInStateImpl;
 
@@ -1148,7 +1151,7 @@ abstract class _SignInState implements SignInState {
   @override
   LoadingStatus get status;
   @override
-  String get email;
+  String get username;
   @override
   String get password;
   @override
