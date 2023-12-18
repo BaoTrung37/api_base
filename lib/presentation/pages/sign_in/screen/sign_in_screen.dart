@@ -97,6 +97,7 @@ class SignInScreen extends StatelessWidget {
                         title: 'Forgot the password?',
                         onTap: () {
                           // TODO: Implement the forgot the password method?
+                          context.pushRoute(const HomeRoute());
                         },
                       ),
                       24.verticalSpace,
