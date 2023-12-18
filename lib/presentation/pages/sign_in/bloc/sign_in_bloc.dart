@@ -1,6 +1,8 @@
+import 'dart:async';
+
+import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -10,20 +12,25 @@ part 'sign_in_state.dart';
 
 @injectable
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
-  SignInBloc() : super(const SignInState()) {
+  SignInBloc(this._postLoginWithUsernameAndPasswordUseCase)
+      : super(const SignInState()) {
     on<SignInEvent>(
-      (event, emit) {
-        event.map(
+      (event, emit) async {
+        await event.map<FutureOr<void>>(
           started: (_) => _stared(emit),
           signInSubmitted: (event) => _signInSubmitted(emit),
           signUpSubmitted: (_) => {},
           rememberMeChanged: (event) => _rememberMeChanged(event, emit),
           usernameChanged: (event) => _usernameChanged(event, emit),
           passwordChanged: (event) => _passwordChanged(event, emit),
+          loginSuccess: (_LoginSuccess value) => {},
+          loginFailure: (_LoginFailure value) => {},
         );
       },
     );
   }
+  final PostLoginWithUsernameAndPasswordUseCase
+      _postLoginWithUsernameAndPasswordUseCase;
 
   Future<void> _rememberMeChanged(
       _RememberMe event, Emitter<SignInState> emit) async {
@@ -36,12 +43,15 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     try {
       emit(state.copyWith(loginStatus: LoadingStatus.inProgress));
 
-      debugPrint(
-          '1:${state.username} 2:${state.password} 3:${state.isRemember}');
-
-      emit(state.copyWith(loginStatus: LoadingStatus.success));
+      await _postLoginWithUsernameAndPasswordUseCase.run(
+        PostCreateSessionInput(
+            username: state.username, password: state.password),
+      );
+      // add(const SignInEvent.loginSuccess());
+      // emit(state.copyWith(loginStatus: LoadingStatus.success));
     } catch (e) {
       emit(state.copyWith(loginStatus: LoadingStatus.error));
+      add(const SignInEvent.loginFailure());
     }
   }
 

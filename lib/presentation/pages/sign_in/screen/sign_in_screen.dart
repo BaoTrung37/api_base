@@ -1,4 +1,5 @@
 import 'package:api_base/gen/assets.gen.dart';
+import 'package:api_base/injection/di.dart';
 import 'package:api_base/presentation/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
@@ -17,7 +18,8 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<SignInBloc>(
-      create: (context) => SignInBloc()..add(const SignInEvent.started()),
+      create: (context) =>
+          getIt<SignInBloc>()..add(const SignInEvent.started()),
       child: GestureDetector(
         onTap: () {
           AppUtilities.unFocus();
@@ -76,7 +78,6 @@ class SignInScreen extends StatelessWidget {
                       16.verticalSpace,
                       CheckboxButton(
                         onValueChanged: (value) {
-                          print(value);
                           context
                               .read<SignInBloc>()
                               .add(SignInEvent.rememberMeChanged(value));

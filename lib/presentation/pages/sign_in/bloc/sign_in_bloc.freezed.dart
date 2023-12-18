@@ -24,6 +24,8 @@ mixin _$SignInEvent {
     required TResult Function(bool value) rememberMeChanged,
     required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function() loginSuccess,
+    required TResult Function() loginFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +36,8 @@ mixin _$SignInEvent {
     TResult? Function(bool value)? rememberMeChanged,
     TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function()? loginSuccess,
+    TResult? Function()? loginFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +48,8 @@ mixin _$SignInEvent {
     TResult Function(bool value)? rememberMeChanged,
     TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function()? loginSuccess,
+    TResult Function()? loginFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +61,8 @@ mixin _$SignInEvent {
     required TResult Function(_RememberMe value) rememberMeChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailure value) loginFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +73,8 @@ mixin _$SignInEvent {
     TResult? Function(_RememberMe value)? rememberMeChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailure value)? loginFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +85,8 @@ mixin _$SignInEvent {
     TResult Function(_RememberMe value)? rememberMeChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailure value)? loginFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +154,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(bool value) rememberMeChanged,
     required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function() loginSuccess,
+    required TResult Function() loginFailure,
   }) {
     return started();
   }
@@ -155,6 +169,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(bool value)? rememberMeChanged,
     TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function()? loginSuccess,
+    TResult? Function()? loginFailure,
   }) {
     return started?.call();
   }
@@ -168,6 +184,8 @@ class _$StartedImpl implements _Started {
     TResult Function(bool value)? rememberMeChanged,
     TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function()? loginSuccess,
+    TResult Function()? loginFailure,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -185,6 +203,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(_RememberMe value) rememberMeChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailure value) loginFailure,
   }) {
     return started(this);
   }
@@ -198,6 +218,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(_RememberMe value)? rememberMeChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailure value)? loginFailure,
   }) {
     return started?.call(this);
   }
@@ -211,6 +233,8 @@ class _$StartedImpl implements _Started {
     TResult Function(_RememberMe value)? rememberMeChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailure value)? loginFailure,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -268,6 +292,8 @@ class _$SignInSubmittedImpl implements _SignInSubmitted {
     required TResult Function(bool value) rememberMeChanged,
     required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function() loginSuccess,
+    required TResult Function() loginFailure,
   }) {
     return signInSubmitted();
   }
@@ -281,6 +307,8 @@ class _$SignInSubmittedImpl implements _SignInSubmitted {
     TResult? Function(bool value)? rememberMeChanged,
     TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function()? loginSuccess,
+    TResult? Function()? loginFailure,
   }) {
     return signInSubmitted?.call();
   }
@@ -294,6 +322,8 @@ class _$SignInSubmittedImpl implements _SignInSubmitted {
     TResult Function(bool value)? rememberMeChanged,
     TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function()? loginSuccess,
+    TResult Function()? loginFailure,
     required TResult orElse(),
   }) {
     if (signInSubmitted != null) {
@@ -311,6 +341,8 @@ class _$SignInSubmittedImpl implements _SignInSubmitted {
     required TResult Function(_RememberMe value) rememberMeChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailure value) loginFailure,
   }) {
     return signInSubmitted(this);
   }
@@ -324,6 +356,8 @@ class _$SignInSubmittedImpl implements _SignInSubmitted {
     TResult? Function(_RememberMe value)? rememberMeChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailure value)? loginFailure,
   }) {
     return signInSubmitted?.call(this);
   }
@@ -337,6 +371,8 @@ class _$SignInSubmittedImpl implements _SignInSubmitted {
     TResult Function(_RememberMe value)? rememberMeChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailure value)? loginFailure,
     required TResult orElse(),
   }) {
     if (signInSubmitted != null) {
@@ -394,6 +430,8 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     required TResult Function(bool value) rememberMeChanged,
     required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function() loginSuccess,
+    required TResult Function() loginFailure,
   }) {
     return signUpSubmitted();
   }
@@ -407,6 +445,8 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     TResult? Function(bool value)? rememberMeChanged,
     TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function()? loginSuccess,
+    TResult? Function()? loginFailure,
   }) {
     return signUpSubmitted?.call();
   }
@@ -420,6 +460,8 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     TResult Function(bool value)? rememberMeChanged,
     TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function()? loginSuccess,
+    TResult Function()? loginFailure,
     required TResult orElse(),
   }) {
     if (signUpSubmitted != null) {
@@ -437,6 +479,8 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     required TResult Function(_RememberMe value) rememberMeChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailure value) loginFailure,
   }) {
     return signUpSubmitted(this);
   }
@@ -450,6 +494,8 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     TResult? Function(_RememberMe value)? rememberMeChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailure value)? loginFailure,
   }) {
     return signUpSubmitted?.call(this);
   }
@@ -463,6 +509,8 @@ class _$SignUpSubmittedImpl implements _SignUpSubmitted {
     TResult Function(_RememberMe value)? rememberMeChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailure value)? loginFailure,
     required TResult orElse(),
   }) {
     if (signUpSubmitted != null) {
@@ -546,6 +594,8 @@ class _$RememberMeImpl implements _RememberMe {
     required TResult Function(bool value) rememberMeChanged,
     required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function() loginSuccess,
+    required TResult Function() loginFailure,
   }) {
     return rememberMeChanged(value);
   }
@@ -559,6 +609,8 @@ class _$RememberMeImpl implements _RememberMe {
     TResult? Function(bool value)? rememberMeChanged,
     TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function()? loginSuccess,
+    TResult? Function()? loginFailure,
   }) {
     return rememberMeChanged?.call(value);
   }
@@ -572,6 +624,8 @@ class _$RememberMeImpl implements _RememberMe {
     TResult Function(bool value)? rememberMeChanged,
     TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function()? loginSuccess,
+    TResult Function()? loginFailure,
     required TResult orElse(),
   }) {
     if (rememberMeChanged != null) {
@@ -589,6 +643,8 @@ class _$RememberMeImpl implements _RememberMe {
     required TResult Function(_RememberMe value) rememberMeChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailure value) loginFailure,
   }) {
     return rememberMeChanged(this);
   }
@@ -602,6 +658,8 @@ class _$RememberMeImpl implements _RememberMe {
     TResult? Function(_RememberMe value)? rememberMeChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailure value)? loginFailure,
   }) {
     return rememberMeChanged?.call(this);
   }
@@ -615,6 +673,8 @@ class _$RememberMeImpl implements _RememberMe {
     TResult Function(_RememberMe value)? rememberMeChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailure value)? loginFailure,
     required TResult orElse(),
   }) {
     if (rememberMeChanged != null) {
@@ -705,6 +765,8 @@ class _$UsernameChangedImpl implements _UsernameChanged {
     required TResult Function(bool value) rememberMeChanged,
     required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function() loginSuccess,
+    required TResult Function() loginFailure,
   }) {
     return usernameChanged(username);
   }
@@ -718,6 +780,8 @@ class _$UsernameChangedImpl implements _UsernameChanged {
     TResult? Function(bool value)? rememberMeChanged,
     TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function()? loginSuccess,
+    TResult? Function()? loginFailure,
   }) {
     return usernameChanged?.call(username);
   }
@@ -731,6 +795,8 @@ class _$UsernameChangedImpl implements _UsernameChanged {
     TResult Function(bool value)? rememberMeChanged,
     TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function()? loginSuccess,
+    TResult Function()? loginFailure,
     required TResult orElse(),
   }) {
     if (usernameChanged != null) {
@@ -748,6 +814,8 @@ class _$UsernameChangedImpl implements _UsernameChanged {
     required TResult Function(_RememberMe value) rememberMeChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailure value) loginFailure,
   }) {
     return usernameChanged(this);
   }
@@ -761,6 +829,8 @@ class _$UsernameChangedImpl implements _UsernameChanged {
     TResult? Function(_RememberMe value)? rememberMeChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailure value)? loginFailure,
   }) {
     return usernameChanged?.call(this);
   }
@@ -774,6 +844,8 @@ class _$UsernameChangedImpl implements _UsernameChanged {
     TResult Function(_RememberMe value)? rememberMeChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailure value)? loginFailure,
     required TResult orElse(),
   }) {
     if (usernameChanged != null) {
@@ -864,6 +936,8 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     required TResult Function(bool value) rememberMeChanged,
     required TResult Function(String username) usernameChanged,
     required TResult Function(String password) passwordChanged,
+    required TResult Function() loginSuccess,
+    required TResult Function() loginFailure,
   }) {
     return passwordChanged(password);
   }
@@ -877,6 +951,8 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult? Function(bool value)? rememberMeChanged,
     TResult? Function(String username)? usernameChanged,
     TResult? Function(String password)? passwordChanged,
+    TResult? Function()? loginSuccess,
+    TResult? Function()? loginFailure,
   }) {
     return passwordChanged?.call(password);
   }
@@ -890,6 +966,8 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult Function(bool value)? rememberMeChanged,
     TResult Function(String username)? usernameChanged,
     TResult Function(String password)? passwordChanged,
+    TResult Function()? loginSuccess,
+    TResult Function()? loginFailure,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -907,6 +985,8 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     required TResult Function(_RememberMe value) rememberMeChanged,
     required TResult Function(_UsernameChanged value) usernameChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailure value) loginFailure,
   }) {
     return passwordChanged(this);
   }
@@ -920,6 +1000,8 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult? Function(_RememberMe value)? rememberMeChanged,
     TResult? Function(_UsernameChanged value)? usernameChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailure value)? loginFailure,
   }) {
     return passwordChanged?.call(this);
   }
@@ -933,6 +1015,8 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult Function(_RememberMe value)? rememberMeChanged,
     TResult Function(_UsernameChanged value)? usernameChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailure value)? loginFailure,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -949,6 +1033,282 @@ abstract class _PasswordChanged implements SignInEvent {
   @JsonKey(ignore: true)
   _$$PasswordChangedImplCopyWith<_$PasswordChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoginSuccessImplCopyWith<$Res> {
+  factory _$$LoginSuccessImplCopyWith(
+          _$LoginSuccessImpl value, $Res Function(_$LoginSuccessImpl) then) =
+      __$$LoginSuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoginSuccessImplCopyWithImpl<$Res>
+    extends _$SignInEventCopyWithImpl<$Res, _$LoginSuccessImpl>
+    implements _$$LoginSuccessImplCopyWith<$Res> {
+  __$$LoginSuccessImplCopyWithImpl(
+      _$LoginSuccessImpl _value, $Res Function(_$LoginSuccessImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoginSuccessImpl implements _LoginSuccess {
+  const _$LoginSuccessImpl();
+
+  @override
+  String toString() {
+    return 'SignInEvent.loginSuccess()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoginSuccessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() signInSubmitted,
+    required TResult Function() signUpSubmitted,
+    required TResult Function(bool value) rememberMeChanged,
+    required TResult Function(String username) usernameChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function() loginSuccess,
+    required TResult Function() loginFailure,
+  }) {
+    return loginSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? signInSubmitted,
+    TResult? Function()? signUpSubmitted,
+    TResult? Function(bool value)? rememberMeChanged,
+    TResult? Function(String username)? usernameChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function()? loginSuccess,
+    TResult? Function()? loginFailure,
+  }) {
+    return loginSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? signInSubmitted,
+    TResult Function()? signUpSubmitted,
+    TResult Function(bool value)? rememberMeChanged,
+    TResult Function(String username)? usernameChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function()? loginSuccess,
+    TResult Function()? loginFailure,
+    required TResult orElse(),
+  }) {
+    if (loginSuccess != null) {
+      return loginSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SignInSubmitted value) signInSubmitted,
+    required TResult Function(_SignUpSubmitted value) signUpSubmitted,
+    required TResult Function(_RememberMe value) rememberMeChanged,
+    required TResult Function(_UsernameChanged value) usernameChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailure value) loginFailure,
+  }) {
+    return loginSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SignInSubmitted value)? signInSubmitted,
+    TResult? Function(_SignUpSubmitted value)? signUpSubmitted,
+    TResult? Function(_RememberMe value)? rememberMeChanged,
+    TResult? Function(_UsernameChanged value)? usernameChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailure value)? loginFailure,
+  }) {
+    return loginSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SignInSubmitted value)? signInSubmitted,
+    TResult Function(_SignUpSubmitted value)? signUpSubmitted,
+    TResult Function(_RememberMe value)? rememberMeChanged,
+    TResult Function(_UsernameChanged value)? usernameChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailure value)? loginFailure,
+    required TResult orElse(),
+  }) {
+    if (loginSuccess != null) {
+      return loginSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginSuccess implements SignInEvent {
+  const factory _LoginSuccess() = _$LoginSuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$LoginFailureImplCopyWith<$Res> {
+  factory _$$LoginFailureImplCopyWith(
+          _$LoginFailureImpl value, $Res Function(_$LoginFailureImpl) then) =
+      __$$LoginFailureImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoginFailureImplCopyWithImpl<$Res>
+    extends _$SignInEventCopyWithImpl<$Res, _$LoginFailureImpl>
+    implements _$$LoginFailureImplCopyWith<$Res> {
+  __$$LoginFailureImplCopyWithImpl(
+      _$LoginFailureImpl _value, $Res Function(_$LoginFailureImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoginFailureImpl implements _LoginFailure {
+  const _$LoginFailureImpl();
+
+  @override
+  String toString() {
+    return 'SignInEvent.loginFailure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoginFailureImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() signInSubmitted,
+    required TResult Function() signUpSubmitted,
+    required TResult Function(bool value) rememberMeChanged,
+    required TResult Function(String username) usernameChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function() loginSuccess,
+    required TResult Function() loginFailure,
+  }) {
+    return loginFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? signInSubmitted,
+    TResult? Function()? signUpSubmitted,
+    TResult? Function(bool value)? rememberMeChanged,
+    TResult? Function(String username)? usernameChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function()? loginSuccess,
+    TResult? Function()? loginFailure,
+  }) {
+    return loginFailure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? signInSubmitted,
+    TResult Function()? signUpSubmitted,
+    TResult Function(bool value)? rememberMeChanged,
+    TResult Function(String username)? usernameChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function()? loginSuccess,
+    TResult Function()? loginFailure,
+    required TResult orElse(),
+  }) {
+    if (loginFailure != null) {
+      return loginFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_SignInSubmitted value) signInSubmitted,
+    required TResult Function(_SignUpSubmitted value) signUpSubmitted,
+    required TResult Function(_RememberMe value) rememberMeChanged,
+    required TResult Function(_UsernameChanged value) usernameChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailure value) loginFailure,
+  }) {
+    return loginFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_SignInSubmitted value)? signInSubmitted,
+    TResult? Function(_SignUpSubmitted value)? signUpSubmitted,
+    TResult? Function(_RememberMe value)? rememberMeChanged,
+    TResult? Function(_UsernameChanged value)? usernameChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailure value)? loginFailure,
+  }) {
+    return loginFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_SignInSubmitted value)? signInSubmitted,
+    TResult Function(_SignUpSubmitted value)? signUpSubmitted,
+    TResult Function(_RememberMe value)? rememberMeChanged,
+    TResult Function(_UsernameChanged value)? usernameChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailure value)? loginFailure,
+    required TResult orElse(),
+  }) {
+    if (loginFailure != null) {
+      return loginFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginFailure implements SignInEvent {
+  const factory _LoginFailure() = _$LoginFailureImpl;
 }
 
 /// @nodoc
