@@ -21,8 +21,8 @@ ApiCollectionResponse<T> _$ApiCollectionResponseFromJson<T>(
 
 /// @nodoc
 mixin _$ApiCollectionResponse<T> {
-  int? get entries => throw _privateConstructorUsedError;
   List<T> get results => throw _privateConstructorUsedError;
+  int? get entries => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $ApiCollectionResponseCopyWith<T, $Res> {
           $Res Function(ApiCollectionResponse<T>) then) =
       _$ApiCollectionResponseCopyWithImpl<T, $Res, ApiCollectionResponse<T>>;
   @useResult
-  $Res call({int? entries, List<T> results});
+  $Res call({List<T> results, int? entries});
 }
 
 /// @nodoc
@@ -54,18 +54,18 @@ class _$ApiCollectionResponseCopyWithImpl<T, $Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? entries = freezed,
     Object? results = null,
+    Object? entries = freezed,
   }) {
     return _then(_value.copyWith(
-      entries: freezed == entries
-          ? _value.entries
-          : entries // ignore: cast_nullable_to_non_nullable
-              as int?,
       results: null == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
               as List<T>,
+      entries: freezed == entries
+          ? _value.entries
+          : entries // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -79,7 +79,7 @@ abstract class _$$ApiCollectionResponseImplCopyWith<T, $Res>
       __$$ApiCollectionResponseImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({int? entries, List<T> results});
+  $Res call({List<T> results, int? entries});
 }
 
 /// @nodoc
@@ -95,18 +95,18 @@ class __$$ApiCollectionResponseImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? entries = freezed,
     Object? results = null,
+    Object? entries = freezed,
   }) {
     return _then(_$ApiCollectionResponseImpl<T>(
-      entries: freezed == entries
-          ? _value.entries
-          : entries // ignore: cast_nullable_to_non_nullable
-              as int?,
       results: null == results
           ? _value._results
           : results // ignore: cast_nullable_to_non_nullable
               as List<T>,
+      entries: freezed == entries
+          ? _value.entries
+          : entries // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -115,15 +115,13 @@ class __$$ApiCollectionResponseImplCopyWithImpl<T, $Res>
 @JsonSerializable(genericArgumentFactories: true)
 class _$ApiCollectionResponseImpl<T> implements _ApiCollectionResponse<T> {
   const _$ApiCollectionResponseImpl(
-      {this.entries, required final List<T> results})
+      {required final List<T> results, this.entries})
       : _results = results;
 
   factory _$ApiCollectionResponseImpl.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
       _$$ApiCollectionResponseImplFromJson(json, fromJsonT);
 
-  @override
-  final int? entries;
   final List<T> _results;
   @override
   List<T> get results {
@@ -133,8 +131,11 @@ class _$ApiCollectionResponseImpl<T> implements _ApiCollectionResponse<T> {
   }
 
   @override
+  final int? entries;
+
+  @override
   String toString() {
-    return 'ApiCollectionResponse<$T>(entries: $entries, results: $results)';
+    return 'ApiCollectionResponse<$T>(results: $results, entries: $entries)';
   }
 
   @override
@@ -142,14 +143,14 @@ class _$ApiCollectionResponseImpl<T> implements _ApiCollectionResponse<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ApiCollectionResponseImpl<T> &&
-            (identical(other.entries, entries) || other.entries == entries) &&
-            const DeepCollectionEquality().equals(other._results, _results));
+            const DeepCollectionEquality().equals(other._results, _results) &&
+            (identical(other.entries, entries) || other.entries == entries));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, entries, const DeepCollectionEquality().hash(_results));
+      runtimeType, const DeepCollectionEquality().hash(_results), entries);
 
   @JsonKey(ignore: true)
   @override
@@ -166,17 +167,17 @@ class _$ApiCollectionResponseImpl<T> implements _ApiCollectionResponse<T> {
 
 abstract class _ApiCollectionResponse<T> implements ApiCollectionResponse<T> {
   const factory _ApiCollectionResponse(
-      {final int? entries,
-      required final List<T> results}) = _$ApiCollectionResponseImpl<T>;
+      {required final List<T> results,
+      final int? entries}) = _$ApiCollectionResponseImpl<T>;
 
   factory _ApiCollectionResponse.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
       _$ApiCollectionResponseImpl<T>.fromJson;
 
   @override
-  int? get entries;
-  @override
   List<T> get results;
+  @override
+  int? get entries;
   @override
   @JsonKey(ignore: true)
   _$$ApiCollectionResponseImplCopyWith<T, _$ApiCollectionResponseImpl<T>>

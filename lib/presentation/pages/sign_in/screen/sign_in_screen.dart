@@ -1,7 +1,9 @@
 import 'package:api_base/gen/assets.gen.dart';
+import 'package:api_base/presentation/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
@@ -14,78 +16,101 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        AppUtilities.unFocus();
-      },
-      child: Scaffold(
-        resizeToAvoidBottomInset: true,
-        appBar: const BaseAppBar(
-          shouldShowBottomDivider: false,
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 24.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                _buildLogo(context),
-                24.verticalSpace,
-                _buildHeadingTitle(),
-                24.verticalSpace,
-                InputTextField.singleLine(
-                  placeholder: 'Email',
-                  prefixIcon: const Icon(
-                    Icons.mail,
+    return BlocProvider<SignInBloc>(
+      create: (context) => SignInBloc()..add(const SignInEvent.started()),
+      child: GestureDetector(
+        onTap: () {
+          AppUtilities.unFocus();
+        },
+        child: Scaffold(
+          resizeToAvoidBottomInset: true,
+          appBar: const BaseAppBar(
+            shouldShowBottomDivider: false,
+          ),
+          body: BlocBuilder<SignInBloc, SignInState>(
+            builder: (context, state) {
+              return SingleChildScrollView(
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 30.h, horizontal: 24.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      _buildLogo(context),
+                      24.verticalSpace,
+                      _buildHeadingTitle(),
+                      24.verticalSpace,
+                      InputTextField.singleLine(
+                        placeholder: 'Email',
+                        prefixIcon: const Icon(
+                          Icons.mail,
+                        ),
+                        enableSuggestions: false,
+                        autoCorrect: false,
+                        textInputAction: TextInputAction.next,
+                        onSubmit: (_) => FocusScope.of(context).nextFocus(),
+                        onTextChange: (value) {
+                          context.read<SignInBloc>().add(
+                                SignInEvent.emailChanged(value!),
+                              );
+                        },
+                      ),
+                      24.verticalSpace,
+                      InputTextField.singleLine(
+                        placeholder: 'Password',
+                        prefixIcon: const Icon(
+                          Icons.lock_rounded,
+                        ),
+                        enableSuggestions: false,
+                        autoCorrect: false,
+                        isPassword: true,
+                        onTextChange: (value) {
+                          context.read<SignInBloc>().add(
+                                SignInEvent.passwordChanged(value!),
+                              );
+                        },
+                      ),
+                      16.verticalSpace,
+                      CheckboxButton(
+                        onValueChanged: (value) {
+                          print(value);
+                          context
+                              .read<SignInBloc>()
+                              .add(SignInEvent.rememberMeChanged(value));
+                        },
+                      ),
+                      16.verticalSpace,
+                      AppButton(
+                        isExpanded: true,
+                        onTap: () {
+                          context
+                              .read<SignInBloc>()
+                              .add(const SignInEvent.signInSubmitted());
+                        },
+                        title: 'Sign in',
+                      ),
+                      16.verticalSpace,
+                      AppTextButton(
+                        title: 'Forgot the password?',
+                        onTap: () {
+                          // TODO: Implement the forgot the password method?
+                        },
+                      ),
+                      24.verticalSpace,
+                      const AppVerticalDivider(
+                        child: Text(
+                          'or continue with',
+                        ),
+                      ),
+                      24.verticalSpace,
+                      _buildSignInOptions(context),
+                      16.verticalSpace,
+                      _buildSignUp(context),
+                    ],
                   ),
-                  enableSuggestions: false,
-                  autoCorrect: false,
-                  textInputAction: TextInputAction.next,
-                  onSubmit: (_) => FocusScope.of(context).nextFocus(),
                 ),
-                24.verticalSpace,
-                const InputTextField.singleLine(
-                  placeholder: 'Password',
-                  prefixIcon: Icon(
-                    Icons.lock_rounded,
-                  ),
-                  enableSuggestions: false,
-                  autoCorrect: false,
-                  isPassword: true,
-                ),
-                16.verticalSpace,
-                CheckboxButton(
-                  onValueChanged: (value) {
-                    print('$value');
-                  },
-                ),
-                16.verticalSpace,
-                AppButton(
-                  isExpanded: true,
-                  onTap: () {
-                    // TODO: Implement sign up method
-                  },
-                  title: 'Sign in',
-                ),
-                16.verticalSpace,
-                AppTextButton(
-                  title: 'Forgot the password?',
-                  onTap: () {
-                    // TODO: Implement the forgot the password method?
-                  },
-                ),
-                24.verticalSpace,
-                const AppVerticalDivider(
-                  child: Text(
-                    'or continue with',
-                  ),
-                ),
-                24.verticalSpace,
-                _buildSignInOptions(context),
-                16.verticalSpace,
-                _buildSignUp(context),
-              ],
-            ),
+              );
+            },
           ),
         ),
       ),
