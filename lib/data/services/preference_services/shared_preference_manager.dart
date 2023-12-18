@@ -21,4 +21,16 @@ class SharedPreferencesManager {
   Future<String?> getRequestToken() async => _sharedPreferences.getString(
         PreferenceKeys.requestToken.name,
       );
+
+  /// Session
+  Future<void> saveSession({required String sessionId}) async =>
+      _sharedPreferences.setString(PreferenceKeys.session.name, sessionId);
+
+  Future<bool> removeSession() async => _sharedPreferences.remove(
+        PreferenceKeys.session.name,
+      );
+
+  Future<String?> getSession() async => _sharedPreferences.getString(
+        PreferenceKeys.session.name,
+      );
 }

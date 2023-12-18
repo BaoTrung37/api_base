@@ -27,7 +27,7 @@ import '../domain/use_cases/authentication/get_request_token_use_case.dart'
     as _i10;
 import '../domain/use_cases/authentication/post_create_session_use_case.dart'
     as _i12;
-import '../domain/use_cases/authentication/post_create_session_with_login_use_case.dart'
+import '../domain/use_cases/authentication/post_login_with_username_and_password_use_case.dart'
     as _i13;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -66,8 +66,8 @@ extension GetItInjectableX on _i1.GetIt {
         _i12.PostCreateSessionUseCase(
             authenticationRepositoryIml:
                 gh<_i11.AuthenticationRepositoryIml>()));
-    gh.factory<_i13.PostCreateSessionWithLoginUseCase>(() =>
-        _i13.PostCreateSessionWithLoginUseCase(
+    gh.factory<_i13.PostLoginWithUsernameAndPasswordUseCase>(() =>
+        _i13.PostLoginWithUsernameAndPasswordUseCase(
             authenticationRepositoryIml:
                 gh<_i11.AuthenticationRepositoryIml>()));
     return this;

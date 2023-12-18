@@ -5,11 +5,11 @@ import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class PostCreateSessionWithLoginUseCase
+class PostLoginWithUsernameAndPasswordUseCase
     extends FutureUseCase<PostCreateSessionInput, RequestTokenResponse> {
   final AuthenticationRepositoryIml authenticationRepositoryIml;
 
-  PostCreateSessionWithLoginUseCase({
+  PostLoginWithUsernameAndPasswordUseCase({
     required this.authenticationRepositoryIml,
   });
 
