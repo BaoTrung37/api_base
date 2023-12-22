@@ -47,11 +47,11 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         PostCreateSessionInput(
             username: state.username, password: state.password),
       );
-      // add(const SignInEvent.loginSuccess());
-      // emit(state.copyWith(loginStatus: LoadingStatus.success));
+      add(const SignInEvent.loginSuccess());
+      emit(state.copyWith(loginStatus: LoadingStatus.success));
     } catch (e) {
-      emit(state.copyWith(loginStatus: LoadingStatus.error));
       add(const SignInEvent.loginFailure());
+      emit(state.copyWith(loginStatus: LoadingStatus.error));
     }
   }
 

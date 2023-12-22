@@ -12,6 +12,7 @@ class TokenRefreshInterceptor extends QueuedInterceptorsWrapper {
     required this.sharedPreferencesManager,
     required this.restClient,
   });
+
   @override
   Future<void> onError(
       DioException err, ErrorInterceptorHandler handler) async {
