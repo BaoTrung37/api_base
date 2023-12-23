@@ -9,7 +9,9 @@ final getIt = GetIt.instance;
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 @InjectableInit(
+  initializerName: 'init',
   preferRelativeImports: true,
+  asExtension: true,
 )
 void configureDependencies() {
   getIt.init();

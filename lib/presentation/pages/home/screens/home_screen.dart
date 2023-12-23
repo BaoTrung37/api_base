@@ -54,7 +54,9 @@ class HomeScreen extends StatelessWidget {
                 final response =
                     await getIt<PostLoginWithUsernameAndPasswordUseCase>().run(
                   PostCreateSessionInput(
-                      username: 'baotrung', password: '123456789'),
+                    username: 'baotrung',
+                    password: '123456789',
+                  ),
                 );
                 await getIt<SharedPreferencesManager>()
                     .saveRequestToken(param: response.requestToken);
