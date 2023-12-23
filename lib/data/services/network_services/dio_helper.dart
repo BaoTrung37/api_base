@@ -1,5 +1,6 @@
-import 'package:api_base/data/services/network_services/interceptors/auth_interceptor.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/services/network_services/interceptors/token_refresh_interceptor.dart';
+import 'package:api_base/injection/di.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -7,39 +8,20 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 @module
 abstract class DioHelper {
   @factoryMethod
-  Dio configApiDio({
-    required AuthInterceptor authInterceptor,
-    required TokenRefreshInterceptor tokenRefreshInterceptor,
-  }) =>
-      _createDio(
-        options: BaseOptions(
-          connectTimeout: const Duration(seconds: 10),
-          receiveTimeout: const Duration(seconds: 10),
-        ),
-        interceptors: [
-          authInterceptor,
-          tokenRefreshInterceptor,
-        ],
-        loggerEnable: true,
-      );
-
-  Dio _createDio({
-    required BaseOptions options,
-    List<Interceptor>? interceptors,
-    bool loggerEnable = false,
-  }) {
+  Dio configApiDio() {
     final dio = Dio();
-    dio.options = options;
-
-    if (interceptors != null) {
-      dio.interceptors.addAll(
-        [...interceptors],
+    dio
+      ..options = BaseOptions(
+        connectTimeout: const Duration(seconds: 5),
+        receiveTimeout: const Duration(seconds: 5),
+      )
+      ..interceptors.addAll(
+        [
+          getIt.get<TokenRefreshInterceptor>(),
+          _DebugLogger(),
+        ],
       );
-    }
 
-    if (loggerEnable) {
-      dio.interceptors.add(_DebugLogger());
-    }
     return dio;
   }
 }

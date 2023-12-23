@@ -2,7 +2,7 @@ import 'package:api_base/data/services/preference_services/preference_keys.dart'
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@injectable
+@lazySingleton
 class SharedPreferencesManager {
   SharedPreferencesManager(this._sharedPreferences);
 

@@ -4,7 +4,7 @@ import 'package:api_base/data/models/authentication/authentication.dart';
 import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:injectable/injectable.dart';
 
-@injectable
+@lazySingleton
 class PostLoginWithUsernameAndPasswordUseCase
     extends FutureUseCase<PostCreateSessionInput, RequestTokenResponse> {
   final AuthenticationRepositoryIml authenticationRepositoryIml;

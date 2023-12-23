@@ -10,7 +10,7 @@ part 'sign_in_bloc.freezed.dart';
 part 'sign_in_event.dart';
 part 'sign_in_state.dart';
 
-@injectable
+@lazySingleton
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc(this._postLoginWithUsernameAndPasswordUseCase)
       : super(const SignInState()) {
