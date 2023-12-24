@@ -16,7 +16,6 @@ class TokenRefreshInterceptor extends InterceptorsWrapper {
     if (!err.isTokenExpired) {
       return handler.next(err);
     }
-    print('hahaah1');
     // Prevent call refresh token if user not logged in
     // final token = await sharedPreferencesManager.getRequestToken();
     // if (token == null) {
