@@ -5,10 +5,10 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class GetGuestSessionUseCase extends FutureOutputUseCase<GuestSessionResponse> {
-  final AuthenticationRepositoryIml authenticationRepositoryIml;
   GetGuestSessionUseCase({
     required this.authenticationRepositoryIml,
   });
+  final AuthenticationRepositoryIml authenticationRepositoryIml;
 
   @override
   Future<GuestSessionResponse> run() async {

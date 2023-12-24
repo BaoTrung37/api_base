@@ -55,6 +55,7 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
+    - depend_on_referenced_packages
     - annotate_overrides # https://dart-lang.github.io/linter/lints/annotate_overrides.html
     - avoid_print # https://dart-lang.github.io/linter/lints/avoid_print.html
     - avoid_null_checks_in_equality_operators # https://dart-lang.github.io/linter/lints/avoid_null_checks_in_equality_operators.html

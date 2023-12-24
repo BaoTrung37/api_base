@@ -1,3 +1,4 @@
-enum PreferenceKeys{
+enum PreferenceKeys {
   requestToken,
+  session,
 }

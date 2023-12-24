@@ -1,9 +1,8 @@
 import 'package:api_base/data/models/authentication/authentication.dart';
+import 'package:api_base/data/services/network_services/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
-
-import 'package:api_base/data/services/network_services/api_constants.dart';
 
 part 'rest_client.g.dart';
 

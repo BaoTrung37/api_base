@@ -5,11 +5,10 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class PostCreateSessionUseCase extends FutureOutputUseCase<SessionResponse> {
-  final AuthenticationRepositoryIml authenticationRepositoryIml;
-
   PostCreateSessionUseCase({
     required this.authenticationRepositoryIml,
   });
+  final AuthenticationRepositoryIml authenticationRepositoryIml;
 
   @override
   Future<SessionResponse> run() {

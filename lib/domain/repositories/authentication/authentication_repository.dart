@@ -1,6 +1,5 @@
 import 'package:api_base/data/models/authentication/authentication.dart';
-
-import '../../use_cases/authentication/post_create_session_with_login_use_case.dart';
+import 'package:api_base/domain/use_cases/authentication/post_login_with_username_and_password_use_case.dart';
 
 abstract class AuthenticationRepository {
   Future<GuestSessionResponse> getGuestSession();
