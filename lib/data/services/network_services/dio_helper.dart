@@ -2,7 +2,7 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-class DioHelper {
+abstract class DioHelper {
   static Dio createDio({
     BaseOptions? options,
     List<Interceptor> interceptors = const [],
