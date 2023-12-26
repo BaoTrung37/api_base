@@ -9,10 +9,10 @@ class SharedPreferencesManager {
   final SharedPreferences _sharedPreferences;
 
   ///Request Token
-  Future<void> saveRequestToken({required String param}) async =>
+  Future<void> saveRequestToken({required String token}) async =>
       _sharedPreferences.setString(
         PreferenceKeys.requestToken.name,
-        param,
+        token,
       );
 
   Future<bool> removeRequestToken() async => _sharedPreferences.remove(

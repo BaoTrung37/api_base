@@ -22,8 +22,10 @@ class PostLoginWithUsernameAndPasswordUseCase
 class PostCreateSessionInput {
   final String username;
   final String password;
+  final String requestToken;
   PostCreateSessionInput({
     required this.username,
     required this.password,
+    required this.requestToken,
   });
 }

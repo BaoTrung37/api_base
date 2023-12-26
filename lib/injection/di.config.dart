@@ -17,11 +17,13 @@ import '../data/iml_repositories/authentication/authentication.dart' as _i11;
 import '../data/iml_repositories/authentication/authentication_repository_iml.dart'
     as _i9;
 import '../data/iml_repositories/iml_repositories.dart' as _i13;
-import '../data/services/network_services/api_client.dart' as _i8;
+import '../data/services/network_services/dio_helper.dart' as _i18;
 import '../data/services/network_services/interceptors/auth_interceptor.dart'
     as _i3;
+import '../data/services/network_services/interceptors/token_refresh_interceptor.dart'
+    as _i8;
 import '../data/services/network_services/rest_client.dart' as _i5;
-import '../data/services/preference_services/injection_module.dart' as _i18;
+import '../data/services/preference_services/injection_module.dart' as _i19;
 import '../data/services/preference_services/shared_preference_manager.dart'
     as _i7;
 import '../domain/use_cases/authentication/get_guest_session_use_case.dart'
@@ -46,9 +48,10 @@ extension GetItInjectableX on _i1.GetIt {
       environment,
       environmentFilter,
     );
+    final dioHelper = _$DioHelper();
     final injectionModule = _$InjectionModule();
     gh.factory<_i3.AuthInterceptor>(() => _i3.AuthInterceptor());
-    gh.factory<_i4.Dio>(() => injectionModule.dio);
+    gh.factory<_i4.Dio>(() => dioHelper.configApiDio());
     gh.factoryParam<_i5.RestClient, String?, dynamic>((
       baseUrl,
       _,
@@ -63,7 +66,8 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.lazySingleton<_i7.SharedPreferencesManager>(
         () => _i7.SharedPreferencesManager(gh<_i6.SharedPreferences>()));
-    gh.lazySingleton<_i8.ApiClient>(() => _i8.ApiClient(gh<_i5.RestClient>()));
+    gh.factory<_i8.TokenRefreshInterceptor>(() => _i8.TokenRefreshInterceptor(
+        sharedPreferencesManager: gh<_i7.SharedPreferencesManager>()));
     gh.factory<_i9.AuthenticationRepositoryIml>(
         () => _i9.AuthenticationRepositoryIml(
               restClient: gh<_i5.RestClient>(),
@@ -81,10 +85,15 @@ extension GetItInjectableX on _i1.GetIt {
         _i15.PostLoginWithUsernameAndPasswordUseCase(
             authenticationRepositoryIml:
                 gh<_i13.AuthenticationRepositoryIml>()));
-    gh.lazySingleton<_i16.SignInBloc>(() =>
-        _i16.SignInBloc(gh<_i17.PostLoginWithUsernameAndPasswordUseCase>()));
+    gh.lazySingleton<_i16.SignInBloc>(() => _i16.SignInBloc(
+          gh<_i17.PostLoginWithUsernameAndPasswordUseCase>(),
+          gh<_i17.GetRequestTokenUseCase>(),
+          gh<_i7.SharedPreferencesManager>(),
+        ));
     return this;
   }
 }
 
-class _$InjectionModule extends _i18.InjectionModule {}
+class _$DioHelper extends _i18.DioHelper {}
+
+class _$InjectionModule extends _i19.InjectionModule {}
