@@ -35,13 +35,11 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
   @override
   Future<RequestTokenResponse> postCreateSessionWithLogin(
       PostCreateSessionInput input) async {
-    final requestToken = await sharedPreferencesManager.getRequestToken() ?? '';
-
     return restClient.postCreateSessionWithLogin(
       SessionWithLoginRequest(
         username: input.username,
         password: input.password,
-        requestToken: requestToken,
+        requestToken: input.requestToken
       ),
     );
   }

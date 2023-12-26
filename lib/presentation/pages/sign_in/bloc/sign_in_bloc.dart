@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:api_base/data/services/preference_services/shared_preference_manager.dart';
 import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
@@ -12,8 +13,11 @@ part 'sign_in_state.dart';
 
 @lazySingleton
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
-  SignInBloc(this._postLoginWithUsernameAndPasswordUseCase)
-      : super(const SignInState()) {
+  SignInBloc(
+    this._postLoginWithUsernameAndPasswordUseCase,
+    this._getRequestTokenUseCase,
+    this._sharedPreferencesManager,
+  ) : super(const SignInState()) {
     on<SignInEvent>(
       (event, emit) async {
         await event.map<FutureOr<void>>(
@@ -32,6 +36,9 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final PostLoginWithUsernameAndPasswordUseCase
       _postLoginWithUsernameAndPasswordUseCase;
 
+  final GetRequestTokenUseCase _getRequestTokenUseCase;
+  final SharedPreferencesManager _sharedPreferencesManager;
+
   Future<void> _rememberMeChanged(
       _RememberMe event, Emitter<SignInState> emit) async {
     emit(
@@ -42,10 +49,20 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   Future<void> _signInSubmitted(Emitter<SignInState> emit) async {
     try {
       emit(state.copyWith(loginStatus: LoadingStatus.inProgress));
+      var requestToken = await _sharedPreferencesManager.getRequestToken();
+
+      if (requestToken == null) {
+        final requestTokenResponse = await _getRequestTokenUseCase.run();
+        requestToken = requestTokenResponse.requestToken;
+        await _sharedPreferencesManager.saveRequestToken(token: requestToken);
+      }
 
       await _postLoginWithUsernameAndPasswordUseCase.run(
         PostCreateSessionInput(
-            username: state.username, password: state.password),
+          username: state.username,
+          password: state.password,
+          requestToken: requestToken,
+        ),
       );
       add(const SignInEvent.loginSuccess());
       emit(state.copyWith(loginStatus: LoadingStatus.success));

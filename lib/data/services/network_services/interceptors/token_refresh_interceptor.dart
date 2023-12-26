@@ -2,7 +2,9 @@
 import 'package:api_base/data/services/network_services/error/error.dart';
 import 'package:api_base/data/services/preference_services/shared_preference_manager.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
+@injectable
 class TokenRefreshInterceptor extends InterceptorsWrapper {
   TokenRefreshInterceptor({
     required this.sharedPreferencesManager,

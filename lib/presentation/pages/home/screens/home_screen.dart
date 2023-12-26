@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () async {
                 final response = await getIt<GetRequestTokenUseCase>().run();
                 await getIt<SharedPreferencesManager>()
-                    .saveRequestToken(param: response.requestToken);
+                    .saveRequestToken(token: response.requestToken);
                 // launchUrl(
                 //   Uri.parse(
                 //       'https://www.themoviedb.org/authenticate/${response.requestToken}?redirect_to=http://www.yourapp.com'),
@@ -56,10 +56,11 @@ class HomeScreen extends StatelessWidget {
                   PostCreateSessionInput(
                     username: 'baotrung',
                     password: '123456789',
+                    requestToken: '',
                   ),
                 );
                 await getIt<SharedPreferencesManager>()
-                    .saveRequestToken(param: response.requestToken);
+                    .saveRequestToken(token: response.requestToken);
 
                 print(response.toString());
               },
