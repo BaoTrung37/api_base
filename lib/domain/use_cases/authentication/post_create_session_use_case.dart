@@ -4,7 +4,8 @@ import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class PostCreateSessionUseCase extends FutureUseCase<PostCreateSessionInput,SessionResponse> {
+class PostCreateSessionUseCase
+    extends FutureUseCase<PostCreateSessionInput, SessionResponse> {
   PostCreateSessionUseCase({
     required this.authenticationRepositoryIml,
   });
@@ -13,7 +14,7 @@ class PostCreateSessionUseCase extends FutureUseCase<PostCreateSessionInput,Sess
 
   @override
   Future<SessionResponse> run(PostCreateSessionInput input) {
-    return authenticationRepositoryIml.postCreateSession();
+    return authenticationRepositoryIml.postCreateSession(input);
   }
 }
 

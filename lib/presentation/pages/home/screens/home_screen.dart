@@ -60,7 +60,9 @@ class HomeScreen extends StatelessWidget {
             TextButton(
               child: const Text('Post Create Session'),
               onPressed: () async {
-                final response = await getIt<PostCreateSessionUseCase>().run();
+                final response = await getIt<PostCreateSessionUseCase>().run(
+                  PostCreateSessionInput(requestToken: 'requestToken'),
+                );
 
                 print(response.toString());
               },
@@ -70,7 +72,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () async {
                 final response =
                     await getIt<PostLoginWithUsernameAndPasswordUseCase>().run(
-                  PostCreateSessionInput(
+                  PostLoginWithUsernameAndPasswordInput(
                     username: 'baotrung',
                     password: '123456789',
                     requestToken: '',

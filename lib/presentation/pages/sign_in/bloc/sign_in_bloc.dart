@@ -62,7 +62,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
       final requestTokenResponse1 =
           await _postLoginWithUsernameAndPasswordUseCase.run(
-        PostCreateSessionInput(
+        PostLoginWithUsernameAndPasswordInput(
           username: state.username,
           password: state.password,
           requestToken: requestTokenResponse.requestToken,
@@ -74,7 +74,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         emit(state.copyWith(loginStatus: LoadingStatus.error));
         return;
       }
-      final sessionResponse = await _postCreateSessionUseCase.run();
+      final sessionResponse =
+          await _postCreateSessionUseCase.run(PostCreateSessionInput(
+        requestToken: requestTokenResponse1.requestToken,
+      ));
       if (sessionResponse.success) {
         await _sharedPreferencesManager.saveSession(
           sessionId: sessionResponse.sessionId,
