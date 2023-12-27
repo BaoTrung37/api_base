@@ -38,19 +38,25 @@ class HomeScreen extends StatelessWidget {
                       'https://www.themoviedb.org/auth/access?request_token=${response.requestToken}'),
                   mode: LaunchMode.externalApplication,
                 );
-                await getIt<SharedPreferencesManager>()
-                    .saveRequestToken(token: response.requestToken);
+                // await getIt<SharedPreferencesManager>()
+                //     .saveRequestToken(token: response.requestToken);
               },
             ),
             TextButton(
               child: const Text('Get Access Token Session'),
               onPressed: () async {
-                final requestToken =
-                    await getIt<SharedPreferencesManager>().getRequestToken();
+                final requestTokenResponse =
+                    await getIt<PostCreateRequestTokenUseCase>().run();
+
+                await launchUrl(
+                  Uri.parse(
+                      'https://www.themoviedb.org/auth/access?request_token=${requestTokenResponse.requestToken}'),
+                  mode: LaunchMode.externalApplication,
+                );
                 final response =
                     await getIt<PostCreateAccessTokenUseCase>().run(
                   PostCreateAccessTokenInput(
-                    requestToken: requestToken!,
+                    requestToken: requestTokenResponse.requestToken,
                   ),
                 );
 

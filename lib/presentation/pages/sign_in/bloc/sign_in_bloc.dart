@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:api_base/data/services/preference_services/shared_preference_manager.dart';
+import 'package:api_base/data/services/services.dart';
 import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
@@ -15,8 +15,9 @@ part 'sign_in_state.dart';
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc(
     this._postLoginWithUsernameAndPasswordUseCase,
-    // this._getRequestTokenUseCase,
     this._sharedPreferencesManager,
+    this._postCreateSessionUseCase,
+    this._getRequestTokenUseCase,
   ) : super(const SignInState()) {
     on<SignInEvent>(
       (event, emit) async {
@@ -33,10 +34,11 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       },
     );
   }
+
   final PostLoginWithUsernameAndPasswordUseCase
       _postLoginWithUsernameAndPasswordUseCase;
-
-  // final GetRequestTokenUseCase _getRequestTokenUseCase;
+  final GetRequestTokenUseCase _getRequestTokenUseCase;
+  final PostCreateSessionUseCase _postCreateSessionUseCase;
   final SharedPreferencesManager _sharedPreferencesManager;
 
   Future<void> _rememberMeChanged(
@@ -49,23 +51,28 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   Future<void> _signInSubmitted(Emitter<SignInState> emit) async {
     try {
       emit(state.copyWith(loginStatus: LoadingStatus.inProgress));
-      // var requestToken = await _sharedPreferencesManager.getRequestToken();
 
-      // if (requestToken == null) {
-      //   final requestTokenResponse = await _getRequestTokenUseCase.run();
-      //   requestToken = requestTokenResponse.requestToken;
-      //   await _sharedPreferencesManager.saveRequestToken(token: requestToken);
-      // }
-
-      await _postLoginWithUsernameAndPasswordUseCase.run(
+      final requestTokenResponse = await _getRequestTokenUseCase.run();
+      final response = await _postLoginWithUsernameAndPasswordUseCase.run(
         PostCreateSessionInput(
           username: state.username,
           password: state.password,
-          requestToken: 'requestToken',
+          requestToken: requestTokenResponse.requestToken,
         ),
       );
-      add(const SignInEvent.loginSuccess());
-      emit(state.copyWith(loginStatus: LoadingStatus.success));
+      if (response.success) {
+        final sessionResponse = await _postCreateSessionUseCase.run();
+        if (sessionResponse.success) {
+          await _sharedPreferencesManager.saveSession(
+              sessionId: sessionResponse.sessionId);
+        }
+
+        add(const SignInEvent.loginSuccess());
+        emit(state.copyWith(loginStatus: LoadingStatus.success));
+      } else {
+        add(const SignInEvent.loginFailure());
+        emit(state.copyWith(loginStatus: LoadingStatus.error));
+      }
     } catch (e) {
       add(const SignInEvent.loginFailure());
       emit(state.copyWith(loginStatus: LoadingStatus.error));

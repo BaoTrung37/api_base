@@ -22,16 +22,18 @@ class RequestTokenResponse {
   RequestTokenResponse({
     required this.success,
     required this.requestToken,
-    required this.statusCode,
-    required this.statusMessage,
+    this.statusCode,
+    this.statusMessage,
+    this.expiresAt,
   });
 
   factory RequestTokenResponse.fromJson(Map<String, dynamic> json) =>
       _$RequestTokenResponseFromJson(json);
   final bool success;
   final String requestToken;
-  final int statusCode;
-  final String statusMessage;
+  final int? statusCode;
+  final String? statusMessage;
+  final String? expiresAt;
 
   Map<String, dynamic> toJson() => _$RequestTokenResponseToJson(this);
 }
