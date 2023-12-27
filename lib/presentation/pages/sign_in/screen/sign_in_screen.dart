@@ -69,6 +69,12 @@ class SignInScreen extends StatelessWidget {
                         enableSuggestions: false,
                         autoCorrect: false,
                         isPassword: true,
+                        textInputAction: TextInputAction.done,
+                        onSubmit: (_) {
+                          context
+                              .read<SignInBloc>()
+                              .add(const SignInEvent.signInSubmitted());
+                        },
                         onTextChange: (value) {
                           context.read<SignInBloc>().add(
                                 SignInEvent.passwordChanged(value!),
