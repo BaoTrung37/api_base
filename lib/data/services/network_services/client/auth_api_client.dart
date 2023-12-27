@@ -1,3 +1,4 @@
+import 'package:api_base/data/models/authentication/request_token_response.dart';
 import 'package:api_base/data/services/network_services/commons/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -11,4 +12,7 @@ abstract class AuthApiClient {
   @factoryMethod
   factory AuthApiClient(Dio dio, {@factoryParam String? baseUrl}) =
       _AuthApiClient;
+
+  @POST('/auth/request_token')
+  Future<RequestTokenResponse> getRequestToken();
 }

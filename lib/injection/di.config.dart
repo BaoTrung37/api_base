@@ -80,6 +80,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i10.AuthenticationRepositoryIml>(
         () => _i10.AuthenticationRepositoryIml(
               restClient: gh<_i5.RestClient>(),
+              authApiClient: gh<_i9.AuthApiClient>(),
               sharedPreferencesManager: gh<_i7.SharedPreferencesManager>(),
             ));
     gh.factory<_i11.GetGuestSessionUseCase>(() => _i11.GetGuestSessionUseCase(

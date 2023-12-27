@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // part 'request_token_response.g.dart';
 // part 'request_token_response.freezed.dart';
 
@@ -21,14 +22,16 @@ class RequestTokenResponse {
   RequestTokenResponse({
     required this.success,
     required this.requestToken,
-    required this.expiresAt,
+    required this.statusCode,
+    required this.statusMessage,
   });
 
   factory RequestTokenResponse.fromJson(Map<String, dynamic> json) =>
       _$RequestTokenResponseFromJson(json);
   final bool success;
   final String requestToken;
-  final String expiresAt;
+  final String statusCode;
+  final String statusMessage;
 
   Map<String, dynamic> toJson() => _$RequestTokenResponseToJson(this);
 }
