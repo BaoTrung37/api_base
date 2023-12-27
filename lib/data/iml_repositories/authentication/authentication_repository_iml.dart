@@ -23,10 +23,10 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
     return restClient.getGuestSession();
   }
 
-  // @override
-  // Future<RequestTokenResponse> getRequestToken() {
-  //   return authApiClient.createRequestToken();
-  // }
+  @override
+  Future<RequestTokenResponse> getRequestToken() {
+    return restClient.getRequestToken();
+  }
 
   @override
   Future<SessionResponse> postCreateSession() async {

@@ -3,7 +3,7 @@ import 'package:api_base/domain/use_cases/authentication/authentication.dart';
 
 abstract class AuthenticationRepository {
   Future<GuestSessionResponse> getGuestSession();
-  // Future<RequestTokenResponse> getRequestToken();
+  Future<RequestTokenResponse> getRequestToken();
   Future<RequestTokenResponse> createRequestToken();
   Future<AccessTokenResponse> createAccessToken(
       PostCreateAccessTokenInput input);
