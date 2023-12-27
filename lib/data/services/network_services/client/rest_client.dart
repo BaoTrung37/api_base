@@ -15,8 +15,8 @@ abstract class RestClient {
   @GET('/authentication/guest_session/new')
   Future<GuestSessionResponse> getGuestSession();
 
-  @GET('/authentication/token/new')
-  Future<RequestTokenResponse> getRequestToken();
+  // @GET('/authentication/token/new')
+  // Future<RequestTokenResponse> getRequestToken();
 
   @POST('/authentication/session/new')
   Future<SessionResponse> postCreateSession(

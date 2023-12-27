@@ -8,6 +8,7 @@ class PostCreateSessionUseCase extends FutureOutputUseCase<SessionResponse> {
   PostCreateSessionUseCase({
     required this.authenticationRepositoryIml,
   });
+
   final AuthenticationRepositoryIml authenticationRepositoryIml;
 
   @override

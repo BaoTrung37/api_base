@@ -11,7 +11,7 @@ RequestTokenResponse _$RequestTokenResponseFromJson(
     RequestTokenResponse(
       success: json['success'] as bool,
       requestToken: json['request_token'] as String,
-      statusCode: json['status_code'] as String,
+      statusCode: json['status_code'] as int,
       statusMessage: json['status_message'] as String,
     );
 

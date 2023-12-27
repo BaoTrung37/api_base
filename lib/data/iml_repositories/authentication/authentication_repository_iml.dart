@@ -4,7 +4,7 @@ import 'package:api_base/data/services/network_services/client/auth_api_client.d
 import 'package:api_base/data/services/network_services/client/rest_client.dart';
 import 'package:api_base/data/services/preference_services/shared_preference_manager.dart';
 import 'package:api_base/domain/repositories/repositories.dart';
-import 'package:api_base/domain/use_cases/authentication/post_login_with_username_and_password_use_case.dart';
+import 'package:api_base/domain/use_cases/authentication/authentication.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -23,10 +23,10 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
     return restClient.getGuestSession();
   }
 
-  @override
-  Future<RequestTokenResponse> getRequestToken() {
-    return authApiClient.getRequestToken();
-  }
+  // @override
+  // Future<RequestTokenResponse> getRequestToken() {
+  //   return authApiClient.createRequestToken();
+  // }
 
   @override
   Future<SessionResponse> postCreateSession() async {
@@ -43,6 +43,25 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
       SessionWithLoginRequest(
         username: input.username,
         password: input.password,
+        requestToken: input.requestToken,
+      ),
+    );
+  }
+
+  @override
+  Future<RequestTokenResponse> createRequestToken() {
+    return authApiClient.createRequestToken(
+      RequestTokenRequest(
+        redirectTo: 'app://myapp.com/',
+      ),
+    );
+  }
+
+  @override
+  Future<AccessTokenResponse> createAccessToken(
+      PostCreateAccessTokenInput input) {
+    return authApiClient.createAccessToken(
+      AccessTokenRequest(
         requestToken: input.requestToken,
       ),
     );

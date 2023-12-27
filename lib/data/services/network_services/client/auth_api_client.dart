@@ -1,8 +1,10 @@
-import 'package:api_base/data/models/authentication/request_token_response.dart';
+import 'package:api_base/data/models/authentication/authentication.dart';
 import 'package:api_base/data/services/network_services/commons/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
+
+import '../../../models/authentication/request_token_request.dart';
 
 part 'auth_api_client.g.dart';
 
@@ -14,5 +16,12 @@ abstract class AuthApiClient {
       _AuthApiClient;
 
   @POST('/auth/request_token')
-  Future<RequestTokenResponse> getRequestToken();
+  Future<RequestTokenResponse> createRequestToken(
+    @Body() RequestTokenRequest body,
+  );
+
+  @POST('/auth/access_token')
+  Future<AccessTokenResponse> createAccessToken(
+    @Body() AccessTokenRequest body,
+  );
 }

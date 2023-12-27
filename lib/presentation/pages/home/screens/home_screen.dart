@@ -3,6 +3,7 @@ import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:api_base/injection/di.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -13,7 +14,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Api Base'),
+        title: const Text('Home Screen Api Base'),
       ),
       body: Center(
         child: Column(
@@ -29,14 +30,30 @@ class HomeScreen extends StatelessWidget {
             TextButton(
               child: const Text('Get Request Token Session'),
               onPressed: () async {
-                final response = await getIt<GetRequestTokenUseCase>().run();
+                final response =
+                    await getIt<PostCreateRequestTokenUseCase>().run();
+
+                await launchUrl(
+                  Uri.parse(
+                      'https://www.themoviedb.org/auth/access?request_token=${response.requestToken}'),
+                  mode: LaunchMode.externalApplication,
+                );
                 await getIt<SharedPreferencesManager>()
                     .saveRequestToken(token: response.requestToken);
-                // launchUrl(
-                //   Uri.parse(
-                //       'https://www.themoviedb.org/authenticate/${response.requestToken}?redirect_to=http://www.yourapp.com'),
-                //   mode: LaunchMode.externalApplication,
-                // );
+              },
+            ),
+            TextButton(
+              child: const Text('Get Access Token Session'),
+              onPressed: () async {
+                final requestToken =
+                    await getIt<SharedPreferencesManager>().getRequestToken();
+                final response =
+                    await getIt<PostCreateAccessTokenUseCase>().run(
+                  PostCreateAccessTokenInput(
+                    requestToken: requestToken!,
+                  ),
+                );
+
                 print(response.toString());
               },
             ),

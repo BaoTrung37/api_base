@@ -30,7 +30,7 @@ class RequestTokenResponse {
       _$RequestTokenResponseFromJson(json);
   final bool success;
   final String requestToken;
-  final String statusCode;
+  final int statusCode;
   final String statusMessage;
 
   Map<String, dynamic> toJson() => _$RequestTokenResponseToJson(this);
