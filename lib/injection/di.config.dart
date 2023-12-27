@@ -109,7 +109,9 @@ extension GetItInjectableX on _i1.GetIt {
                 gh<_i14.AuthenticationRepositoryIml>()));
     gh.lazySingleton<_i19.SignInBloc>(() => _i19.SignInBloc(
           gh<_i20.PostLoginWithUsernameAndPasswordUseCase>(),
+          gh<_i20.GetRequestTokenUseCase>(),
           gh<_i7.SharedPreferencesManager>(),
+          gh<_i20.PostCreateSessionUseCase>(),
         ));
     return this;
   }
