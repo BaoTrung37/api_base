@@ -1,0 +1,14 @@
+import 'package:api_base/data/services/network_services/commons/api_constants.dart';
+import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
+import 'package:retrofit/http.dart';
+
+part 'auth_api_client.g.dart';
+
+@injectable
+@RestApi(baseUrl: ApiConstants.baseUrlV4)
+abstract class AuthApiClient {
+  @factoryMethod
+  factory AuthApiClient(Dio dio, {@factoryParam String? baseUrl}) =
+      _AuthApiClient;
+}

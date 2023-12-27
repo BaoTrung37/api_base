@@ -1,5 +1,5 @@
 import 'package:api_base/data/models/authentication/authentication.dart';
-import 'package:api_base/data/services/network_services/api_constants.dart';
+import 'package:api_base/data/services/network_services/commons/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
@@ -7,7 +7,7 @@ import 'package:retrofit/http.dart';
 part 'rest_client.g.dart';
 
 @injectable
-@RestApi(baseUrl: ApiConstants.baseUrl)
+@RestApi(baseUrl: ApiConstants.baseUrlV3)
 abstract class RestClient {
   @factoryMethod
   factory RestClient(Dio dio, {@factoryParam String? baseUrl}) = _RestClient;
