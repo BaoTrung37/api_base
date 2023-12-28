@@ -33,7 +33,7 @@ class SignInScreen extends StatelessWidget {
             listener: (context, state) {
               //
               if (state.loginStatus == AppStatus.success) {
-                context.pushRoute(const HomeRoute());
+                context.pushRoute(const MainAppRoute());
               }
             },
             builder: (context, state) {
