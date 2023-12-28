@@ -23,22 +23,22 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
     return restClient.getGuestSession();
   }
 
-  // @override
-  // Future<RequestTokenResponse> getRequestToken() {
-  //   return authApiClient.createRequestToken();
-  // }
+  @override
+  Future<RequestTokenResponse> getRequestToken() {
+    return restClient.getRequestToken();
+  }
 
   @override
-  Future<SessionResponse> postCreateSession() async {
-    final requestToken = await sharedPreferencesManager.getRequestToken() ?? '';
+  Future<SessionResponse> postCreateSession(
+      PostCreateSessionInput input) async {
     return restClient.postCreateSession(
-      SessionRequest(requestToken: requestToken),
+      SessionRequest(requestToken: input.requestToken),
     );
   }
 
   @override
   Future<RequestTokenResponse> postCreateSessionWithLogin(
-      PostCreateSessionInput input) async {
+      PostLoginWithUsernameAndPasswordInput input) async {
     return restClient.postCreateSessionWithLogin(
       SessionWithLoginRequest(
         username: input.username,

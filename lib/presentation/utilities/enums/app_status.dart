@@ -1,4 +1,4 @@
-enum LoadingStatus {
+enum AppStatus {
   initial,
   inProgress,
   success,

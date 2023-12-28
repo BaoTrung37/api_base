@@ -11,8 +11,9 @@ RequestTokenResponse _$RequestTokenResponseFromJson(
     RequestTokenResponse(
       success: json['success'] as bool,
       requestToken: json['request_token'] as String,
-      statusCode: json['status_code'] as int,
-      statusMessage: json['status_message'] as String,
+      statusCode: json['status_code'] as int?,
+      statusMessage: json['status_message'] as String?,
+      expiresAt: json['expires_at'] as String?,
     );
 
 Map<String, dynamic> _$RequestTokenResponseToJson(
@@ -22,4 +23,5 @@ Map<String, dynamic> _$RequestTokenResponseToJson(
       'request_token': instance.requestToken,
       'status_code': instance.statusCode,
       'status_message': instance.statusMessage,
+      'expires_at': instance.expiresAt,
     };
