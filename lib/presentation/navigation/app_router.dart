@@ -1,3 +1,4 @@
+import 'package:api_base/presentation/pages/api_test/api_test_screen.dart';
 import 'package:api_base/presentation/pages/pages.dart';
 import 'package:auto_route/auto_route.dart';
 
@@ -10,9 +11,10 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => <AutoRoute>[
         AutoRoute(page: SplashRoute.page, initial: true),
+        AutoRoute(page: LetInYouRoute.page),
         AutoRoute(page: HomeRoute.page),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SignUpRoute.page),
-        AutoRoute(page: LetInYouRoute.page),
+        AutoRoute(page: ApiTestRoute.page),
       ];
 }
