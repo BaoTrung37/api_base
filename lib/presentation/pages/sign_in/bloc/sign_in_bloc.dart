@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:api_base/data/services/preference_services/shared_preference_manager.dart';
+import 'package:api_base/data/services/services.dart';
 import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
@@ -15,8 +15,9 @@ part 'sign_in_state.dart';
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc(
     this._postLoginWithUsernameAndPasswordUseCase,
-    // this._getRequestTokenUseCase,
+    this._getRequestTokenUseCase,
     this._sharedPreferencesManager,
+    this._postCreateSessionUseCase,
   ) : super(const SignInState()) {
     on<SignInEvent>(
       (event, emit) async {
@@ -27,17 +28,27 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           rememberMeChanged: (event) => _rememberMeChanged(event, emit),
           usernameChanged: (event) => _usernameChanged(event, emit),
           passwordChanged: (event) => _passwordChanged(event, emit),
-          loginSuccess: (_LoginSuccess value) => {},
-          loginFailure: (_LoginFailure value) => {},
+          loginSuccess: (event) => _loginSuccess(emit),
+          loginFailure: (event) => _loginFailure(emit),
         );
       },
     );
   }
+
   final PostLoginWithUsernameAndPasswordUseCase
       _postLoginWithUsernameAndPasswordUseCase;
 
-  // final GetRequestTokenUseCase _getRequestTokenUseCase;
+  final GetRequestTokenUseCase _getRequestTokenUseCase;
+  final PostCreateSessionUseCase _postCreateSessionUseCase;
   final SharedPreferencesManager _sharedPreferencesManager;
+
+  Future<void> _loginSuccess(Emitter<SignInState> emit) async {
+    emit(state.copyWith(loginStatus: AppStatus.success));
+  }
+
+  Future<void> _loginFailure(Emitter<SignInState> emit) async {
+    emit(state.copyWith(loginStatus: AppStatus.error));
+  }
 
   Future<void> _rememberMeChanged(
       _RememberMe event, Emitter<SignInState> emit) async {
@@ -48,27 +59,42 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
   Future<void> _signInSubmitted(Emitter<SignInState> emit) async {
     try {
-      emit(state.copyWith(loginStatus: LoadingStatus.inProgress));
-      // var requestToken = await _sharedPreferencesManager.getRequestToken();
+      emit(state.copyWith(loginStatus: AppStatus.inProgress));
 
-      // if (requestToken == null) {
-      //   final requestTokenResponse = await _getRequestTokenUseCase.run();
-      //   requestToken = requestTokenResponse.requestToken;
-      //   await _sharedPreferencesManager.saveRequestToken(token: requestToken);
-      // }
+      final requestTokenResponse = await _getRequestTokenUseCase.run();
 
-      await _postLoginWithUsernameAndPasswordUseCase.run(
-        PostCreateSessionInput(
+      if (!requestTokenResponse.success) {
+        add(const SignInEvent.loginFailure());
+        emit(state.copyWith(loginStatus: AppStatus.error));
+        return;
+      }
+
+      final requestTokenResponse1 =
+          await _postLoginWithUsernameAndPasswordUseCase.run(
+        PostLoginWithUsernameAndPasswordInput(
           username: state.username,
           password: state.password,
-          requestToken: 'requestToken',
+          requestToken: requestTokenResponse.requestToken,
         ),
       );
+
+      if (!requestTokenResponse1.success) {
+        add(const SignInEvent.loginFailure());
+        return;
+      }
+      final sessionResponse =
+          await _postCreateSessionUseCase.run(PostCreateSessionInput(
+        requestToken: requestTokenResponse1.requestToken,
+      ));
+      if (sessionResponse.success) {
+        await _sharedPreferencesManager.saveSession(
+          sessionId: sessionResponse.sessionId,
+        );
+      }
+
       add(const SignInEvent.loginSuccess());
-      emit(state.copyWith(loginStatus: LoadingStatus.success));
     } catch (e) {
       add(const SignInEvent.loginFailure());
-      emit(state.copyWith(loginStatus: LoadingStatus.error));
     }
   }
 
@@ -87,10 +113,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   }
 
   Future<void> _stared(Emitter<SignInState> emit) async {
-    emit(state.copyWith(status: LoadingStatus.inProgress));
+    emit(state.copyWith(status: AppStatus.inProgress));
     // Check remember account
 
     //
-    emit(state.copyWith(status: LoadingStatus.success));
+    emit(state.copyWith(status: AppStatus.success));
   }
 }

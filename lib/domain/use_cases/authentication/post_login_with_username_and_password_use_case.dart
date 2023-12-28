@@ -5,8 +5,8 @@ import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class PostLoginWithUsernameAndPasswordUseCase
-    extends FutureUseCase<PostCreateSessionInput, RequestTokenResponse> {
+class PostLoginWithUsernameAndPasswordUseCase extends FutureUseCase<
+    PostLoginWithUsernameAndPasswordInput, RequestTokenResponse> {
   final AuthenticationRepositoryIml authenticationRepositoryIml;
 
   PostLoginWithUsernameAndPasswordUseCase({
@@ -14,16 +14,17 @@ class PostLoginWithUsernameAndPasswordUseCase
   });
 
   @override
-  Future<RequestTokenResponse> run(PostCreateSessionInput input) {
+  Future<RequestTokenResponse> run(
+      PostLoginWithUsernameAndPasswordInput input) {
     return authenticationRepositoryIml.postCreateSessionWithLogin(input);
   }
 }
 
-class PostCreateSessionInput {
+class PostLoginWithUsernameAndPasswordInput {
   final String username;
   final String password;
   final String requestToken;
-  PostCreateSessionInput({
+  PostLoginWithUsernameAndPasswordInput({
     required this.username,
     required this.password,
     required this.requestToken,

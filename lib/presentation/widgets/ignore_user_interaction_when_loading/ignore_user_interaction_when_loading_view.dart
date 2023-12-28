@@ -8,13 +8,13 @@ class IgnoreUserInteractionWhenLoadingView extends StatelessWidget {
     super.key,
   });
 
-  final LoadingStatus status;
+  final AppStatus status;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return AbsorbPointer(
-      absorbing: status == LoadingStatus.inProgress,
+      absorbing: status == AppStatus.inProgress,
       child: child,
     );
   }

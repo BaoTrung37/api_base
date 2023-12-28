@@ -1313,8 +1313,8 @@ abstract class _LoginFailure implements SignInEvent {
 
 /// @nodoc
 mixin _$SignInState {
-  LoadingStatus get loginStatus => throw _privateConstructorUsedError;
-  LoadingStatus get status => throw _privateConstructorUsedError;
+  AppStatus get loginStatus => throw _privateConstructorUsedError;
+  AppStatus get status => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   bool get isRemember => throw _privateConstructorUsedError;
@@ -1331,8 +1331,8 @@ abstract class $SignInStateCopyWith<$Res> {
       _$SignInStateCopyWithImpl<$Res, SignInState>;
   @useResult
   $Res call(
-      {LoadingStatus loginStatus,
-      LoadingStatus status,
+      {AppStatus loginStatus,
+      AppStatus status,
       String username,
       String password,
       bool isRemember});
@@ -1361,11 +1361,11 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
       loginStatus: null == loginStatus
           ? _value.loginStatus
           : loginStatus // ignore: cast_nullable_to_non_nullable
-              as LoadingStatus,
+              as AppStatus,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as LoadingStatus,
+              as AppStatus,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -1391,8 +1391,8 @@ abstract class _$$SignInStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {LoadingStatus loginStatus,
-      LoadingStatus status,
+      {AppStatus loginStatus,
+      AppStatus status,
       String username,
       String password,
       bool isRemember});
@@ -1419,11 +1419,11 @@ class __$$SignInStateImplCopyWithImpl<$Res>
       loginStatus: null == loginStatus
           ? _value.loginStatus
           : loginStatus // ignore: cast_nullable_to_non_nullable
-              as LoadingStatus,
+              as AppStatus,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as LoadingStatus,
+              as AppStatus,
       username: null == username
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
@@ -1444,18 +1444,18 @@ class __$$SignInStateImplCopyWithImpl<$Res>
 
 class _$SignInStateImpl implements _SignInState {
   const _$SignInStateImpl(
-      {this.loginStatus = LoadingStatus.initial,
-      this.status = LoadingStatus.initial,
+      {this.loginStatus = AppStatus.initial,
+      this.status = AppStatus.initial,
       this.username = 'baotrung',
       this.password = '',
       this.isRemember = false});
 
   @override
   @JsonKey()
-  final LoadingStatus loginStatus;
+  final AppStatus loginStatus;
   @override
   @JsonKey()
-  final LoadingStatus status;
+  final AppStatus status;
   @override
   @JsonKey()
   final String username;
@@ -1500,16 +1500,16 @@ class _$SignInStateImpl implements _SignInState {
 
 abstract class _SignInState implements SignInState {
   const factory _SignInState(
-      {final LoadingStatus loginStatus,
-      final LoadingStatus status,
+      {final AppStatus loginStatus,
+      final AppStatus status,
       final String username,
       final String password,
       final bool isRemember}) = _$SignInStateImpl;
 
   @override
-  LoadingStatus get loginStatus;
+  AppStatus get loginStatus;
   @override
-  LoadingStatus get status;
+  AppStatus get status;
   @override
   String get username;
   @override
