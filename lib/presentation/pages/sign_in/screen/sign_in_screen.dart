@@ -29,7 +29,13 @@ class SignInScreen extends StatelessWidget {
           appBar: const BaseAppBar(
             shouldShowBottomDivider: false,
           ),
-          body: BlocBuilder<SignInBloc, SignInState>(
+          body: BlocConsumer<SignInBloc, SignInState>(
+            listener: (context, state) {
+              //
+              if (state.loginStatus == AppStatus.success) {
+                context.pushRoute(const HomeRoute());
+              }
+            },
             builder: (context, state) {
               return SingleChildScrollView(
                 child: Padding(

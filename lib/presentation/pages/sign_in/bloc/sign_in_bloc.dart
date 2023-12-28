@@ -28,8 +28,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           rememberMeChanged: (event) => _rememberMeChanged(event, emit),
           usernameChanged: (event) => _usernameChanged(event, emit),
           passwordChanged: (event) => _passwordChanged(event, emit),
-          loginSuccess: (_LoginSuccess value) => {},
-          loginFailure: (_LoginFailure value) => {},
+          loginSuccess: (event) => _loginSuccess(emit),
+          loginFailure: (event) => _loginFailure(emit),
         );
       },
     );
@@ -42,6 +42,14 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final PostCreateSessionUseCase _postCreateSessionUseCase;
   final SharedPreferencesManager _sharedPreferencesManager;
 
+  Future<void> _loginSuccess(Emitter<SignInState> emit) async {
+    emit(state.copyWith(loginStatus: AppStatus.success));
+  }
+
+  Future<void> _loginFailure(Emitter<SignInState> emit) async {
+    emit(state.copyWith(loginStatus: AppStatus.error));
+  }
+
   Future<void> _rememberMeChanged(
       _RememberMe event, Emitter<SignInState> emit) async {
     emit(
@@ -51,13 +59,13 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
   Future<void> _signInSubmitted(Emitter<SignInState> emit) async {
     try {
-      emit(state.copyWith(loginStatus: LoadingStatus.inProgress));
+      emit(state.copyWith(loginStatus: AppStatus.inProgress));
 
       final requestTokenResponse = await _getRequestTokenUseCase.run();
 
       if (!requestTokenResponse.success) {
         add(const SignInEvent.loginFailure());
-        emit(state.copyWith(loginStatus: LoadingStatus.error));
+        emit(state.copyWith(loginStatus: AppStatus.error));
         return;
       }
 
@@ -72,7 +80,6 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
       if (!requestTokenResponse1.success) {
         add(const SignInEvent.loginFailure());
-        emit(state.copyWith(loginStatus: LoadingStatus.error));
         return;
       }
       final sessionResponse =
@@ -86,10 +93,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       }
 
       add(const SignInEvent.loginSuccess());
-      emit(state.copyWith(loginStatus: LoadingStatus.success));
     } catch (e) {
       add(const SignInEvent.loginFailure());
-      emit(state.copyWith(loginStatus: LoadingStatus.error));
     }
   }
 
@@ -108,10 +113,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   }
 
   Future<void> _stared(Emitter<SignInState> emit) async {
-    emit(state.copyWith(status: LoadingStatus.inProgress));
+    emit(state.copyWith(status: AppStatus.inProgress));
     // Check remember account
 
     //
-    emit(state.copyWith(status: LoadingStatus.success));
+    emit(state.copyWith(status: AppStatus.success));
   }
 }
