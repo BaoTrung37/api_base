@@ -15,9 +15,9 @@ part 'sign_in_state.dart';
 class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc(
     this._postLoginWithUsernameAndPasswordUseCase,
+    this._getRequestTokenUseCase,
     this._sharedPreferencesManager,
     this._postCreateSessionUseCase,
-    this._getRequestTokenUseCase,
   ) : super(const SignInState()) {
     on<SignInEvent>(
       (event, emit) async {
@@ -37,6 +37,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
 
   final PostLoginWithUsernameAndPasswordUseCase
       _postLoginWithUsernameAndPasswordUseCase;
+
   final GetRequestTokenUseCase _getRequestTokenUseCase;
   final PostCreateSessionUseCase _postCreateSessionUseCase;
   final SharedPreferencesManager _sharedPreferencesManager;
@@ -53,26 +54,39 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       emit(state.copyWith(loginStatus: LoadingStatus.inProgress));
 
       final requestTokenResponse = await _getRequestTokenUseCase.run();
-      final response = await _postLoginWithUsernameAndPasswordUseCase.run(
-        PostCreateSessionInput(
+
+      if (!requestTokenResponse.success) {
+        add(const SignInEvent.loginFailure());
+        emit(state.copyWith(loginStatus: LoadingStatus.error));
+        return;
+      }
+
+      final requestTokenResponse1 =
+          await _postLoginWithUsernameAndPasswordUseCase.run(
+        PostLoginWithUsernameAndPasswordInput(
           username: state.username,
           password: state.password,
           requestToken: requestTokenResponse.requestToken,
         ),
       );
-      if (response.success) {
-        final sessionResponse = await _postCreateSessionUseCase.run();
-        if (sessionResponse.success) {
-          await _sharedPreferencesManager.saveSession(
-              sessionId: sessionResponse.sessionId);
-        }
 
-        add(const SignInEvent.loginSuccess());
-        emit(state.copyWith(loginStatus: LoadingStatus.success));
-      } else {
+      if (!requestTokenResponse1.success) {
         add(const SignInEvent.loginFailure());
         emit(state.copyWith(loginStatus: LoadingStatus.error));
+        return;
       }
+      final sessionResponse =
+          await _postCreateSessionUseCase.run(PostCreateSessionInput(
+        requestToken: requestTokenResponse1.requestToken,
+      ));
+      if (sessionResponse.success) {
+        await _sharedPreferencesManager.saveSession(
+          sessionId: sessionResponse.sessionId,
+        );
+      }
+
+      add(const SignInEvent.loginSuccess());
+      emit(state.copyWith(loginStatus: LoadingStatus.success));
     } catch (e) {
       add(const SignInEvent.loginFailure());
       emit(state.copyWith(loginStatus: LoadingStatus.error));
