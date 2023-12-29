@@ -38,6 +38,7 @@ dependencies:
 
   # UI
   flutter_screenutil: ^5.9.0
+  animated_bottom_navigation_bar: ^1.3.0
 
   # Dependency
   injectable: ^2.3.2
