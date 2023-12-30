@@ -19,6 +19,9 @@ class AppRouter extends _$AppRouter {
               page: HomeRoute.page,
               initial: true,
             ),
+            AutoRoute(
+              page: ProfileRoute.page,
+            ),
           ],
         ),
         AutoRoute(page: SignInRoute.page),

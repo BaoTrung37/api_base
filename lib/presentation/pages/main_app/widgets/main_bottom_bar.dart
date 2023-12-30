@@ -74,6 +74,9 @@ class MainBottomBar extends StatelessWidget {
                   case 3:
                     context.replaceRoute(const HomeRoute());
                     break;
+                  case 4:
+                    context.replaceRoute(const ProfileRoute());
+                    break;
                 }
                 getIt<BottomTabCubit>().changeTab(index);
               },
