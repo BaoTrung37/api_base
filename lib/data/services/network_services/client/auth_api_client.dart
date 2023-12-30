@@ -4,8 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 
-import '../../../models/authentication/request_token_request.dart';
-
 part 'auth_api_client.g.dart';
 
 @injectable

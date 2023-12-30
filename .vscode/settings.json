@@ -7,5 +7,10 @@
     // Remove from file watching
     "files.watcherExclude": {
       "**/.fvm": true
-    }
+    },
+    "cSpell.words": [
+      "cupertino",
+      "dotenv",
+      "screenutil"
+    ]
 }

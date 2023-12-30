@@ -1,4 +1,3 @@
-import 'package:api_base/gen/assets.gen.dart';
 import 'package:api_base/injection/di.dart';
 import 'package:api_base/presentation/pages/main_app/cubit/cubit.dart';
 import 'package:api_base/presentation/pages/main_app/widgets/main_bottom_bar.dart';
@@ -15,38 +14,18 @@ class MainAppScreen extends StatefulWidget {
 }
 
 class _MainAppScreenState extends State<MainAppScreen> {
-  List<TabItem> tabs = [];
+  // List<TabItem> tabs = [];
   @override
   Widget build(BuildContext context) {
-    tabs = <TabItem>[
-      TabItem(
-        iconPath: Assets.icons.icMail.path,
-        text: 'home',
-      ),
-      TabItem(
-        iconPath: Assets.icons.icMail.path,
-        text: 'home',
-      ),
-      TabItem(
-        iconPath: Assets.icons.icMail.path,
-        text: 'home',
-      ),
-      TabItem(
-        iconPath: Assets.icons.icMail.path,
-        text: 'home',
-      ),
-    ];
     return MultiBlocProvider(
       providers: [
         BlocProvider<BottomTabCubit>(
           create: (context) => getIt<BottomTabCubit>(),
         ),
       ],
-      child: Scaffold(
-        body: const AutoRouter(),
-        bottomNavigationBar: MainBottomBar(
-          tabs: tabs,
-        ),
+      child: const Scaffold(
+        body: AutoRouter(),
+        bottomNavigationBar: MainBottomBar(),
       ),
     );
   }

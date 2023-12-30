@@ -1,31 +1,44 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:api_base/gen/assets.gen.dart';
 import 'package:api_base/injection/di.dart';
-import 'package:api_base/presentation/pages/main_app/cubit/bottom_tab_cubit.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-class TabItem {
-  TabItem({required this.iconPath, required this.text, this.tabView});
-
-  final String iconPath;
-  final String text;
-  final Widget? tabView;
-}
 
 class MainBottomBar extends StatelessWidget {
-  const MainBottomBar({
-    required this.tabs,
-    super.key,
-  });
-
-  final List<TabItem> tabs;
+  const MainBottomBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final tabs = <TabItem>[
+      TabItem(
+        iconSvg: Assets.icons.icHomeOutline,
+        iconSvgSelected: Assets.icons.icHome,
+        text: 'Home',
+      ),
+      TabItem(
+        iconSvg: Assets.icons.icExploreOutline,
+        iconSvgSelected: Assets.icons.icExplore,
+        text: 'Explore',
+      ),
+      TabItem(
+        iconSvg: Assets.icons.icBookmarkOutline,
+        iconSvgSelected: Assets.icons.icBookmark,
+        text: 'My List',
+      ),
+      TabItem(
+        iconSvg: Assets.icons.icDownloadOutline,
+        iconSvgSelected: Assets.icons.icDownload,
+        text: 'Download',
+      ),
+      TabItem(
+        iconSvg: Assets.icons.icProfileOutline,
+        iconSvgSelected: Assets.icons.icProfile,
+        text: 'Profile',
+      ),
+    ];
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -41,6 +54,7 @@ class MainBottomBar extends StatelessWidget {
                 );
               },
               // backgroundGradient: Palette.bottomNavigation,
+              borderColor: context.colors.border,
               height: 90.h,
               activeIndex: page,
               gapLocation: GapLocation.none,
@@ -65,7 +79,6 @@ class MainBottomBar extends StatelessWidget {
               },
               splashRadius: 0,
               safeAreaValues: const SafeAreaValues(bottom: false),
-              //other params
             );
           },
         ),
@@ -86,34 +99,36 @@ class _TabBarItem extends StatelessWidget {
     return Stack(
       alignment: Alignment.topCenter,
       children: [
-        // if (isSelected)
-        //   Container(
-        //     height: 2.h,
-        //     width: 40.w,
-        //     decoration: BoxDecoration(
-        //       color: Palette.primary,
-        //       borderRadius: BorderRadius.only(
-        //         bottomLeft: const Radius.circular(4).r,
-        //         bottomRight: const Radius.circular(4).r,
-        //       ),
-        //     ),
-        //   ),
+        if (isSelected)
+          Container(
+            height: 2.h,
+            width: 40.w,
+            decoration: BoxDecoration(
+              color: context.colors.primaryMain,
+              borderRadius: BorderRadius.only(
+                bottomLeft: const Radius.circular(4).r,
+                bottomRight: const Radius.circular(4).r,
+              ),
+            ),
+          ),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(
-              tabItem.iconPath,
-              height: 24.h,
-              colorFilter: ColorFilter.mode(
-                isSelected ? Colors.black : Colors.green,
-                BlendMode.srcIn,
+            if (isSelected)
+              tabItem.iconSvgSelected.svg(
+                height: 24.h,
+              )
+            else
+              tabItem.iconSvg.svg(
+                height: 24.h,
               ),
-            ),
             8.verticalSpace,
             Text(
               tabItem.text,
               style: AppTextStyles.labelSmall.copyWith(
-                color: isSelected ? Colors.black : Colors.green,
+                color: isSelected
+                    ? context.colors.primaryMain
+                    : context.colors.textSecondary,
               ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -123,4 +138,16 @@ class _TabBarItem extends StatelessWidget {
       ],
     );
   }
+}
+
+class TabItem {
+  TabItem({
+    required this.iconSvg,
+    required this.iconSvgSelected,
+    required this.text,
+  });
+
+  final SvgGenImage iconSvg;
+  final SvgGenImage iconSvgSelected;
+  final String text;
 }

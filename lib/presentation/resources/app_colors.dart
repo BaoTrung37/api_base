@@ -1,8 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import 'package:flutter/material.dart';
-
 import 'package:api_base/config/color_config.dart';
+import 'package:flutter/material.dart';
 
 class AppColors {
   /// Used for buttons colors, filled tags etc.
@@ -56,7 +55,7 @@ class AppColors {
   /// Used for dividers and borders
   final Color border;
 
-  /// Used for snackbars and other elements that need to contrast the default background
+  /// Used for snack bars and other elements that need to contrast the default background
   final Color backgroundContrast;
 
   /// Used for primary text
