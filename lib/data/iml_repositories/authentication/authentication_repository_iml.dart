@@ -49,20 +49,20 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
   }
 
   @override
-  Future<RequestTokenResponse> createRequestToken() {
-    return authApiClient.createRequestToken(
-      RequestTokenRequest(
-        redirectTo: 'app://myapp.com/',
-      ),
-    );
-  }
-
-  @override
   Future<AccessTokenResponse> createAccessToken(
       PostCreateAccessTokenInput input) {
     return authApiClient.createAccessToken(
       AccessTokenRequest(
         requestToken: input.requestToken,
+      ),
+    );
+  }
+
+  @override
+  Future<RequestTokenResponse> createRequestTokenV4() {
+    return authApiClient.createRequestToken(
+      RequestTokenRequest(
+        redirectTo: 'app://myapp.com/',
       ),
     );
   }

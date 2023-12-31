@@ -5,16 +5,16 @@ import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class PostCreateRequestTokenUseCase
+class PostCreateRequestTokenV4UseCase
     implements FutureOutputUseCase<RequestTokenResponse> {
   final AuthenticationRepositoryIml authenticationRepositoryIml;
 
-  PostCreateRequestTokenUseCase({
+  PostCreateRequestTokenV4UseCase({
     required this.authenticationRepositoryIml,
   });
 
   @override
   Future<RequestTokenResponse> run() {
-    return authenticationRepositoryIml.getRequestToken();
+    return authenticationRepositoryIml.createRequestTokenV4();
   }
 }

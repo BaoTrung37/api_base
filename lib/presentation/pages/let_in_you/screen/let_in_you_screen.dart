@@ -49,12 +49,13 @@ class LetInYouScreen extends StatelessWidget {
               ),
               16.verticalSpace,
               AppButton(
-                  isExpanded: true,
-                  title: 'Login as guest',
-                  backgroundColor: context.colors.backgroundContrast,
-                  onTap: () {
-                    //
-                  }),
+                isExpanded: true,
+                title: 'Login as guest',
+                backgroundColor: context.colors.backgroundContrast,
+                onTap: () {
+                  //
+                },
+              ),
               // 16.verticalSpace,
               // _buildLoginButton(
               //   context,

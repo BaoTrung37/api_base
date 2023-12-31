@@ -19,15 +19,15 @@ import '../data/iml_repositories/authentication/authentication_repository_iml.da
 import '../data/iml_repositories/iml_repositories.dart' as _i14;
 import '../data/services/network_services/client/auth_api_client.dart' as _i9;
 import '../data/services/network_services/client/rest_client.dart' as _i5;
-import '../data/services/network_services/commons/dio_helper.dart' as _i22;
+import '../data/services/network_services/commons/dio_helper.dart' as _i23;
 import '../data/services/network_services/interceptors/auth_interceptor.dart'
     as _i3;
 import '../data/services/network_services/interceptors/token_refresh_interceptor.dart'
     as _i8;
-import '../data/services/preference_services/injection_module.dart' as _i23;
+import '../data/services/preference_services/injection_module.dart' as _i24;
 import '../data/services/preference_services/shared_preference_manager.dart'
     as _i7;
-import '../data/services/services.dart' as _i21;
+import '../data/services/services.dart' as _i22;
 import '../domain/use_cases/authentication/get_guest_session_use_case.dart'
     as _i11;
 import '../domain/use_cases/authentication/get_request_token_use_case.dart'
@@ -36,12 +36,14 @@ import '../domain/use_cases/authentication/post_create_access_token_use_case.dar
     as _i15;
 import '../domain/use_cases/authentication/post_create_request_token_use_case.dart'
     as _i16;
-import '../domain/use_cases/authentication/post_create_session_use_case.dart'
+import '../domain/use_cases/authentication/post_create_request_token_v4_use_case.dart'
     as _i17;
-import '../domain/use_cases/authentication/post_login_with_username_and_password_use_case.dart'
+import '../domain/use_cases/authentication/post_create_session_use_case.dart'
     as _i18;
-import '../domain/use_cases/use_cases.dart' as _i20;
-import '../presentation/pages/sign_in/bloc/sign_in_bloc.dart' as _i19;
+import '../domain/use_cases/authentication/post_login_with_username_and_password_use_case.dart'
+    as _i19;
+import '../domain/use_cases/use_cases.dart' as _i21;
+import '../presentation/pages/sign_in/bloc/sign_in_bloc.dart' as _i20;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -100,24 +102,28 @@ extension GetItInjectableX on _i1.GetIt {
         _i16.PostCreateRequestTokenUseCase(
             authenticationRepositoryIml:
                 gh<_i10.AuthenticationRepositoryIml>()));
-    gh.factory<_i17.PostCreateSessionUseCase>(() =>
-        _i17.PostCreateSessionUseCase(
+    gh.factory<_i17.PostCreateRequestTokenV4UseCase>(() =>
+        _i17.PostCreateRequestTokenV4UseCase(
+            authenticationRepositoryIml:
+                gh<_i10.AuthenticationRepositoryIml>()));
+    gh.factory<_i18.PostCreateSessionUseCase>(() =>
+        _i18.PostCreateSessionUseCase(
             authenticationRepositoryIml:
                 gh<_i14.AuthenticationRepositoryIml>()));
-    gh.lazySingleton<_i18.PostLoginWithUsernameAndPasswordUseCase>(() =>
-        _i18.PostLoginWithUsernameAndPasswordUseCase(
+    gh.lazySingleton<_i19.PostLoginWithUsernameAndPasswordUseCase>(() =>
+        _i19.PostLoginWithUsernameAndPasswordUseCase(
             authenticationRepositoryIml:
                 gh<_i14.AuthenticationRepositoryIml>()));
-    gh.lazySingleton<_i19.SignInBloc>(() => _i19.SignInBloc(
-          gh<_i20.PostLoginWithUsernameAndPasswordUseCase>(),
-          gh<_i20.GetRequestTokenUseCase>(),
-          gh<_i21.SharedPreferencesManager>(),
-          gh<_i20.PostCreateSessionUseCase>(),
+    gh.lazySingleton<_i20.SignInBloc>(() => _i20.SignInBloc(
+          gh<_i21.PostLoginWithUsernameAndPasswordUseCase>(),
+          gh<_i21.GetRequestTokenUseCase>(),
+          gh<_i22.SharedPreferencesManager>(),
+          gh<_i21.PostCreateSessionUseCase>(),
         ));
     return this;
   }
 }
 
-class _$DioHelper extends _i22.DioHelper {}
+class _$DioHelper extends _i23.DioHelper {}
 
-class _$InjectionModule extends _i23.InjectionModule {}
+class _$InjectionModule extends _i24.InjectionModule {}
