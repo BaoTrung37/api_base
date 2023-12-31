@@ -16,18 +16,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: const BaseAppBar.titleOnly(
         title: 'Profile',
-        shouldShowBottomDivider: false,
       ),
       body: Column(
         children: [
           GestureDetector(
             onTap: () {
               //
+              context.replaceRoute(const LetInYouRoute());
             },
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Logout'),
+                Text(
+                  'Logout',
+                  style: AppTextStyles.textLargeBold,
+                ),
               ],
             ),
           ),
