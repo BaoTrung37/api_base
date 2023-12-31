@@ -49,22 +49,22 @@ class SharedPreferencesManager {
       );
 
   /// Access Token
-  Future<void> saveAccessToken({required String sessionId}) async =>
+  Future<void> saveAccessToken({required String accessToken}) async =>
       _sharedPreferences.setString(
-          PreferenceKeys.guestSessionId.name, sessionId);
+          PreferenceKeys.accessToken.name, accessToken);
 
   Future<bool> removeAccessToken() async => _sharedPreferences.remove(
-        PreferenceKeys.guestSessionId.name,
+        PreferenceKeys.accessToken.name,
       );
 
   Future<String?> getAccessToken() async => _sharedPreferences.getString(
-        PreferenceKeys.guestSessionId.name,
+        PreferenceKeys.accessToken.name,
       );
 
   /// Account Id
 
-  Future<void> saveAccountId({required String sessionId}) async =>
-      _sharedPreferences.setString(PreferenceKeys.accountId.name, sessionId);
+  Future<void> saveAccountId({required String accountId}) async =>
+      _sharedPreferences.setString(PreferenceKeys.accountId.name, accountId);
 
   Future<bool> removeAccountId() async => _sharedPreferences.remove(
         PreferenceKeys.accountId.name,
