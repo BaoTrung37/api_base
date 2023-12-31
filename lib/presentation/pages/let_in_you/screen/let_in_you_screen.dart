@@ -26,7 +26,7 @@ class LetInYouScreen extends StatelessWidget {
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 30.h, horizontal: 24.w),
+          padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 24.w),
           child: Column(
             children: [
               _buildLogo(context),
@@ -41,7 +41,7 @@ class LetInYouScreen extends StatelessWidget {
               16.verticalSpace,
               AppButton(
                 isExpanded: true,
-                title: 'Login by Web',
+                title: 'Login by access token',
                 backgroundColor: context.colors.secondaryBackgroundSecondary,
                 onTap: () {
                   //
