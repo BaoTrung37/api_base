@@ -122,7 +122,6 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i21.PostCreateSessionUseCase>(),
         ));
     gh.lazySingleton<_i23.LoginCubit>(() => _i23.LoginCubit(
-          gh<_i21.PostCreateRequestTokenUseCase>(),
           gh<_i21.PostCreateRequestTokenV4UseCase>(),
           gh<_i21.PostCreateAccessTokenUseCase>(),
           gh<_i21.PostCreateSessionUseCase>(),
