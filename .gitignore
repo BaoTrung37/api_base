@@ -6,6 +6,7 @@
 *.iws
 .idea/
 
+
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
@@ -15,13 +16,14 @@
 .packages
 .pub-cache/
 .pub/
+.env
 build/
 **/*.g.dart
 **/*.freezed.dart
 **/*.config.dart
 
 # FVM
-.fvm/
+.fvm/flutter_sdk
 
 # iOS related
 ios/Podfile.lock
