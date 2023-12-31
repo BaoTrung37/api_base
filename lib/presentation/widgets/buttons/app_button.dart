@@ -9,7 +9,10 @@ class AppButton extends StatelessWidget {
     required this.onTap,
     super.key,
     this.isExpanded = false,
+    this.backgroundColor,
   });
+
+  final Color? backgroundColor;
 
   final bool isExpanded;
   final String title;
@@ -21,7 +24,7 @@ class AppButton extends StatelessWidget {
       height: 60.h,
       child: Ink(
         decoration: BoxDecoration(
-          color: context.colors.primaryMain,
+          color: backgroundColor ?? context.colors.primaryMain,
           borderRadius: BorderRadius.circular(30.r),
         ),
         child: InkWell(

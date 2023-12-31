@@ -32,7 +32,38 @@ class LetInYouScreen extends StatelessWidget {
               _buildLogo(context),
               16.verticalSpace,
               _buildTitle(context),
-              32.verticalSpace,
+              24.verticalSpace,
+              AppButton(
+                isExpanded: true,
+                title: 'Sign in with password',
+                onTap: () => onGoToSignInWithPassword(context),
+              ),
+              16.verticalSpace,
+              AppButton(
+                isExpanded: true,
+                title: 'Login by Web',
+                backgroundColor: context.colors.secondaryBackgroundSecondary,
+                onTap: () {
+                  //
+                },
+              ),
+              16.verticalSpace,
+              AppButton(
+                  isExpanded: true,
+                  title: 'Login as guest',
+                  backgroundColor: context.colors.backgroundContrast,
+                  onTap: () {
+                    //
+                  }),
+              // 16.verticalSpace,
+              // _buildLoginButton(
+              //   context,
+              //   icon: Assets.icons.icApple,
+              //   title: 'Continue with Apple',
+              //   onTap: () {
+              //   },
+              // ),
+              _buildOrDivider(context),
               _buildLoginButton(
                 context,
                 icon: Assets.icons.icFacebook,
@@ -49,23 +80,6 @@ class LetInYouScreen extends StatelessWidget {
                 onTap: () {
                   //
                 },
-              ),
-              16.verticalSpace,
-              _buildLoginButton(
-                context,
-                icon: Assets.icons.icApple,
-                title: 'Continue with Apple',
-                onTap: () {
-                  //
-                },
-              ),
-              32.verticalSpace,
-              _buildOrDivider(context),
-              32.verticalSpace,
-              AppButton(
-                isExpanded: true,
-                title: 'Sign in with password',
-                onTap: () => onGoToSignInWithPassword(context),
               ),
               16.verticalSpace,
               _buildSignUp(context),
