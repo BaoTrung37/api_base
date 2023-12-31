@@ -4,20 +4,19 @@ import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'login_cubit.freezed.dart';
 part 'login_state.dart';
 
-@lazySingleton
+@injectable
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(
-    // this._postCreateRequestTokenUseCase,
     this._postCreateRequestTokenV4UseCase,
     this._postCreateAccessTokenUseCase,
     this._postCreateSessionUseCase,
   ) : super(const LoginState());
 
-  // final PostCreateRequestTokenUseCase _postCreateRequestTokenUseCase;
   final PostCreateRequestTokenV4UseCase _postCreateRequestTokenV4UseCase;
   final PostCreateAccessTokenUseCase _postCreateAccessTokenUseCase;
   final PostCreateSessionUseCase _postCreateSessionUseCase;
@@ -32,6 +31,11 @@ class LoginCubit extends Cubit<LoginState> {
         loginStatus: AppStatus.inProgress,
       ));
       final requestToken = await _getRequestToken();
+      await launchUrl(
+        Uri.parse(
+            'https://www.themoviedb.org/auth/access?request_token=$requestToken'),
+        mode: LaunchMode.inAppBrowserView,
+      );
       if (requestToken == null) {
         return;
       }
@@ -46,6 +50,9 @@ class LoginCubit extends Cubit<LoginState> {
       ));
     } catch (e) {
       //
+      emit(state.copyWith(
+        loginStatus: AppStatus.error,
+      ));
     }
   }
 

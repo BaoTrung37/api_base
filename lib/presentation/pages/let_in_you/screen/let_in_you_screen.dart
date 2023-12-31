@@ -1,7 +1,9 @@
 import 'package:api_base/gen/assets.gen.dart';
+import 'package:api_base/injection/di.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
@@ -18,76 +20,95 @@ class LetInYouScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const BaseAppBar.titleOnly(
-        title: '',
-        shouldShowBottomDivider: false,
+    return BlocProvider(
+      create: (context) => getIt.get<LoginCubit>(),
+      child: BlocBuilder<LoginCubit, LoginState>(
+        builder: (context, state) {
+          return IgnoreUserInteractionWhenLoadingView(
+            status: state.loginStatus,
+            child: Scaffold(
+              appBar: const BaseAppBar.titleOnly(
+                title: '',
+                shouldShowBottomDivider: false,
+              ),
+              resizeToAvoidBottomInset: true,
+              body: SingleChildScrollView(
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 16.h, horizontal: 24.w),
+                  child: _buildMainContent(context),
+                ),
+              ),
+            ),
+          );
+        },
       ),
-      resizeToAvoidBottomInset: true,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 24.w),
-          child: Column(
-            children: [
-              _buildLogo(context),
-              16.verticalSpace,
-              _buildTitle(context),
-              24.verticalSpace,
-              AppButton(
-                isExpanded: true,
-                title: 'Sign in with password',
-                onTap: () => onGoToSignInWithPassword(context),
-              ),
-              16.verticalSpace,
-              AppButton(
-                isExpanded: true,
-                title: 'Login by access token',
-                backgroundColor: context.colors.secondaryBackgroundSecondary,
-                onTap: () {
-                  //
-                },
-              ),
-              16.verticalSpace,
-              AppButton(
-                isExpanded: true,
-                title: 'Login as guest',
-                backgroundColor: context.colors.backgroundContrast,
-                onTap: () {
-                  //
-                },
-              ),
-              // 16.verticalSpace,
-              // _buildLoginButton(
-              //   context,
-              //   icon: Assets.icons.icApple,
-              //   title: 'Continue with Apple',
-              //   onTap: () {
-              //   },
-              // ),
-              _buildOrDivider(context),
-              _buildLoginButton(
-                context,
-                icon: Assets.icons.icFacebook,
-                title: 'Continue with Facebook',
-                onTap: () {
-                  //
-                },
-              ),
-              16.verticalSpace,
-              _buildLoginButton(
-                context,
-                icon: Assets.icons.icGoogle,
-                title: 'Continue with Google',
-                onTap: () {
-                  //
-                },
-              ),
-              16.verticalSpace,
-              _buildSignUp(context),
-            ],
-          ),
-        ),
-      ),
+    );
+  }
+
+  Widget _buildMainContent(BuildContext context) {
+    return BlocBuilder<LoginCubit, LoginState>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            _buildLogo(context),
+            16.verticalSpace,
+            _buildTitle(context),
+            24.verticalSpace,
+            AppButton(
+              isExpanded: true,
+              title: 'Sign in with password',
+              onTap: () => onGoToSignInWithPassword(context),
+            ),
+            16.verticalSpace,
+            AppButton(
+              isExpanded: true,
+              title: 'Login by access token',
+              backgroundColor: context.colors.secondaryBackgroundSecondary,
+              onTap: () async {
+                await getIt.get<LoginCubit>().loginByAccessToken();
+              },
+            ),
+            16.verticalSpace,
+            AppButton(
+              isExpanded: true,
+              title: 'Login as guest',
+              backgroundColor: context.colors.backgroundContrast,
+              onTap: () {
+                //
+              },
+            ),
+            // 16.verticalSpace,
+            // _buildLoginButton(
+            //   context,
+            //   icon: Assets.icons.icApple,
+            //   title: 'Continue with Apple',
+            //   onTap: () {
+            //   },
+            // ),
+            _buildOrDivider(context),
+            _buildLoginButton(
+              context,
+              icon: Assets.icons.icFacebook,
+              title: 'Continue with Facebook',
+              onTap: () {
+                //
+              },
+            ),
+            16.verticalSpace,
+            _buildLoginButton(
+              context,
+              icon: Assets.icons.icGoogle,
+              title: 'Continue with Google',
+              onTap: () {
+                //
+              },
+            ),
+            16.verticalSpace,
+            _buildSignUp(context),
+          ],
+        );
+      },
     );
   }
 
