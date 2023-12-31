@@ -11,6 +11,7 @@ abstract class AuthenticationRepository {
   Future<SessionResponse> postCreateSession(
     PostCreateSessionInput input,
   );
+
   Future<RequestTokenResponse> postCreateSessionWithLogin(
     PostLoginWithUsernameAndPasswordInput input,
   );

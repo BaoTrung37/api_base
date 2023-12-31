@@ -27,17 +27,23 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   Future<void> loginByAccessToken() async {
-    //
     try {
-      //
+      emit(state.copyWith(
+        loginStatus: AppStatus.inProgress,
+      ));
       final requestToken = await _getRequestToken();
       if (requestToken == null) {
         return;
       }
       final accessToken = await _getAccessTokenV4(requestToken);
-      if (accessToken != null) {
+      if (accessToken == null) {
         return;
       }
+      await _saveSessionId(accessToken);
+
+      emit(state.copyWith(
+        loginStatus: AppStatus.success,
+      ));
     } catch (e) {
       //
     }
@@ -59,6 +65,20 @@ class LoginCubit extends Cubit<LoginState> {
       );
     }
     return null;
+  }
+
+  Future<void> _saveSessionId(String accessToken) async {
+    try {
+      await _postCreateSessionUseCase
+          .run(PostCreateSessionInput(accessToken: accessToken));
+    } on Exception catch (e) {
+      emit(
+        state.copyWith(
+          loginStatus: AppStatus.error,
+          appError: e.appError,
+        ),
+      );
+    }
   }
 
   Future<String?> _getAccessTokenV4(

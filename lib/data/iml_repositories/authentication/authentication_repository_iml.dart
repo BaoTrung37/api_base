@@ -39,13 +39,13 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
     final response = await restClient.postCreateSession(
       SessionRequest(
         requestToken: input.requestToken,
-        accessToken: input.accessToken,
       ),
     );
 
     if (response.success) {
       await sharedPreferencesManager.saveSessionId(
-          sessionId: response.sessionId);
+        sessionId: response.sessionId,
+      );
     }
 
     return response;
