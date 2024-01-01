@@ -25,7 +25,8 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> checkIsLogin() async {
-    final sessionId = await getIt.get<SharedPreferencesManager>().getSession();
+    final sessionId =
+        await getIt.get<SharedPreferencesManager>().getSessionId();
     if (sessionId != null) {
       if (context.mounted) {
         await context.replaceRoute(const HomeRoute());

@@ -1,4 +1,7 @@
 enum PreferenceKeys {
   requestToken,
-  session,
+  sessionId,
+  guestSessionId,
+  accessToken,
+  accountId,
 }
