@@ -7,6 +7,7 @@ const appBarHeight = 42.0;
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BaseAppBar({
     this.title,
+    this.isCenterTitle = true,
     this.buttonTintColor,
     this.onBackButtonTap,
     this.backgroundColor,
@@ -20,6 +21,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   const BaseAppBar.customTitleView({
     required this.title,
+    this.isCenterTitle = true,
     this.onBackButtonTap,
     this.backgroundColor,
     this.buttonTintColor,
@@ -32,6 +34,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   const BaseAppBar.titleAndBackButton({
     required String title,
+    this.isCenterTitle = true,
     this.onBackButtonTap,
     this.backgroundColor,
     this.textColor,
@@ -45,6 +48,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   const BaseAppBar.titleOnly({
     required String title,
+    this.isCenterTitle = true,
     this.backgroundColor,
     this.textColor,
     this.shouldShowBottomDivider = true,
@@ -67,6 +71,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   final bool shouldShowBottomDivider;
   final bool shouldShowBackButton;
+  final bool? isCenterTitle;
 
   final VoidCallback? onBackButtonTap;
 
@@ -76,10 +81,10 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: title ??
           Text(
             navigationTitle ?? '',
-            style: AppTextStyles.headingXSmall
+            style: AppTextStyles.headingSmall
                 .copyWith(color: textColor ?? context.colors.textPrimary),
           ),
-      centerTitle: true,
+      centerTitle: isCenterTitle,
       elevation: 0,
       backgroundColor: backgroundColor ?? context.colors.backgroundPrimary,
       leading: shouldShowBackButton
@@ -93,7 +98,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
               // ),
               icon: Assets.icons.icBack.svg(),
             )
-          : Container(),
+          : null,
       actions: widgets,
       bottom: shouldShowBottomDivider ? const AppBarDivider() : null,
     );
