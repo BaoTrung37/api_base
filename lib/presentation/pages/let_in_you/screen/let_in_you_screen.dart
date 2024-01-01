@@ -5,6 +5,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
 class LetInYouScreen extends StatelessWidget {
@@ -14,8 +15,11 @@ class LetInYouScreen extends StatelessWidget {
     context.pushRoute(const SignInRoute());
   }
 
-  void onGoToSignUpScreen(BuildContext context) {
-    context.pushRoute(const SignUpRoute());
+  Future<void> onGoToSignUpScreen(BuildContext context) async {
+    await launchUrl(
+      Uri.parse('https://www.themoviedb.org/signup'),
+      mode: LaunchMode.inAppWebView,
+    );
   }
 
   @override
