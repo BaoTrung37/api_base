@@ -1,5 +1,7 @@
+import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -8,13 +10,22 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Home Screen'),
+      appBar: const BaseAppBar.titleOnly(
+        title: 'Movies',
+        isCenterTitle: false,
+        shouldShowBottomDivider: false,
       ),
-      body: const Center(
-        child: Column(
-          children: [],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: const Column(
+            children: [
+              Text(
+                'Popular',
+                style: AppTextStyles.textMediumBold,
+              ),
+            ],
+          ),
         ),
       ),
     );
