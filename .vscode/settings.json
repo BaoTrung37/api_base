@@ -9,6 +9,8 @@
       "**/.fvm": true
     },
     "cSpell.words": [
+      "cupertino",
+      "dotenv",
       "screenutil"
     ]
 }

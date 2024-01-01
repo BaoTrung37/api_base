@@ -33,6 +33,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LetInYouScreen(),
       );
     },
+    MainAppRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MainAppScreen(),
+      );
+    },
+    ProfileRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileScreen(),
+      );
+    },
     SignInRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -92,6 +104,34 @@ class LetInYouRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LetInYouRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MainAppScreen]
+class MainAppRoute extends PageRouteInfo<void> {
+  const MainAppRoute({List<PageRouteInfo>? children})
+      : super(
+          MainAppRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MainAppRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProfileScreen]
+class ProfileRoute extends PageRouteInfo<void> {
+  const ProfileRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

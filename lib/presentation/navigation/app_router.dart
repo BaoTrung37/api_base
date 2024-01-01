@@ -12,7 +12,18 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes => <AutoRoute>[
         AutoRoute(page: SplashRoute.page, initial: true),
         AutoRoute(page: LetInYouRoute.page),
-        AutoRoute(page: HomeRoute.page),
+        AutoRoute(
+          page: MainAppRoute.page,
+          children: [
+            AutoRoute(
+              page: HomeRoute.page,
+              initial: true,
+            ),
+            AutoRoute(
+              page: ProfileRoute.page,
+            ),
+          ],
+        ),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SignUpRoute.page),
         AutoRoute(page: ApiTestRoute.page),

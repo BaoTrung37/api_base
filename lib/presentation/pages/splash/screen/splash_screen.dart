@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
         await getIt.get<SharedPreferencesManager>().getSessionId();
     if (sessionId != null) {
       if (context.mounted) {
-        await context.replaceRoute(const HomeRoute());
+        await context.replaceRoute(const MainAppRoute());
       }
     } else {
       if (context.mounted) {

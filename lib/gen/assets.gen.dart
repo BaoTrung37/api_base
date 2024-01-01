@@ -20,6 +20,29 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_back.svg
   SvgGenImage get icBack => const SvgGenImage('assets/icons/ic_back.svg');
 
+  /// File path: assets/icons/ic_bookmark.svg
+  SvgGenImage get icBookmark =>
+      const SvgGenImage('assets/icons/ic_bookmark.svg');
+
+  /// File path: assets/icons/ic_bookmark_outline.svg
+  SvgGenImage get icBookmarkOutline =>
+      const SvgGenImage('assets/icons/ic_bookmark_outline.svg');
+
+  /// File path: assets/icons/ic_download.svg
+  SvgGenImage get icDownload =>
+      const SvgGenImage('assets/icons/ic_download.svg');
+
+  /// File path: assets/icons/ic_download_outline.svg
+  SvgGenImage get icDownloadOutline =>
+      const SvgGenImage('assets/icons/ic_download_outline.svg');
+
+  /// File path: assets/icons/ic_explore.svg
+  SvgGenImage get icExplore => const SvgGenImage('assets/icons/ic_explore.svg');
+
+  /// File path: assets/icons/ic_explore_outline.svg
+  SvgGenImage get icExploreOutline =>
+      const SvgGenImage('assets/icons/ic_explore_outline.svg');
+
   /// File path: assets/icons/ic_facebook.svg
   SvgGenImage get icFacebook =>
       const SvgGenImage('assets/icons/ic_facebook.svg');
@@ -27,15 +50,45 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_google.svg
   SvgGenImage get icGoogle => const SvgGenImage('assets/icons/ic_google.svg');
 
+  /// File path: assets/icons/ic_home.svg
+  SvgGenImage get icHome => const SvgGenImage('assets/icons/ic_home.svg');
+
+  /// File path: assets/icons/ic_home_outline.svg
+  SvgGenImage get icHomeOutline =>
+      const SvgGenImage('assets/icons/ic_home_outline.svg');
+
   /// File path: assets/icons/ic_lock.svg
   SvgGenImage get icLock => const SvgGenImage('assets/icons/ic_lock.svg');
 
   /// File path: assets/icons/ic_mail.svg
   SvgGenImage get icMail => const SvgGenImage('assets/icons/ic_mail.svg');
 
+  /// File path: assets/icons/ic_profile.svg
+  SvgGenImage get icProfile => const SvgGenImage('assets/icons/ic_profile.svg');
+
+  /// File path: assets/icons/ic_profile_outline.svg
+  SvgGenImage get icProfileOutline =>
+      const SvgGenImage('assets/icons/ic_profile_outline.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [icApple, icBack, icFacebook, icGoogle, icLock, icMail];
+  List<SvgGenImage> get values => [
+        icApple,
+        icBack,
+        icBookmark,
+        icBookmarkOutline,
+        icDownload,
+        icDownloadOutline,
+        icExplore,
+        icExploreOutline,
+        icFacebook,
+        icGoogle,
+        icHome,
+        icHomeOutline,
+        icLock,
+        icMail,
+        icProfile,
+        icProfileOutline
+      ];
 }
 
 class $AssetsImagesGen {

@@ -46,7 +46,7 @@ class LightColors {
   static const textContrastOnContrastBackground = Color(0xFFFFFFFF);
 
   /// Icons
-  static const iconPrimary = Color(0xFF3F4252);
+  static const iconPrimary = Color(0xFFFD3535);
   static const iconSecondary = Color(0xFFAEB0B8);
 
   /// Content
