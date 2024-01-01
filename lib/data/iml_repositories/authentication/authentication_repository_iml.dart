@@ -19,8 +19,13 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
   final SharedPreferencesManager sharedPreferencesManager;
 
   @override
-  Future<GuestSessionResponse> getGuestSession() {
-    return restClient.getGuestSession();
+  Future<GuestSessionResponse> getGuestSession() async {
+    final response = await restClient.getGuestSession();
+    if (response.success) {
+      await sharedPreferencesManager.saveGuestSessionId(
+          sessionId: response.guestSessionId);
+    }
+    return response;
   }
 
   @override
@@ -31,9 +36,19 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
   @override
   Future<SessionResponse> postCreateSession(
       PostCreateSessionInput input) async {
-    return restClient.postCreateSession(
-      SessionRequest(requestToken: input.requestToken),
+    final response = await restClient.postCreateSession(
+      SessionRequest(
+        requestToken: input.requestToken,
+      ),
     );
+
+    if (response.success) {
+      await sharedPreferencesManager.saveSessionId(
+        sessionId: response.sessionId,
+      );
+    }
+
+    return response;
   }
 
   @override
@@ -49,20 +64,30 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
   }
 
   @override
-  Future<RequestTokenResponse> createRequestToken() {
-    return authApiClient.createRequestToken(
-      RequestTokenRequest(
-        redirectTo: 'app://myapp.com/',
+  Future<AccessTokenResponse> createAccessToken(
+      PostCreateAccessTokenInput input) async {
+    final response = await authApiClient.createAccessToken(
+      AccessTokenRequest(
+        requestToken: input.requestToken,
       ),
     );
+
+    if (response.success) {
+      await Future.wait([
+        sharedPreferencesManager.saveAccessToken(
+            accessToken: response.accessToken),
+        sharedPreferencesManager.saveAccountId(accountId: response.accountId),
+      ]);
+    }
+
+    return response;
   }
 
   @override
-  Future<AccessTokenResponse> createAccessToken(
-      PostCreateAccessTokenInput input) {
-    return authApiClient.createAccessToken(
-      AccessTokenRequest(
-        requestToken: input.requestToken,
+  Future<RequestTokenResponse> createRequestTokenV4() {
+    return authApiClient.createRequestToken(
+      RequestTokenRequest(
+        redirectTo: 'app://myapp.com/',
       ),
     );
   }

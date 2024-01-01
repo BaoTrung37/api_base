@@ -14,7 +14,7 @@ class PostCreateAccessTokenUseCase
   });
 
   @override
-  Future<AccessTokenResponse> run(PostCreateAccessTokenInput input) {
+  Future<AccessTokenResponse> run(PostCreateAccessTokenInput input) async {
     return authenticationRepositoryIml.createAccessToken(input);
   }
 }

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/iml_repositories/iml_repositories.dart';
 import 'package:api_base/data/models/authentication/authentication.dart';
 import 'package:api_base/domain/use_cases/use_cases.dart';
@@ -20,8 +21,10 @@ class PostCreateSessionUseCase
 
 class PostCreateSessionInput {
   PostCreateSessionInput({
-    required this.requestToken,
+    this.requestToken,
+    this.accessToken,
   });
 
-  final String requestToken;
+  final String? requestToken;
+  final String? accessToken;
 }

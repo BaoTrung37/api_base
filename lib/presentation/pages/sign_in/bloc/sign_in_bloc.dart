@@ -87,7 +87,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         requestToken: requestTokenResponse1.requestToken,
       ));
       if (sessionResponse.success) {
-        await _sharedPreferencesManager.saveSession(
+        await _sharedPreferencesManager.saveSessionId(
           sessionId: sessionResponse.sessionId,
         );
       }

@@ -7,32 +7,37 @@ class AppVerticalDivider extends StatelessWidget {
   const AppVerticalDivider({
     super.key,
     this.child,
+    this.padding,
   });
 
   final Widget? child;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Container(
-            height: 1,
-            color: context.colors.action,
+    return Container(
+      padding: padding ?? EdgeInsets.symmetric(vertical: 24.h),
+      child: Row(
+        children: [
+          Expanded(
+            child: Container(
+              height: 1,
+              color: context.colors.action,
+            ),
           ),
-        ),
-        if (child != null)
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: child,
+          if (child != null)
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: child,
+            ),
+          Expanded(
+            child: Container(
+              height: 1,
+              color: context.colors.action,
+            ),
           ),
-        Expanded(
-          child: Container(
-            height: 1,
-            color: context.colors.action,
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

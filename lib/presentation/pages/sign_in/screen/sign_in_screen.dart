@@ -113,13 +113,11 @@ class SignInScreen extends StatelessWidget {
                           context.pushRoute(const ApiTestRoute());
                         },
                       ),
-                      24.verticalSpace,
                       const AppVerticalDivider(
                         child: Text(
                           'or continue with',
                         ),
                       ),
-                      24.verticalSpace,
                       _buildSignInOptions(context),
                       16.verticalSpace,
                       _buildSignUp(context),
