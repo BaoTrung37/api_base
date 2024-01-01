@@ -21,14 +21,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
         children: [
           GestureDetector(
             onTap: () {
-              //
-              context.replaceRoute(const LetInYouRoute());
+              context.replaceRoute(const SignInRoute());
             },
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Logout',
+                  'Sign In/ Sign Up',
                   style: AppTextStyles.textLargeBold,
                 ),
               ],
