@@ -1,4 +1,4 @@
-import 'package:api_base/data/models/authentication/authentication.dart';
+import 'package:api_base/data/models/models.dart';
 import 'package:api_base/data/services/network_services/commons/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -26,5 +26,11 @@ abstract class RestClient {
   @POST('/authentication/token/validate_with_login')
   Future<RequestTokenResponse> postCreateSessionWithLogin(
     @Body() SessionWithLoginRequest body,
+  );
+  @GET('/movie/popular')
+  Future<ApiCollectionResponse<PopularResponse>> getPopularMovies(
+    @Query('language') String? language,
+    @Query('page') int? page,
+    @Query('region') String? region,
   );
 }
