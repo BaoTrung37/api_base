@@ -18,7 +18,11 @@ class MovieListRepositoryImp extends MovieListsRepository {
     int? page = 1,
     String? region,
   }) {
-    final response = restClient.getPopularMovies(language, page, region);
+    final response = restClient.getPopularMovies(
+      language: language,
+      page: page,
+      region: region,
+    );
     return response;
   }
 }

@@ -11,14 +11,22 @@ class GenresRepositoryImp extends GenresRepository {
   final RestClient restClient;
 
   @override
-  Future<GenresResponse> getMovieGenresList() async {
-    final response = await restClient.getMovieGenres();
+  Future<GenresResponse> getMovieGenresList({
+    String? language,
+  }) async {
+    final response = await restClient.getMovieGenres(
+      language: language,
+    );
     return response;
   }
 
   @override
-  Future<GenresResponse> getTvGenresList() async {
-    final response = await restClient.getTvGenres();
+  Future<GenresResponse> getTvGenresList({
+    String? language,
+  }) async {
+    final response = await restClient.getTvGenres(
+      language: language,
+    );
     return response;
   }
 }

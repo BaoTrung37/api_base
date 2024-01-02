@@ -28,15 +28,19 @@ abstract class RestClient {
     @Body() SessionWithLoginRequest body,
   );
   @GET('/movie/popular')
-  Future<ApiCollectionResponse<MovieResponse>> getPopularMovies(
+  Future<ApiCollectionResponse<MovieResponse>> getPopularMovies({
     @Query('language') String? language,
     @Query('page') int? page,
     @Query('region') String? region,
-  );
+  });
 
   @GET('/genre/movie/list')
-  Future<GenresResponse> getMovieGenres();
+  Future<GenresResponse> getMovieGenres({
+    @Query('language') String? language,
+  });
 
   @GET('/genre/tv/list')
-  Future<GenresResponse> getTvGenres();
+  Future<GenresResponse> getTvGenres({
+    @Query('language') String? language,
+  });
 }
