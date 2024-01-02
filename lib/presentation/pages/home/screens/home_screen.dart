@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
               buildWhen: (previous, current) =>
                   previous.movies != current.movies,
               builder: (context, state) {
-                return HorizontalListView(
+                return MovieHorizontalListView(
                   headingTitle: 'Popular',
                   movies: state.movies,
                 );
