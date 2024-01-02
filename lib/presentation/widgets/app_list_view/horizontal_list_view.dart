@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class HorizontalListView extends StatelessWidget {
   const HorizontalListView({
     required this.headingTitle,
-    required this.showAllTap,
+    this.showAllTap,
     this.height,
     this.width,
     super.key,
@@ -18,7 +18,7 @@ class HorizontalListView extends StatelessWidget {
   final double? height;
   final double? width;
 
-  final VoidCallback showAllTap;
+  final VoidCallback? showAllTap;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class HorizontalListView extends StatelessWidget {
                 style: AppTextStyles.headingSmall,
               ),
               SeeAllButton(
-                onTap: showAllTap,
+                onTap: () => showAllTap,
               ),
             ],
           ),

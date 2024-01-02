@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -15,17 +16,15 @@ class HomeScreen extends StatelessWidget {
         isCenterTitle: false,
         shouldShowBottomDivider: false,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: const Column(
-            children: [
-              Text(
-                'Popular',
-                style: AppTextStyles.textMediumBold,
-              ),
-            ],
-          ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
+        child: CustomScrollView(
+          slivers: [
+            const HorizontalListView(
+              headingTitle: '',
+            ),
+            SliverToBoxAdapter(child: 16.verticalSpace),
+          ],
         ),
       ),
     );
