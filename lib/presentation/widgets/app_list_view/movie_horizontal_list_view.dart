@@ -1,12 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/models/models.dart';
 import 'package:api_base/presentation/resources/resources.dart';
+import 'package:api_base/presentation/utilities/extensions/datetime_extension.dart';
 import 'package:api_base/presentation/widgets/buttons/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HorizontalListView extends StatelessWidget {
-  const HorizontalListView({
+class MovieHorizontalListView extends StatelessWidget {
+  const MovieHorizontalListView({
     required this.headingTitle,
     required this.movies,
     super.key,
@@ -72,8 +73,8 @@ class HorizontalListView extends StatelessWidget {
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            const Text(
-                              'hahah',
+                            Text(
+                              movie.releaseDate.formatDateTime,
                               style: AppTextStyles.labelMediumLight,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
