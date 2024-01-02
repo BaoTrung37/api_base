@@ -53,7 +53,7 @@ class MainBottomBar extends StatelessWidget {
                   isSelected: page == index,
                 );
               },
-              // backgroundGradient: Palette.bottomNavigation,
+              backgroundColor: context.colors.backgroundPrimary,
               borderColor: context.colors.border,
               height: 90.h,
               activeIndex: page,

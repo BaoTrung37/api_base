@@ -71,7 +71,7 @@ class DarkColors {
   DarkColors._();
 
   /// Primary
-  static const primaryMain = Color(0xFFA33FF2);
+  static const primaryMain = Color(0xFFE21221);
   static const primaryText = Color(0xFFBF84ED);
   static const primaryTextOnContrast = Color(0xFF5B089C);
   static const primaryBackground = Color(0xFF4C0E7C);
