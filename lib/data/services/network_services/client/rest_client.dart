@@ -33,4 +33,10 @@ abstract class RestClient {
     @Query('page') int? page,
     @Query('region') String? region,
   );
+
+  @GET('/genre/movie/list')
+  Future<GenresResponse> getMovieGenres();
+
+  @GET('/genre/tv/list')
+  Future<GenresResponse> getTvGenres();
 }

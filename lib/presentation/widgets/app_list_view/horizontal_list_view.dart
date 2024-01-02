@@ -41,27 +41,27 @@ class HorizontalListView extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: height ?? 220.h,
+            height: height ?? 250.h,
             width: double.infinity,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 final movie = movies[index];
                 return SizedBox(
-                  height: height ?? 220.h,
+                  height: height ?? 250.h,
                   width: width ?? 120.w,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Expanded(
-                        flex: 5,
                         child: Container(
                           color: Colors.red,
                         ),
                       ),
-                      Expanded(
-                        flex: 2,
+                      8.verticalSpace,
+                      SizedBox(
+                        height: 70.h,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
