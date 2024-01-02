@@ -28,7 +28,7 @@ abstract class RestClient {
     @Body() SessionWithLoginRequest body,
   );
   @GET('/movie/popular')
-  Future<ApiCollectionResponse<PopularResponse>> getPopularMovies(
+  Future<ApiCollectionResponse<MovieResponse>> getPopularMovies(
     @Query('language') String? language,
     @Query('page') int? page,
     @Query('region') String? region,

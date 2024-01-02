@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:api_base/data/models/models.dart';
 import 'package:api_base/presentation/resources/resources.dart';
 import 'package:api_base/presentation/widgets/buttons/buttons.dart';
 import 'package:flutter/material.dart';
@@ -7,13 +8,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class HorizontalListView extends StatelessWidget {
   const HorizontalListView({
     required this.headingTitle,
-    this.showAllTap,
+    required this.movies,
+    super.key,
     this.height,
     this.width,
-    super.key,
+    this.showAllTap,
   });
 
   final String headingTitle;
+  final List<MovieResponse> movies;
 
   final double? height;
   final double? width;
@@ -43,6 +46,7 @@ class HorizontalListView extends StatelessWidget {
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
+                final movie = movies[index];
                 return SizedBox(
                   height: height ?? 220.h,
                   width: width ?? 120.w,
@@ -51,27 +55,37 @@ class HorizontalListView extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Expanded(
+                        flex: 5,
                         child: Container(
                           color: Colors.red,
                         ),
                       ),
-                      const Text(
-                        'Movie Title Movie Title',
-                        style: AppTextStyles.labelLarge,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const Text(
-                        'Subtitle',
-                        style: AppTextStyles.labelMediumLight,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      Expanded(
+                        flex: 2,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              movie.title,
+                              style: AppTextStyles.labelLarge,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const Text(
+                              'hahah',
+                              style: AppTextStyles.labelMediumLight,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
                 );
               },
-              itemCount: 10,
+              itemCount: movies.length,
               separatorBuilder: (context, index) => 16.horizontalSpace,
             ),
           ),

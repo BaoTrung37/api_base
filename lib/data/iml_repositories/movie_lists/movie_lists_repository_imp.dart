@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/models/base/api_collection_response.dart';
-import 'package:api_base/data/models/popular/popular_response.dart';
+import 'package:api_base/data/models/movie/movie_response.dart';
 import 'package:api_base/data/services/network_services/client/rest_client.dart';
 import 'package:api_base/domain/repositories/repositories.dart';
 import 'package:injectable/injectable.dart';
@@ -13,9 +13,9 @@ class MovieListRepositoryImp extends MovieListsRepository {
   });
 
   @override
-  Future<ApiCollectionResponse<PopularResponse>> getPopularMovieLists({
-    String language = 'en-US',
-    int page = 1,
+  Future<ApiCollectionResponse<MovieResponse>> getPopularMovieLists({
+    String? language = 'en-US',
+    int? page = 1,
     String? region,
   }) {
     final response = restClient.getPopularMovies(language, page, region);
