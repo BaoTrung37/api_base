@@ -18,34 +18,65 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    getIt.get<PopularMovieCubit>().init();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const BaseAppBar.titleOnly(
-        title: 'Movies',
-        isCenterTitle: false,
-        shouldShowBottomDivider: false,
-      ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: CustomScrollView(
-          slivers: [
-            BlocBuilder<PopularMovieCubit, MovieState>(
-              bloc: getIt.get<PopularMovieCubit>(),
-              buildWhen: (previous, current) =>
-                  previous.movies != current.movies,
-              builder: (context, state) {
-                return MovieHorizontalListView(
-                  headingTitle: 'Popular',
-                  movies: state.movies,
-                );
-              },
-            ),
-            SliverToBoxAdapter(child: 16.verticalSpace),
-          ],
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<PopularMovieCubit>(
+          create: (context) => getIt<PopularMovieCubit>()..init(),
+        ),
+      ],
+      child: Scaffold(
+        appBar: const BaseAppBar.titleOnly(
+          title: 'Movies',
+          isCenterTitle: false,
+          shouldShowBottomDivider: false,
+        ),
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: CustomScrollView(
+            slivers: [
+              BlocBuilder<PopularMovieCubit, MovieState>(
+                buildWhen: (previous, current) =>
+                    previous.status != current.status,
+                builder: (context, state) {
+                  // if (state.movies.isEmpty) {
+                  //   return SliverToBoxAdapter(
+                  //     child: SizedBox(
+                  //       height: 250.h,
+                  //       width: double.infinity,
+                  //       child: ListView.builder(
+                  //         scrollDirection: Axis.horizontal,
+                  //         itemBuilder: (context, index) {
+                  //           return SizedBox(
+                  //             height: 250.h,
+                  //             width: 120.w,
+                  //             child: Shimmer.fromColors(
+                  //               baseColor: Colors.red,
+                  //               highlightColor: Colors.yellow,
+                  //               child: SizedBox(
+                  //                 height: 250.h,
+                  //                 width: 120.w,
+                  //               ),
+                  //             ),
+                  //           );
+                  //         },
+                  //         itemCount: 1,
+                  //       ),
+                  //     ),
+                  //   );
+                  // }
+                  return MovieHorizontalListView(
+                    headingTitle: 'Popular',
+                    movies: state.movies,
+                  );
+                },
+              ),
+              SliverToBoxAdapter(child: 16.verticalSpace),
+            ],
+          ),
         ),
       ),
     );
