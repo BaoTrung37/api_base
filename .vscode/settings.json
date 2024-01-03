@@ -10,7 +10,9 @@
     },
     "cSpell.words": [
       "cupertino",
+      "datetime",
       "dotenv",
-      "screenutil"
+      "screenutil",
+      "tmdb"
     ]
 }
