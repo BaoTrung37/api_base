@@ -30,71 +30,83 @@ class MovieHorizontalListView extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                headingTitle,
-                style: AppTextStyles.headingSmall,
-              ),
-              SeeAllButton(
-                onTap: () => showAllTap,
-              ),
-            ],
-          ),
+          _buildHeadingTitle(),
           16.verticalSpace,
-          SizedBox(
-            height: height ?? 250.h,
-            width: double.infinity,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                final movie = movies[index];
+          _buildMovieListView(),
+        ],
+      ),
+    );
+  }
 
-                return SizedBox(
-                  height: height ?? 250.h,
-                  width: width ?? 120.w,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Expanded(
-                        child: CustomCachedNetworkImage(
-                          imageUrl: movie.posterPath.tmdbW154Path,
-                        ),
-                      ),
-                      8.verticalSpace,
-                      SizedBox(
-                        height: 70.h,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              movie.title,
-                              style: AppTextStyles.labelLarge,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            4.verticalSpace,
-                            Text(
-                              movie.releaseDate.formatDateTime,
-                              style: AppTextStyles.labelMediumLight,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
-              itemCount: movies.length,
-              separatorBuilder: (context, index) => 16.horizontalSpace,
+  Widget _buildMovieListView() {
+    return SizedBox(
+      height: height ?? 250.h,
+      width: double.infinity,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          final movie = movies[index];
+
+          return _buildMovieItem(movie);
+        },
+        itemCount: movies.length,
+        separatorBuilder: (context, index) => 16.horizontalSpace,
+      ),
+    );
+  }
+
+  Widget _buildMovieItem(MovieResponse movie) {
+    return SizedBox(
+      height: height ?? 250.h,
+      width: width ?? 120.w,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Expanded(
+            child: CustomCachedNetworkImage(
+              imageUrl: movie.posterPath.tmdbW154Path,
+            ),
+          ),
+          8.verticalSpace,
+          SizedBox(
+            height: 70.h,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  movie.title,
+                  style: AppTextStyles.labelLarge,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                4.verticalSpace,
+                Text(
+                  movie.releaseDate.formatDateTime,
+                  style: AppTextStyles.labelMediumLight,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildHeadingTitle() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          headingTitle,
+          style: AppTextStyles.headingSmall,
+        ),
+        SeeAllButton(
+          onTap: () => showAllTap,
+        ),
+      ],
     );
   }
 }
