@@ -8,7 +8,7 @@ part 'profile_state.dart';
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(const _Initial()) {
     on<ProfileEvent>((event, emit) {
-      // TODO: implement event handler
+      //
     });
   }
 }

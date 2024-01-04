@@ -57,7 +57,7 @@ class SignUpScreen extends StatelessWidget {
                 AppButton(
                   isExpanded: true,
                   onTap: () {
-                    // TODO: Implement sign up method
+                    //
                   },
                   title: 'Sign up',
                 ),
@@ -105,7 +105,7 @@ class SignUpScreen extends StatelessWidget {
           context,
           iconSvg: Assets.icons.icFacebook,
           onTap: () {
-            // TODO: Implement
+            //
           },
         ),
         16.horizontalSpace,
