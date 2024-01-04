@@ -44,6 +44,16 @@ abstract class RestClient {
   });
   // End Movie Lists
 
+  // Start movie
+
+  @GET('/movie/{movie_id}')
+  Future<MovieResponse> getMovieDetail(
+    @Path('movie_id') String movieId,
+    @Query('append_to_response') String? appendToResponse,
+  );
+
+  // End movie
+
   @GET('/genre/movie/list')
   Future<GenresResponse> getMovieGenres({
     @Query('language') String? language,

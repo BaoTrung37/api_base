@@ -4,4 +4,5 @@ enum PreferenceKeys {
   guestSessionId,
   accessToken,
   accountId,
+  language,
 }

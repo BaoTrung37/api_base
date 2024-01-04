@@ -14,6 +14,7 @@ abstract class DioHelper {
         ),
         interceptors: [
           getIt<AuthInterceptor>(),
+          getIt<CommonHeaderInterceptor>(),
           // getIt<TokenRefreshInterceptor>(),
           _DebugLogger(),
         ],

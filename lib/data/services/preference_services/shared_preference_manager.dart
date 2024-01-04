@@ -73,4 +73,17 @@ class SharedPreferencesManager {
   Future<String?> getAccountId() async => _sharedPreferences.getString(
         PreferenceKeys.accountId.name,
       );
+
+  /// Language
+
+  Future<void> saveLanguage({required String language}) async =>
+      _sharedPreferences.setString(PreferenceKeys.language.name, language);
+
+  Future<bool> removeLanguage() async => _sharedPreferences.remove(
+        PreferenceKeys.language.name,
+      );
+
+  Future<String?> getLanguage() async => _sharedPreferences.getString(
+        PreferenceKeys.language.name,
+      );
 }

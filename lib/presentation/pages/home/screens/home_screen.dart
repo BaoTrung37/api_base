@@ -45,6 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   return MovieHorizontalListView(
                     headingTitle: 'Popular',
                     movies: state.movies,
+                    onMovieTap: (movieId) {
+                      context.pushRoute(const MovieDetailRoute());
+                    },
                   );
                 },
               ),
@@ -57,6 +60,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     headingTitle: 'Playing In Theatres',
                     movies: state.movies,
                     isPoster: false,
+                    onMovieTap: (movieId) {
+                      context.pushRoute(const MovieDetailRoute());
+                    },
                   );
                 },
               ),
