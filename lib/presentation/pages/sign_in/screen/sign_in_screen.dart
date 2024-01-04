@@ -158,7 +158,7 @@ class SignInScreen extends StatelessWidget {
           context,
           iconSvg: Assets.icons.icFacebook,
           onTap: () {
-            // TODO: Implement
+            //
           },
         ),
         16.horizontalSpace,
