@@ -15,6 +15,7 @@ class MovieHorizontalListView extends StatelessWidget {
     this.height,
     this.width,
     this.showAllTap,
+    this.isPoster = true,
   });
 
   final String headingTitle;
@@ -24,6 +25,15 @@ class MovieHorizontalListView extends StatelessWidget {
   final double? width;
 
   final VoidCallback? showAllTap;
+  final bool isPoster;
+
+  double _getWidthItem(BuildContext context) {
+    final size = MediaQuery.sizeOf(context).width;
+    if (isPoster) {
+      return size * 0.3;
+    }
+    return size * 0.6;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +57,7 @@ class MovieHorizontalListView extends StatelessWidget {
         itemBuilder: (context, index) {
           final movie = movies[index];
 
-          return _buildMovieItem(movie);
+          return _buildMovieItem(context, movie);
         },
         itemCount: movies.length,
         separatorBuilder: (context, index) => 16.horizontalSpace,
@@ -55,17 +65,19 @@ class MovieHorizontalListView extends StatelessWidget {
     );
   }
 
-  Widget _buildMovieItem(MovieResponse movie) {
+  Widget _buildMovieItem(BuildContext context, MovieResponse movie) {
     return SizedBox(
       height: height ?? 250.h,
-      width: width ?? 120.w,
+      width: width ?? _getWidthItem(context),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           Expanded(
             child: CustomCachedNetworkImage(
-              imageUrl: movie.posterPath.tmdbW154Path,
+              imageUrl: isPoster
+                  ? movie.posterPath.tmdbW154Path
+                  : movie.backdropPath.tmdbW300Path,
             ),
           ),
           8.verticalSpace,
