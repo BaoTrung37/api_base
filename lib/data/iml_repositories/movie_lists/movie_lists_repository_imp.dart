@@ -14,11 +14,25 @@ class MovieListRepositoryImp extends MovieListsRepository {
 
   @override
   Future<ApiCollectionResponse<MovieResponse>> getPopularMovieLists({
-    String? language = 'en-US',
-    int? page = 1,
+    String language = 'en-US',
+    int page = 1,
     String? region,
   }) {
     final response = restClient.getPopularMovies(
+      language: language,
+      page: page,
+      region: region,
+    );
+    return response;
+  }
+
+  @override
+  Future<ApiCollectionResponse<MovieResponse>> getNowPlayingMovieLists({
+    String language = 'en-US',
+    int page = 1,
+    String? region,
+  }) {
+    final response = restClient.getNowPlayingMovies(
       language: language,
       page: page,
       region: region,

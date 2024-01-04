@@ -6,4 +6,9 @@ abstract class MovieListsRepository {
     int page = 1,
     String? region,
   });
+  Future<ApiCollectionResponse<MovieResponse>> getNowPlayingMovieLists({
+    String language = 'en-US',
+    int page = 1,
+    String? region,
+  });
 }

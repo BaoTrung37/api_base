@@ -42,35 +42,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  // if (state.movies.isEmpty) {
-                  //   return SliverToBoxAdapter(
-                  //     child: SizedBox(
-                  //       height: 250.h,
-                  //       width: double.infinity,
-                  //       child: ListView.builder(
-                  //         scrollDirection: Axis.horizontal,
-                  //         itemBuilder: (context, index) {
-                  //           return SizedBox(
-                  //             height: 250.h,
-                  //             width: 120.w,
-                  //             child: Shimmer.fromColors(
-                  //               baseColor: Colors.red,
-                  //               highlightColor: Colors.yellow,
-                  //               child: SizedBox(
-                  //                 height: 250.h,
-                  //                 width: 120.w,
-                  //               ),
-                  //             ),
-                  //           );
-                  //         },
-                  //         itemCount: 1,
-                  //       ),
-                  //     ),
-                  //   );
-                  // }
                   return MovieHorizontalListView(
                     headingTitle: 'Popular',
                     movies: state.movies,
+                  );
+                },
+              ),
+              SliverToBoxAdapter(child: 24.verticalSpace),
+              BlocBuilder<PopularMovieCubit, MovieState>(
+                buildWhen: (previous, current) =>
+                    previous.status != current.status,
+                builder: (context, state) {
+                  return MovieHorizontalListView(
+                    headingTitle: 'Playing In Theatres',
+                    movies: state.movies,
+                    isPoster: false,
                   );
                 },
               ),
