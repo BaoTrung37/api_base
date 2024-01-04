@@ -3,8 +3,7 @@ import 'package:api_base/data/models/models.dart';
 import 'package:api_base/presentation/resources/resources.dart';
 import 'package:api_base/presentation/utilities/extensions/datetime_extension.dart';
 import 'package:api_base/presentation/utilities/extensions/string_extension.dart';
-import 'package:api_base/presentation/widgets/buttons/buttons.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:api_base/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -60,17 +59,8 @@ class MovieHorizontalListView extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Expanded(
-                        child: CachedNetworkImage(
+                        child: CustomCachedNetworkImage(
                           imageUrl: movie.posterPath.tmdbW154Path,
-                          fit: BoxFit.fill,
-                          progressIndicatorBuilder:
-                              (context, url, downloadProgress) => Center(
-                            child: CircularProgressIndicator(
-                              value: downloadProgress.progress,
-                            ),
-                          ),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
                         ),
                       ),
                       8.verticalSpace,
@@ -78,7 +68,6 @@ class MovieHorizontalListView extends StatelessWidget {
                         height: 70.h,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               movie.title,
@@ -86,6 +75,7 @@ class MovieHorizontalListView extends StatelessWidget {
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
+                            4.verticalSpace,
                             Text(
                               movie.releaseDate.formatDateTime,
                               style: AppTextStyles.labelMediumLight,
