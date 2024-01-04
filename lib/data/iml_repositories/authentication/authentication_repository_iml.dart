@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/models/authentication/authentication.dart';
-import 'package:api_base/data/services/network_services/client/auth_api_client.dart';
 import 'package:api_base/data/services/network_services/client/rest_client.dart';
+import 'package:api_base/data/services/network_services/client/rest_client_v4.dart';
 import 'package:api_base/data/services/preference_services/shared_preference_manager.dart';
 import 'package:api_base/domain/repositories/repositories.dart';
 import 'package:api_base/domain/use_cases/authentication/authentication.dart';
@@ -15,7 +15,7 @@ class AuthenticationRepositoryIml extends AuthenticationRepository {
     required this.sharedPreferencesManager,
   });
   final RestClient restClient;
-  final AuthApiClient authApiClient;
+  final RestClientV4 authApiClient;
   final SharedPreferencesManager sharedPreferencesManager;
 
   @override

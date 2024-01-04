@@ -1,3 +1,4 @@
 export 'authentication/authentication.dart';
 export 'base/base.dart';
-export 'popular/popular.dart';
+export 'genres/genres.dart' hide Genre;
+export 'movie/movie.dart';

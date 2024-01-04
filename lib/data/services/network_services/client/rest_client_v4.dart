@@ -4,14 +4,14 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 
-part 'auth_api_client.g.dart';
+part 'rest_client_v4.g.dart';
 
 @injectable
 @RestApi(baseUrl: ApiConstants.baseUrlV4)
-abstract class AuthApiClient {
+abstract class RestClientV4 {
   @factoryMethod
-  factory AuthApiClient(Dio dio, {@factoryParam String? baseUrl}) =
-      _AuthApiClient;
+  factory RestClientV4(Dio dio, {@factoryParam String? baseUrl}) =
+      _RestClientV4;
 
   @POST('/auth/request_token')
   Future<RequestTokenResponse> createRequestToken(
