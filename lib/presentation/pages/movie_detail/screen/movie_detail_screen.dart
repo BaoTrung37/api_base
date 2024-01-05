@@ -26,7 +26,63 @@ class MovieDetailScreen extends StatelessWidget {
           Assets.icons.icBookmarkOutline.svg(height: 24.h),
         ],
       ),
-      body: const Text(''),
+      body: const _MainContent(),
+    );
+  }
+}
+
+class _MainContent extends StatelessWidget {
+  const _MainContent();
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            children: [
+              Container(
+                height: 200.h,
+                width: double.infinity,
+                color: Colors.red,
+              ),
+              Transform.translate(
+                offset: Offset(8.w, -10.h),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 100.h,
+                      width: 80.w,
+                      color: Colors.green,
+                    ),
+                    8.horizontalSpace,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Text('The Family Plan'),
+                        const Text('Rate'),
+                        Container(
+                          height: 100.h,
+                          width: 80.w,
+                          color: Colors.green,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Container(
+            height: 100.h,
+            width: 100.w,
+            color: Colors.blue,
+          ),
+        )
+      ],
     );
   }
 }
