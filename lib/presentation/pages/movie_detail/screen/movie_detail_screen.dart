@@ -8,9 +8,19 @@ class MovieDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: BaseAppBar.customTitleView(title: Text('Movie Detail')),
-      body: Text(''),
+    return Scaffold(
+      appBar: BaseAppBar.customTitleView(
+        title: Text(
+          'Movie Detail',
+          style: AppTextStyles.headingSmall
+              .copyWith(color: context.colors.textPrimary),
+        ),
+        isCenterTitle: false,
+        widgets: const [
+          //
+        ],
+      ),
+      body: const Text(''),
     );
   }
 }

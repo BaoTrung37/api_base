@@ -111,7 +111,7 @@ class DarkColors {
   static const textContrastOnContrastBackground = Color(0xFF18181D);
 
   /// Icons
-  static const iconPrimary = Color(0xFF6C6C86);
+  static const iconPrimary = Color(0xFFFD3535);
   static const iconSecondary = Color(0xFF4C4C63);
 
   /// Content
