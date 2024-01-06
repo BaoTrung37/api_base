@@ -60,10 +60,13 @@ class _MovieInformation extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Column(
         children: [
-          Container(
+          SizedBox(
             height: 200.h,
             width: double.infinity,
-            color: Colors.red,
+            child: const CustomCachedNetworkImage(
+              imageUrl:
+                  'https://image.tmdb.org/t/p/w1280/gMJngTNfaqCSCqGD4y8lVMZXKDn.jpg',
+            ),
           ),
           Transform.translate(
             offset: Offset(0, -10.h),
@@ -72,10 +75,13 @@ class _MovieInformation extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
+                  SizedBox(
                     height: 150.h,
                     width: 90.w,
-                    color: Colors.green,
+                    child: const CustomCachedNetworkImage(
+                      imageUrl:
+                          'https://image.tmdb.org/t/p/w500/ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg',
+                    ),
                   ),
                   8.horizontalSpace,
                   Expanded(
@@ -90,10 +96,9 @@ class _MovieInformation extends StatelessWidget {
                         8.verticalSpace,
                         _buildMovieRate(),
                         16.verticalSpace,
-                        Container(
-                          height: 100.h,
-                          width: 80.w,
-                          color: Colors.green,
+                        const Text(
+                          "Super-Hero partners Scott Lang and Hope van Dyne, along with with Hope's parents Janet van Dyne and Hank Pym, and Scott's daughter Cassie Lang, find themselves exploring the Quantum Realm, interacting with strange new creatures and embarking on an adventure that will push them beyond the limits of what they thought possible.",
+                          style: AppTextStyles.textMedium,
                         ),
                       ],
                     ),
