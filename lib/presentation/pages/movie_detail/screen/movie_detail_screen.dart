@@ -59,9 +59,21 @@ class _MainContent extends StatelessWidget {
                     8.horizontalSpace,
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text('The Family Plan'),
-                        const Text('Rate'),
+                        const Text(
+                          'The Family Plan',
+                          style: AppTextStyles.headingSmall,
+                        ),
+                        const Row(
+                          children: [
+                            Rate
+                            Text(
+                              'Rate',
+                              style: AppTextStyles.headingXXSmall,
+                            ),
+                          ],
+                        ),
                         Container(
                           height: 100.h,
                           width: 80.w,
