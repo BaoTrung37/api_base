@@ -39,21 +39,74 @@ class _MainContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        const _MovieInformation(),
+        const _MovieInformationView(),
         SliverToBoxAdapter(
-          child: Container(
-            height: 200.h,
-            width: 100.w,
-            color: Colors.blue,
-          ),
-        )
+          child: 24.verticalSpace,
+        ),
+        const _FilmCastView(),
+        SliverToBoxAdapter(
+          child: 24.verticalSpace,
+        ),
       ],
     );
   }
 }
 
-class _MovieInformation extends StatelessWidget {
-  const _MovieInformation();
+class _FilmCastView extends StatelessWidget {
+  const _FilmCastView();
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        child: Column(
+          children: [
+            _buildHeadingTitle(),
+            16.verticalSpace,
+            SizedBox(
+              height: 100.h,
+              child: ListView.separated(
+                itemCount: 10,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return SizedBox(
+                    width: 100,
+                    child: CustomCachedNetworkImage(
+                      imageUrl: AppConstant.posterUrl,
+                      isCircleImage: true,
+                    ),
+                  );
+                },
+                separatorBuilder: (context, index) => 16.horizontalSpace,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeadingTitle() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          'Cast & Crew',
+          style: AppTextStyles.headingSmall,
+        ),
+        SeeAllButton(
+          onTap: () {
+            //
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class _MovieInformationView extends StatelessWidget {
+  const _MovieInformationView();
 
   @override
   Widget build(BuildContext context) {
