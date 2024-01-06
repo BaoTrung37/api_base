@@ -81,6 +81,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_star.svg
   SvgGenImage get icStar => const SvgGenImage('assets/icons/ic_star.svg');
 
+  /// File path: assets/icons/ic_star_half.svg
+  SvgGenImage get icStarHalf =>
+      const SvgGenImage('assets/icons/ic_star_half.svg');
+
   /// File path: assets/icons/ic_star_outline.svg
   SvgGenImage get icStarOutline =>
       const SvgGenImage('assets/icons/ic_star_outline.svg');
@@ -106,6 +110,7 @@ class $AssetsIconsGen {
         icProfile,
         icProfileOutline,
         icStar,
+        icStarHalf,
         icStarOutline
       ];
 }

@@ -2,6 +2,7 @@ import 'package:api_base/gen/assets.gen.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
@@ -47,41 +48,40 @@ class _MainContent extends StatelessWidget {
                 color: Colors.red,
               ),
               Transform.translate(
-                offset: Offset(8.w, -10.h),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      height: 100.h,
-                      width: 80.w,
-                      color: Colors.green,
-                    ),
-                    8.horizontalSpace,
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'The Family Plan',
-                          style: AppTextStyles.headingSmall,
-                        ),
-                        const Row(
+                offset: Offset(0, -10.h),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 100.h,
+                        width: 80.w,
+                        color: Colors.green,
+                      ),
+                      8.horizontalSpace,
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Rate
-                            Text(
-                              'Rate',
-                              style: AppTextStyles.headingXXSmall,
+                            const Text(
+                              'The Family Plan The Family Plan The Family Plan',
+                              style: AppTextStyles.headingSmall,
+                            ),
+                            8.verticalSpace,
+                            _buildMovieRate(),
+                            16.verticalSpace,
+                            Container(
+                              height: 100.h,
+                              width: 80.w,
+                              color: Colors.green,
                             ),
                           ],
                         ),
-                        Container(
-                          height: 100.h,
-                          width: 80.w,
-                          color: Colors.green,
-                        ),
-                      ],
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -94,6 +94,48 @@ class _MainContent extends StatelessWidget {
             color: Colors.blue,
           ),
         )
+      ],
+    );
+  }
+
+  Widget _buildMovieRate() {
+    return Row(
+      children: [
+        RatingBar(
+          initialRating: 2.4,
+          direction: Axis.horizontal,
+          allowHalfRating: true,
+          itemCount: 5,
+          ratingWidget: RatingWidget(
+            full: Assets.icons.icStar.svg(),
+            half: Assets.icons.icStarHalf.svg(),
+            empty: Assets.icons.icStarOutline.svg(),
+          ),
+          ignoreGestures: true,
+          itemSize: 16.sp,
+          itemPadding: EdgeInsets.symmetric(horizontal: 2.w),
+          onRatingUpdate: (_) {},
+        ),
+        8.horizontalSpace,
+        const Text(
+          '(100)',
+          style: AppTextStyles.textMediumBold,
+        ),
+        Expanded(
+          child: Center(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Assets.icons.icStar.svg(height: 16.sp),
+                8.horizontalSpace,
+                const Text(
+                  '9.5',
+                  style: AppTextStyles.textMediumBold,
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
