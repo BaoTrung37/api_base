@@ -63,9 +63,8 @@ class _MovieInformation extends StatelessWidget {
           SizedBox(
             height: 200.h,
             width: double.infinity,
-            child: const CustomCachedNetworkImage(
-              imageUrl:
-                  'https://image.tmdb.org/t/p/w1280/gMJngTNfaqCSCqGD4y8lVMZXKDn.jpg',
+            child: CustomCachedNetworkImage(
+              imageUrl: AppConstant.backdropUrl,
             ),
           ),
           Transform.translate(
@@ -78,9 +77,8 @@ class _MovieInformation extends StatelessWidget {
                   SizedBox(
                     height: 150.h,
                     width: 90.w,
-                    child: const CustomCachedNetworkImage(
-                      imageUrl:
-                          'https://image.tmdb.org/t/p/w500/ngl2FKBlU4fhbdsrtdom9LVLBXw.jpg',
+                    child: CustomCachedNetworkImage(
+                      imageUrl: AppConstant.posterUrl,
                     ),
                   ),
                   8.horizontalSpace,
