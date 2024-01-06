@@ -39,54 +39,7 @@ class _MainContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverToBoxAdapter(
-          child: Column(
-            children: [
-              Container(
-                height: 200.h,
-                width: double.infinity,
-                color: Colors.red,
-              ),
-              Transform.translate(
-                offset: Offset(0, -10.h),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.w),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 150.h,
-                        width: 90.w,
-                        color: Colors.green,
-                      ),
-                      8.horizontalSpace,
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'The Family Plan The Family Plan The Family Plan',
-                              style: AppTextStyles.headingSmall,
-                            ),
-                            8.verticalSpace,
-                            _buildMovieRate(),
-                            16.verticalSpace,
-                            Container(
-                              height: 100.h,
-                              width: 80.w,
-                              color: Colors.green,
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+        const _MovieInformation(),
         SliverToBoxAdapter(
           child: Container(
             height: 200.h,
@@ -95,6 +48,62 @@ class _MainContent extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class _MovieInformation extends StatelessWidget {
+  const _MovieInformation();
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Column(
+        children: [
+          Container(
+            height: 200.h,
+            width: double.infinity,
+            color: Colors.red,
+          ),
+          Transform.translate(
+            offset: Offset(0, -10.h),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.w),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 150.h,
+                    width: 90.w,
+                    color: Colors.green,
+                  ),
+                  8.horizontalSpace,
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          'The Family Plan The Family Plan The Family Plan',
+                          style: AppTextStyles.headingSmall,
+                        ),
+                        8.verticalSpace,
+                        _buildMovieRate(),
+                        16.verticalSpace,
+                        Container(
+                          height: 100.h,
+                          width: 80.w,
+                          color: Colors.green,
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
