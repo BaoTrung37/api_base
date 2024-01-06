@@ -55,8 +55,8 @@ class _MainContent extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: 100.h,
-                        width: 80.w,
+                        height: 150.h,
+                        width: 90.w,
                         color: Colors.green,
                       ),
                       8.horizontalSpace,
@@ -89,7 +89,7 @@ class _MainContent extends StatelessWidget {
         ),
         SliverToBoxAdapter(
           child: Container(
-            height: 100.h,
+            height: 200.h,
             width: 100.w,
             color: Colors.blue,
           ),
@@ -112,21 +112,21 @@ class _MainContent extends StatelessWidget {
             empty: Assets.icons.icStarOutline.svg(),
           ),
           ignoreGestures: true,
-          itemSize: 16.sp,
+          itemSize: 12.sp,
           itemPadding: EdgeInsets.symmetric(horizontal: 2.w),
           onRatingUpdate: (_) {},
         ),
         8.horizontalSpace,
         const Text(
           '(100)',
-          style: AppTextStyles.textMediumBold,
+          style: AppTextStyles.textSmallBold,
         ),
         Expanded(
           child: Center(
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Assets.icons.icStar.svg(height: 16.sp),
+                Assets.icons.icStar.svg(height: 12.sp),
                 8.horizontalSpace,
                 const Text(
                   '9.5',
