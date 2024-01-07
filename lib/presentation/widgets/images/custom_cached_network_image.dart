@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/presentation/presentation.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -5,13 +6,18 @@ import 'package:flutter/material.dart';
 class CustomCachedNetworkImage extends StatelessWidget {
   const CustomCachedNetworkImage({
     required this.imageUrl,
+    super.key,
     this.isBorder = false,
     this.isCircleImage = false,
-    super.key,
+    this.height,
+    this.width,
   });
+
   final String imageUrl;
   final bool isBorder;
   final bool isCircleImage;
+  final double? height;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +26,8 @@ class CustomCachedNetworkImage extends StatelessWidget {
       fit: BoxFit.cover,
       imageBuilder: (context, imageProvider) {
         return Container(
+          height: height,
+          width: width,
           decoration: BoxDecoration(
             border: isBorder
                 ? Border.all(
