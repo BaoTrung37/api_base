@@ -36,7 +36,11 @@ class MovieHorizontalListView extends StatelessWidget {
     if (isPoster) {
       return size * 0.3;
     }
-    return size * 0.6;
+    return size * 0.5;
+  }
+
+  double _getHeightItem() {
+    return isPoster ? 250.h : 180.h;
   }
 
   @override
@@ -57,7 +61,7 @@ class MovieHorizontalListView extends StatelessWidget {
 
   Widget _buildEmptyListView() {
     return SizedBox(
-      height: height ?? 150.h,
+      height: height ?? _getHeightItem(),
       width: double.infinity,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
@@ -75,7 +79,7 @@ class MovieHorizontalListView extends StatelessWidget {
 
   Widget _buildMovieListView() {
     return SizedBox(
-      height: height ?? 250.h,
+      height: height ?? _getHeightItem(),
       width: double.infinity,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
