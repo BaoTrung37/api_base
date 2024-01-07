@@ -46,8 +46,29 @@ class MovieHorizontalListView extends StatelessWidget {
         children: [
           _buildHeadingTitle(),
           16.verticalSpace,
-          _buildMovieListView(),
+          if (movies.isNotEmpty)
+            _buildMovieListView()
+          else
+            _buildEmptyListView(),
         ],
+      ),
+    );
+  }
+
+  Widget _buildEmptyListView() {
+    return SizedBox(
+      height: height ?? 150.h,
+      width: double.infinity,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return Container(
+            width: _getWidthItem(context),
+            color: Colors.red,
+          );
+        },
+        itemCount: 10,
+        separatorBuilder: (context, index) => 16.horizontalSpace,
       ),
     );
   }
