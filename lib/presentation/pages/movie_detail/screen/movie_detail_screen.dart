@@ -51,7 +51,112 @@ class _MainContent extends StatelessWidget {
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
+        const _MovieInformationOther(),
+        SliverToBoxAdapter(
+          child: 24.verticalSpace,
+        ),
+        const _SimilarMovieView(),
+        SliverToBoxAdapter(
+          child: 24.verticalSpace,
+        ),
       ],
+    );
+  }
+}
+
+class _MovieInformationOther extends StatelessWidget {
+  const _MovieInformationOther();
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Text(
+            'Information',
+            style: AppTextStyles.headingXSmall,
+          ),
+          _buildInformationItem(
+            context,
+            title: 'Release',
+            description: '14 December 2023',
+          ),
+          _buildInformationItem(
+            context,
+            title: 'Language',
+            description: 'English',
+          ),
+          _buildInformationItem(
+            context,
+            title: 'Revenue',
+            description: '\$208M',
+          ),
+          _buildInformationItem(
+            context,
+            title: 'Revenue',
+            description: '\$208M',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInformationItem(
+    BuildContext context, {
+    required String title,
+    String? description,
+    List<String>? descriptions,
+  }) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          flex: 2,
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              title,
+              style: AppTextStyles.textMediumBold,
+            ),
+          ),
+        ),
+        8.horizontalSpace,
+        Expanded(
+          flex: 3,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Column(
+              children: (descriptions ?? [description ?? ''])
+                  .map(
+                    (text) => Text(
+                      text,
+                      style: AppTextStyles.textMedium.copyWith(
+                        color: context.colors.textSecondary,
+                      ),
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _SimilarMovieView extends StatelessWidget {
+  const _SimilarMovieView();
+
+  @override
+  Widget build(BuildContext context) {
+    return MovieHorizontalListView(
+      headingTitle: 'Similar',
+      movies: const [],
+      onMovieTap: (id) {
+        //
+      },
     );
   }
 }
@@ -82,7 +187,7 @@ class _VideoTrailerView extends StatelessWidget {
             ),
             16.verticalSpace,
             SizedBox(
-              height: 150.h,
+              height: 100.h,
               child: ListView.separated(
                 itemCount: 10,
                 scrollDirection: Axis.horizontal,
