@@ -12,7 +12,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onBackButtonTap,
     this.backgroundColor,
     this.widgets,
-    this.shouldShowBottomDivider = true,
+    this.shouldShowBottomDivider = false,
     this.shouldShowBackButton = true,
     this.textColor,
     this.navigationTitle,
@@ -26,7 +26,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor,
     this.buttonTintColor,
     this.widgets,
-    this.shouldShowBottomDivider = true,
+    this.shouldShowBottomDivider = false,
     this.textColor,
     super.key,
   })  : navigationTitle = null,
@@ -39,7 +39,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.backgroundColor,
     this.textColor,
     this.buttonTintColor,
-    this.shouldShowBottomDivider = true,
+    this.shouldShowBottomDivider = false,
     this.widgets,
     super.key,
   })  : title = null,
@@ -93,10 +93,11 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
                   () {
                     Navigator.of(context).pop();
                   },
-              // icon: AppIcons.back(
-              //   color: buttonTintColor ?? context.colors.textPrimary,
-              // ),
-              icon: Assets.icons.icBack.svg(),
+              icon: Assets.icons.icBack.svg(
+                  colorFilter: ColorFilter.mode(
+                buttonTintColor ?? context.colors.iconPrimary,
+                BlendMode.srcIn,
+              )),
             )
           : null,
       actions: widgets,

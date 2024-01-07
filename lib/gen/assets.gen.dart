@@ -47,6 +47,14 @@ class $AssetsIconsGen {
   SvgGenImage get icFacebook =>
       const SvgGenImage('assets/icons/ic_facebook.svg');
 
+  /// File path: assets/icons/ic_favorite.svg
+  SvgGenImage get icFavorite =>
+      const SvgGenImage('assets/icons/ic_favorite.svg');
+
+  /// File path: assets/icons/ic_favorite_outline.svg
+  SvgGenImage get icFavoriteOutline =>
+      const SvgGenImage('assets/icons/ic_favorite_outline.svg');
+
   /// File path: assets/icons/ic_google.svg
   SvgGenImage get icGoogle => const SvgGenImage('assets/icons/ic_google.svg');
 
@@ -70,6 +78,17 @@ class $AssetsIconsGen {
   SvgGenImage get icProfileOutline =>
       const SvgGenImage('assets/icons/ic_profile_outline.svg');
 
+  /// File path: assets/icons/ic_star.svg
+  SvgGenImage get icStar => const SvgGenImage('assets/icons/ic_star.svg');
+
+  /// File path: assets/icons/ic_star_half.svg
+  SvgGenImage get icStarHalf =>
+      const SvgGenImage('assets/icons/ic_star_half.svg');
+
+  /// File path: assets/icons/ic_star_outline.svg
+  SvgGenImage get icStarOutline =>
+      const SvgGenImage('assets/icons/ic_star_outline.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
         icApple,
@@ -81,13 +100,18 @@ class $AssetsIconsGen {
         icExplore,
         icExploreOutline,
         icFacebook,
+        icFavorite,
+        icFavoriteOutline,
         icGoogle,
         icHome,
         icHomeOutline,
         icLock,
         icMail,
         icProfile,
-        icProfileOutline
+        icProfileOutline,
+        icStar,
+        icStarHalf,
+        icStarOutline
       ];
 }
 
