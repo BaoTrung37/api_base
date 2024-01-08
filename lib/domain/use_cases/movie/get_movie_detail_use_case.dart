@@ -21,7 +21,7 @@ class GetMovieDetailUseCase
 }
 
 class GetMovieDetailInput {
-  final String movieId;
+  final int movieId;
   GetMovieDetailInput({
     required this.movieId,
   });

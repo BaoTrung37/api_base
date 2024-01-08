@@ -13,7 +13,7 @@ class MovieRepositoryIml extends MovieRepository {
 
   @override
   Future<MovieResponse> getMovieDetail({
-    required String movieId,
+    required int movieId,
     String? appendToResponse,
   }) async {
     final response = await restClient.getMovieDetail(

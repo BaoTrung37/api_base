@@ -31,7 +31,7 @@ class MovieResponse {
   final String title;
   final bool? video;
   final Similar? similar;
-  final Videos videos;
+  final Videos? videos;
   final double voteAverage;
   final int voteCount;
   MovieResponse({
@@ -46,9 +46,9 @@ class MovieResponse {
     required this.posterPath,
     required this.releaseDate,
     required this.title,
-    required this.videos,
     required this.voteAverage,
     required this.voteCount,
+    this.videos,
     this.belongsToCollection,
     this.budget,
     this.genres,

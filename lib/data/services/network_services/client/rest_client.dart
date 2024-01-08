@@ -48,7 +48,7 @@ abstract class RestClient {
 
   @GET('/movie/{movie_id}')
   Future<MovieResponse> getMovieDetail(
-    @Path('movie_id') String movieId,
+    @Path('movie_id') int movieId,
     @Query('append_to_response') String? appendToResponse,
   );
 
