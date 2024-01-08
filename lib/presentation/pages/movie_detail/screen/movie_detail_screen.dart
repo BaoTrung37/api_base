@@ -23,9 +23,15 @@ class MovieDetailScreen extends StatefulWidget {
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
   @override
+  void initState() {
+    super.initState();
+    getIt<MovieDetailCubit>().fetchData(widget.movieId);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider<MovieDetailCubit>(
-      create: (context) => getIt<MovieDetailCubit>()..fetchData(widget.movieId),
+    return BlocProvider(
+      create: (context) => getIt<MovieDetailCubit>(),
       child: Scaffold(
         appBar: BaseAppBar.customTitleView(
           title: Text(
@@ -238,7 +244,7 @@ class _MovieInformationView extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            height: 200.h,
+            height: 220.h,
             width: double.infinity,
             child: CustomCachedNetworkImage(
               imageUrl: AppConstant.backdropUrl,

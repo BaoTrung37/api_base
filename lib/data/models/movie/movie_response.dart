@@ -5,12 +5,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'movie_response.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
+// @JsonDateTimeConverter()
 class MovieResponse {
   final bool adult;
   final String backdropPath;
   final BelongsToCollection? belongsToCollection;
   final int? budget;
-  final List<int> genreIds;
+  final List<int>? genreIds;
   final List<Genre>? genres;
   final String? homepage;
   final int id;
@@ -37,7 +38,6 @@ class MovieResponse {
   MovieResponse({
     required this.adult,
     required this.backdropPath,
-    required this.genreIds,
     required this.id,
     required this.originalLanguage,
     required this.originalTitle,
@@ -48,6 +48,7 @@ class MovieResponse {
     required this.title,
     required this.voteAverage,
     required this.voteCount,
+    this.genreIds,
     this.videos,
     this.belongsToCollection,
     this.budget,
