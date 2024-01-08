@@ -12,7 +12,7 @@ class PopularMovieCubit extends Cubit<MovieState> {
 
   final GetPopularMovieListUseCase _getPopularMovieListUseCase;
 
-  Future<void> init() async {
+  Future<void> fetchData() async {
     try {
       emit(state.copyWith(status: AppStatus.inProgress));
       final response = await _getPopularMovieListUseCase.run(
@@ -25,8 +25,11 @@ class PopularMovieCubit extends Cubit<MovieState> {
         movies: moviesList,
         status: AppStatus.success,
       ));
-    } catch (e) {
-      //
+    } on Exception catch (e) {
+      emit(state.copyWith(
+        status: AppStatus.error,
+        appError: e.appError,
+      ));
     }
   }
 }

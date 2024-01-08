@@ -11,7 +11,7 @@ class NowPlayingMovieCubit extends Cubit<MovieState> {
 
   final GetNowPlayingMovieListUseCase _getNowPlayingMovieListUseCase;
 
-  Future<void> init() async {
+  Future<void> fetchData() async {
     try {
       emit(state.copyWith(status: AppStatus.inProgress));
       final response = await _getNowPlayingMovieListUseCase.run(
@@ -24,8 +24,11 @@ class NowPlayingMovieCubit extends Cubit<MovieState> {
         movies: moviesList,
         status: AppStatus.success,
       ));
-    } catch (e) {
-      //
+    } on Exception catch (e) {
+      emit(state.copyWith(
+        status: AppStatus.error,
+        appError: e.appError,
+      ));
     }
   }
 }
