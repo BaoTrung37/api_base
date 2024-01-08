@@ -24,6 +24,8 @@ class CustomCachedNetworkImage extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: imageUrl,
       fit: BoxFit.cover,
+      fadeInCurve: Curves.easeIn,
+      fadeInDuration: const Duration(milliseconds: 300),
       imageBuilder: (context, imageProvider) {
         return Container(
           height: height,
