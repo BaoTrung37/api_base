@@ -4,7 +4,7 @@ part of 'movie_detail_cubit.dart';
 class MovieDetailState with _$MovieDetailState {
   const factory MovieDetailState({
     @Default(AppStatus.initial) AppStatus status,
-    MovieResponse? movieResponse,
+    MovieResponse? movie,
     AppError? appError,
   }) = _MovieDetailState;
 }

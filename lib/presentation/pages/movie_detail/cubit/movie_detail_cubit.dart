@@ -25,7 +25,7 @@ class MovieDetailCubit extends Cubit<MovieDetailState> {
 
       emit(state.copyWith(
         status: AppStatus.success,
-        movieResponse: movieResponse,
+        movie: movieResponse,
       ));
     } on Exception catch (error) {
       emit(state.copyWith(
