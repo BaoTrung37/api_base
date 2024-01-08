@@ -1,3 +1,4 @@
+import 'package:api_base/config/app_config.dart';
 import 'package:api_base/injection/di.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp.router(
-        title: 'Flutter Demo',
+        title: AppConfig.appName,
         theme: getAppTheme(Brightness.light),
         darkTheme: getAppTheme(Brightness.dark),
         themeMode: ThemeMode.dark,

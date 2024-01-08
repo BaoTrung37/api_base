@@ -8,6 +8,7 @@ class AppConfig {
   AppConfig._();
 
   static final AppConfig _instance = AppConfig._();
+  static const String appName = 'Tmdb Movie';
 
   Future<void> init() async {
     configureDependencies();
