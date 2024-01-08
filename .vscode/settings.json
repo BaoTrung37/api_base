@@ -12,6 +12,7 @@
       "cupertino",
       "datetime",
       "dotenv",
+      "imdb",
       "screenutil",
       "tmdb"
     ]
