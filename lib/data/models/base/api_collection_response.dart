@@ -11,14 +11,14 @@ part 'api_collection_response.g.dart';
 class ApiCollectionResponse<T> {
   final int page;
   final List<T> results;
-  final int totalPages;
-  final int totalResults;
+  final int? totalPages;
+  final int? totalResults;
 
   ApiCollectionResponse({
     required this.page,
     required this.results,
-    required this.totalPages,
-    required this.totalResults,
+    this.totalPages,
+    this.totalResults,
   });
 
   factory ApiCollectionResponse.fromJson(
