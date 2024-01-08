@@ -195,7 +195,7 @@ class _VideoTrailerView extends StatelessWidget {
                   return Column(
                     children: [
                       CustomCachedNetworkImage(
-                        height: 100.r,
+                        height: 80.r,
                         width: 150.r,
                         imageUrl: AppConstant.posterUrl,
                         isBorder: true,
