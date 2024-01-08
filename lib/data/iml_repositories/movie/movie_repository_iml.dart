@@ -16,15 +16,11 @@ class MovieRepositoryIml extends MovieRepository {
     required int movieId,
     String? appendToResponse,
   }) async {
-    try {
-      final response = await restClient.getMovieDetail(
-        movieId,
-        appendToResponse,
-      );
+    final response = await restClient.getMovieDetail(
+      movieId,
+      appendToResponse,
+    );
 
-      return response;
-    } catch (error) {
-      rethrow;
-    }
+    return response;
   }
 }
