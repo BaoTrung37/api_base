@@ -1,33 +1,49 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/gen/assets.gen.dart';
+import 'package:api_base/injection/di.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
-class MovieDetailScreen extends StatelessWidget {
-  const MovieDetailScreen({super.key});
+class MovieDetailScreen extends StatefulWidget {
+  const MovieDetailScreen({
+    required this.movieId,
+    super.key,
+  });
+
+  final int movieId;
 
   @override
+  State<MovieDetailScreen> createState() => _MovieDetailScreenState();
+}
+
+class _MovieDetailScreenState extends State<MovieDetailScreen> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar.customTitleView(
-        title: Text(
-          'Movie Detail',
-          style: AppTextStyles.headingSmall
-              .copyWith(color: context.colors.textPrimary),
+    return BlocProvider<MovieDetailCubit>(
+      create: (context) => getIt<MovieDetailCubit>()..fetchData(widget.movieId),
+      child: Scaffold(
+        appBar: BaseAppBar.customTitleView(
+          title: Text(
+            'Movie Detail',
+            style: AppTextStyles.headingSmall
+                .copyWith(color: context.colors.textPrimary),
+          ),
+          isCenterTitle: false,
+          widgets: [
+            Assets.icons.icFavoriteOutline.svg(height: 24.h),
+            16.horizontalSpace,
+            Assets.icons.icStarOutline.svg(height: 24.h),
+            16.horizontalSpace,
+            Assets.icons.icBookmarkOutline.svg(height: 24.h),
+          ],
         ),
-        isCenterTitle: false,
-        widgets: [
-          Assets.icons.icFavoriteOutline.svg(height: 24.h),
-          16.horizontalSpace,
-          Assets.icons.icStarOutline.svg(height: 24.h),
-          16.horizontalSpace,
-          Assets.icons.icBookmarkOutline.svg(height: 24.h),
-        ],
+        body: const _MainContent(),
       ),
-      body: const _MainContent(),
     );
   }
 }
