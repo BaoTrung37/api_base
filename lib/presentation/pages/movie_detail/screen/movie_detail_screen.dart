@@ -1,33 +1,64 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/gen/assets.gen.dart';
+import 'package:api_base/injection/di.dart';
 import 'package:api_base/presentation/presentation.dart';
+import 'package:api_base/presentation/utilities/extensions/string_extension.dart';
+import 'package:api_base/presentation/widgets/app_indicator/app_indicator.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
-class MovieDetailScreen extends StatelessWidget {
-  const MovieDetailScreen({super.key});
+class MovieDetailScreen extends StatefulWidget {
+  const MovieDetailScreen({
+    required this.movieId,
+    super.key,
+  });
+
+  final int movieId;
+
+  @override
+  State<MovieDetailScreen> createState() => _MovieDetailScreenState();
+}
+
+class _MovieDetailScreenState extends State<MovieDetailScreen> {
+  @override
+  void initState() {
+    super.initState();
+    getIt<MovieDetailCubit>().fetchData(widget.movieId);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar.customTitleView(
-        title: Text(
-          'Movie Detail',
-          style: AppTextStyles.headingSmall
-              .copyWith(color: context.colors.textPrimary),
+    return BlocProvider(
+      create: (context) => getIt<MovieDetailCubit>(),
+      child: Scaffold(
+        appBar: BaseAppBar.customTitleView(
+          title: Text(
+            'Movie Detail',
+            style: AppTextStyles.headingSmall
+                .copyWith(color: context.colors.textPrimary),
+          ),
+          isCenterTitle: false,
+          widgets: [
+            Assets.icons.icFavoriteOutline.svg(height: 24.h),
+            16.horizontalSpace,
+            Assets.icons.icStarOutline.svg(height: 24.h),
+            16.horizontalSpace,
+            Assets.icons.icBookmarkOutline.svg(height: 24.h),
+          ],
         ),
-        isCenterTitle: false,
-        widgets: [
-          Assets.icons.icFavoriteOutline.svg(height: 24.h),
-          16.horizontalSpace,
-          Assets.icons.icStarOutline.svg(height: 24.h),
-          16.horizontalSpace,
-          Assets.icons.icBookmarkOutline.svg(height: 24.h),
-        ],
+        body: BlocBuilder<MovieDetailCubit, MovieDetailState>(
+          builder: (context, state) {
+            return LoadingView(
+              status: state.status,
+              child: const _MainContent(),
+            );
+          },
+        ),
       ),
-      body: const _MainContent(),
     );
   }
 }
@@ -195,7 +226,7 @@ class _VideoTrailerView extends StatelessWidget {
                   return Column(
                     children: [
                       CustomCachedNetworkImage(
-                        height: 100.r,
+                        height: 80.r,
                         width: 150.r,
                         imageUrl: AppConstant.posterUrl,
                         isBorder: true,
@@ -218,56 +249,62 @@ class _MovieInformationView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 200.h,
-            width: double.infinity,
-            child: CustomCachedNetworkImage(
-              imageUrl: AppConstant.backdropUrl,
-            ),
-          ),
-          Transform.translate(
-            offset: Offset(0, -10.h),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8.w),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 150.h,
-                    width: 90.w,
-                    child: CustomCachedNetworkImage(
-                      imageUrl: AppConstant.posterUrl,
-                    ),
-                  ),
-                  8.horizontalSpace,
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'The Family Plan The Family Plan The Family Plan',
-                          style: AppTextStyles.headingSmall,
-                        ),
-                        8.verticalSpace,
-                        _buildMovieRate(),
-                        16.verticalSpace,
-                        const Text(
-                          "Super-Hero partners Scott Lang and Hope van Dyne, along with with Hope's parents Janet van Dyne and Hank Pym, and Scott's daughter Cassie Lang, find themselves exploring the Quantum Realm, interacting with strange new creatures and embarking on an adventure that will push them beyond the limits of what they thought possible.",
-                          style: AppTextStyles.textMedium,
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+    return BlocBuilder<MovieDetailCubit, MovieDetailState>(
+      bloc: getIt<MovieDetailCubit>(),
+      buildWhen: (previous, current) => previous.movie != current.movie,
+      builder: (context, state) {
+        return SliverToBoxAdapter(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 220.h,
+                width: double.infinity,
+                child: CustomCachedNetworkImage(
+                  imageUrl: state.movie!.backdropPath.tmdbW1280Path,
+                ),
               ),
-            ),
+              Transform.translate(
+                offset: Offset(0, -10.h),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 150.h,
+                        width: 90.w,
+                        child: CustomCachedNetworkImage(
+                          imageUrl: AppConstant.posterUrl,
+                        ),
+                      ),
+                      8.horizontalSpace,
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              'The Family Plan The Family Plan The Family Plan',
+                              style: AppTextStyles.headingSmall,
+                            ),
+                            8.verticalSpace,
+                            _buildMovieRate(),
+                            16.verticalSpace,
+                            const Text(
+                              "Super-Hero partners Scott Lang and Hope van Dyne, along with with Hope's parents Janet van Dyne and Hank Pym, and Scott's daughter Cassie Lang, find themselves exploring the Quantum Realm, interacting with strange new creatures and embarking on an adventure that will push them beyond the limits of what they thought possible.",
+                              style: AppTextStyles.textMedium,
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 

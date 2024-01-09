@@ -1,44 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:api_base/data/models/models.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'movie_response.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
+// @JsonDateTimeConverter()
 class MovieResponse {
-  MovieResponse({
-    required this.adult,
-    required this.backdropPath,
-    required this.belongsToCollection,
-    required this.budget,
-    required this.genreIds,
-    required this.genres,
-    required this.homepage,
-    required this.id,
-    required this.imdbId,
-    required this.originalLanguage,
-    required this.originalTitle,
-    required this.overview,
-    required this.popularity,
-    required this.posterPath,
-    required this.productionCompanies,
-    required this.productionCountries,
-    required this.releaseDate,
-    required this.revenue,
-    required this.runtime,
-    required this.spokenLanguages,
-    required this.status,
-    required this.tagline,
-    required this.title,
-    required this.video,
-    required this.voteAverage,
-    required this.voteCount,
-  });
-
   final bool adult;
   final String backdropPath;
   final BelongsToCollection? belongsToCollection;
   final int? budget;
-  final List<int> genreIds;
+  final List<int>? genreIds;
   final List<Genre>? genres;
   final String? homepage;
   final int id;
@@ -58,8 +31,40 @@ class MovieResponse {
   final String? tagline;
   final String title;
   final bool? video;
+  final Similar? similar;
+  final Videos? videos;
   final double voteAverage;
   final int voteCount;
+  MovieResponse({
+    required this.adult,
+    required this.backdropPath,
+    required this.id,
+    required this.originalLanguage,
+    required this.originalTitle,
+    required this.overview,
+    required this.popularity,
+    required this.posterPath,
+    required this.releaseDate,
+    required this.title,
+    required this.voteAverage,
+    required this.voteCount,
+    this.genreIds,
+    this.videos,
+    this.belongsToCollection,
+    this.budget,
+    this.genres,
+    this.homepage,
+    this.imdbId,
+    this.productionCompanies,
+    this.productionCountries,
+    this.revenue,
+    this.runtime,
+    this.spokenLanguages,
+    this.status,
+    this.tagline,
+    this.video,
+    this.similar,
+  });
 
   factory MovieResponse.fromJson(Map<String, dynamic> json) =>
       _$MovieResponseFromJson(json);
@@ -105,15 +110,15 @@ class Genre {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ProductionCompany {
   final int id;
-  final String logoPath;
+  final String? logoPath;
   final String name;
   final String originCountry;
 
   ProductionCompany({
     required this.id,
-    required this.logoPath,
     required this.name,
     required this.originCountry,
+    this.logoPath,
   });
 
   factory ProductionCompany.fromJson(Map<String, dynamic> json) =>
@@ -125,12 +130,12 @@ class ProductionCompany {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ProductionCountry {
   @JsonKey(name: 'iso_639_1')
-  final String iso31661;
+  final String? iso31661;
   final String name;
 
   ProductionCountry({
-    required this.iso31661,
     required this.name,
+    this.iso31661,
   });
 
   factory ProductionCountry.fromJson(Map<String, dynamic> json) =>
@@ -143,13 +148,13 @@ class ProductionCountry {
 class SpokenLanguage {
   final String englishName;
   @JsonKey(name: 'iso_639_1')
-  final String iso6391;
+  final String? iso6391;
   final String name;
 
   SpokenLanguage({
     required this.englishName,
-    required this.iso6391,
     required this.name,
+    this.iso6391,
   });
 
   factory SpokenLanguage.fromJson(Map<String, dynamic> json) =>

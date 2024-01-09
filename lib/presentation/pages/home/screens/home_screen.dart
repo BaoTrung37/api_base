@@ -25,7 +25,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<PopularMovieCubit>(
-          create: (context) => getIt<PopularMovieCubit>()..init(),
+          create: (context) => getIt<PopularMovieCubit>()..fetchData(),
+        ),
+        BlocProvider<NowPlayingMovieCubit>(
+          create: (context) => getIt<NowPlayingMovieCubit>()..fetchData(),
         ),
       ],
       child: Scaffold(
@@ -46,13 +49,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     headingTitle: 'Popular',
                     movies: state.movies,
                     onMovieTap: (movieId) {
-                      context.pushRoute(const MovieDetailRoute());
+                      context.pushRoute(MovieDetailRoute(movieId: movieId));
                     },
                   );
                 },
               ),
               SliverToBoxAdapter(child: 24.verticalSpace),
-              BlocBuilder<PopularMovieCubit, MovieState>(
+              BlocBuilder<NowPlayingMovieCubit, MovieState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
@@ -61,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     movies: state.movies,
                     isPoster: false,
                     onMovieTap: (movieId) {
-                      context.pushRoute(const MovieDetailRoute());
+                      context.pushRoute(MovieDetailRoute(movieId: movieId));
                     },
                   );
                 },
