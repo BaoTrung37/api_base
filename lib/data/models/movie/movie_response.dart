@@ -130,12 +130,12 @@ class ProductionCompany {
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ProductionCountry {
   @JsonKey(name: 'iso_639_1')
-  final String iso31661;
+  final String? iso31661;
   final String name;
 
   ProductionCountry({
-    required this.iso31661,
     required this.name,
+    this.iso31661,
   });
 
   factory ProductionCountry.fromJson(Map<String, dynamic> json) =>
@@ -148,13 +148,13 @@ class ProductionCountry {
 class SpokenLanguage {
   final String englishName;
   @JsonKey(name: 'iso_639_1')
-  final String iso6391;
+  final String? iso6391;
   final String name;
 
   SpokenLanguage({
     required this.englishName,
-    required this.iso6391,
     required this.name,
+    this.iso6391,
   });
 
   factory SpokenLanguage.fromJson(Map<String, dynamic> json) =>
