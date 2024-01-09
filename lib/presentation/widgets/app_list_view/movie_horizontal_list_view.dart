@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/models/models.dart';
 import 'package:api_base/presentation/resources/resources.dart';
-import 'package:api_base/presentation/utilities/extensions/datetime_extension.dart';
 import 'package:api_base/presentation/utilities/extensions/string_extension.dart';
 import 'package:api_base/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -131,7 +130,7 @@ class MovieHorizontalListView extends StatelessWidget {
                   ),
                   4.verticalSpace,
                   Text(
-                    movie.releaseDate.formatDateTime,
+                    movie.releaseDate,
                     style: AppTextStyles.labelMediumLight,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
