@@ -103,37 +103,46 @@ class _MovieInformationOther extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text(
-            'Information',
-            style: AppTextStyles.headingXSmall,
+    return BlocBuilder<MovieDetailCubit, MovieDetailState>(
+      builder: (context, state) {
+        return SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'Information',
+                  style: AppTextStyles.headingXSmall,
+                ),
+                _buildInformationItem(
+                  context,
+                  title: 'Release',
+                  description: state.movie?.releaseDate,
+                ),
+                _buildInformationItem(
+                  context,
+                  title: 'Language',
+                  description: 'English',
+                ),
+                _buildInformationItem(
+                  context,
+                  title: 'Revenue',
+                  description: '\$${state.movie?.revenue}',
+                ),
+                _buildInformationItem(
+                  context,
+                  title: 'Production Companies',
+                  descriptions: (state.movie?.productionCompanies ?? [])
+                      .map((e) => e.name)
+                      .toList(),
+                ),
+              ],
+            ),
           ),
-          _buildInformationItem(
-            context,
-            title: 'Release',
-            description: '14 December 2023',
-          ),
-          _buildInformationItem(
-            context,
-            title: 'Language',
-            description: 'English',
-          ),
-          _buildInformationItem(
-            context,
-            title: 'Revenue',
-            description: '\$208M',
-          ),
-          _buildInformationItem(
-            context,
-            title: 'Revenue',
-            description: '\$208M',
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
@@ -162,6 +171,7 @@ class _MovieInformationOther extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: (descriptions ?? [description ?? ''])
                   .map(
                     (text) => Text(
