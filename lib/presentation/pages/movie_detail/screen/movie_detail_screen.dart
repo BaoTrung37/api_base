@@ -24,16 +24,17 @@ class MovieDetailScreen extends StatefulWidget {
 }
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
+  final MovieDetailCubit movieDetailCubit = getIt<MovieDetailCubit>();
   @override
   void initState() {
     super.initState();
-    getIt<MovieDetailCubit>().fetchData(widget.movieId);
+    movieDetailCubit.fetchData(widget.movieId);
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<MovieDetailCubit>(),
+      create: (context) => movieDetailCubit,
       child: Scaffold(
         appBar: BaseAppBar.customTitleView(
           title: Text(

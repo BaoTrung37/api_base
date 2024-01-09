@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 part 'movie_detail_cubit.freezed.dart';
 part 'movie_detail_state.dart';
 
-@lazySingleton
+@injectable
 class MovieDetailCubit extends Cubit<MovieDetailState> {
   MovieDetailCubit(
     this._getMovieDetailUseCase,
