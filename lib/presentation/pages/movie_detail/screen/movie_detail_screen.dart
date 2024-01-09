@@ -289,9 +289,11 @@ class _MovieInformationView extends StatelessWidget {
                               state.movie?.title ?? '',
                               style: AppTextStyles.headingSmall,
                             ),
-                            8.verticalSpace,
+                            4.verticalSpace,
                             _buildMovieRate(state),
-                            16.verticalSpace,
+                            8.verticalSpace,
+                            _buildMovieGenres(context, state),
+                            8.verticalSpace,
                             ReadMoreText(
                               state.movie?.overview ?? '',
                               trimLines: 5,
@@ -314,6 +316,34 @@ class _MovieInformationView extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildMovieGenres(BuildContext context, MovieDetailState state) {
+    final genres = state.movie?.genres ?? [];
+    if (genres.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    return Wrap(
+      runSpacing: 8.h,
+      spacing: 8.w,
+      children: genres
+          .map(
+            (e) => Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: context.colors.border,
+                  width: 1.5,
+                ),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h),
+              child: Text(
+                e.name,
+                style: AppTextStyles.labelMediumLight,
+              ),
+            ),
+          )
+          .toList(),
     );
   }
 
