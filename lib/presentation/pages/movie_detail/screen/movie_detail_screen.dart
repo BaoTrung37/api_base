@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:readmore/readmore.dart';
 
 @RoutePage()
 class MovieDetailScreen extends StatefulWidget {
@@ -52,6 +53,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
           ],
         ),
         body: BlocBuilder<MovieDetailCubit, MovieDetailState>(
+          bloc: movieDetailCubit,
           builder: (context, state) {
             return LoadingView(
               status: state.status,
@@ -251,7 +253,6 @@ class _MovieInformationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieDetailCubit, MovieDetailState>(
-      bloc: getIt<MovieDetailCubit>(),
       buildWhen: (previous, current) => previous.movie != current.movie,
       builder: (context, state) {
         return SliverToBoxAdapter(
@@ -261,7 +262,7 @@ class _MovieInformationView extends StatelessWidget {
                 height: 220.h,
                 width: double.infinity,
                 child: CustomCachedNetworkImage(
-                  imageUrl: state.movie!.backdropPath.tmdbW1280Path,
+                  imageUrl: state.movie?.backdropPath.tmdbW1280Path,
                 ),
               ),
               Transform.translate(
@@ -275,7 +276,7 @@ class _MovieInformationView extends StatelessWidget {
                         height: 150.h,
                         width: 90.w,
                         child: CustomCachedNetworkImage(
-                          imageUrl: AppConstant.posterUrl,
+                          imageUrl: state.movie?.posterPath.tmdbW500Path,
                         ),
                       ),
                       8.horizontalSpace,
@@ -284,16 +285,23 @@ class _MovieInformationView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              'The Family Plan The Family Plan The Family Plan',
+                            Text(
+                              state.movie?.title ?? '',
                               style: AppTextStyles.headingSmall,
                             ),
                             8.verticalSpace,
-                            _buildMovieRate(),
+                            _buildMovieRate(state),
                             16.verticalSpace,
-                            const Text(
-                              "Super-Hero partners Scott Lang and Hope van Dyne, along with with Hope's parents Janet van Dyne and Hank Pym, and Scott's daughter Cassie Lang, find themselves exploring the Quantum Realm, interacting with strange new creatures and embarking on an adventure that will push them beyond the limits of what they thought possible.",
-                              style: AppTextStyles.textMedium,
+                            ReadMoreText(
+                              state.movie?.overview ?? '',
+                              trimLines: 5,
+                              trimMode: TrimMode.Line,
+                              trimCollapsedText: '.',
+                              trimExpandedText: '.',
+                              callback: (val) {
+                                print(val);
+                              },
+                              moreStyle: AppTextStyles.textMedium,
                             ),
                           ],
                         ),
@@ -309,11 +317,11 @@ class _MovieInformationView extends StatelessWidget {
     );
   }
 
-  Widget _buildMovieRate() {
+  Widget _buildMovieRate(MovieDetailState state) {
     return Row(
       children: [
         RatingBar(
-          initialRating: 2.4,
+          initialRating: (state.movie?.voteAverage ?? 0) / 10 * 5,
           direction: Axis.horizontal,
           allowHalfRating: true,
           itemCount: 5,
@@ -328,8 +336,8 @@ class _MovieInformationView extends StatelessWidget {
           onRatingUpdate: (_) {},
         ),
         8.horizontalSpace,
-        const Text(
-          '(100)',
+        Text(
+          state.movie?.voteCount.toString() ?? '0',
           style: AppTextStyles.textSmallBold,
         ),
         Expanded(
@@ -339,8 +347,8 @@ class _MovieInformationView extends StatelessWidget {
               children: [
                 Assets.icons.icStar.svg(height: 12.sp),
                 8.horizontalSpace,
-                const Text(
-                  '9.5',
+                Text(
+                  state.movie?.voteAverage.toString() ?? '0',
                   style: AppTextStyles.textMediumBold,
                 ),
               ],
