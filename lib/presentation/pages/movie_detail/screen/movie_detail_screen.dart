@@ -377,7 +377,7 @@ class _MovieInformationView extends StatelessWidget {
         ),
         8.horizontalSpace,
         Text(
-          state.movie?.voteCount.toString() ?? '0',
+          '( ${state.movie?.voteCount.toString() ?? '0'} )',
           style: AppTextStyles.textSmallBold,
         ),
         Expanded(
