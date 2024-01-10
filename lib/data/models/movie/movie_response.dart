@@ -33,8 +33,10 @@ class MovieResponse {
   final bool? video;
   final Similar? similar;
   final Videos? videos;
+  final Credits? credits;
   final double voteAverage;
   final int voteCount;
+
   MovieResponse({
     required this.adult,
     required this.backdropPath,
@@ -48,10 +50,9 @@ class MovieResponse {
     required this.title,
     required this.voteAverage,
     required this.voteCount,
-    this.genreIds,
-    this.videos,
     this.belongsToCollection,
     this.budget,
+    this.genreIds,
     this.genres,
     this.homepage,
     this.imdbId,
@@ -64,6 +65,8 @@ class MovieResponse {
     this.tagline,
     this.video,
     this.similar,
+    this.videos,
+    this.credits,
   });
 
   factory MovieResponse.fromJson(Map<String, dynamic> json) =>
