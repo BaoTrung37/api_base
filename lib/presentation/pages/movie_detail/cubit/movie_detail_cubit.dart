@@ -20,8 +20,14 @@ class MovieDetailCubit extends Cubit<MovieDetailState> {
     try {
       emit(state.copyWith(status: AppStatus.inProgress));
 
-      final movieResponse = await _getMovieDetailUseCase
-          .run(GetMovieDetailInput(movieId: movieId));
+      final movieResponse =
+          await _getMovieDetailUseCase.run(GetMovieDetailInput(
+        movieId: movieId,
+        movieKeys: [
+          MovieKeys.credits,
+          MovieKeys.images,
+        ],
+      ));
 
       emit(state.copyWith(
         status: AppStatus.success,
