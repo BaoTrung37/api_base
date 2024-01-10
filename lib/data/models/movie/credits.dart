@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'credits.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
 class Credits {
   Credits({
     required this.cast,
@@ -32,13 +32,13 @@ class Cast {
     required this.name,
     required this.originalName,
     required this.popularity,
-    required this.profilePath,
-    required this.castId,
-    required this.character,
-    required this.creditId,
-    required this.order,
-    required this.department,
-    required this.job,
+    this.castId,
+    this.character,
+    this.creditId,
+    this.order,
+    this.profilePath,
+    this.job,
+    this.department,
   });
 
   factory Cast.fromJson(Map<String, dynamic> json) => _$CastFromJson(json);
@@ -49,7 +49,7 @@ class Cast {
   @JsonKey(name: 'id')
   final int id;
   @JsonKey(name: 'known_for_department')
-  final Department knownForDepartment;
+  final String knownForDepartment;
   @JsonKey(name: 'name')
   final String name;
   @JsonKey(name: 'original_name')
@@ -57,44 +57,19 @@ class Cast {
   @JsonKey(name: 'popularity')
   final double popularity;
   @JsonKey(name: 'profile_path')
-  final String profilePath;
+  final String? profilePath;
   @JsonKey(name: 'cast_id')
-  final int castId;
+  final int? castId;
   @JsonKey(name: 'character')
-  final String character;
+  final String? character;
   @JsonKey(name: 'credit_id')
-  final String creditId;
+  final String? creditId;
   @JsonKey(name: 'order')
-  final int order;
+  final int? order;
   @JsonKey(name: 'department')
-  final Department department;
+  final String? department;
   @JsonKey(name: 'job')
-  final String job;
+  final String? job;
 
   Map<String, dynamic> toJson() => _$CastToJson(this);
-}
-
-enum Department {
-  @JsonValue('Acting')
-  acting,
-  @JsonValue('Art')
-  art,
-  @JsonValue('Camera')
-  camera,
-  @JsonValue('Crew')
-  crew,
-  @JsonValue('Directing')
-  directing,
-  @JsonValue('Editing')
-  editing,
-  @JsonValue('Lighting')
-  lighting,
-  @JsonValue('Production')
-  production,
-  @JsonValue('Sound')
-  sound,
-  @JsonValue('Visual Effects')
-  visualEffects,
-  @JsonValue('Writing')
-  writing,
 }
