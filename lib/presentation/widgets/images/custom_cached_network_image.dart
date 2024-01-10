@@ -49,7 +49,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
           value: downloadProgress.progress,
         ),
       ),
-      errorWidget: (context, url, error) => const Text('😢'),
+      errorWidget: (context, url, error) => const Center(child: Text('😢')),
     );
   }
 }
