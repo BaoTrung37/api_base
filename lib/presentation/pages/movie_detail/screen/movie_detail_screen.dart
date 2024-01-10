@@ -124,7 +124,10 @@ class _MovieInformationOther extends StatelessWidget {
                 _buildInformationItem(
                   context,
                   title: 'Language',
-                  description: 'English',
+                  descriptions: (state.movie?.spokenLanguages ?? [])
+                      .where((element) => element.englishName.isNotEmpty)
+                      .map((e) => e.englishName)
+                      .toList(),
                 ),
                 _buildInformationItem(
                   context,
