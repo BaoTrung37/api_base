@@ -1,11 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/presentation/resources/app_text_styles.dart';
 import 'package:api_base/presentation/utilities/utilities.dart';
 import 'package:api_base/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PeopleHorizontalListView extends StatelessWidget {
-  const PeopleHorizontalListView({super.key});
+class CircleHorizontalListView extends StatelessWidget {
+  const CircleHorizontalListView({
+   required this.headingTitle,
+    this.onAllTap,
+    super.key,
+  });
+
+  final String headingTitle;
+  final VoidCallback? onAllTap;
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +67,14 @@ class PeopleHorizontalListView extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
-          'Cast & Crew',
+         Text(
+          headingTitle
+          ,
           style: AppTextStyles.headingSmall,
         ),
         SeeAllButton(
           onTap: () {
-            //
+            onAllTap?.call();
           },
         ),
       ],
