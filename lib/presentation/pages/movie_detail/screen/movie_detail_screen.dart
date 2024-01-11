@@ -50,6 +50,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             Assets.icons.icStarOutline.svg(height: 24.h),
             16.horizontalSpace,
             Assets.icons.icBookmarkOutline.svg(height: 24.h),
+            16.horizontalSpace,
           ],
         ),
         body: BlocBuilder<MovieDetailCubit, MovieDetailState>(
