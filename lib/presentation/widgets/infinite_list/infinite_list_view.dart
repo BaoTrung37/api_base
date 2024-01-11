@@ -12,7 +12,7 @@ enum InfiniteListType {
   grid,
 }
 
-mixin Datasource<E> {
+mixin DataSource<E> {
   E get getData;
 }
 
@@ -21,11 +21,11 @@ mixin InfiniteListDelegate {
     return 1;
   }
 
-  late final PagingController<int, Datasource> _infiniteListPagingController =
+  late final PagingController<int, DataSource> _infiniteListPagingController =
       PagingController(firstPageKey: firstPage);
 
   void replaceChunk({
-    required List<Datasource> replacements,
+    required List<DataSource> replacements,
     required CheckItemFunction condition,
   }) {
     final items = _infiniteListPagingController.itemList;
@@ -37,7 +37,7 @@ mixin InfiniteListDelegate {
     }
   }
 
-  void addToFirst(Datasource item) {
+  void addToFirst(DataSource item) {
     final items = _infiniteListPagingController.itemList;
     if (items != null) {
       items.insert(0, item);
@@ -45,11 +45,11 @@ mixin InfiniteListDelegate {
     }
   }
 
-  void replace(Datasource item, int index) {
+  void replace(DataSource item, int index) {
     final items = List.from(_infiniteListPagingController.itemList ?? []);
     if (index < items.length) {
       items[index] = item;
-      _infiniteListPagingController.itemList = items.cast<Datasource>();
+      _infiniteListPagingController.itemList = items.cast<DataSource>();
     }
   }
 
@@ -57,16 +57,16 @@ mixin InfiniteListDelegate {
     final items = List.from(_infiniteListPagingController.itemList ?? []);
     if (index < items.length) {
       items.removeAt(index);
-      _infiniteListPagingController.itemList = items.cast<Datasource>();
+      _infiniteListPagingController.itemList = items.cast<DataSource>();
     }
   }
 
-  void appendAtBegin(List<Datasource> items) {
+  void appendAtBegin(List<DataSource> items) {
     if (items.isEmpty) {
       return;
     }
     final currentItemSet =
-        List<Datasource>.from(_infiniteListPagingController.itemList ?? []);
+        List<DataSource>.from(_infiniteListPagingController.itemList ?? []);
     currentItemSet.insertAll(0, items);
     _infiniteListPagingController.itemList = currentItemSet;
   }
@@ -75,7 +75,7 @@ mixin InfiniteListDelegate {
     _infiniteListPagingController.nextPageKey = firstPage + 1;
   }
 
-  void replaceAll(List<Datasource> newData) {
+  void replaceAll(List<DataSource> newData) {
     _infiniteListPagingController.itemList = newData;
   }
 
@@ -85,8 +85,8 @@ mixin InfiniteListDelegate {
 }
 
 typedef FetchItemFunction = Future<List> Function(int pageKey, int perPage);
-typedef CheckItemFunction = bool Function(Datasource item);
-typedef PagedListCellBuilder = Widget Function(Datasource item, int index);
+typedef CheckItemFunction = bool Function(DataSource item);
+typedef PagedListCellBuilder = Widget Function(DataSource item, int index);
 
 class InfiniteListView extends StatefulWidget {
   const InfiniteListView({
@@ -143,7 +143,7 @@ class InfiniteListView extends StatefulWidget {
 }
 
 class _InfiniteListViewState extends State<InfiniteListView> {
-  late final PagingController<int, Datasource> _pagingController;
+  late final PagingController<int, DataSource> _pagingController;
 
   @override
   void initState() {
@@ -207,7 +207,7 @@ class _InfiniteListViewState extends State<InfiniteListView> {
   }
 
   Widget _buildGridView() {
-    return PagedGridView<int, Datasource>(
+    return PagedGridView<int, DataSource>(
       padding: widget.paddings,
       pagingController: _pagingController,
       builderDelegate: _builderDelegate(),
@@ -220,7 +220,7 @@ class _InfiniteListViewState extends State<InfiniteListView> {
   Widget _buildPagedList() {
     final separatedBuilder = widget.separatorBuilder;
     if (separatedBuilder != null) {
-      return PagedListView<int, Datasource>.separated(
+      return PagedListView<int, DataSource>.separated(
         separatorBuilder: separatedBuilder,
         padding: widget.paddings,
         scrollDirection: widget.scrollDirection,
@@ -231,7 +231,7 @@ class _InfiniteListViewState extends State<InfiniteListView> {
         scrollController: widget.scrollController,
       );
     } else {
-      return PagedListView<int, Datasource>(
+      return PagedListView<int, DataSource>(
           padding: widget.paddings,
           reverse: widget.isReversed,
           scrollController: widget.scrollController,
@@ -242,8 +242,8 @@ class _InfiniteListViewState extends State<InfiniteListView> {
     }
   }
 
-  PagedChildBuilderDelegate<Datasource> _builderDelegate() {
-    return PagedChildBuilderDelegate<Datasource>(
+  PagedChildBuilderDelegate<DataSource> _builderDelegate() {
+    return PagedChildBuilderDelegate<DataSource>(
       itemBuilder: (context, item, index) => widget.cellBuilder(
         item,
         index,
