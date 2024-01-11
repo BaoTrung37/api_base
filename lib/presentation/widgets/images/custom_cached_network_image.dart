@@ -2,15 +2,17 @@
 import 'package:api_base/presentation/presentation.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
   const CustomCachedNetworkImage({
-    this.imageUrl,
     super.key,
+    this.imageUrl,
     this.isBorder = false,
     this.isCircleImage = false,
     this.height,
     this.width,
+    this.imageType = ImageType.normal,
   });
 
   final String? imageUrl;
@@ -19,12 +21,17 @@ class CustomCachedNetworkImage extends StatelessWidget {
   final double? height;
   final double? width;
 
+  final ImageType imageType;
+
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: imageUrl ?? '',
       fit: BoxFit.cover,
       fadeInCurve: Curves.easeIn,
+      alignment: Alignment.center,
+      height: height,
+      width: width,
       fadeInDuration: const Duration(milliseconds: 300),
       imageBuilder: (context, imageProvider) {
         return Container(
@@ -49,7 +56,21 @@ class CustomCachedNetworkImage extends StatelessWidget {
           value: downloadProgress.progress,
         ),
       ),
-      errorWidget: (context, url, error) => const Center(child: Text('😢')),
+      errorWidget: (context, url, error) => Container(
+        height: height,
+        width: height,
+        decoration: BoxDecoration(
+          border: isBorder
+              ? Border.all(
+                  color: context.colors.border,
+                )
+              : null,
+          shape: isCircleImage ? BoxShape.circle : BoxShape.rectangle,
+        ),
+        child: Center(
+          child: imageType.imageError.svg(height: 40.h),
+        ),
+      ),
     );
   }
 }
