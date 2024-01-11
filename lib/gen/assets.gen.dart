@@ -90,6 +90,12 @@ class $AssetsIconsGen {
   SvgGenImage get icProfileOutline =>
       const SvgGenImage('assets/icons/ic_profile_outline.svg');
 
+  /// File path: assets/icons/ic_refresh.svg
+  SvgGenImage get icRefresh => const SvgGenImage('assets/icons/ic_refresh.svg');
+
+  /// File path: assets/icons/ic_retry.svg
+  SvgGenImage get icRetry => const SvgGenImage('assets/icons/ic_retry.svg');
+
   /// File path: assets/icons/ic_star.svg
   SvgGenImage get icStar => const SvgGenImage('assets/icons/ic_star.svg');
 
@@ -124,6 +130,8 @@ class $AssetsIconsGen {
         icProfile,
         icProfileGrey,
         icProfileOutline,
+        icRefresh,
+        icRetry,
         icStar,
         icStarHalf,
         icStarOutline
