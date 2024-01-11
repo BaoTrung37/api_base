@@ -211,7 +211,11 @@ class _SimilarMovieView extends StatelessWidget {
           headingTitle: 'Similar',
           movies: similarList,
           showAllTap: () {
-            //
+            context.pushRoute(
+              InfinityListRoute(
+                argument: InfinityListArgument(title: 'Similar'),
+              ),
+            );
           },
           onMovieTap: (movieId) {
             context.pushRoute(MovieDetailRoute(movieId: movieId));
@@ -238,7 +242,7 @@ class _FilmCastCrewView extends StatelessWidget {
                 _buildHeadingTitle(),
                 16.verticalSpace,
                 SizedBox(
-                  height: 150.h,
+                  height: 160.h,
                   child: ListView.separated(
                     itemCount: casts.length,
                     scrollDirection: Axis.horizontal,

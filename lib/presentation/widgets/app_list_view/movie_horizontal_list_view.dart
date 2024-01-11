@@ -109,7 +109,7 @@ class MovieHorizontalListView extends StatelessWidget {
             ),
             8.verticalSpace,
             SizedBox(
-              height: 60.h,
+              height: 70.h,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -144,7 +144,7 @@ class MovieHorizontalListView extends StatelessWidget {
           style: AppTextStyles.headingSmall,
         ),
         SeeAllButton(
-          onTap: () => showAllTap,
+          onTap: () => showAllTap?.call(),
         ),
       ],
     );
