@@ -26,6 +26,7 @@ class MovieDetailCubit extends Cubit<MovieDetailState> {
         movieKeys: [
           MovieKeys.credits,
           MovieKeys.images,
+          MovieKeys.similar,
         ],
       ));
 
