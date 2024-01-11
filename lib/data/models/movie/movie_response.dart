@@ -5,7 +5,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'movie_response.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-// @JsonDateTimeConverter()
 class MovieResponse {
   final bool adult;
   final String? backdropPath;
