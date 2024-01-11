@@ -13,6 +13,7 @@
       "datetime",
       "dotenv",
       "imdb",
+      "readmore",
       "screenutil",
       "tmdb"
     ]

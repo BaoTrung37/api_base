@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 part 'movie_detail_cubit.freezed.dart';
 part 'movie_detail_state.dart';
 
-@lazySingleton
+@injectable
 class MovieDetailCubit extends Cubit<MovieDetailState> {
   MovieDetailCubit(
     this._getMovieDetailUseCase,
@@ -20,8 +20,15 @@ class MovieDetailCubit extends Cubit<MovieDetailState> {
     try {
       emit(state.copyWith(status: AppStatus.inProgress));
 
-      final movieResponse = await _getMovieDetailUseCase
-          .run(GetMovieDetailInput(movieId: movieId));
+      final movieResponse =
+          await _getMovieDetailUseCase.run(GetMovieDetailInput(
+        movieId: movieId,
+        movieKeys: [
+          MovieKeys.credits,
+          MovieKeys.images,
+          MovieKeys.similar,
+        ],
+      ));
 
       emit(state.copyWith(
         status: AppStatus.success,

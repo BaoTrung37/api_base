@@ -2,6 +2,7 @@
 import 'package:api_base/data/iml_repositories/iml_repositories.dart';
 import 'package:api_base/data/models/models.dart';
 import 'package:api_base/domain/use_cases/use_cases.dart';
+import 'package:api_base/presentation/utilities/enums/movie_keys.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -16,13 +17,24 @@ class GetMovieDetailUseCase
   Future<MovieResponse?> run(GetMovieDetailInput input) {
     return movieRepositoryIml.getMovieDetail(
       movieId: input.movieId,
+      appendToResponse: input.appendToResponse,
     );
   }
 }
 
 class GetMovieDetailInput {
   final int movieId;
-  GetMovieDetailInput({
+  final List<MovieKeys>? movieKeys;
+
+  const GetMovieDetailInput({
     required this.movieId,
+    this.movieKeys,
   });
+
+  String? get appendToResponse {
+    if (movieKeys != null) {
+      return movieKeys!.map((e) => e.title).join(',').toString();
+    }
+    return null;
+  }
 }

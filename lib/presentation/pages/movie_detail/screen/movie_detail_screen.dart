@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:readmore/readmore.dart';
 
 @RoutePage()
 class MovieDetailScreen extends StatefulWidget {
@@ -24,16 +25,17 @@ class MovieDetailScreen extends StatefulWidget {
 }
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
+  final MovieDetailCubit movieDetailCubit = getIt<MovieDetailCubit>();
   @override
   void initState() {
     super.initState();
-    getIt<MovieDetailCubit>().fetchData(widget.movieId);
+    movieDetailCubit.fetchData(widget.movieId);
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<MovieDetailCubit>(),
+      create: (context) => movieDetailCubit,
       child: Scaffold(
         appBar: BaseAppBar.customTitleView(
           title: Text(
@@ -51,6 +53,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
           ],
         ),
         body: BlocBuilder<MovieDetailCubit, MovieDetailState>(
+          bloc: movieDetailCubit,
           builder: (context, state) {
             return LoadingView(
               status: state.status,
@@ -100,37 +103,49 @@ class _MovieInformationOther extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text(
-            'Information',
-            style: AppTextStyles.headingXSmall,
+    return BlocBuilder<MovieDetailCubit, MovieDetailState>(
+      builder: (context, state) {
+        return SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text(
+                  'Information',
+                  style: AppTextStyles.headingXSmall,
+                ),
+                _buildInformationItem(
+                  context,
+                  title: 'Release',
+                  description: state.movie?.releaseDate,
+                ),
+                _buildInformationItem(
+                  context,
+                  title: 'Language',
+                  descriptions: (state.movie?.spokenLanguages ?? [])
+                      .where((element) => element.englishName.isNotEmpty)
+                      .map((e) => e.englishName)
+                      .toList(),
+                ),
+                _buildInformationItem(
+                  context,
+                  title: 'Revenue',
+                  description: '\$${state.movie?.revenue}',
+                ),
+                _buildInformationItem(
+                  context,
+                  title: 'Production Companies',
+                  descriptions: (state.movie?.productionCompanies ?? [])
+                      .map((e) => e.name)
+                      .toList(),
+                ),
+              ],
+            ),
           ),
-          _buildInformationItem(
-            context,
-            title: 'Release',
-            description: '14 December 2023',
-          ),
-          _buildInformationItem(
-            context,
-            title: 'Language',
-            description: 'English',
-          ),
-          _buildInformationItem(
-            context,
-            title: 'Revenue',
-            description: '\$208M',
-          ),
-          _buildInformationItem(
-            context,
-            title: 'Revenue',
-            description: '\$208M',
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
@@ -159,6 +174,7 @@ class _MovieInformationOther extends StatelessWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: (descriptions ?? [description ?? ''])
                   .map(
                     (text) => Text(
@@ -182,11 +198,24 @@ class _SimilarMovieView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MovieHorizontalListView(
-      headingTitle: 'Similar',
-      movies: const [],
-      onMovieTap: (id) {
-        //
+    return BlocBuilder<MovieDetailCubit, MovieDetailState>(
+      builder: (context, state) {
+        final similarList =
+            state.movie?.similar?.results.take(20).toList() ?? [];
+        if (similarList.isEmpty) {
+          return const SizedBox.shrink();
+        }
+        return MovieHorizontalListView(
+          padding: EdgeInsets.symmetric(horizontal: 8.w),
+          headingTitle: 'Similar',
+          movies: similarList,
+          showAllTap: () {
+            //
+          },
+          onMovieTap: (id) {
+            //
+          },
+        );
       },
     );
   }
@@ -197,7 +226,72 @@ class _FilmCastView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const PeopleHorizontalListView();
+    return BlocBuilder<MovieDetailCubit, MovieDetailState>(
+      builder: (context, state) {
+        final casts = state.movie?.credits?.cast.take(15).toList() ?? [];
+        return SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
+            child: Column(
+              children: [
+                _buildHeadingTitle(),
+                16.verticalSpace,
+                SizedBox(
+                  height: 150.h,
+                  child: ListView.separated(
+                    itemCount: casts.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      final cast = casts[index];
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CustomCachedNetworkImage(
+                            height: 100.r,
+                            width: 100.r,
+                            imageUrl: cast.profilePath?.tmdbW300Path,
+                            isCircleImage: true,
+                          ),
+                          const Spacer(),
+                          Text(
+                            cast.originalName,
+                            style: AppTextStyles.textMediumBold,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Text(
+                            cast.character ?? '',
+                            style: AppTextStyles.textSmall,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      );
+                    },
+                    separatorBuilder: (context, index) => 16.horizontalSpace,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildHeadingTitle() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          'Cast & Crew',
+          style: AppTextStyles.headingSmall,
+        ),
+        SeeAllButton(
+          onTap: () {},
+        ),
+      ],
+    );
   }
 }
 
@@ -250,7 +344,6 @@ class _MovieInformationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MovieDetailCubit, MovieDetailState>(
-      bloc: getIt<MovieDetailCubit>(),
       buildWhen: (previous, current) => previous.movie != current.movie,
       builder: (context, state) {
         return SliverToBoxAdapter(
@@ -260,7 +353,7 @@ class _MovieInformationView extends StatelessWidget {
                 height: 220.h,
                 width: double.infinity,
                 child: CustomCachedNetworkImage(
-                  imageUrl: state.movie!.backdropPath.tmdbW1280Path,
+                  imageUrl: state.movie?.backdropPath?.tmdbW1280Path,
                 ),
               ),
               Transform.translate(
@@ -274,7 +367,7 @@ class _MovieInformationView extends StatelessWidget {
                         height: 150.h,
                         width: 90.w,
                         child: CustomCachedNetworkImage(
-                          imageUrl: AppConstant.posterUrl,
+                          imageUrl: state.movie?.posterPath.tmdbW500Path,
                         ),
                       ),
                       8.horizontalSpace,
@@ -283,16 +376,25 @@ class _MovieInformationView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
-                              'The Family Plan The Family Plan The Family Plan',
+                            Text(
+                              state.movie?.title ?? '',
                               style: AppTextStyles.headingSmall,
                             ),
+                            4.verticalSpace,
+                            _buildMovieRate(state),
                             8.verticalSpace,
-                            _buildMovieRate(),
-                            16.verticalSpace,
-                            const Text(
-                              "Super-Hero partners Scott Lang and Hope van Dyne, along with with Hope's parents Janet van Dyne and Hank Pym, and Scott's daughter Cassie Lang, find themselves exploring the Quantum Realm, interacting with strange new creatures and embarking on an adventure that will push them beyond the limits of what they thought possible.",
-                              style: AppTextStyles.textMedium,
+                            _buildMovieGenres(context, state),
+                            8.verticalSpace,
+                            ReadMoreText(
+                              state.movie?.overview ?? '',
+                              trimLines: 5,
+                              trimMode: TrimMode.Line,
+                              trimCollapsedText: '.',
+                              trimExpandedText: '.',
+                              callback: (val) {
+                                print(val);
+                              },
+                              moreStyle: AppTextStyles.textMedium,
                             ),
                           ],
                         ),
@@ -308,11 +410,39 @@ class _MovieInformationView extends StatelessWidget {
     );
   }
 
-  Widget _buildMovieRate() {
+  Widget _buildMovieGenres(BuildContext context, MovieDetailState state) {
+    final genres = state.movie?.genres ?? [];
+    if (genres.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    return Wrap(
+      runSpacing: 8.h,
+      spacing: 8.w,
+      children: genres
+          .map(
+            (e) => Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: context.colors.border,
+                  width: 1.5,
+                ),
+              ),
+              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h),
+              child: Text(
+                e.name,
+                style: AppTextStyles.labelMediumLight,
+              ),
+            ),
+          )
+          .toList(),
+    );
+  }
+
+  Widget _buildMovieRate(MovieDetailState state) {
     return Row(
       children: [
         RatingBar(
-          initialRating: 2.4,
+          initialRating: (state.movie?.voteAverage ?? 0) / 10 * 5,
           direction: Axis.horizontal,
           allowHalfRating: true,
           itemCount: 5,
@@ -327,8 +457,8 @@ class _MovieInformationView extends StatelessWidget {
           onRatingUpdate: (_) {},
         ),
         8.horizontalSpace,
-        const Text(
-          '(100)',
+        Text(
+          '( ${state.movie?.voteCount.toString() ?? '0'} )',
           style: AppTextStyles.textSmallBold,
         ),
         Expanded(
@@ -338,8 +468,8 @@ class _MovieInformationView extends StatelessWidget {
               children: [
                 Assets.icons.icStar.svg(height: 12.sp),
                 8.horizontalSpace,
-                const Text(
-                  '9.5',
+                Text(
+                  state.movie?.voteAverage.toString() ?? '0',
                   style: AppTextStyles.textMediumBold,
                 ),
               ],

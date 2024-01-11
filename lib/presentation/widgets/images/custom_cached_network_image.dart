@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
   const CustomCachedNetworkImage({
-    required this.imageUrl,
+    this.imageUrl,
     super.key,
     this.isBorder = false,
     this.isCircleImage = false,
@@ -13,7 +13,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
     this.width,
   });
 
-  final String imageUrl;
+  final String? imageUrl;
   final bool isBorder;
   final bool isCircleImage;
   final double? height;
@@ -22,7 +22,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: imageUrl,
+      imageUrl: imageUrl ?? '',
       fit: BoxFit.cover,
       fadeInCurve: Curves.easeIn,
       fadeInDuration: const Duration(milliseconds: 300),
@@ -49,7 +49,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
           value: downloadProgress.progress,
         ),
       ),
-      errorWidget: (context, url, error) => const Icon(Icons.error),
+      errorWidget: (context, url, error) => const Center(child: Text('😢')),
     );
   }
 }

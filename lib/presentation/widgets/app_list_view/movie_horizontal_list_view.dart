@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/models/models.dart';
 import 'package:api_base/presentation/resources/resources.dart';
-import 'package:api_base/presentation/utilities/extensions/datetime_extension.dart';
 import 'package:api_base/presentation/utilities/extensions/string_extension.dart';
 import 'package:api_base/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +16,7 @@ class MovieHorizontalListView extends StatelessWidget {
     super.key,
     this.height,
     this.width,
+    this.padding,
     this.showAllTap,
     this.isPoster = true,
   });
@@ -26,6 +26,8 @@ class MovieHorizontalListView extends StatelessWidget {
 
   final double? height;
   final double? width;
+
+  final EdgeInsetsGeometry? padding;
 
   final VoidCallback? showAllTap;
   final MovieFunction onMovieTap;
@@ -40,39 +42,27 @@ class MovieHorizontalListView extends StatelessWidget {
   }
 
   double _getHeightItem() {
-    return isPoster ? 250.h : 180.h;
+    return isPoster ? 230.h : 180.h;
   }
 
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Column(
-        children: [
-          _buildHeadingTitle(),
-          16.verticalSpace,
-          if (movies.isNotEmpty)
-            _buildMovieListView()
-          else
-            _buildEmptyListView(),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildEmptyListView() {
-    return SizedBox(
-      height: height ?? 150.h,
-      width: double.infinity,
-      child: ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Container(
-            width: _getWidthItem(context),
-            color: Colors.red,
-          );
-        },
-        itemCount: 10,
-        separatorBuilder: (context, index) => 16.horizontalSpace,
+      child: Container(
+        padding: padding,
+        child: Column(
+          children: [
+            _buildHeadingTitle(),
+            16.verticalSpace,
+            if (movies.isNotEmpty)
+              _buildMovieListView()
+            else
+              LoadingListView(
+                height: height ?? _getHeightItem(),
+                width: width ?? _getWidthItem(context),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -104,7 +94,7 @@ class MovieHorizontalListView extends StatelessWidget {
         onMovieTap.call(movie.id);
       },
       child: SizedBox(
-        height: height ?? 250.h,
+        height: height ?? _getHeightItem(),
         width: width ?? _getWidthItem(context),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,25 +104,25 @@ class MovieHorizontalListView extends StatelessWidget {
               child: CustomCachedNetworkImage(
                 imageUrl: isPoster
                     ? movie.posterPath.tmdbW154Path
-                    : movie.backdropPath.tmdbW300Path,
+                    : movie.backdropPath?.tmdbW300Path,
               ),
             ),
             8.verticalSpace,
             SizedBox(
-              height: 70.h,
+              height: 60.h,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     movie.title,
-                    style: AppTextStyles.labelLarge,
+                    style: AppTextStyles.labelMedium,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                   4.verticalSpace,
                   Text(
-                    movie.releaseDate.formatDateTime,
-                    style: AppTextStyles.labelMediumLight,
+                    movie.releaseDate,
+                    style: AppTextStyles.labelSmallLight,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
