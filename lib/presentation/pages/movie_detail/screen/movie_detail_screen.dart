@@ -213,8 +213,8 @@ class _SimilarMovieView extends StatelessWidget {
           showAllTap: () {
             //
           },
-          onMovieTap: (id) {
-            //
+          onMovieTap: (movieId) {
+            context.pushRoute(MovieDetailRoute(movieId: movieId));
           },
         );
       },
@@ -370,7 +370,7 @@ class _MovieInformationView extends StatelessWidget {
                         height: 150.h,
                         width: 90.w,
                         child: CustomCachedNetworkImage(
-                          imageUrl: state.movie?.posterPath.tmdbW500Path,
+                          imageUrl: state.movie?.posterPath?.tmdbW500Path,
                         ),
                       ),
                       8.horizontalSpace,
