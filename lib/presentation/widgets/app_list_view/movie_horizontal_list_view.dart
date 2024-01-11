@@ -39,7 +39,7 @@ class MovieHorizontalListView extends StatelessWidget {
   }
 
   double _getHeightItem() {
-    return isPoster ? 250.h : 180.h;
+    return isPoster ? 230.h : 180.h;
   }
 
   @override
@@ -88,7 +88,7 @@ class MovieHorizontalListView extends StatelessWidget {
         onMovieTap.call(movie.id);
       },
       child: SizedBox(
-        height: height ?? 250.h,
+        height: height ?? _getHeightItem(),
         width: width ?? _getWidthItem(context),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,25 +98,25 @@ class MovieHorizontalListView extends StatelessWidget {
               child: CustomCachedNetworkImage(
                 imageUrl: isPoster
                     ? movie.posterPath.tmdbW154Path
-                    : movie.backdropPath.tmdbW300Path,
+                    : movie.backdropPath?.tmdbW300Path,
               ),
             ),
             8.verticalSpace,
             SizedBox(
-              height: 70.h,
+              height: 60.h,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     movie.title,
-                    style: AppTextStyles.labelLarge,
+                    style: AppTextStyles.labelMedium,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                   4.verticalSpace,
                   Text(
                     movie.releaseDate,
-                    style: AppTextStyles.labelMediumLight,
+                    style: AppTextStyles.labelSmallLight,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
