@@ -1,17 +1,17 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'credits.g.dart';
+part 'credits_response.g.dart';
 
 @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
-class Credits {
-  Credits({
+class CreditsResponse {
+  CreditsResponse({
     required this.cast,
     required this.crew,
     this.id,
   });
 
-  factory Credits.fromJson(Map<String, dynamic> json) =>
-      _$CreditsFromJson(json);
+  factory CreditsResponse.fromJson(Map<String, dynamic> json) =>
+      _$CreditsResponseFromJson(json);
   @JsonKey(name: 'id')
   final int? id;
   @JsonKey(name: 'cast')
@@ -19,7 +19,7 @@ class Credits {
   @JsonKey(name: 'crew')
   final List<Cast> crew;
 
-  Map<String, dynamic> toJson() => _$CreditsToJson(this);
+  Map<String, dynamic> toJson() => _$CreditsResponseToJson(this);
 }
 
 @JsonSerializable()

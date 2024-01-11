@@ -8,7 +8,7 @@ part 'movie_response.g.dart';
 // @JsonDateTimeConverter()
 class MovieResponse {
   final bool adult;
-  final String backdropPath;
+  final String? backdropPath;
   final BelongsToCollection? belongsToCollection;
   final int? budget;
   final List<int>? genreIds;
@@ -31,9 +31,9 @@ class MovieResponse {
   final String? tagline;
   final String title;
   final bool? video;
-  final Similar? similar;
+  final SimilarResponse? similar;
   final Videos? videos;
-  final Credits? credits;
+  final CreditsResponse? credits;
   final double voteAverage;
   final int voteCount;
 
