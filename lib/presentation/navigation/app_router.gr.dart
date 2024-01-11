@@ -27,6 +27,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomeScreen(),
       );
     },
+    InfinityListRoute.name: (routeData) {
+      final args = routeData.argsAs<InfinityListRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: InfinityListScreen(
+          argument: args.argument,
+          key: args.key,
+        ),
+      );
+    },
     LetInYouRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -102,6 +112,44 @@ class HomeRoute extends PageRouteInfo<void> {
   static const String name = 'HomeRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [InfinityListScreen]
+class InfinityListRoute extends PageRouteInfo<InfinityListRouteArgs> {
+  InfinityListRoute({
+    required InfinityListArgument argument,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          InfinityListRoute.name,
+          args: InfinityListRouteArgs(
+            argument: argument,
+            key: key,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'InfinityListRoute';
+
+  static const PageInfo<InfinityListRouteArgs> page =
+      PageInfo<InfinityListRouteArgs>(name);
+}
+
+class InfinityListRouteArgs {
+  const InfinityListRouteArgs({
+    required this.argument,
+    this.key,
+  });
+
+  final InfinityListArgument argument;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'InfinityListRouteArgs{argument: $argument, key: $key}';
+  }
 }
 
 /// generated route for
