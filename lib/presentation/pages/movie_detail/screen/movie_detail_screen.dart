@@ -50,6 +50,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             Assets.icons.icStarOutline.svg(height: 24.h),
             16.horizontalSpace,
             Assets.icons.icBookmarkOutline.svg(height: 24.h),
+            16.horizontalSpace,
           ],
         ),
         body: BlocBuilder<MovieDetailCubit, MovieDetailState>(
@@ -77,7 +78,7 @@ class _MainContent extends StatelessWidget {
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
-        const _FilmCastView(),
+        const _FilmCastCrewView(),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
@@ -221,8 +222,8 @@ class _SimilarMovieView extends StatelessWidget {
   }
 }
 
-class _FilmCastView extends StatelessWidget {
-  const _FilmCastView();
+class _FilmCastCrewView extends StatelessWidget {
+  const _FilmCastCrewView();
 
   @override
   Widget build(BuildContext context) {
@@ -249,7 +250,9 @@ class _FilmCastView extends StatelessWidget {
                           CustomCachedNetworkImage(
                             height: 100.r,
                             width: 100.r,
+                            isBorder: true,
                             imageUrl: cast.profilePath?.tmdbW300Path,
+                            imageType: ImageType.profile,
                             isCircleImage: true,
                           ),
                           const Spacer(),

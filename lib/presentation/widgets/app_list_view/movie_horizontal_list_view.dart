@@ -1,8 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/models/models.dart';
-import 'package:api_base/presentation/resources/resources.dart';
+import 'package:api_base/presentation/presentation.dart';
 import 'package:api_base/presentation/utilities/extensions/string_extension.dart';
-import 'package:api_base/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -102,6 +101,7 @@ class MovieHorizontalListView extends StatelessWidget {
           children: [
             Expanded(
               child: CustomCachedNetworkImage(
+                imageType: ImageType.movie,
                 imageUrl: isPoster
                     ? movie.posterPath.tmdbW154Path
                     : movie.backdropPath?.tmdbW300Path,
