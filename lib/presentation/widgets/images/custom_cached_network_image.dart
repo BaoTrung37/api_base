@@ -25,18 +25,11 @@ class CustomCachedNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: imageUrl ?? '',
-      fit: BoxFit.cover,
-      fadeInCurve: Curves.easeIn,
-      alignment: Alignment.center,
-      height: height,
-      width: width,
-      fadeInDuration: const Duration(milliseconds: 300),
-      imageBuilder: (context, imageProvider) {
+    return Builder(builder: (context) {
+      if (imageUrl == null) {
         return Container(
           height: height,
-          width: width,
+          width: height,
           decoration: BoxDecoration(
             border: isBorder
                 ? Border.all(
@@ -44,33 +37,59 @@ class CustomCachedNetworkImage extends StatelessWidget {
                   )
                 : null,
             shape: isCircleImage ? BoxShape.circle : BoxShape.rectangle,
-            image: DecorationImage(
-              image: imageProvider,
-              fit: BoxFit.cover,
-            ),
+          ),
+          child: Center(
+            child: imageType.imageError.svg(height: 40.h),
           ),
         );
-      },
-      progressIndicatorBuilder: (context, url, downloadProgress) => Center(
-        child: CircularProgressIndicator(
-          value: downloadProgress.progress,
-        ),
-      ),
-      errorWidget: (context, url, error) => Container(
+      }
+      return CachedNetworkImage(
+        imageUrl: imageUrl ?? '',
+        fit: BoxFit.cover,
+        fadeInCurve: Curves.easeIn,
+        alignment: Alignment.center,
         height: height,
-        width: height,
-        decoration: BoxDecoration(
-          border: isBorder
-              ? Border.all(
-                  color: context.colors.border,
-                )
-              : null,
-          shape: isCircleImage ? BoxShape.circle : BoxShape.rectangle,
+        width: width,
+        fadeInDuration: const Duration(milliseconds: 300),
+        imageBuilder: (context, imageProvider) {
+          return Container(
+            height: height,
+            width: width,
+            decoration: BoxDecoration(
+              border: isBorder
+                  ? Border.all(
+                      color: context.colors.border,
+                    )
+                  : null,
+              shape: isCircleImage ? BoxShape.circle : BoxShape.rectangle,
+              image: DecorationImage(
+                image: imageProvider,
+                fit: BoxFit.cover,
+              ),
+            ),
+          );
+        },
+        progressIndicatorBuilder: (context, url, downloadProgress) => Center(
+          child: CircularProgressIndicator(
+            value: downloadProgress.progress,
+          ),
         ),
-        child: Center(
-          child: imageType.imageError.svg(height: 40.h),
+        errorWidget: (context, url, error) => Container(
+          height: height,
+          width: height,
+          decoration: BoxDecoration(
+            border: isBorder
+                ? Border.all(
+                    color: context.colors.border,
+                  )
+                : null,
+            shape: isCircleImage ? BoxShape.circle : BoxShape.rectangle,
+          ),
+          child: Center(
+            child: imageType.imageError.svg(height: 40.h),
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
