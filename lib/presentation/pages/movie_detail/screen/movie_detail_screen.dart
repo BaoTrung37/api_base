@@ -198,11 +198,20 @@ class _SimilarMovieView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MovieHorizontalListView(
-      headingTitle: 'Similar',
-      movies: const [],
-      onMovieTap: (id) {
-        //
+    return BlocBuilder<MovieDetailCubit, MovieDetailState>(
+      builder: (context, state) {
+        final similarList =
+            state.movie?.similar?.results.take(20).toList() ?? [];
+        if (similarList.isEmpty) {
+          return const SizedBox.shrink();
+        }
+        return MovieHorizontalListView(
+          headingTitle: 'Similar',
+          movies: similarList,
+          onMovieTap: (id) {
+            //
+          },
+        );
       },
     );
   }
@@ -340,7 +349,7 @@ class _MovieInformationView extends StatelessWidget {
                 height: 220.h,
                 width: double.infinity,
                 child: CustomCachedNetworkImage(
-                  imageUrl: state.movie?.backdropPath.tmdbW1280Path,
+                  imageUrl: state.movie?.backdropPath?.tmdbW1280Path,
                 ),
               ),
               Transform.translate(
