@@ -206,8 +206,12 @@ class _SimilarMovieView extends StatelessWidget {
           return const SizedBox.shrink();
         }
         return MovieHorizontalListView(
+          padding: EdgeInsets.symmetric(horizontal: 8.w),
           headingTitle: 'Similar',
           movies: similarList,
+          showAllTap: () {
+            //
+          },
           onMovieTap: (id) {
             //
           },

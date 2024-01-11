@@ -16,6 +16,7 @@ class MovieHorizontalListView extends StatelessWidget {
     super.key,
     this.height,
     this.width,
+    this.padding,
     this.showAllTap,
     this.isPoster = true,
   });
@@ -25,6 +26,8 @@ class MovieHorizontalListView extends StatelessWidget {
 
   final double? height;
   final double? width;
+
+  final EdgeInsetsGeometry? padding;
 
   final VoidCallback? showAllTap;
   final MovieFunction onMovieTap;
@@ -45,18 +48,21 @@ class MovieHorizontalListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: Column(
-        children: [
-          _buildHeadingTitle(),
-          16.verticalSpace,
-          if (movies.isNotEmpty)
-            _buildMovieListView()
-          else
-            LoadingListView(
-              height: height ?? _getHeightItem(),
-              width: width ?? _getWidthItem(context),
-            ),
-        ],
+      child: Container(
+        padding: padding,
+        child: Column(
+          children: [
+            _buildHeadingTitle(),
+            16.verticalSpace,
+            if (movies.isNotEmpty)
+              _buildMovieListView()
+            else
+              LoadingListView(
+                height: height ?? _getHeightItem(),
+                width: width ?? _getWidthItem(context),
+              ),
+          ],
+        ),
       ),
     );
   }
