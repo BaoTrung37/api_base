@@ -36,6 +36,10 @@ class $AssetsIconsGen {
   SvgGenImage get icDownloadOutline =>
       const SvgGenImage('assets/icons/ic_download_outline.svg');
 
+  /// File path: assets/icons/ic_error_movie.svg
+  SvgGenImage get icErrorMovie =>
+      const SvgGenImage('assets/icons/ic_error_movie.svg');
+
   /// File path: assets/icons/ic_explore.svg
   SvgGenImage get icExplore => const SvgGenImage('assets/icons/ic_explore.svg');
 
@@ -71,8 +75,16 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_mail.svg
   SvgGenImage get icMail => const SvgGenImage('assets/icons/ic_mail.svg');
 
+  /// File path: assets/icons/ic_no_image.svg
+  SvgGenImage get icNoImage =>
+      const SvgGenImage('assets/icons/ic_no_image.svg');
+
   /// File path: assets/icons/ic_profile.svg
   SvgGenImage get icProfile => const SvgGenImage('assets/icons/ic_profile.svg');
+
+  /// File path: assets/icons/ic_profile_grey.svg
+  SvgGenImage get icProfileGrey =>
+      const SvgGenImage('assets/icons/ic_profile_grey.svg');
 
   /// File path: assets/icons/ic_profile_outline.svg
   SvgGenImage get icProfileOutline =>
@@ -97,6 +109,7 @@ class $AssetsIconsGen {
         icBookmarkOutline,
         icDownload,
         icDownloadOutline,
+        icErrorMovie,
         icExplore,
         icExploreOutline,
         icFacebook,
@@ -107,7 +120,9 @@ class $AssetsIconsGen {
         icHomeOutline,
         icLock,
         icMail,
+        icNoImage,
         icProfile,
+        icProfileGrey,
         icProfileOutline,
         icStar,
         icStarHalf,

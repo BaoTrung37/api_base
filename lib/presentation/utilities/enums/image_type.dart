@@ -10,7 +10,7 @@ extension ImageTypeExtension on ImageType {
   SvgGenImage get imageError {
     switch (this) {
       case ImageType.movie:
-        return Assets.icons.icApple;
+        return Assets.icons.icErrorMovie;
       case ImageType.profile:
         return Assets.icons.icProfileGrey;
       case ImageType.normal:
