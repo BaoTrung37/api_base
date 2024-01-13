@@ -1,5 +1,5 @@
 export 'home/home.dart';
-export 'infinity_list/infinity_list.dart';
+export 'show_all/show_all.dart';
 export 'let_in_you/let_in_you.dart';
 export 'main_app/main_app.dart';
 export 'movie_detail/movie_detail.dart';

@@ -212,8 +212,8 @@ class _SimilarMovieView extends StatelessWidget {
           movies: similarList,
           showAllTap: () {
             context.pushRoute(
-              InfinityListRoute(
-                argument: InfinityListArgument(title: 'Similar'),
+              ShowAllRoute(
+                argument: ShowAllArgument(title: 'Similar'),
               ),
             );
           },
