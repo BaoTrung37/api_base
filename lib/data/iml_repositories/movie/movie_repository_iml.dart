@@ -30,8 +30,8 @@ class MovieRepositoryIml extends MovieRepository {
     required int page,
   }) async {
     final response = await restClient.getSimilarMovies(
-      movieId: movieId,
-      page: page,
+      movieId,
+      page,
     );
     return response.results;
   }

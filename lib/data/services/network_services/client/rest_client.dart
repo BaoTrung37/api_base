@@ -30,16 +30,16 @@ abstract class RestClient {
 
   // Start Movie Lists
   @GET('/movie/popular')
-  Future<ApiCollectionResponse<MovieResponse>> getPopularMovies({
+  Future<ApiCollectionResponse<MovieResponse>> getPopularMovies(
     @Query('page') int? page,
     @Query('region') String? region,
-  });
+  );
 
   @GET('/movie/now_playing')
-  Future<ApiCollectionResponse<MovieResponse>> getNowPlayingMovies({
+  Future<ApiCollectionResponse<MovieResponse>> getNowPlayingMovies(
     @Query('page') int? page,
     @Query('region') String? region,
-  });
+  );
   // End Movie Lists
 
   // Start movie
@@ -51,10 +51,10 @@ abstract class RestClient {
   );
 
   @GET('/movie/{movie_id}/similar')
-  Future<ApiCollectionResponse<MovieResponse>> getSimilarMovies({
+  Future<ApiCollectionResponse<MovieResponse>> getSimilarMovies(
     @Path('movie_id') int movieId,
     @Query('page') int page,
-  });
+  );
 
   // End movie
 
