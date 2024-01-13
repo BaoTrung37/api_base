@@ -19,9 +19,8 @@ class MovieListRepositoryImp extends MovieListsRepository {
     String? region,
   }) {
     final response = restClient.getPopularMovies(
-      language: language,
-      page: page,
-      region: region,
+      page,
+      region,
     );
     return response;
   }
@@ -32,8 +31,8 @@ class MovieListRepositoryImp extends MovieListsRepository {
     String? region,
   }) {
     final response = restClient.getNowPlayingMovies(
-      page: page,
-      region: region,
+      page,
+      region,
     );
     return response;
   }

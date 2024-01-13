@@ -30,18 +30,16 @@ abstract class RestClient {
 
   // Start Movie Lists
   @GET('/movie/popular')
-  Future<ApiCollectionResponse<MovieResponse>> getPopularMovies({
-    @Query('language') String? language,
+  Future<ApiCollectionResponse<MovieResponse>> getPopularMovies(
     @Query('page') int? page,
     @Query('region') String? region,
-  });
+  );
 
   @GET('/movie/now_playing')
-  Future<ApiCollectionResponse<MovieResponse>> getNowPlayingMovies({
-    @Query('language') String? language,
+  Future<ApiCollectionResponse<MovieResponse>> getNowPlayingMovies(
     @Query('page') int? page,
     @Query('region') String? region,
-  });
+  );
   // End Movie Lists
 
   // Start movie
@@ -52,15 +50,17 @@ abstract class RestClient {
     @Query('append_to_response') String? appendToResponse,
   );
 
+  @GET('/movie/{movie_id}/similar')
+  Future<ApiCollectionResponse<MovieResponse>> getSimilarMovies(
+    @Path('movie_id') int movieId,
+    @Query('page') int page,
+  );
+
   // End movie
 
   @GET('/genre/movie/list')
-  Future<GenresResponse> getMovieGenres({
-    @Query('language') String? language,
-  });
+  Future<GenresResponse> getMovieGenres();
 
   @GET('/genre/tv/list')
-  Future<GenresResponse> getTvGenres({
-    @Query('language') String? language,
-  });
+  Future<GenresResponse> getTvGenres();
 }

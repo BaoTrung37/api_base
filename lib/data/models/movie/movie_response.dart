@@ -19,7 +19,7 @@ class MovieResponse {
   final String originalTitle;
   final String overview;
   final double popularity;
-  final String posterPath;
+  final String? posterPath;
   final List<ProductionCompany>? productionCompanies;
   final List<ProductionCountry>? productionCountries;
   final String releaseDate;
@@ -44,11 +44,11 @@ class MovieResponse {
     required this.originalTitle,
     required this.overview,
     required this.popularity,
-    required this.posterPath,
     required this.releaseDate,
     required this.title,
     required this.voteAverage,
     required this.voteCount,
+    this.posterPath,
     this.belongsToCollection,
     this.budget,
     this.genreIds,

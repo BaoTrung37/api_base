@@ -23,4 +23,16 @@ class MovieRepositoryIml extends MovieRepository {
 
     return response;
   }
+
+  @override
+  Future<List<MovieResponse>> getSimilarMovieList({
+    required int movieId,
+    required int page,
+  }) async {
+    final response = await restClient.getSimilarMovies(
+      movieId,
+      page,
+    );
+    return response.results;
+  }
 }

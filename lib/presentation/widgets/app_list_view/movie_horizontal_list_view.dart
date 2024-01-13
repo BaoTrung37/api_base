@@ -103,13 +103,13 @@ class MovieHorizontalListView extends StatelessWidget {
               child: CustomCachedNetworkImage(
                 imageType: ImageType.movie,
                 imageUrl: isPoster
-                    ? movie.posterPath.tmdbW154Path
+                    ? movie.posterPath?.tmdbW154Path
                     : movie.backdropPath?.tmdbW300Path,
               ),
             ),
             8.verticalSpace,
             SizedBox(
-              height: 60.h,
+              height: 70.h,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -144,7 +144,7 @@ class MovieHorizontalListView extends StatelessWidget {
           style: AppTextStyles.headingSmall,
         ),
         SeeAllButton(
-          onTap: () => showAllTap,
+          onTap: () => showAllTap?.call(),
         ),
       ],
     );

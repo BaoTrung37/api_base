@@ -86,6 +86,9 @@ dependencies:
   freezed_annotation: ^2.4.1
   flutter_gen: ^5.3.2
 
+  # Scroll pagination
+  infinite_scroll_pagination: ^4.0.0
+
   collection: ^1.18.0
 
 dev_dependencies:

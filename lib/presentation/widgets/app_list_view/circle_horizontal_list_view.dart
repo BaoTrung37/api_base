@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CircleHorizontalListView extends StatelessWidget {
   const CircleHorizontalListView({
-   required this.headingTitle,
+    required this.headingTitle,
     this.onAllTap,
     super.key,
   });
@@ -25,7 +25,7 @@ class CircleHorizontalListView extends StatelessWidget {
             _buildHeadingTitle(),
             16.verticalSpace,
             SizedBox(
-              height: 150.h,
+              height: 160.h,
               child: ListView.separated(
                 itemCount: 10,
                 scrollDirection: Axis.horizontal,
@@ -67,9 +67,8 @@ class CircleHorizontalListView extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-         Text(
-          headingTitle
-          ,
+        Text(
+          headingTitle,
           style: AppTextStyles.headingSmall,
         ),
         SeeAllButton(
