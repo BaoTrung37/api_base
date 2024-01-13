@@ -19,12 +19,11 @@ class ShowAllCubit extends Cubit<ShowAllState> {
   final GetSimilarMovieListUseCase _getSimilarMovieListUseCase;
 
   Future<List<DataSource>> getSimilarMoviesData(int? movieId, int page) async {
+    emit(state.copyWith(status: AppStatus.inProgress));
     if (movieId == null) {
       return [];
     }
     try {
-      emit(state.copyWith(status: AppStatus.inProgress));
-
       final similarMovieList = await _getSimilarMovieListUseCase
           .run(GetSimilarMovieListInput(movieId: movieId, page: page));
 

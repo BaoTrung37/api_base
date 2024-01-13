@@ -30,7 +30,10 @@ class SimilarMovieView extends StatelessWidget {
           showAllTap: () {
             context.pushRoute(
               ShowAllRoute(
-                argument: ShowAllArgument(title: 'Similar'),
+                argument: ShowAllArgument(
+                  title: 'Similar',
+                  movieId: state.movie?.id,
+                ),
               ),
             );
           },
