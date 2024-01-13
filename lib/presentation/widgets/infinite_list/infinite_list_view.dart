@@ -88,9 +88,9 @@ typedef PagedListCellBuilder = Widget Function(DataSource item, int index);
 
 class InfiniteListView extends StatefulWidget {
   const InfiniteListView({
-    required this.perPage,
     required this.cellBuilder,
     required this.getDataSources,
+    this.perPage = 20,
     this.scrollController,
     this.type = InfiniteListType.list,
     this.separatorBuilder,
