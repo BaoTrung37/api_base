@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:api_base/gen/assets.gen.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:api_base/presentation/widgets/app_indicator/app_loading_indicator.dart';
