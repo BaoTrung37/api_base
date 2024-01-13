@@ -221,15 +221,14 @@ class _InfiniteListViewState extends State<InfiniteListView> {
     final separatedBuilder = widget.separatorBuilder;
     if (separatedBuilder != null) {
       return PagedListView<int, DataSource>.separated(
-        separatorBuilder: separatedBuilder,
-        padding: widget.paddings,
-        scrollDirection: widget.scrollDirection,
-        pagingController: _pagingController,
-        builderDelegate: _builderDelegate(),
-        reverse: widget.isReversed,
-        physics: widget.scrollPhysics,
-        scrollController: widget.scrollController,
-      );
+          separatorBuilder: separatedBuilder,
+          padding: widget.paddings,
+          reverse: widget.isReversed,
+          scrollController: widget.scrollController,
+          physics: widget.scrollPhysics,
+          scrollDirection: widget.scrollDirection,
+          pagingController: _pagingController,
+          builderDelegate: _builderDelegate());
     } else {
       return PagedListView<int, DataSource>(
           padding: widget.paddings,
@@ -249,18 +248,16 @@ class _InfiniteListViewState extends State<InfiniteListView> {
         index,
       ),
       firstPageProgressIndicatorBuilder: (_) => const AppLoadingIndicator(),
-      noItemsFoundIndicatorBuilder: (_) => widget.emptyView ?? Container(),
+      noItemsFoundIndicatorBuilder: (_) =>
+          widget.emptyView ?? const SizedBox.shrink(),
       firstPageErrorIndicatorBuilder: (_) => LoadingErrorView(
         onReload: _pagingController.retryLastFailedRequest,
       ),
       newPageProgressIndicatorBuilder: (_) =>
           widget.newPageIndicator ??
-          const Padding(
-            padding: EdgeInsets.only(
-              top: 16,
-              bottom: 16,
-            ),
-            child: AppLoadingIndicator(),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 16.h),
+            child: const AppLoadingIndicator(),
           ),
       newPageErrorIndicatorBuilder: (_) => _buildNewPageErrorView(),
     );
@@ -268,10 +265,7 @@ class _InfiniteListViewState extends State<InfiniteListView> {
 
   Widget _buildNewPageErrorView() {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 16,
-        bottom: 16,
-      ),
+      padding: EdgeInsets.symmetric(vertical: 16.h),
       child: GestureDetector(
         onTap: () {
           _pagingController.retryLastFailedRequest();
