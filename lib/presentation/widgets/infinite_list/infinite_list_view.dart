@@ -92,7 +92,7 @@ class InfiniteListView extends StatefulWidget {
   const InfiniteListView({
     required this.perPage,
     required this.cellBuilder,
-    required this.getDatasources,
+    required this.getDataSources,
     this.scrollController,
     this.type = InfiniteListType.list,
     this.separatorBuilder,
@@ -108,8 +108,8 @@ class InfiniteListView extends StatefulWidget {
     this.isReversed = false,
     this.shouldClearCacheImageAfterRefresh = false,
     // use the combination of AlwaysScrollableScrollPhysics and BouncingScrollPhysics
-    // to fix the bug can not scroll view when all the content in scrollview is visible
-    // and the scrollview is not bounce when scroll, leading to the refresh indicator
+    // to fix the bug can not scroll view when all the content in ScrollView is visible
+    // and [the ScrollView] is not bounce when scroll, leading to the refresh indicator
     // overlap scroll content in android.
     this.scrollPhysics =
         const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
@@ -119,7 +119,7 @@ class InfiniteListView extends StatefulWidget {
 
   final int perPage;
   final PagedListCellBuilder cellBuilder;
-  final FetchItemFunction getDatasources;
+  final FetchItemFunction getDataSources;
   final IndexedWidgetBuilder? separatorBuilder;
   final Widget? emptyView;
   final Widget? newPageIndicator;
@@ -160,7 +160,7 @@ class _InfiniteListViewState extends State<InfiniteListView> {
           pageKey,
           widget.perPage,
           _pagingController,
-          widget.getDatasources,
+          widget.getDataSources,
         );
       });
     });
