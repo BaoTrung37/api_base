@@ -55,9 +55,7 @@ class _ShowAllScreenState extends State<ShowAllScreen>
           builder: (context, state) {
             return InfiniteListView(
               cellBuilder: (item, index) {
-                return Container(
-                  child: Text('$index'),
-                );
+                return Text('$index');
               },
               getDataSources: (pageKey, perPage) {
                 return showAllCubit.getSimilarMoviesData(
