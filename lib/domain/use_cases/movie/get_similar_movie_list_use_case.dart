@@ -6,14 +6,14 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class GetSimilarMovieListUseCase
-    extends FutureUseCase<GetSimilarMovieListInput, MovieResponse?> {
+    extends FutureUseCase<GetSimilarMovieListInput, List<MovieResponse>> {
   final MovieRepositoryIml movieRepositoryIml;
   GetSimilarMovieListUseCase({
     required this.movieRepositoryIml,
   });
 
   @override
-  Future<MovieResponse?> run(GetSimilarMovieListInput input) {
+  Future<List<MovieResponse>> run(GetSimilarMovieListInput input) {
     return movieRepositoryIml.getSimilarMovieList(
       page: input.page,
       movieId: input.movieId,

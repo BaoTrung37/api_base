@@ -25,7 +25,7 @@ class MovieRepositoryIml extends MovieRepository {
   }
 
   @override
-  Future<MovieResponse?> getSimilarMovieList({
+  Future<List<MovieResponse>> getSimilarMovieList({
     required int movieId,
     required int page,
   }) async {
@@ -33,6 +33,6 @@ class MovieRepositoryIml extends MovieRepository {
       movieId: movieId,
       page: page,
     );
-    return response;
+    return response.results;
   }
 }

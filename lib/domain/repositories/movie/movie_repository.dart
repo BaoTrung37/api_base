@@ -5,7 +5,7 @@ abstract class MovieRepository {
     required int movieId,
     String? appendToResponse,
   });
-  Future<MovieResponse?> getSimilarMovieList({
+  Future<List<MovieResponse>> getSimilarMovieList({
     required int movieId,
     required int page,
   });

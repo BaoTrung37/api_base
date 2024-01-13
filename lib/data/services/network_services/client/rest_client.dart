@@ -51,7 +51,7 @@ abstract class RestClient {
   );
 
   @GET('/movie/{movie_id}/similar')
-  Future<MovieResponse> getSimilarMovies({
+  Future<ApiCollectionResponse<MovieResponse>> getSimilarMovies({
     @Path('movie_id') int movieId,
     @Query('page') int page,
   });
