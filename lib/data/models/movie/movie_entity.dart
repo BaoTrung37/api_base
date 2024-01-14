@@ -1,7 +1,6 @@
+import 'package:api_base/data/models/genres/genres.dart';
 import 'package:api_base/data/models/movie/movie.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../genres/genres.dart';
 
 part 'movie_entity.freezed.dart';
 
