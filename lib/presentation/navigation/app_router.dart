@@ -30,10 +30,30 @@ class AppRouter extends _$AppRouter {
                 AutoRoute(page: MovieDetailRoute.page),
               ],
             ),
-            AutoRoute(page: TvShowsNavigationRoute.page),
-            AutoRoute(page: FavoriteNavigationRoute.page),
-            AutoRoute(page: SearchNavigationRoute.page),
-            AutoRoute(page: ProfileNavigationRoute.page),
+            AutoRoute(
+              page: TvShowsNavigationRoute.page,
+              children: [
+                AutoRoute(page: TvShowsRoute.page, initial: true),
+              ],
+            ),
+            AutoRoute(
+              page: FavoriteNavigationRoute.page,
+              children: [
+                AutoRoute(page: FavoriteRoute.page, initial: true),
+              ],
+            ),
+            AutoRoute(
+              page: SearchNavigationRoute.page,
+              children: [
+                AutoRoute(page: SearchRoute.page, initial: true),
+              ],
+            ),
+            AutoRoute(
+              page: ProfileNavigationRoute.page,
+              children: [
+                AutoRoute(page: ProfileRoute.page, initial: true),
+              ],
+            ),
           ],
         ),
         AutoRoute(page: ApiTestRoute.page),
