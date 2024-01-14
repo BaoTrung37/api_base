@@ -22,11 +22,11 @@ class AppRouter extends _$AppRouter {
             ),
             AutoRoute(page: ProfileRoute.page),
             AutoRoute(page: MovieDetailRoute.page),
-            AutoRoute(page: ShowAllRoute.page)
+            AutoRoute(page: ShowAllRoute.page),
+            AutoRoute(page: ApiTestRoute.page),
           ],
         ),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SignUpRoute.page),
-        AutoRoute(page: ApiTestRoute.page),
       ];
 }

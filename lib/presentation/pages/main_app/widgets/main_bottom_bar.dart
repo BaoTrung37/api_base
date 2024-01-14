@@ -66,13 +66,13 @@ class MainBottomBar extends StatelessWidget {
                     context.replaceRoute(const HomeRoute());
                     break;
                   case 1:
-                    context.replaceRoute(const HomeRoute());
+                    context.replaceRoute(const ApiTestRoute());
                     break;
                   case 2:
-                    context.replaceRoute(const HomeRoute());
+                    context.replaceRoute(const ApiTestRoute());
                     break;
                   case 3:
-                    context.replaceRoute(const HomeRoute());
+                    context.replaceRoute(const ApiTestRoute());
                     break;
                   case 4:
                     context.replaceRoute(const ProfileRoute());
