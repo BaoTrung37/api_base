@@ -1,3 +1,4 @@
+import 'package:api_base/presentation/navigation/navigation.dart';
 import 'package:api_base/presentation/pages/api_test/api_test_screen.dart';
 import 'package:api_base/presentation/pages/pages.dart';
 import 'package:auto_route/auto_route.dart';
@@ -17,15 +18,25 @@ class AppRouter extends _$AppRouter {
           page: MainAppRoute.page,
           children: [
             AutoRoute(
-              page: HomeRoute.page,
+              page: HomeNavigationRoute.page,
               initial: true,
+              children: [
+                AutoRoute(page: HomeRoute.page, initial: true),
+                AutoRoute(page: TvShowsRoute.page),
+                AutoRoute(page: FavoriteRoute.page),
+                AutoRoute(page: SearchRoute.page),
+                AutoRoute(page: ProfileRoute.page),
+                AutoRoute(page: ShowAllRoute.page),
+                AutoRoute(page: MovieDetailRoute.page),
+              ],
             ),
-            AutoRoute(page: ProfileRoute.page),
-            AutoRoute(page: MovieDetailRoute.page),
-            AutoRoute(page: ShowAllRoute.page),
-            AutoRoute(page: ApiTestRoute.page),
+            AutoRoute(page: TvShowsNavigationRoute.page),
+            AutoRoute(page: FavoriteNavigationRoute.page),
+            AutoRoute(page: SearchNavigationRoute.page),
+            AutoRoute(page: ProfileNavigationRoute.page),
           ],
         ),
+        AutoRoute(page: ApiTestRoute.page),
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SignUpRoute.page),
       ];
