@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:api_base/data/models/genres/genres.dart';
 import 'package:api_base/data/models/models.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -92,21 +93,6 @@ class BelongsToCollection {
       _$BelongsToCollectionFromJson(json);
 
   Map<String, dynamic> toJson() => _$BelongsToCollectionToJson(this);
-}
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class Genre {
-  final int id;
-  final String name;
-
-  Genre({
-    required this.id,
-    required this.name,
-  });
-
-  factory Genre.fromJson(Map<String, dynamic> json) => _$GenreFromJson(json);
-
-  Map<String, dynamic> toJson() => _$GenreToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
