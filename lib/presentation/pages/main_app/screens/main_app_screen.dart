@@ -1,4 +1,5 @@
 import 'package:api_base/injection/di.dart';
+import 'package:api_base/presentation/navigation/app_router.dart';
 import 'package:api_base/presentation/pages/main_app/cubit/cubit.dart';
 import 'package:api_base/presentation/pages/main_app/widgets/main_bottom_bar.dart';
 import 'package:auto_route/auto_route.dart';
@@ -14,7 +15,6 @@ class MainAppScreen extends StatefulWidget {
 }
 
 class _MainAppScreenState extends State<MainAppScreen> {
-  // List<TabItem> tabs = [];
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -23,9 +23,31 @@ class _MainAppScreenState extends State<MainAppScreen> {
           create: (context) => getIt<BottomTabCubit>(),
         ),
       ],
-      child: const Scaffold(
-        body: AutoRouter(),
-        bottomNavigationBar: MainBottomBar(),
+      child: AutoTabsRouter(
+        routes: const [
+          HomeNavigationRoute(),
+          TvShowsNavigationRoute(),
+          SearchNavigationRoute(),
+          FavoriteNavigationRoute(),
+          ProfileNavigationRoute(),
+        ],
+        transitionBuilder: (context, child, animation) => FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
+        builder: (context, child) {
+          final tabsRouter = AutoTabsRouter.of(context);
+
+          return Scaffold(
+            body: child,
+            bottomNavigationBar: BlocListener<BottomTabCubit, int>(
+              listener: (context, state) {
+                tabsRouter.setActiveIndex(state);
+              },
+              child: const MainBottomBar(),
+            ),
+          );
+        },
       ),
     );
   }
