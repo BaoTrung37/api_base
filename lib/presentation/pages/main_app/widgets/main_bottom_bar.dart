@@ -2,7 +2,6 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:api_base/gen/assets.gen.dart';
 import 'package:api_base/injection/di.dart';
 import 'package:api_base/presentation/presentation.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,22 +15,22 @@ class MainBottomBar extends StatelessWidget {
       TabItem(
         iconSvg: Assets.icons.icHomeOutline,
         iconSvgSelected: Assets.icons.icHome,
-        text: 'Home',
+        text: 'Movie',
       ),
       TabItem(
         iconSvg: Assets.icons.icExploreOutline,
         iconSvgSelected: Assets.icons.icExplore,
-        text: 'Explore',
+        text: 'Tv Shows',
       ),
       TabItem(
         iconSvg: Assets.icons.icBookmarkOutline,
         iconSvgSelected: Assets.icons.icBookmark,
-        text: 'My List',
+        text: 'Search',
       ),
       TabItem(
         iconSvg: Assets.icons.icDownloadOutline,
         iconSvgSelected: Assets.icons.icDownload,
-        text: 'Download',
+        text: 'Favorite',
       ),
       TabItem(
         iconSvg: Assets.icons.icProfileOutline,
@@ -61,23 +60,6 @@ class MainBottomBar extends StatelessWidget {
               leftCornerRadius: 20.r,
               rightCornerRadius: 20.r,
               onTap: (int index) {
-                switch (index) {
-                  case 0:
-                    context.replaceRoute(const HomeRoute());
-                    break;
-                  case 1:
-                    context.replaceRoute(const HomeRoute());
-                    break;
-                  case 2:
-                    context.replaceRoute(const HomeRoute());
-                    break;
-                  case 3:
-                    context.replaceRoute(const HomeRoute());
-                    break;
-                  case 4:
-                    context.replaceRoute(const ProfileRoute());
-                    break;
-                }
                 getIt<BottomTabCubit>().changeTab(index);
               },
               splashRadius: 0,

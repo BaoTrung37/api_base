@@ -21,6 +21,24 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ApiTestScreen(),
       );
     },
+    FavoriteNavigationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FavoriteNavigationScreen(),
+      );
+    },
+    FavoriteRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FavoriteScreen(),
+      );
+    },
+    HomeNavigationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HomeNavigationScreen(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -49,10 +67,28 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ProfileNavigationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ProfileNavigationScreen(),
+      );
+    },
     ProfileRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ProfileScreen(),
+      );
+    },
+    SearchNavigationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SearchNavigationScreen(),
+      );
+    },
+    SearchRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SearchScreen(),
       );
     },
     ShowAllRoute.name: (routeData) {
@@ -83,6 +119,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SplashScreen(),
       );
     },
+    TvShowsNavigationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TvShowsNavigationScreen(),
+      );
+    },
+    TvShowsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TvShowsScreen(),
+      );
+    },
   };
 }
 
@@ -96,6 +144,48 @@ class ApiTestRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ApiTestRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [FavoriteNavigationScreen]
+class FavoriteNavigationRoute extends PageRouteInfo<void> {
+  const FavoriteNavigationRoute({List<PageRouteInfo>? children})
+      : super(
+          FavoriteNavigationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FavoriteNavigationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [FavoriteScreen]
+class FavoriteRoute extends PageRouteInfo<void> {
+  const FavoriteRoute({List<PageRouteInfo>? children})
+      : super(
+          FavoriteRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FavoriteRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [HomeNavigationScreen]
+class HomeNavigationRoute extends PageRouteInfo<void> {
+  const HomeNavigationRoute({List<PageRouteInfo>? children})
+      : super(
+          HomeNavigationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomeNavigationRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -181,6 +271,20 @@ class MovieDetailRouteArgs {
 }
 
 /// generated route for
+/// [ProfileNavigationScreen]
+class ProfileNavigationRoute extends PageRouteInfo<void> {
+  const ProfileNavigationRoute({List<PageRouteInfo>? children})
+      : super(
+          ProfileNavigationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileNavigationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ProfileScreen]
 class ProfileRoute extends PageRouteInfo<void> {
   const ProfileRoute({List<PageRouteInfo>? children})
@@ -190,6 +294,34 @@ class ProfileRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ProfileRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SearchNavigationScreen]
+class SearchNavigationRoute extends PageRouteInfo<void> {
+  const SearchNavigationRoute({List<PageRouteInfo>? children})
+      : super(
+          SearchNavigationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SearchNavigationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SearchScreen]
+class SearchRoute extends PageRouteInfo<void> {
+  const SearchRoute({List<PageRouteInfo>? children})
+      : super(
+          SearchRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SearchRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -270,6 +402,34 @@ class SplashRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SplashRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TvShowsNavigationScreen]
+class TvShowsNavigationRoute extends PageRouteInfo<void> {
+  const TvShowsNavigationRoute({List<PageRouteInfo>? children})
+      : super(
+          TvShowsNavigationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TvShowsNavigationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TvShowsScreen]
+class TvShowsRoute extends PageRouteInfo<void> {
+  const TvShowsRoute({List<PageRouteInfo>? children})
+      : super(
+          TvShowsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TvShowsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
