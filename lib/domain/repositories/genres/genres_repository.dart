@@ -1,6 +1,6 @@
 import 'package:api_base/data/models/genres/genres.dart';
 
 abstract class GenresRepository {
-  Future<GenresResponse> getMovieGenresList();
-  Future<GenresResponse> getTvGenresList();
+  Future<Map<int, Genre>> getMovieGenresList();
+  Future<Map<int, Genre>> getTvGenresList();
 }

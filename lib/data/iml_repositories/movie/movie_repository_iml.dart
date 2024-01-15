@@ -12,7 +12,7 @@ class MovieRepositoryIml extends MovieRepository {
   });
 
   @override
-  Future<MovieResponse?> getMovieDetail({
+  Future<MovieResponse> getMovieDetail({
     required int movieId,
     String? appendToResponse,
   }) async {

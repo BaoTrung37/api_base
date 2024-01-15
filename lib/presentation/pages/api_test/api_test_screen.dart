@@ -24,7 +24,7 @@ class ApiTestScreen extends StatelessWidget {
               child: const Text('Get Guest Session'),
               onPressed: () async {
                 final response = await getIt<GetGuestSessionUseCase>().run();
-                print(response.toString());
+                debugPrint(response.toString());
               },
             ),
             TextButton(
@@ -60,7 +60,7 @@ class ApiTestScreen extends StatelessWidget {
                   ),
                 );
 
-                print(response.toString());
+                debugPrint(response.toString());
               },
             ),
             TextButton(
@@ -70,7 +70,7 @@ class ApiTestScreen extends StatelessWidget {
                   PostCreateSessionInput(requestToken: 'requestToken'),
                 );
 
-                print(response.toString());
+                debugPrint(response.toString());
               },
             ),
             TextButton(
@@ -87,7 +87,7 @@ class ApiTestScreen extends StatelessWidget {
                 await getIt<SharedPreferencesManager>()
                     .saveRequestToken(token: response.requestToken);
 
-                print(response.toString());
+                debugPrint(response.toString());
               },
             ),
           ],

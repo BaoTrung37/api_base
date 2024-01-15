@@ -65,9 +65,7 @@ class MovieInformationView extends StatelessWidget {
                               trimMode: TrimMode.Line,
                               trimCollapsedText: '.',
                               trimExpandedText: '.',
-                              callback: (val) {
-                                print(val);
-                              },
+                              callback: (val) {},
                               moreStyle: AppTextStyles.textMedium,
                             ),
                           ],
