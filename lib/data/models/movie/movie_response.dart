@@ -1,77 +1,49 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:api_base/data/models/genres/genres.dart';
 import 'package:api_base/data/models/models.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'movie_response.freezed.dart';
 part 'movie_response.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
-class MovieResponse {
-  final bool adult;
-  final String? backdropPath;
-  final BelongsToCollection? belongsToCollection;
-  final int? budget;
-  final List<int>? genreIds;
-  final List<Genre>? genres;
-  final String? homepage;
-  final int id;
-  final String? imdbId;
-  final String originalLanguage;
-  final String originalTitle;
-  final String overview;
-  final double popularity;
-  final String? posterPath;
-  final List<ProductionCompany>? productionCompanies;
-  final List<ProductionCountry>? productionCountries;
-  final String releaseDate;
-  final int? revenue;
-  final int? runtime;
-  final List<SpokenLanguage>? spokenLanguages;
-  final String? status;
-  final String? tagline;
-  final String title;
-  final bool? video;
-  final SimilarResponse? similar;
-  final Videos? videos;
-  final CreditsResponse? credits;
-  final double voteAverage;
-  final int voteCount;
-
-  MovieResponse({
-    required this.adult,
-    required this.backdropPath,
-    required this.id,
-    required this.originalLanguage,
-    required this.originalTitle,
-    required this.overview,
-    required this.popularity,
-    required this.releaseDate,
-    required this.title,
-    required this.voteAverage,
-    required this.voteCount,
-    this.posterPath,
-    this.belongsToCollection,
-    this.budget,
-    this.genreIds,
-    this.genres,
-    this.homepage,
-    this.imdbId,
-    this.productionCompanies,
-    this.productionCountries,
-    this.revenue,
-    this.runtime,
-    this.spokenLanguages,
-    this.status,
-    this.tagline,
-    this.video,
-    this.similar,
-    this.videos,
-    this.credits,
-  });
+@freezed
+class MovieResponse with _$MovieResponse {
+  // ignore: invalid_annotation_target
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory MovieResponse({
+    required bool adult,
+    required int id,
+    required String originalLanguage,
+    required String originalTitle,
+    required String overview,
+    required double popularity,
+    required String releaseDate,
+    required double voteAverage,
+    required int voteCount,
+    required String title,
+    String? backdropPath,
+    BelongsToCollection? belongsToCollection,
+    int? budget,
+    @Default([]) List<int> genreIds,
+    @Default([]) List<Genre> genres,
+    String? homepage,
+    String? imdbId,
+    String? posterPath,
+    @Default([]) List<ProductionCompany> productionCompanies,
+    @Default([]) List<ProductionCountry> productionCountries,
+    int? revenue,
+    int? runtime,
+    @Default([]) List<SpokenLanguage> spokenLanguages,
+    String? status,
+    String? tagline,
+    bool? video,
+    SimilarResponse? similar,
+    Videos? videos,
+    CreditsResponse? credits,
+  }) = _MovieResponse;
 
   factory MovieResponse.fromJson(Map<String, dynamic> json) =>
       _$MovieResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MovieResponseToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -92,21 +64,6 @@ class BelongsToCollection {
       _$BelongsToCollectionFromJson(json);
 
   Map<String, dynamic> toJson() => _$BelongsToCollectionToJson(this);
-}
-
-@JsonSerializable(fieldRename: FieldRename.snake)
-class Genre {
-  final int id;
-  final String name;
-
-  Genre({
-    required this.id,
-    required this.name,
-  });
-
-  factory Genre.fromJson(Map<String, dynamic> json) => _$GenreFromJson(json);
-
-  Map<String, dynamic> toJson() => _$GenreToJson(this);
 }
 
 @JsonSerializable(fieldRename: FieldRename.snake)

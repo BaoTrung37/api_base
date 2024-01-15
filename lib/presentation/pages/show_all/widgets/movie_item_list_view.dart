@@ -15,30 +15,72 @@ class MovieItemListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CustomCachedNetworkImage(
-          height: 120.h,
-          width: 80.w,
-          imageUrl: movie.posterPath.tmdbW300Path,
-          imageType: ImageType.movie,
-          isBorder: true,
-        ),
-        16.horizontalSpace,
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return SizedBox(
+      height: 120.h,
+      width: 80.w,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Stack(
             children: [
-              Text(
-                movie.title,
-                style: AppTextStyles.textLargeBold,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
+              CustomCachedNetworkImage(
+                height: 120.h,
+                width: 80.w,
+                imageUrl: movie.posterPath.tmdbW300Path,
+                imageType: ImageType.movie,
+                isBorder: true,
               ),
+              Positioned(
+                right: 0,
+                child: Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    color: context.colors.primaryMain,
+                  ),
+                  child: Text(
+                    movie.voteAverage.toStringAsFixed(1),
+                    style: AppTextStyles.labelXSmall,
+                  ),
+                ),
+              )
             ],
           ),
-        ),
-      ],
+          16.horizontalSpace,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      movie.title,
+                      style: AppTextStyles.textLargeBold,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      movie.genres.map((e) => e.name).join(', '),
+                      style: AppTextStyles.labelMedium.copyWith(
+                        color: context.colors.textSecondary,
+                      ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+                Text(
+                  movie.releaseDate,
+                  style: AppTextStyles.labelSmallLight,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

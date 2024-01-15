@@ -79,6 +79,8 @@ class _ShowAllScreenState extends State<ShowAllScreen>
     return Container();
   }
 
-  Widget _buildMovieCell(MovieResponse movie) =>
-      MovieItemListView(movie: movie);
+  Widget _buildMovieCell(MovieResponse movie) => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        child: MovieItemListView(movie: movie),
+      );
 }
