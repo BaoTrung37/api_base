@@ -1,11 +1,11 @@
 import 'package:api_base/data/models/models.dart';
 
 abstract class MovieListsRepository {
-  Future<ApiCollectionResponse<MovieResponse>> getPopularMovieLists({
+  Future<List<MovieResponse>> getPopularMovieLists({
     int page = 1,
     String? region,
   });
-  Future<ApiCollectionResponse<MovieResponse>> getNowPlayingMovieLists({
+  Future<List<MovieResponse>> getNowPlayingMovieLists({
     int page = 1,
     String? region,
   });
