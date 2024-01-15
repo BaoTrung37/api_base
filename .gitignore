@@ -21,6 +21,7 @@ build/
 **/*.g.dart
 **/*.freezed.dart
 **/*.config.dart
+**/*.gr.dart
 
 # FVM
 .fvm/flutter_sdk
