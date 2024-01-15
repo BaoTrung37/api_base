@@ -1,9 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:api_base/data/models/movie/movie_response.dart';
 import 'package:api_base/injection/di.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ShowAllArgument {
   final String title;
@@ -55,19 +57,30 @@ class _ShowAllScreenState extends State<ShowAllScreen>
           builder: (context, state) {
             return InfiniteListView(
               cellBuilder: (item, index) {
-                return Container(
-                  child: Text('$index'),
-                );
+                return _buildCell(item, index);
               },
               getDataSources: (pageKey, perPage) {
                 return showAllCubit.getSimilarMoviesData(
                     widget.argument.movieId, pageKey);
               },
               delegate: this,
+              separatorBuilder: (context, index) => 16.verticalSpace,
             );
           },
         ),
       ),
     );
   }
+
+  Widget _buildCell(DataSource item, int index) {
+    if (item is MovieCell) {
+      return _buildMovieCell(item.getData);
+    }
+    return Container();
+  }
+
+  Widget _buildMovieCell(MovieResponse movie) => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        child: MovieItemListView(movie: movie),
+      );
 }

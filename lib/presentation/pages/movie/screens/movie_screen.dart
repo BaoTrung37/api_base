@@ -7,14 +7,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class MovieScreen extends StatefulWidget {
+  const MovieScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<MovieScreen> createState() => _MovieScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _MovieScreenState extends State<MovieScreen> {
   @override
   void initState() {
     super.initState();

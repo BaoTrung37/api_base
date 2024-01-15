@@ -8,7 +8,7 @@ class CustomCachedNetworkImage extends StatelessWidget {
   const CustomCachedNetworkImage({
     super.key,
     this.imageUrl,
-    this.isBorder = false,
+    this.isBorder = true,
     this.isCircleImage = false,
     this.height,
     this.width,
