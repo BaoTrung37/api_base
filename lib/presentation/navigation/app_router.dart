@@ -18,10 +18,10 @@ class AppRouter extends _$AppRouter {
           page: MainAppRoute.page,
           children: [
             AutoRoute(
-              page: HomeNavigationRoute.page,
+              page: MovieNavigationRoute.page,
               initial: true,
               children: [
-                AutoRoute(page: HomeRoute.page, initial: true),
+                AutoRoute(page: MovieRoute.page, initial: true),
                 AutoRoute(page: TvShowsRoute.page),
                 AutoRoute(page: FavoriteRoute.page),
                 AutoRoute(page: SearchRoute.page),

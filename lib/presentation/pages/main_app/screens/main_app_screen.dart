@@ -25,7 +25,7 @@ class _MainAppScreenState extends State<MainAppScreen> {
       ],
       child: AutoTabsRouter(
         routes: const [
-          HomeNavigationRoute(),
+          MovieNavigationRoute(),
           TvShowsNavigationRoute(),
           SearchNavigationRoute(),
           FavoriteNavigationRoute(),
