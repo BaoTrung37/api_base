@@ -4,8 +4,8 @@ import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class GetNowPlayingMovieListUseCase extends FutureUseCase<
-    GetNowPlayingMovieListInput?, ApiCollectionResponse<MovieResponse>> {
+class GetNowPlayingMovieListUseCase
+    extends FutureUseCase<GetNowPlayingMovieListInput, List<MovieResponse>> {
   GetNowPlayingMovieListUseCase({
     required this.movieListRepositoryImp,
   });
@@ -13,17 +13,16 @@ class GetNowPlayingMovieListUseCase extends FutureUseCase<
   final MovieListRepositoryImp movieListRepositoryImp;
 
   @override
-  Future<ApiCollectionResponse<MovieResponse>> run(
-      GetNowPlayingMovieListInput? input) {
+  Future<List<MovieResponse>> run(GetNowPlayingMovieListInput input) {
     return movieListRepositoryImp.getNowPlayingMovieLists(
-      page: input?.page ?? 1,
+      page: input.page,
     );
   }
 }
 
 class GetNowPlayingMovieListInput {
-  final int? page;
+  final int page;
   GetNowPlayingMovieListInput({
-    this.page = 1,
+    required this.page,
   });
 }

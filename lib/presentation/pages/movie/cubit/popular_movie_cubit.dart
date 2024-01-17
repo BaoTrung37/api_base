@@ -16,10 +16,10 @@ class PopularMovieCubit extends Cubit<MovieState> {
     try {
       emit(state.copyWith(status: AppStatus.inProgress));
       final response = await _getPopularMovieListUseCase.run(
-        GetPopularMovieListInput(),
+        GetPopularMovieListInput(page: 1),
       );
 
-      final moviesList = response.results;
+      final moviesList = response;
 
       emit(state.copyWith(
         movies: moviesList,
