@@ -59,9 +59,10 @@ class _MovieScreenState extends State<MovieScreen> {
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
+                  final movies = state.movies;
                   return MovieHorizontalListView(
                     headingTitle: 'Playing In Theatres',
-                    movies: state.movies,
+                    movies: movies,
                     isPoster: false,
                     onMovieTap: (movieId) {
                       context.pushRoute(MovieDetailRoute(movieId: movieId));
