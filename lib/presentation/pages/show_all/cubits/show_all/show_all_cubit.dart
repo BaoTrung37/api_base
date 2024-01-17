@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/models/movie/movie_response.dart';
-import 'package:api_base/domain/use_cases/movie/get_similar_movie_list_use_case.dart';
+import 'package:api_base/domain/use_cases/movie/movie.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -13,28 +13,34 @@ part 'show_all_state.dart';
 class ShowAllCubit extends Cubit<ShowAllState> {
   ShowAllCubit(
     this._getSimilarMovieListUseCase,
+    this._getNowPlayingMovieListUseCase,
+    this._getPopularMovieListUseCase,
   ) : super(const ShowAllState());
 
   final GetSimilarMovieListUseCase _getSimilarMovieListUseCase;
+  final GetNowPlayingMovieListUseCase _getNowPlayingMovieListUseCase;
+  final GetPopularMovieListUseCase _getPopularMovieListUseCase;
 
-  Future<List<DataSource>> getSimilarMoviesData(int? movieId, int page) async {
+  Future<List<DataSource>> fetchData(
+      ShowAllArgument allArgument, int page) async {
+    final movieId = allArgument.movieId;
     emit(state.copyWith(status: AppStatus.inProgress));
-    if (movieId == null) {
-      return [];
-    }
+
     try {
-      final similarMovieList = await _getSimilarMovieListUseCase
-          .run(GetSimilarMovieListInput(movieId: movieId, page: page));
-
-      emit(state.copyWith(similarMovieList: similarMovieList));
-
-      // fetch item
-      final dataSource =
-          similarMovieList.map((e) => MovieCell(movie: e)).toList();
-
-      emit(state.copyWith(status: AppStatus.success));
-
-      return dataSource;
+      if (allArgument.apiMovieType != null) {
+        switch (allArgument.apiMovieType) {
+          case ApiMovieType.discover:
+            return [];
+          case ApiMovieType.popular:
+            return getPopularMoviesData(page);
+          case ApiMovieType.playingNow:
+            return getNowPlayingMoviesData(page);
+          case ApiMovieType.similar:
+            return getSimilarMoviesData(movieId, page);
+          case null:
+            return [];
+        }
+      }
     } on Exception catch (error) {
       emit(state.copyWith(
         status: AppStatus.error,
@@ -42,5 +48,78 @@ class ShowAllCubit extends Cubit<ShowAllState> {
       ));
     }
     return [];
+  }
+
+  Future<List<DataSource>> getSimilarMoviesData(int? movieId, int page) async {
+    emit(state.copyWith(status: AppStatus.inProgress));
+    if (movieId == null) {
+      return [];
+    }
+    try {
+      final movieList = await _getSimilarMovieListUseCase
+          .run(GetSimilarMovieListInput(movieId: movieId, page: page));
+
+      final dataSource = getMovieDataSources(movieList);
+
+      emit(state.copyWith(movieList: movieList, status: AppStatus.success));
+
+      return dataSource;
+    } on Exception catch (error) {
+      emit(state.copyWith(
+        status: AppStatus.error,
+        appError: error.appError,
+      ));
+      return [];
+    }
+  }
+
+  Future<List<DataSource>> getNowPlayingMoviesData(int page) async {
+    emit(state.copyWith(status: AppStatus.inProgress));
+
+    try {
+      final movieList = await _getNowPlayingMovieListUseCase
+          .run(GetNowPlayingMovieListInput(page: page));
+
+      final dataSource = getMovieDataSources(movieList);
+
+      emit(state.copyWith(movieList: movieList, status: AppStatus.success));
+
+      return dataSource;
+    } on Exception catch (error) {
+      emit(state.copyWith(
+        status: AppStatus.error,
+        appError: error.appError,
+      ));
+      return [];
+    }
+  }
+
+  Future<List<DataSource>> getPopularMoviesData(int page) async {
+    emit(state.copyWith(status: AppStatus.inProgress));
+
+    try {
+      final movieList = await _getPopularMovieListUseCase
+          .run(GetPopularMovieListInput(page: page));
+
+      final dataSource = getMovieDataSources(movieList);
+
+      emit(state.copyWith(movieList: movieList, status: AppStatus.success));
+
+      return dataSource;
+    } on Exception catch (error) {
+      emit(state.copyWith(
+        status: AppStatus.error,
+        appError: error.appError,
+      ));
+      return [];
+    }
+  }
+
+  Future<List<DataSource>> getMovieDataSources(
+    List<MovieResponse> dataList,
+  ) async {
+    final dataSource = dataList.map((e) => MovieCell(movie: e)).toList();
+
+    return dataSource;
   }
 }

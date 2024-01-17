@@ -35,4 +35,29 @@ class MovieRepositoryIml extends MovieRepository {
     );
     return response.results;
   }
+
+  @override
+  Future<List<MovieResponse>> getPopularMovieLists({
+    String language = 'en-US',
+    int page = 1,
+    String? region,
+  }) async {
+    final response = await restClient.getPopularMovies(
+      page,
+      region,
+    );
+    return response.results;
+  }
+
+  @override
+  Future<List<MovieResponse>> getNowPlayingMovieLists({
+    int page = 1,
+    String? region,
+  }) async {
+    final response = await restClient.getNowPlayingMovies(
+      page,
+      region,
+    );
+    return response.results;
+  }
 }

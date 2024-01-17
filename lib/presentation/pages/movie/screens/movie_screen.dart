@@ -51,6 +51,16 @@ class _MovieScreenState extends State<MovieScreen> {
                     onMovieTap: (movieId) {
                       context.pushRoute(MovieDetailRoute(movieId: movieId));
                     },
+                    showAllTap: () {
+                      context.pushRoute(
+                        ShowAllRoute(
+                          argument: ShowAllArgument.movie(
+                            title: 'Popular',
+                            apiMovieType: ApiMovieType.popular,
+                          ),
+                        ),
+                      );
+                    },
                   );
                 },
               ),
@@ -59,12 +69,23 @@ class _MovieScreenState extends State<MovieScreen> {
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
+                  final movies = state.movies;
                   return MovieHorizontalListView(
                     headingTitle: 'Playing In Theatres',
-                    movies: state.movies,
+                    movies: movies,
                     isPoster: false,
                     onMovieTap: (movieId) {
                       context.pushRoute(MovieDetailRoute(movieId: movieId));
+                    },
+                    showAllTap: () {
+                      context.pushRoute(
+                        ShowAllRoute(
+                          argument: ShowAllArgument.movie(
+                            title: 'Playing In Theatres',
+                            apiMovieType: ApiMovieType.playingNow,
+                          ),
+                        ),
+                      );
                     },
                   );
                 },

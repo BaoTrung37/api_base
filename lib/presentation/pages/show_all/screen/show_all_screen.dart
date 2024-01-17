@@ -10,10 +10,30 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ShowAllArgument {
   final String title;
   final int? movieId;
-  ShowAllArgument({
+  final ApiMovieType? apiMovieType;
+  final ApiPeopleType? apiPeopleType;
+  final ApiTvShowsType? apiTvShowsType;
+
+  ShowAllArgument.movie({
     required this.title,
+    required this.apiMovieType,
     this.movieId,
-  });
+  })  : apiPeopleType = null,
+        apiTvShowsType = null;
+
+  ShowAllArgument.people({
+    required this.title,
+    required this.apiPeopleType,
+    this.movieId,
+  })  : apiMovieType = null,
+        apiTvShowsType = null;
+
+  ShowAllArgument.tvShows({
+    required this.title,
+    required this.apiTvShowsType,
+    this.movieId,
+  })  : apiMovieType = null,
+        apiPeopleType = null;
 }
 
 @RoutePage()
@@ -60,8 +80,7 @@ class _ShowAllScreenState extends State<ShowAllScreen>
                 return _buildCell(item, index);
               },
               getDataSources: (pageKey, perPage) {
-                return showAllCubit.getSimilarMoviesData(
-                    widget.argument.movieId, pageKey);
+                return showAllCubit.fetchData(widget.argument, pageKey);
               },
               delegate: this,
               separatorBuilder: (context, index) => 16.verticalSpace,

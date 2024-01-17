@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:api_base/domain/use_cases/movie_lists/get_popular_movie_list_use_case.dart';
+import 'package:api_base/domain/use_cases/movie/get_popular_movie_list_use_case.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';

@@ -7,14 +7,14 @@ import 'package:injectable/injectable.dart';
 class GetPopularMovieListUseCase
     extends FutureUseCase<GetPopularMovieListInput, List<MovieResponse>> {
   GetPopularMovieListUseCase({
-    required this.movieListRepositoryImp,
+    required this.movieRepositoryIml,
   });
 
-  final MovieListRepositoryImp movieListRepositoryImp;
+  final MovieRepositoryIml movieRepositoryIml;
 
   @override
   Future<List<MovieResponse>> run(GetPopularMovieListInput input) {
-    return movieListRepositoryImp.getPopularMovieLists(
+    return movieRepositoryIml.getPopularMovieLists(
       page: input.page,
     );
   }
