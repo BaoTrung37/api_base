@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/models/movie/movie_response.dart';
-import 'package:api_base/domain/use_cases/movie/get_similar_movie_list_use_case.dart';
-import 'package:api_base/domain/use_cases/movie_lists/get_now_playing_movie_list_use_case.dart';
+import 'package:api_base/domain/use_cases/movie/movie.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -21,37 +20,25 @@ class ShowAllCubit extends Cubit<ShowAllState> {
   final GetNowPlayingMovieListUseCase _getNowPlayingMovieListUseCase;
 
   Future<List<DataSource>> fetchData(
-      ApiDataType apiDataType, int? movieId, int page) async {
+      ShowAllArgument allArgument, int page) async {
+    final movieId = allArgument.movieId;
     emit(state.copyWith(status: AppStatus.inProgress));
 
     try {
-      if (apiDataType == ApiDataType.movie) {
-        //
-        return getMoviesData(movieId, page);
-      } else if (apiDataType == ApiDataType.tvShows) {
-        //
-        return [];
-      } else if (apiDataType == ApiDataType.people) {
-        //
-        return [];
+      if (allArgument.apiMovieType != null) {
+        switch (allArgument.apiMovieType) {
+          case ApiMovieType.discover:
+            return [];
+          case ApiMovieType.popular:
+            return [];
+          case ApiMovieType.playingNow:
+            return getNowPlayingMoviesData(page);
+          case ApiMovieType.similar:
+            return getSimilarMoviesData(movieId, page);
+          case null:
+            return [];
+        }
       }
-    } on Exception catch (error) {
-      emit(state.copyWith(
-        status: AppStatus.error,
-        appError: error.appError,
-      ));
-    }
-    return [];
-  }
-
-  Future<List<DataSource>> getMoviesData(int? movieId, int page) async {
-    emit(state.copyWith(status: AppStatus.inProgress));
-    if (movieId == null) {
-      return [];
-    }
-
-    try {
-      return [];
     } on Exception catch (error) {
       emit(state.copyWith(
         status: AppStatus.error,
@@ -70,13 +57,12 @@ class ShowAllCubit extends Cubit<ShowAllState> {
       final similarMovieList = await _getSimilarMovieListUseCase
           .run(GetSimilarMovieListInput(movieId: movieId, page: page));
 
-      emit(state.copyWith(similarMovieList: similarMovieList));
-
       // fetch item
       final dataSource =
           similarMovieList.map((e) => MovieCell(movie: e)).toList();
 
-      emit(state.copyWith(status: AppStatus.success));
+      emit(state.copyWith(
+          movieList: similarMovieList, status: AppStatus.success));
 
       return dataSource;
     } on Exception catch (error) {
@@ -84,8 +70,8 @@ class ShowAllCubit extends Cubit<ShowAllState> {
         status: AppStatus.error,
         appError: error.appError,
       ));
+      return [];
     }
-    return [];
   }
 
   Future<List<DataSource>> getNowPlayingMoviesData(int page) async {
@@ -95,7 +81,7 @@ class ShowAllCubit extends Cubit<ShowAllState> {
       final nowPlayingMovieList = await _getNowPlayingMovieListUseCase
           .run(GetNowPlayingMovieListInput(page: page));
 
-      emit(state.copyWith(nowPlayingMovieList: nowPlayingMovieList));
+      emit(state.copyWith(movieList: nowPlayingMovieList));
 
       // fetch item
       final dataSource =
@@ -109,7 +95,7 @@ class ShowAllCubit extends Cubit<ShowAllState> {
         status: AppStatus.error,
         appError: error.appError,
       ));
+      return [];
     }
-    return [];
   }
 }
