@@ -32,7 +32,7 @@ class ShowAllCubit extends Cubit<ShowAllState> {
           case ApiMovieType.discover:
             return [];
           case ApiMovieType.popular:
-            return [];
+            return getPopularMoviesData(page);
           case ApiMovieType.playingNow:
             return getNowPlayingMoviesData(page);
           case ApiMovieType.similar:
@@ -79,6 +79,27 @@ class ShowAllCubit extends Cubit<ShowAllState> {
     try {
       final movieList = await _getNowPlayingMovieListUseCase
           .run(GetNowPlayingMovieListInput(page: page));
+
+      final dataSource = getMovieDataSources(movieList);
+
+      emit(state.copyWith(movieList: movieList, status: AppStatus.success));
+
+      return dataSource;
+    } on Exception catch (error) {
+      emit(state.copyWith(
+        status: AppStatus.error,
+        appError: error.appError,
+      ));
+      return [];
+    }
+  }
+
+  Future<List<DataSource>> getPopularMoviesData(int page) async {
+    emit(state.copyWith(status: AppStatus.inProgress));
+
+    try {
+      final movieList = await _getPopularMovieListUseCase
+          .run(GetPopularMovieListInput(page: page));
 
       final dataSource = getMovieDataSources(movieList);
 

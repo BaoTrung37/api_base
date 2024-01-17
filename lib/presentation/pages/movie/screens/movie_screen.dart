@@ -51,6 +51,16 @@ class _MovieScreenState extends State<MovieScreen> {
                     onMovieTap: (movieId) {
                       context.pushRoute(MovieDetailRoute(movieId: movieId));
                     },
+                    showAllTap: () {
+                      context.pushRoute(
+                        ShowAllRoute(
+                          argument: ShowAllArgument.movie(
+                            title: 'Popular',
+                            apiMovieType: ApiMovieType.popular,
+                          ),
+                        ),
+                      );
+                    },
                   );
                 },
               ),
