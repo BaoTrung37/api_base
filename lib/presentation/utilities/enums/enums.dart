@@ -4,3 +4,4 @@ export 'api_tv_shows_type.dart';
 export 'app_status.dart';
 export 'image_type.dart';
 export 'movie_keys.dart';
+export 'time_type.dart';
