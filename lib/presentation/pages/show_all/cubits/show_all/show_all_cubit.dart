@@ -14,10 +14,12 @@ class ShowAllCubit extends Cubit<ShowAllState> {
   ShowAllCubit(
     this._getSimilarMovieListUseCase,
     this._getNowPlayingMovieListUseCase,
+    this._getPopularMovieListUseCase,
   ) : super(const ShowAllState());
 
   final GetSimilarMovieListUseCase _getSimilarMovieListUseCase;
   final GetNowPlayingMovieListUseCase _getNowPlayingMovieListUseCase;
+  final GetPopularMovieListUseCase _getPopularMovieListUseCase;
 
   Future<List<DataSource>> fetchData(
       ShowAllArgument allArgument, int page) async {
@@ -54,15 +56,12 @@ class ShowAllCubit extends Cubit<ShowAllState> {
       return [];
     }
     try {
-      final similarMovieList = await _getSimilarMovieListUseCase
+      final movieList = await _getSimilarMovieListUseCase
           .run(GetSimilarMovieListInput(movieId: movieId, page: page));
 
-      // fetch item
-      final dataSource =
-          similarMovieList.map((e) => MovieCell(movie: e)).toList();
+      final dataSource = getMovieDataSources(movieList);
 
-      emit(state.copyWith(
-          movieList: similarMovieList, status: AppStatus.success));
+      emit(state.copyWith(movieList: movieList, status: AppStatus.success));
 
       return dataSource;
     } on Exception catch (error) {
@@ -78,16 +77,12 @@ class ShowAllCubit extends Cubit<ShowAllState> {
     emit(state.copyWith(status: AppStatus.inProgress));
 
     try {
-      final nowPlayingMovieList = await _getNowPlayingMovieListUseCase
+      final movieList = await _getNowPlayingMovieListUseCase
           .run(GetNowPlayingMovieListInput(page: page));
 
-      emit(state.copyWith(movieList: nowPlayingMovieList));
+      final dataSource = getMovieDataSources(movieList);
 
-      // fetch item
-      final dataSource =
-          nowPlayingMovieList.map((e) => MovieCell(movie: e)).toList();
-
-      emit(state.copyWith(status: AppStatus.success));
+      emit(state.copyWith(movieList: movieList, status: AppStatus.success));
 
       return dataSource;
     } on Exception catch (error) {
@@ -97,5 +92,13 @@ class ShowAllCubit extends Cubit<ShowAllState> {
       ));
       return [];
     }
+  }
+
+  Future<List<DataSource>> getMovieDataSources(
+    List<MovieResponse> dataList,
+  ) async {
+    final dataSource = dataList.map((e) => MovieCell(movie: e)).toList();
+
+    return dataSource;
   }
 }
