@@ -4,7 +4,3 @@ enum ApiMovieType {
   playingNow,
   similar,
 }
-
-// extension ApiMovieTypeExtension on ApiMovieType {
-//   ApiDataType get dataType => ApiDataType.movie;
-// }
