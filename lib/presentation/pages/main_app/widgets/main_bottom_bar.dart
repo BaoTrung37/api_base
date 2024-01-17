@@ -15,7 +15,7 @@ class MainBottomBar extends StatelessWidget {
       TabItem(
         iconSvg: Assets.icons.icHomeOutline,
         iconSvgSelected: Assets.icons.icHome,
-        text: 'Movie',
+        text: 'Movies',
       ),
       TabItem(
         iconSvg: Assets.icons.icExploreOutline,

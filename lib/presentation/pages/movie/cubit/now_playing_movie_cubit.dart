@@ -15,10 +15,10 @@ class NowPlayingMovieCubit extends Cubit<MovieState> {
     try {
       emit(state.copyWith(status: AppStatus.inProgress));
       final response = await _getNowPlayingMovieListUseCase.run(
-        GetNowPlayingMovieListInput(),
+        GetNowPlayingMovieListInput(page: 1),
       );
 
-      final moviesList = response.results;
+      final moviesList = response;
 
       emit(state.copyWith(
         movies: moviesList,
