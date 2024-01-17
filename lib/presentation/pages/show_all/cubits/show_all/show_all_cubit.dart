@@ -95,11 +95,11 @@ class ShowAllCubit extends Cubit<ShowAllState> {
       final nowPlayingMovieList = await _getNowPlayingMovieListUseCase
           .run(GetNowPlayingMovieListInput(page: page));
 
-      emit(state.copyWith(nowPlayingMovieList: nowPlayingMovieList.results));
+      emit(state.copyWith(nowPlayingMovieList: nowPlayingMovieList));
 
       // fetch item
       final dataSource =
-          nowPlayingMovieList.results.map((e) => MovieCell(movie: e)).toList();
+          nowPlayingMovieList.map((e) => MovieCell(movie: e)).toList();
 
       emit(state.copyWith(status: AppStatus.success));
 
