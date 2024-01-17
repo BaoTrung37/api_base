@@ -9,3 +9,19 @@ class MovieCell with DataSource<MovieResponse> {
   @override
   MovieResponse get getData => movie;
 }
+
+class TvShowSCell with DataSource<MovieResponse> {
+  TvShowSCell({required this.movie});
+
+  final MovieResponse movie;
+  @override
+  MovieResponse get getData => movie;
+}
+
+class PeopleCell with DataSource<MovieResponse> {
+  PeopleCell({required this.movie});
+
+  final MovieResponse movie;
+  @override
+  MovieResponse get getData => movie;
+}
