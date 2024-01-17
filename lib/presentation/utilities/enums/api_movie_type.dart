@@ -1,11 +1,10 @@
-import 'package:api_base/presentation/utilities/enums/api_data_type.dart';
-
 enum ApiMovieType {
+  discover,
   popular,
   playingNow,
   similar,
 }
 
-extension ApiMovieTypeExtension on ApiMovieType {
-  ApiDataType get dataType => ApiDataType.movie;
-}
+// extension ApiMovieTypeExtension on ApiMovieType {
+//   ApiDataType get dataType => ApiDataType.movie;
+// }
