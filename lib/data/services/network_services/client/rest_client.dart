@@ -58,9 +58,28 @@ abstract class RestClient {
 
   // End movie
 
+  /// Start Genres
   @GET('/genre/movie/list')
   Future<GenresResponse> getMovieGenres();
 
   @GET('/genre/tv/list')
   Future<GenresResponse> getTvGenres();
+
+  /// End Genres
+
+  /// Start Trending
+
+  @GET('/trending/all/{time_window}')
+  Future<ApiCollectionResponse<MovieResponse>> getTrendingAll(
+    @Path('time_window') String timeWindow,
+    @Query('page') int page,
+  );
+
+  @GET('/trending/movie/{time_window}')
+  Future<ApiCollectionResponse<MovieResponse>> getTrendingMovies(
+    @Path('time_window') String timeWindow,
+    @Query('page') int page,
+  );
+
+  /// End Trending
 }

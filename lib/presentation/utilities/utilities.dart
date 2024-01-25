@@ -6,3 +6,4 @@ export 'errors/errors.dart';
 export 'extensions/exception_extension.dart';
 export 'global/global.dart';
 export 'helpers/helpers.dart';
+export 'logger/logger.dart';

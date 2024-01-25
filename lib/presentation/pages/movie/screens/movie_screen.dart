@@ -91,6 +91,31 @@ class _MovieScreenState extends State<MovieScreen> {
                 },
               ),
               SliverToBoxAdapter(child: 16.verticalSpace),
+              BlocBuilder<NowPlayingMovieCubit, MovieState>(
+                buildWhen: (previous, current) =>
+                    previous.status != current.status,
+                builder: (context, state) {
+                  final movies = state.movies;
+                  return MovieHorizontalListView(
+                    headingTitle: 'Trending',
+                    movies: movies,
+                    isPoster: false,
+                    onMovieTap: (movieId) {
+                      context.pushRoute(MovieDetailRoute(movieId: movieId));
+                    },
+                    showAllTap: () {
+                      context.pushRoute(
+                        ShowAllRoute(
+                          argument: ShowAllArgument.movie(
+                            title: 'Playing In Theatres',
+                            apiMovieType: ApiMovieType.playingNow,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
             ],
           ),
         ),
