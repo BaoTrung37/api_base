@@ -3,4 +3,5 @@ enum ApiMovieType {
   popular,
   playingNow,
   similar,
+  trending,
 }

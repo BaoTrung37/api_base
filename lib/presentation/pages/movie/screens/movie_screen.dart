@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/injection/di.dart';
+import 'package:api_base/presentation/pages/movie/cubit/trending_movie_cubit.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,9 @@ class _MovieScreenState extends State<MovieScreen> {
         ),
         BlocProvider<NowPlayingMovieCubit>(
           create: (context) => getIt<NowPlayingMovieCubit>()..fetchData(),
+        ),
+        BlocProvider<TrendingMovieCubit>(
+          create: (context) => getIt<TrendingMovieCubit>()..fetchData(),
         ),
       ],
       child: Scaffold(
@@ -91,7 +95,7 @@ class _MovieScreenState extends State<MovieScreen> {
                 },
               ),
               SliverToBoxAdapter(child: 16.verticalSpace),
-              BlocBuilder<NowPlayingMovieCubit, MovieState>(
+              BlocBuilder<TrendingMovieCubit, MovieState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
@@ -107,8 +111,8 @@ class _MovieScreenState extends State<MovieScreen> {
                       context.pushRoute(
                         ShowAllRoute(
                           argument: ShowAllArgument.movie(
-                            title: 'Playing In Theatres',
-                            apiMovieType: ApiMovieType.playingNow,
+                            title: 'Trending Movies',
+                            apiMovieType: ApiMovieType.trending,
                           ),
                         ),
                       );

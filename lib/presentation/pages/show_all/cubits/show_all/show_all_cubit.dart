@@ -15,11 +15,13 @@ class ShowAllCubit extends Cubit<ShowAllState> {
     this._getSimilarMovieListUseCase,
     this._getNowPlayingMovieListUseCase,
     this._getPopularMovieListUseCase,
+    this._getTrendingMovieListUseCase,
   ) : super(const ShowAllState());
 
   final GetSimilarMovieListUseCase _getSimilarMovieListUseCase;
   final GetNowPlayingMovieListUseCase _getNowPlayingMovieListUseCase;
   final GetPopularMovieListUseCase _getPopularMovieListUseCase;
+  final GetTrendingMovieListUseCase _getTrendingMovieListUseCase;
 
   Future<List<DataSource>> fetchData(
       ShowAllArgument allArgument, int page) async {
@@ -37,6 +39,8 @@ class ShowAllCubit extends Cubit<ShowAllState> {
             return getNowPlayingMoviesData(page);
           case ApiMovieType.similar:
             return getSimilarMoviesData(movieId, page);
+          case ApiMovieType.trending:
+            return getTrendingMoviesData(page);
           case null:
             return [];
         }
@@ -100,6 +104,27 @@ class ShowAllCubit extends Cubit<ShowAllState> {
     try {
       final movieList = await _getPopularMovieListUseCase
           .run(GetPopularMovieListInput(page: page));
+
+      final dataSource = getMovieDataSources(movieList);
+
+      emit(state.copyWith(movieList: movieList, status: AppStatus.success));
+
+      return dataSource;
+    } on Exception catch (error) {
+      emit(state.copyWith(
+        status: AppStatus.error,
+        appError: error.appError,
+      ));
+      return [];
+    }
+  }
+
+  Future<List<DataSource>> getTrendingMoviesData(int page) async {
+    emit(state.copyWith(status: AppStatus.inProgress));
+
+    try {
+      final movieList = await _getTrendingMovieListUseCase
+          .run(GetTrendingMovieListInput(page: page));
 
       final dataSource = getMovieDataSources(movieList);
 
