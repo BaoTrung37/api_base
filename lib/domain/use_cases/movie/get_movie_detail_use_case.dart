@@ -8,14 +8,13 @@ import 'package:injectable/injectable.dart';
 @injectable
 class GetMovieDetailUseCase
     extends FutureUseCase<GetMovieDetailInput, MovieResponse?> {
-  final MovieRepositoryIml movieRepositoryIml;
-  GetMovieDetailUseCase({
-    required this.movieRepositoryIml,
-  });
+  GetMovieDetailUseCase(this._movieRepositoryIml);
+
+  final MovieRepositoryIml _movieRepositoryIml;
 
   @override
   Future<MovieResponse?> run(GetMovieDetailInput input) {
-    return movieRepositoryIml.getMovieDetail(
+    return _movieRepositoryIml.getMovieDetail(
       movieId: input.movieId,
       appendToResponse: input.appendToResponse,
     );

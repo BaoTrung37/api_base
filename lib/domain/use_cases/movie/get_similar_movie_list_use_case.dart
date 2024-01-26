@@ -8,18 +8,18 @@ import 'package:injectable/injectable.dart';
 @injectable
 class GetSimilarMovieListUseCase
     extends FutureUseCase<GetSimilarMovieListInput, List<MovieResponse>> {
-  GetSimilarMovieListUseCase({
-    required this.movieRepositoryIml,
-    required this.genresRepositoryImp,
-  });
+  GetSimilarMovieListUseCase(
+    this._movieRepositoryIml,
+    this._genresRepositoryImp,
+  );
 
-  final MovieRepositoryIml movieRepositoryIml;
-  final GenresRepositoryImp genresRepositoryImp;
+  final MovieRepositoryIml _movieRepositoryIml;
+  final GenresRepositoryImp _genresRepositoryImp;
 
   @override
   Future<List<MovieResponse>> run(GetSimilarMovieListInput input) async {
-    await genresRepositoryImp.getMovieGenresList();
-    final movieList1 = await movieRepositoryIml.getSimilarMovieList(
+    await _genresRepositoryImp.getMovieGenresList();
+    final movieList1 = await _movieRepositoryIml.getSimilarMovieList(
       page: input.page,
       movieId: input.movieId,
     );
@@ -27,7 +27,7 @@ class GetSimilarMovieListUseCase
     for (final movie in movieList1) {
       final genres = <Genre>[];
       for (final element in movie.genreIds) {
-        final genre = genresRepositoryImp.movieGenreMap[element];
+        final genre = _genresRepositoryImp.movieGenreMap[element];
         if (genre != null) {
           genres.add(genre);
         }

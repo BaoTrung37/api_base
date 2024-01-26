@@ -6,15 +6,13 @@ import 'package:injectable/injectable.dart';
 @injectable
 class GetNowPlayingMovieListUseCase
     extends FutureUseCase<GetNowPlayingMovieListInput, List<MovieResponse>> {
-  GetNowPlayingMovieListUseCase({
-    required this.movieRepositoryIml,
-  });
+  GetNowPlayingMovieListUseCase(this._movieRepositoryIml);
 
-  final MovieRepositoryIml movieRepositoryIml;
+  final MovieRepositoryIml _movieRepositoryIml;
 
   @override
   Future<List<MovieResponse>> run(GetNowPlayingMovieListInput input) {
-    return movieRepositoryIml.getNowPlayingMovieLists(
+    return _movieRepositoryIml.getNowPlayingMovieLists(
       page: input.page,
     );
   }
