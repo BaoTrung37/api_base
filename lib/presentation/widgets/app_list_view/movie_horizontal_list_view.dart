@@ -77,6 +77,10 @@ class MovieHorizontalListView extends StatelessWidget {
           enableInfiniteScroll: true,
           enlargeCenterPage: true,
           viewportFraction: isPoster ? 0.35 : 0.5,
+          // autoPlay: true,
+          // autoPlayInterval: const Duration(seconds: 3),
+          // autoPlayAnimationDuration: const Duration(milliseconds: 800),
+          // autoPlayCurve: Curves.fastOutSlowIn,
         ),
         itemBuilder: (context, index, pageViewIndex) {
           final movie = movies[index];
