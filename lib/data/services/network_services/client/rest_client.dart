@@ -40,6 +40,12 @@ abstract class RestClient {
     @Query('page') int? page,
     @Query('region') String? region,
   );
+
+  @GET('/movie/upcoming')
+  Future<ApiCollectionResponse<MovieResponse>> getUpcomingMovies(
+    @Query('page') int? page,
+    @Query('region') String? region,
+  );
   // End Movie Lists
 
   // Start movie

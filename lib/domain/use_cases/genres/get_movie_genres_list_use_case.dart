@@ -5,14 +5,12 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class GetMovieGenresListUseCase extends FutureOutputUseCase<void> {
-  final GenresRepositoryImp genresRepositoryImp;
+  GetMovieGenresListUseCase(this._genresRepositoryImp);
 
-  GetMovieGenresListUseCase({
-    required this.genresRepositoryImp,
-  });
+  final GenresRepositoryImp _genresRepositoryImp;
 
   @override
   Future<void> run() {
-    return genresRepositoryImp.getMovieGenresList();
+    return _genresRepositoryImp.getMovieGenresList();
   }
 }

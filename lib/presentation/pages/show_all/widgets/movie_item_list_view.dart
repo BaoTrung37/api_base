@@ -61,7 +61,7 @@ class MovieItemListView extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
-                      movie.genres.map((e) => e.name).join(', '),
+                      movie.genresName,
                       style: AppTextStyles.labelMedium.copyWith(
                         color: context.colors.textSecondary,
                       ),

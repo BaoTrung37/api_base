@@ -60,4 +60,16 @@ class MovieRepositoryIml extends MovieRepository {
     );
     return response.results;
   }
+
+  @override
+  Future<List<MovieResponse>> getUpcomingMovieLists({
+    int page = 1,
+    String? region,
+  }) async {
+    final response = await restClient.getUpcomingMovies(
+      page,
+      region,
+    );
+    return response.results;
+  }
 }

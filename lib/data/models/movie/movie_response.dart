@@ -44,6 +44,9 @@ class MovieResponse with _$MovieResponse {
     String? mediaType,
     String? firstAirDate,
   }) = _MovieResponse;
+  const MovieResponse._();
+
+  String get genresName => genres.map((e) => e.name).join(', ');
 
   factory MovieResponse.fromJson(Map<String, dynamic> json) =>
       _$MovieResponseFromJson(json);

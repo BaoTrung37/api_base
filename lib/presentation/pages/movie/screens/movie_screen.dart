@@ -30,6 +30,12 @@ class _MovieScreenState extends State<MovieScreen> {
         BlocProvider<NowPlayingMovieCubit>(
           create: (context) => getIt<NowPlayingMovieCubit>()..fetchData(),
         ),
+        BlocProvider<TrendingMovieCubit>(
+          create: (context) => getIt<TrendingMovieCubit>()..fetchData(),
+        ),
+        BlocProvider<UpcomingMovieCubit>(
+          create: (context) => getIt<UpcomingMovieCubit>()..fetchData(),
+        ),
       ],
       child: Scaffold(
         appBar: const BaseAppBar.titleOnly(
@@ -91,7 +97,7 @@ class _MovieScreenState extends State<MovieScreen> {
                 },
               ),
               SliverToBoxAdapter(child: 16.verticalSpace),
-              BlocBuilder<NowPlayingMovieCubit, MovieState>(
+              BlocBuilder<TrendingMovieCubit, MovieState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
@@ -107,8 +113,34 @@ class _MovieScreenState extends State<MovieScreen> {
                       context.pushRoute(
                         ShowAllRoute(
                           argument: ShowAllArgument.movie(
-                            title: 'Playing In Theatres',
-                            apiMovieType: ApiMovieType.playingNow,
+                            title: 'Trending Movies',
+                            apiMovieType: ApiMovieType.trending,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+              SliverToBoxAdapter(child: 16.verticalSpace),
+              BlocBuilder<UpcomingMovieCubit, MovieState>(
+                buildWhen: (previous, current) =>
+                    previous.status != current.status,
+                builder: (context, state) {
+                  final movies = state.movies;
+                  return MovieHorizontalListView(
+                    headingTitle: 'Upcoming',
+                    movies: movies,
+                    isPoster: false,
+                    onMovieTap: (movieId) {
+                      context.pushRoute(MovieDetailRoute(movieId: movieId));
+                    },
+                    showAllTap: () {
+                      context.pushRoute(
+                        ShowAllRoute(
+                          argument: ShowAllArgument.movie(
+                            title: 'Upcoming',
+                            apiMovieType: ApiMovieType.trending,
                           ),
                         ),
                       );
