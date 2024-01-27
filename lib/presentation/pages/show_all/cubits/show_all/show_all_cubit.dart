@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/models/movie/movie_response.dart';
 import 'package:api_base/domain/use_cases/input/movie_use_case_input.dart';
+import 'package:api_base/domain/use_cases/movie/get_upcoming_movie_list_use_case.dart';
 import 'package:api_base/domain/use_cases/movie/movie.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
@@ -17,12 +18,14 @@ class ShowAllCubit extends Cubit<ShowAllState> {
     this._getNowPlayingMovieListUseCase,
     this._getPopularMovieListUseCase,
     this._getTrendingMovieListUseCase,
+    this._getUpcomingMovieListUseCase,
   ) : super(const ShowAllState());
 
   final GetSimilarMovieListUseCase _getSimilarMovieListUseCase;
   final GetNowPlayingMovieListUseCase _getNowPlayingMovieListUseCase;
   final GetPopularMovieListUseCase _getPopularMovieListUseCase;
   final GetTrendingMovieListUseCase _getTrendingMovieListUseCase;
+  final GetUpcomingMovieListUseCase _getUpcomingMovieListUseCase;
 
   Future<List<DataSource>> fetchData(
       ShowAllArgument allArgument, int page) async {
@@ -42,6 +45,8 @@ class ShowAllCubit extends Cubit<ShowAllState> {
             return getSimilarMoviesData(movieId, page);
           case ApiMovieType.trending:
             return getTrendingMoviesData(page);
+          case ApiMovieType.upcoming:
+            return getUpcomingMoviesData(page);
           case null:
             return [];
         }
@@ -126,6 +131,27 @@ class ShowAllCubit extends Cubit<ShowAllState> {
     try {
       final movieList =
           await _getTrendingMovieListUseCase.run(MovieUseCaseInput(page: page));
+
+      final dataSource = getMovieDataSources(movieList);
+
+      emit(state.copyWith(movieList: movieList, status: AppStatus.success));
+
+      return dataSource;
+    } on Exception catch (error) {
+      emit(state.copyWith(
+        status: AppStatus.error,
+        appError: error.appError,
+      ));
+      return [];
+    }
+  }
+
+  Future<List<DataSource>> getUpcomingMoviesData(int page) async {
+    emit(state.copyWith(status: AppStatus.inProgress));
+
+    try {
+      final movieList =
+          await _getUpcomingMovieListUseCase.run(MovieUseCaseInput(page: page));
 
       final dataSource = getMovieDataSources(movieList);
 

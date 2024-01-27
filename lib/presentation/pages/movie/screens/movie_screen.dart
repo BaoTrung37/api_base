@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/injection/di.dart';
-import 'package:api_base/presentation/pages/movie/cubit/trending_movie_cubit.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +32,9 @@ class _MovieScreenState extends State<MovieScreen> {
         ),
         BlocProvider<TrendingMovieCubit>(
           create: (context) => getIt<TrendingMovieCubit>()..fetchData(),
+        ),
+        BlocProvider<UpcomingMovieCubit>(
+          create: (context) => getIt<UpcomingMovieCubit>()..fetchData(),
         ),
       ],
       child: Scaffold(
@@ -112,6 +114,32 @@ class _MovieScreenState extends State<MovieScreen> {
                         ShowAllRoute(
                           argument: ShowAllArgument.movie(
                             title: 'Trending Movies',
+                            apiMovieType: ApiMovieType.trending,
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+              SliverToBoxAdapter(child: 16.verticalSpace),
+              BlocBuilder<UpcomingMovieCubit, MovieState>(
+                buildWhen: (previous, current) =>
+                    previous.status != current.status,
+                builder: (context, state) {
+                  final movies = state.movies;
+                  return MovieHorizontalListView(
+                    headingTitle: 'Upcoming',
+                    movies: movies,
+                    isPoster: false,
+                    onMovieTap: (movieId) {
+                      context.pushRoute(MovieDetailRoute(movieId: movieId));
+                    },
+                    showAllTap: () {
+                      context.pushRoute(
+                        ShowAllRoute(
+                          argument: ShowAllArgument.movie(
+                            title: 'Upcoming',
                             apiMovieType: ApiMovieType.trending,
                           ),
                         ),

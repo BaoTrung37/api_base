@@ -4,4 +4,5 @@ enum ApiMovieType {
   playingNow,
   similar,
   trending,
+  upcoming,
 }
