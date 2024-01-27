@@ -121,7 +121,7 @@ class MovieHorizontalListView extends StatelessWidget {
                   ),
                   4.verticalSpace,
                   Text(
-                    movie.releaseDate,
+                    movie.genresName,
                     style: AppTextStyles.labelSmallLight,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
