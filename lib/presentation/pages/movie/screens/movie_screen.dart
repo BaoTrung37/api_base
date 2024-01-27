@@ -105,7 +105,6 @@ class _MovieScreenState extends State<MovieScreen> {
                   return MovieHorizontalListView(
                     headingTitle: 'Trending',
                     movies: movies,
-                    isPoster: false,
                     onMovieTap: (movieId) {
                       context.pushRoute(MovieDetailRoute(movieId: movieId));
                     },
@@ -131,7 +130,6 @@ class _MovieScreenState extends State<MovieScreen> {
                   return MovieHorizontalListView(
                     headingTitle: 'Upcoming',
                     movies: movies,
-                    isPoster: false,
                     onMovieTap: (movieId) {
                       context.pushRoute(MovieDetailRoute(movieId: movieId));
                     },
