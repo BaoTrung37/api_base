@@ -1,4 +1,5 @@
 import 'package:api_base/data/models/movie/movie_response.dart';
+import 'package:api_base/domain/use_cases/input/movie_use_case_input.dart';
 import 'package:api_base/domain/use_cases/movie/get_now_playing_movie_list_use_case.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
@@ -33,7 +34,7 @@ class NowPlayingMovieCubit extends Cubit<MovieState> {
 
   Future<List<MovieResponse>> getMovies({required int page}) async {
     return _getNowPlayingMovieListUseCase.run(
-      GetNowPlayingMovieListInput(page: page),
+      MovieUseCaseInput(page: page),
     );
   }
 }

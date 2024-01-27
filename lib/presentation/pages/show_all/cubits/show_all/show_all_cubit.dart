@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/models/movie/movie_response.dart';
+import 'package:api_base/domain/use_cases/input/movie_use_case_input.dart';
 import 'package:api_base/domain/use_cases/movie/movie.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
@@ -61,7 +62,7 @@ class ShowAllCubit extends Cubit<ShowAllState> {
     }
     try {
       final movieList = await _getSimilarMovieListUseCase
-          .run(GetSimilarMovieListInput(movieId: movieId, page: page));
+          .run(MovieUseCaseInput(movieId: movieId, page: page));
 
       final dataSource = getMovieDataSources(movieList);
 
@@ -82,7 +83,7 @@ class ShowAllCubit extends Cubit<ShowAllState> {
 
     try {
       final movieList = await _getNowPlayingMovieListUseCase
-          .run(GetNowPlayingMovieListInput(page: page));
+          .run(MovieUseCaseInput(page: page));
 
       final dataSource = getMovieDataSources(movieList);
 
@@ -102,8 +103,8 @@ class ShowAllCubit extends Cubit<ShowAllState> {
     emit(state.copyWith(status: AppStatus.inProgress));
 
     try {
-      final movieList = await _getPopularMovieListUseCase
-          .run(GetPopularMovieListInput(page: page));
+      final movieList =
+          await _getPopularMovieListUseCase.run(MovieUseCaseInput(page: page));
 
       final dataSource = getMovieDataSources(movieList);
 
@@ -123,8 +124,8 @@ class ShowAllCubit extends Cubit<ShowAllState> {
     emit(state.copyWith(status: AppStatus.inProgress));
 
     try {
-      final movieList = await _getTrendingMovieListUseCase
-          .run(GetTrendingMovieListInput(page: page));
+      final movieList =
+          await _getTrendingMovieListUseCase.run(MovieUseCaseInput(page: page));
 
       final dataSource = getMovieDataSources(movieList);
 

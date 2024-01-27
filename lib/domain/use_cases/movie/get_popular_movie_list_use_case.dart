@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class GetPopularMovieListUseCase
-    extends FutureUseCase<GetPopularMovieListInput, List<MovieResponse>> {
+    extends FutureUseCase<MovieUseCaseInput, List<MovieResponse>> {
   GetPopularMovieListUseCase(
       this._movieRepositoryIml, this._genresRepositoryImp);
 
@@ -14,7 +14,7 @@ class GetPopularMovieListUseCase
   final GenresRepositoryImp _genresRepositoryImp;
 
   @override
-  Future<List<MovieResponse>> run(GetPopularMovieListInput input) async {
+  Future<List<MovieResponse>> run(MovieUseCaseInput input) async {
     await _genresRepositoryImp.getMovieGenresList();
     final responseList = await _movieRepositoryIml.getPopularMovieLists(
       page: input.page,
@@ -35,9 +35,4 @@ class GetPopularMovieListUseCase
   }
 }
 
-class GetPopularMovieListInput {
-  final int page;
-  GetPopularMovieListInput({
-    required this.page,
-  });
-}
+

@@ -21,5 +21,8 @@ abstract class MovieRepository {
     String? region,
   });
 
-  
+  Future<List<MovieResponse>> getUpcomingMovieLists({
+    required int page,
+    String? region,
+  });
 }
