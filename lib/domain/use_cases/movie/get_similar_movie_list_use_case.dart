@@ -19,12 +19,12 @@ class GetSimilarMovieListUseCase
   @override
   Future<List<MovieResponse>> run(GetSimilarMovieListInput input) async {
     await _genresRepositoryImp.getMovieGenresList();
-    final movieList1 = await _movieRepositoryIml.getSimilarMovieList(
+    final responseList = await _movieRepositoryIml.getSimilarMovieList(
       page: input.page,
       movieId: input.movieId,
     );
     final movieList = <MovieResponse>[];
-    for (final movie in movieList1) {
+    for (final movie in responseList) {
       final genres = <Genre>[];
       for (final element in movie.genreIds) {
         final genre = _genresRepositoryImp.movieGenreMap[element];
