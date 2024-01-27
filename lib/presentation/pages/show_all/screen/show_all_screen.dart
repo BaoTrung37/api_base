@@ -53,6 +53,10 @@ class _ShowAllScreenState extends State<ShowAllScreen>
     with InfiniteListDelegate {
   late ShowAllCubit showAllCubit;
 
+  void moveToMovieDetailView(int movieId) {
+    context.pushRoute(MovieDetailRoute(movieId: movieId));
+  }
+
   @override
   void initState() {
     super.initState();
@@ -100,6 +104,9 @@ class _ShowAllScreenState extends State<ShowAllScreen>
 
   Widget _buildMovieCell(MovieResponse movie) => Padding(
         padding: EdgeInsets.symmetric(horizontal: 8.w),
-        child: MovieItemListView(movie: movie),
+        child: MovieItemListView(
+          movie: movie,
+          onMovieTap: () => moveToMovieDetailView(movie.id),
+        ),
       );
 }
