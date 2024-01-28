@@ -24,17 +24,8 @@ class _MovieScreenState extends State<MovieScreen> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<PopularMovieCubit>(
-          create: (context) => getIt<PopularMovieCubit>()..fetchData(),
-        ),
-        BlocProvider<NowPlayingMovieCubit>(
-          create: (context) => getIt<NowPlayingMovieCubit>()..fetchData(),
-        ),
-        BlocProvider<TrendingMovieCubit>(
-          create: (context) => getIt<TrendingMovieCubit>()..fetchData(),
-        ),
-        BlocProvider<UpcomingMovieCubit>(
-          create: (context) => getIt<UpcomingMovieCubit>()..fetchData(),
+        BlocProvider<MoviesControllerCubit>(
+          create: (context) => getIt<MoviesControllerCubit>()..fetchData(),
         ),
       ],
       child: Scaffold(
@@ -47,13 +38,13 @@ class _MovieScreenState extends State<MovieScreen> {
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: CustomScrollView(
             slivers: [
-              BlocBuilder<PopularMovieCubit, MovieState>(
+              BlocBuilder<MoviesControllerCubit, MovieState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
                   return MovieHorizontalListView(
                     headingTitle: 'Popular',
-                    movies: state.movies,
+                    movies: state.popularMovies,
                     onMovieTap: (movieId) {
                       context.pushRoute(MovieDetailRoute(movieId: movieId));
                     },
@@ -71,11 +62,11 @@ class _MovieScreenState extends State<MovieScreen> {
                 },
               ),
               SliverToBoxAdapter(child: 24.verticalSpace),
-              BlocBuilder<NowPlayingMovieCubit, MovieState>(
+              BlocBuilder<MoviesControllerCubit, MovieState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  final movies = state.movies;
+                  final movies = state.nowPlayingMovies;
                   return MovieHorizontalListView(
                     headingTitle: 'Playing In Theatres',
                     movies: movies,
@@ -97,11 +88,11 @@ class _MovieScreenState extends State<MovieScreen> {
                 },
               ),
               SliverToBoxAdapter(child: 16.verticalSpace),
-              BlocBuilder<TrendingMovieCubit, MovieState>(
+              BlocBuilder<MoviesControllerCubit, MovieState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  final movies = state.movies;
+                  final movies = state.trendingMovies;
                   return MovieHorizontalListView(
                     headingTitle: 'Trending',
                     movies: movies,
@@ -122,11 +113,11 @@ class _MovieScreenState extends State<MovieScreen> {
                 },
               ),
               SliverToBoxAdapter(child: 16.verticalSpace),
-              BlocBuilder<UpcomingMovieCubit, MovieState>(
+              BlocBuilder<MoviesControllerCubit, MovieState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  final movies = state.movies;
+                  final movies = state.upcomingMovies;
                   return MovieHorizontalListView(
                     headingTitle: 'Upcoming',
                     movies: movies,
@@ -138,7 +129,7 @@ class _MovieScreenState extends State<MovieScreen> {
                         ShowAllRoute(
                           argument: ShowAllArgument.movie(
                             title: 'Upcoming',
-                            apiMovieType: ApiMovieType.trending,
+                            apiMovieType: ApiMovieType.upcoming,
                           ),
                         ),
                       );
