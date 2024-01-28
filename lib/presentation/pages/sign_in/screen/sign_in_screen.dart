@@ -109,7 +109,6 @@ class SignInScreen extends StatelessWidget {
                       AppTextButton(
                         title: 'Forgot the password?',
                         onTap: () {
-                          // TODO: Implement the forgot the password method?
                           context.pushRoute(const ApiTestRoute());
                         },
                       ),
