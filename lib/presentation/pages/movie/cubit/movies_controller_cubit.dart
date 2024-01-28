@@ -9,13 +9,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class MoviesControllerCubit extends Cubit<MovieState> {
+class MoviesControllerCubit extends Cubit<MoviesControllerState> {
   MoviesControllerCubit(
     this._getNowPlayingMovieListUseCase,
     this._getPopularMovieListUseCase,
     this._getTrendingMovieListUseCase,
     this._getUpcomingMovieListUseCase,
-  ) : super(const MovieState());
+  ) : super(const MoviesControllerState());
 
   final GetNowPlayingMovieListUseCase _getNowPlayingMovieListUseCase;
   final GetPopularMovieListUseCase _getPopularMovieListUseCase;

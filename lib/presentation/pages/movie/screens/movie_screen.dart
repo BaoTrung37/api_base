@@ -38,7 +38,7 @@ class _MovieScreenState extends State<MovieScreen> {
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: CustomScrollView(
             slivers: [
-              BlocBuilder<MoviesControllerCubit, MovieState>(
+              BlocBuilder<MoviesControllerCubit, MoviesControllerState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
@@ -62,7 +62,7 @@ class _MovieScreenState extends State<MovieScreen> {
                 },
               ),
               SliverToBoxAdapter(child: 24.verticalSpace),
-              BlocBuilder<MoviesControllerCubit, MovieState>(
+              BlocBuilder<MoviesControllerCubit, MoviesControllerState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
@@ -88,7 +88,7 @@ class _MovieScreenState extends State<MovieScreen> {
                 },
               ),
               SliverToBoxAdapter(child: 16.verticalSpace),
-              BlocBuilder<MoviesControllerCubit, MovieState>(
+              BlocBuilder<MoviesControllerCubit, MoviesControllerState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
@@ -113,7 +113,7 @@ class _MovieScreenState extends State<MovieScreen> {
                 },
               ),
               SliverToBoxAdapter(child: 16.verticalSpace),
-              BlocBuilder<MoviesControllerCubit, MovieState>(
+              BlocBuilder<MoviesControllerCubit, MoviesControllerState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
