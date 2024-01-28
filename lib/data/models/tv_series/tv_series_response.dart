@@ -1,3 +1,4 @@
+import 'package:api_base/data/models/genres/genres_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'tv_series_response.freezed.dart';
@@ -36,6 +37,7 @@ class TvSeriesResponse with _$TvSeriesResponse {
     required String type,
     required double voteAverage,
     required int voteCount,
+    @Default([]) List<int> genreIds,
     String? nextEpisodeToAir,
     @Default([]) List<Genre> genres,
   }) = _TvSeriesResponse;
@@ -71,22 +73,6 @@ class CreatedBy {
   final String profilePath;
 
   Map<String, dynamic> toJson() => _$CreatedByToJson(this);
-}
-
-@JsonSerializable()
-class Genre {
-  Genre({
-    required this.id,
-    required this.name,
-  });
-
-  factory Genre.fromJson(Map<String, dynamic> json) => _$GenreFromJson(json);
-  @JsonKey(name: 'id')
-  final int id;
-  @JsonKey(name: 'name')
-  final String name;
-
-  Map<String, dynamic> toJson() => _$GenreToJson(this);
 }
 
 @JsonSerializable()
