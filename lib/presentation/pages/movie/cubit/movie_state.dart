@@ -8,7 +8,10 @@ part 'movie_state.freezed.dart';
 class MovieState with _$MovieState {
   const factory MovieState({
     @Default(AppStatus.initial) AppStatus status,
-    @Default([]) List<MovieResponse> movies,
+    @Default([]) List<MovieResponse> nowPlayingMovies,
+    @Default([]) List<MovieResponse> popularMovies,
+    @Default([]) List<MovieResponse> trendingMovies,
+    @Default([]) List<MovieResponse> upcomingMovies,
     AppError? appError,
   }) = _MovieState;
 }
