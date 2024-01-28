@@ -1,8 +1,4 @@
-import 'package:api_base/data/models/movie/movie_response.dart';
-import 'package:api_base/presentation/presentation.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-part 'movies_controller_state.freezed.dart';
+part of 'movies_controller_cubit.dart';
 
 @freezed
 class MoviesControllerState with _$MoviesControllerState {
