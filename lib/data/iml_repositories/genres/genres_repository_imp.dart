@@ -12,7 +12,7 @@ class GenresRepositoryImp extends GenresRepository {
   final RestClient restClient;
 
   final movieGenreMap = <int, Genre>{};
-  final tvShowsGenreMap = <int, Genre>{};
+  final tvSeriesGenreMap = <int, Genre>{};
 
   @override
   Future<Map<int, Genre>> getMovieGenresList() async {
@@ -28,12 +28,12 @@ class GenresRepositoryImp extends GenresRepository {
   }
 
   @override
-  Future<Map<int, Genre>> getTvGenresList() async {
-    if (tvShowsGenreMap.entries.isNotEmpty) {
-      return tvShowsGenreMap;
+  Future<Map<int, Genre>> getTvSeriesGenresList() async {
+    if (tvSeriesGenreMap.entries.isNotEmpty) {
+      return tvSeriesGenreMap;
     }
     final response = await restClient.getTvGenres();
-    final genreMap = response.genres.fold(tvShowsGenreMap, (map, genre) {
+    final genreMap = response.genres.fold(tvSeriesGenreMap, (map, genre) {
       map[genre.id] = genre;
       return map;
     });

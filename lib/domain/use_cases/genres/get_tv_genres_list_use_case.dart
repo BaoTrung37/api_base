@@ -11,6 +11,6 @@ class GetTvGenresListUseCase extends FutureOutputUseCase<void> {
 
   @override
   Future<void> run() {
-    return _genresRepositoryImp.getTvGenresList();
+    return _genresRepositoryImp.getTvSeriesGenresList();
   }
 }
