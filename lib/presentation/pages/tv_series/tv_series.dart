@@ -1,1 +1,1 @@
-export 'screen/tv_shows_screen.dart';
+export 'screen/tv_series_screen.dart';

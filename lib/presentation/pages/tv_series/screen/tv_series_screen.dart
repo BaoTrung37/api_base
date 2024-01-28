@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
-class TvShowsScreen extends StatelessWidget {
-  const TvShowsScreen({super.key});
+class TvSeriesScreen extends StatelessWidget {
+  const TvSeriesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
