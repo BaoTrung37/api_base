@@ -37,7 +37,7 @@ class MovieRepositoryIml extends MovieRepository {
   }
 
   @override
-  Future<List<MovieResponse>> getPopularMovieLists({
+  Future<List<MovieResponse>> getPopularMovieList({
     String language = 'en-US',
     int page = 1,
     String? region,
@@ -50,7 +50,7 @@ class MovieRepositoryIml extends MovieRepository {
   }
 
   @override
-  Future<List<MovieResponse>> getNowPlayingMovieLists({
+  Future<List<MovieResponse>> getNowPlayingMovieList({
     int page = 1,
     String? region,
   }) async {
@@ -62,7 +62,7 @@ class MovieRepositoryIml extends MovieRepository {
   }
 
   @override
-  Future<List<MovieResponse>> getUpcomingMovieLists({
+  Future<List<MovieResponse>> getUpcomingMovieList({
     int page = 1,
     String? region,
   }) async {

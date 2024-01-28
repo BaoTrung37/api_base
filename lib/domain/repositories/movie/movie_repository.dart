@@ -11,17 +11,17 @@ abstract class MovieRepository {
     required int page,
   });
 
-  Future<List<MovieResponse>> getPopularMovieLists({
+  Future<List<MovieResponse>> getPopularMovieList({
     required int page,
     String? region,
   });
 
-  Future<List<MovieResponse>> getNowPlayingMovieLists({
+  Future<List<MovieResponse>> getNowPlayingMovieList({
     required int page,
     String? region,
   });
 
-  Future<List<MovieResponse>> getUpcomingMovieLists({
+  Future<List<MovieResponse>> getUpcomingMovieList({
     required int page,
     String? region,
   });
