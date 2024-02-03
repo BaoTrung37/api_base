@@ -7,6 +7,8 @@ part 'tv_series_response.g.dart';
 
 @freezed
 class TvSeriesResponse with _$TvSeriesResponse {
+  // ignore: invalid_annotation_target
+  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory TvSeriesResponse({
     required int id,
     required String name,
