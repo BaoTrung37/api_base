@@ -20,7 +20,11 @@ class TvSeriesScreen extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        appBar: const BaseAppBar.titleOnly(title: 'Tv Shows'),
+        appBar: const BaseAppBar.titleOnly(
+          title: 'Tv Shows',
+          isCenterTitle: false,
+          shouldShowBottomDivider: false,
+        ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: CustomScrollView(
@@ -56,8 +60,8 @@ class TvSeriesScreen extends StatelessWidget {
                   return TvSeriesHorizontalListView(
                     headingTitle: 'On The Air',
                     tvSeriesList: state.onTheAirList,
-                    onTvSeriesTap: (movieId) {
-                      // context.pushRoute(MovieDetailRoute(movieId: movieId));
+                    onTvSeriesTap: (seriesId) {
+                      context.pushRoute(TvDetailRoute(seriesId: seriesId));
                     },
                     showAllTap: () {
                       // context.pushRoute(
@@ -80,8 +84,8 @@ class TvSeriesScreen extends StatelessWidget {
                   return TvSeriesHorizontalListView(
                     headingTitle: 'Popular',
                     tvSeriesList: state.popularList,
-                    onTvSeriesTap: (movieId) {
-                      // context.pushRoute(MovieDetailRoute(movieId: movieId));
+                    onTvSeriesTap: (seriesId) {
+                      context.pushRoute(TvDetailRoute(seriesId: seriesId));
                     },
                     showAllTap: () {
                       // context.pushRoute(
@@ -104,8 +108,8 @@ class TvSeriesScreen extends StatelessWidget {
                   return TvSeriesHorizontalListView(
                     headingTitle: 'Top Rated',
                     tvSeriesList: state.topRatedList,
-                    onTvSeriesTap: (movieId) {
-                      // context.pushRoute(MovieDetailRoute(movieId: movieId));
+                    onTvSeriesTap: (seriesId) {
+                      context.pushRoute(TvDetailRoute(seriesId: seriesId));
                     },
                     showAllTap: () {
                       // context.pushRoute(
