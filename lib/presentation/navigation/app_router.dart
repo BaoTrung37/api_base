@@ -22,7 +22,7 @@ class AppRouter extends _$AppRouter {
               initial: true,
               children: [
                 AutoRoute(page: MovieRoute.page, initial: true),
-                AutoRoute(page: TvShowsRoute.page),
+                AutoRoute(page: TvSeriesRoute.page),
                 AutoRoute(page: FavoriteRoute.page),
                 AutoRoute(page: SearchRoute.page),
                 AutoRoute(page: ProfileRoute.page),
@@ -33,7 +33,7 @@ class AppRouter extends _$AppRouter {
             AutoRoute(
               page: TvShowsNavigationRoute.page,
               children: [
-                AutoRoute(page: TvShowsRoute.page, initial: true),
+                AutoRoute(page: TvSeriesRoute.page, initial: true),
               ],
             ),
             AutoRoute(

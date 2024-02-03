@@ -1,4 +1,5 @@
 import 'package:api_base/data/models/models.dart';
+import 'package:api_base/data/models/tv_series/tv_series_response.dart';
 import 'package:api_base/data/services/network_services/commons/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -88,4 +89,30 @@ abstract class RestClient {
   );
 
   /// End Trending
+
+  /// Start Tv Series
+
+  @GET('/tv/airing_today')
+  Future<ApiCollectionResponse<TvSeriesResponse>> getAiringTodayTvSeries(
+    @Query('page') int page,
+    @Query('timezone') String? timezone,
+  );
+
+  @GET('/tv/on_the_air')
+  Future<ApiCollectionResponse<TvSeriesResponse>> getOnTheAirTvSeries(
+    @Query('page') int page,
+    @Query('timezone') String? timezone,
+  );
+
+  @GET('/tv/popular')
+  Future<ApiCollectionResponse<TvSeriesResponse>> getPopularTvSeries(
+    @Query('page') int page,
+  );
+
+  @GET('/tv/top_rated')
+  Future<ApiCollectionResponse<TvSeriesResponse>> getTopRatedTvSeries(
+    @Query('page') int page,
+  );
+
+  /// End Tv Series
 }

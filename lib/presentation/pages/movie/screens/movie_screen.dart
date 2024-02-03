@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/injection/di.dart';
+import 'package:api_base/presentation/pages/movie/cubit/movies_controller_cubit.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class _MovieScreenState extends State<MovieScreen> {
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: CustomScrollView(
             slivers: [
-              BlocBuilder<MoviesControllerCubit, MovieState>(
+              BlocBuilder<MoviesControllerCubit, MoviesControllerState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
@@ -62,7 +63,7 @@ class _MovieScreenState extends State<MovieScreen> {
                 },
               ),
               SliverToBoxAdapter(child: 24.verticalSpace),
-              BlocBuilder<MoviesControllerCubit, MovieState>(
+              BlocBuilder<MoviesControllerCubit, MoviesControllerState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
@@ -88,7 +89,7 @@ class _MovieScreenState extends State<MovieScreen> {
                 },
               ),
               SliverToBoxAdapter(child: 16.verticalSpace),
-              BlocBuilder<MoviesControllerCubit, MovieState>(
+              BlocBuilder<MoviesControllerCubit, MoviesControllerState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
@@ -113,7 +114,7 @@ class _MovieScreenState extends State<MovieScreen> {
                 },
               ),
               SliverToBoxAdapter(child: 16.verticalSpace),
-              BlocBuilder<MoviesControllerCubit, MovieState>(
+              BlocBuilder<MoviesControllerCubit, MoviesControllerState>(
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {

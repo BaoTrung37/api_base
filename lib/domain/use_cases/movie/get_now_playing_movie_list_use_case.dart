@@ -16,7 +16,7 @@ class GetNowPlayingMovieListUseCase
   @override
   Future<List<MovieResponse>> run(MovieUseCaseInput input) async {
     await _genresRepositoryImp.getMovieGenresList();
-    final responseList = await _movieRepositoryIml.getNowPlayingMovieLists(
+    final responseList = await _movieRepositoryIml.getNowPlayingMovieList(
       page: input.page,
     );
     final movieList = <MovieResponse>[];

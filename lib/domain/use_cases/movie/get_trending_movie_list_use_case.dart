@@ -15,7 +15,7 @@ class GetTrendingMovieListUseCase
   @override
   Future<List<MovieResponse>> run(MovieUseCaseInput input) async {
     await _genresRepositoryImp.getMovieGenresList();
-    final responseList = await _movieRepositoryIml.getPopularMovieLists(
+    final responseList = await _movieRepositoryIml.getPopularMovieList(
       page: input.page,
     );
     final movieList = <MovieResponse>[];

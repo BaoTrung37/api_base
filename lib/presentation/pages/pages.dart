@@ -9,4 +9,4 @@ export 'show_all/show_all.dart';
 export 'sign_in/sign_in.dart';
 export 'sign_up/sign_up.dart';
 export 'splash/splash.dart';
-export 'tv_shows/tv_shows.dart';
+export 'tv_series/tv_series.dart';

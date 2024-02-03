@@ -6,16 +6,20 @@ import 'package:api_base/domain/use_cases/input/movie_use_case_input.dart';
 import 'package:api_base/domain/use_cases/movie/movie.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+part 'movies_controller_cubit.freezed.dart';
+part 'movies_controller_state.dart';
+
 @lazySingleton
-class MoviesControllerCubit extends Cubit<MovieState> {
+class MoviesControllerCubit extends Cubit<MoviesControllerState> {
   MoviesControllerCubit(
     this._getNowPlayingMovieListUseCase,
     this._getPopularMovieListUseCase,
     this._getTrendingMovieListUseCase,
     this._getUpcomingMovieListUseCase,
-  ) : super(const MovieState());
+  ) : super(const MoviesControllerState());
 
   final GetNowPlayingMovieListUseCase _getNowPlayingMovieListUseCase;
   final GetPopularMovieListUseCase _getPopularMovieListUseCase;
