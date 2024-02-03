@@ -22,10 +22,6 @@ class AppRouter extends _$AppRouter {
               initial: true,
               children: [
                 AutoRoute(page: MovieRoute.page, initial: true),
-                AutoRoute(page: TvSeriesRoute.page),
-                AutoRoute(page: FavoriteRoute.page),
-                AutoRoute(page: SearchRoute.page),
-                AutoRoute(page: ProfileRoute.page),
                 AutoRoute(page: ShowAllRoute.page),
                 AutoRoute(page: MovieDetailRoute.page),
               ],
@@ -34,24 +30,29 @@ class AppRouter extends _$AppRouter {
               page: TvShowsNavigationRoute.page,
               children: [
                 AutoRoute(page: TvSeriesRoute.page, initial: true),
+                AutoRoute(page: ShowAllRoute.page),
+                AutoRoute(page: TvDetailRoute.page),
               ],
             ),
             AutoRoute(
               page: FavoriteNavigationRoute.page,
               children: [
                 AutoRoute(page: FavoriteRoute.page, initial: true),
+                AutoRoute(page: ShowAllRoute.page),
               ],
             ),
             AutoRoute(
               page: SearchNavigationRoute.page,
               children: [
                 AutoRoute(page: SearchRoute.page, initial: true),
+                AutoRoute(page: ShowAllRoute.page),
               ],
             ),
             AutoRoute(
               page: ProfileNavigationRoute.page,
               children: [
                 AutoRoute(page: ProfileRoute.page, initial: true),
+                AutoRoute(page: ShowAllRoute.page),
               ],
             ),
           ],
