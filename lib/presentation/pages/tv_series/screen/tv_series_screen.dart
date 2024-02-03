@@ -32,8 +32,8 @@ class TvSeriesScreen extends StatelessWidget {
                   return TvSeriesHorizontalListView(
                     headingTitle: 'Airing Today',
                     tvSeriesList: state.airingTodayList,
-                    onTvSeriesTap: (movieId) {
-                      // context.pushRoute(MovieDetailRoute(movieId: movieId));
+                    onTvSeriesTap: (seriesId) {
+                      context.pushRoute(TvDetailRoute(seriesId: seriesId));
                     },
                     showAllTap: () {
                       // context.pushRoute(
