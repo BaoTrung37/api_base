@@ -93,12 +93,12 @@ class TvSeriesHorizontalListView extends StatelessWidget {
 
   Widget _buildTvSeriesItem(
     BuildContext context,
-    TvSeriesResponse movie,
+    TvSeriesResponse tvSeries,
     TvSeriesFunction onMovieTap,
   ) {
     return GestureDetector(
       onTap: () {
-        onMovieTap.call(movie.id);
+        onMovieTap.call(tvSeries.id);
       },
       child: SizedBox(
         height: height ?? _getHeightItem(),
@@ -111,8 +111,8 @@ class TvSeriesHorizontalListView extends StatelessWidget {
               child: CustomCachedNetworkImage(
                 imageType: ImageType.movie,
                 imageUrl: isPoster
-                    ? movie.posterPath.tmdbW154Path
-                    : movie.backdropPath.tmdbW300Path,
+                    ? tvSeries.backdropPath.tmdbW154Path
+                    : tvSeries.backdropPath.tmdbW300Path,
               ),
             ),
             8.verticalSpace,
@@ -122,14 +122,14 @@ class TvSeriesHorizontalListView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    movie.name,
+                    tvSeries.name,
                     style: AppTextStyles.labelMedium,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                   4.verticalSpace,
                   Text(
-                    movie.genresName,
+                    tvSeries.genresName,
                     style: AppTextStyles.labelSmallLight,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
