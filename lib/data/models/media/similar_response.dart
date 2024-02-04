@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'similar_response.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
 class SimilarResponse {
   SimilarResponse({
     required this.page,

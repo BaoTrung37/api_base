@@ -3,14 +3,14 @@ import 'package:api_base/data/models/genres/genres.dart';
 import 'package:api_base/data/models/media/media.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'movie_response.freezed.dart';
-part 'movie_response.g.dart';
+part 'media_response.freezed.dart';
+part 'media_response.g.dart';
 
 @freezed
-class MovieResponse with _$MovieResponse {
+class MediaResponse with _$MediaResponse {
   // ignore: invalid_annotation_target
-  @JsonSerializable(fieldRename: FieldRename.snake)
-  const factory MovieResponse({
+  @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
+  const factory MediaResponse({
     required bool adult,
     required int id,
     required String originalLanguage,
@@ -43,11 +43,11 @@ class MovieResponse with _$MovieResponse {
     CreditsResponse? credits,
     String? mediaType,
     String? firstAirDate,
-  }) = _MovieResponse;
-  const MovieResponse._();
+  }) = _MediaResponse;
+  const MediaResponse._();
 
   String get genresName => genres.map((e) => e.name).join(', ');
 
-  factory MovieResponse.fromJson(Map<String, dynamic> json) =>
-      _$MovieResponseFromJson(json);
+  factory MediaResponse.fromJson(Map<String, dynamic> json) =>
+      _$MediaResponseFromJson(json);
 }

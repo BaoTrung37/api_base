@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:api_base/data/models/movie/credits_response.dart';
+import 'package:api_base/data/models/media/credits_response.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:api_base/presentation/utilities/extensions/string_extension.dart';
 import 'package:flutter/material.dart';
