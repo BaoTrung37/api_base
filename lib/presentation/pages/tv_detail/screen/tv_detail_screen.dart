@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/gen/assets.gen.dart';
-import 'package:api_base/presentation/resources/resources.dart';
-import 'package:api_base/presentation/widgets/base_app_bar/base_app_bar.dart';
+import 'package:api_base/presentation/presentation.dart';
+import 'package:api_base/presentation/widgets/app_indicator/app_indicator.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,6 +37,10 @@ class _TvDetailScreenState extends State<TvDetailScreen> {
           Assets.icons.icBookmarkOutline.svg(height: 24.h),
           16.horizontalSpace,
         ],
+      ),
+      body: LoadingView(
+        status: AppStatus.success,
+        child: Container(),
       ),
     );
   }
