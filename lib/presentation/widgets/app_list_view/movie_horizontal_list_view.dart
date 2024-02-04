@@ -111,8 +111,8 @@ class MovieHorizontalListView extends StatelessWidget {
               child: CustomCachedNetworkImage(
                 imageType: ImageType.movie,
                 imageUrl: isPoster
-                    ? movie.posterPath?.tmdbW154Path
-                    : movie.backdropPath?.tmdbW300Path,
+                    ? movie.posterPath?.tmdbW500Path
+                    : movie.backdropPath?.tmdbW500Path,
               ),
             ),
             8.verticalSpace,
