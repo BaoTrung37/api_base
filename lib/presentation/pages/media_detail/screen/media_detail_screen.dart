@@ -1,8 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/gen/assets.gen.dart';
 import 'package:api_base/injection/di.dart';
+import 'package:api_base/presentation/pages/media_detail/cubit/media_detail_cubit.dart';
 import 'package:api_base/presentation/presentation.dart';
-import 'package:api_base/presentation/widgets/app_indicator/app_indicator.dart';
+import 'package:api_base/presentation/widgets/app_indicator/loading_view.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,17 +23,17 @@ class MediaDetailScreen extends StatefulWidget {
 }
 
 class _MediaDetailScreenState extends State<MediaDetailScreen> {
-  final MovieDetailCubit movieDetailCubit = getIt<MovieDetailCubit>();
+  final MediaDetailCubit mediaDetailCubit = getIt<MediaDetailCubit>();
   @override
   void initState() {
     super.initState();
-    movieDetailCubit.fetchData(widget.mediaId);
+    mediaDetailCubit.fetchData(widget.mediaId);
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => movieDetailCubit,
+      create: (context) => mediaDetailCubit,
       child: Scaffold(
         appBar: BaseAppBar.customTitleView(
           title: Text(
@@ -50,13 +51,13 @@ class _MediaDetailScreenState extends State<MediaDetailScreen> {
             16.horizontalSpace,
           ],
         ),
-        body: BlocBuilder<MovieDetailCubit, MovieDetailState>(
-          bloc: movieDetailCubit,
+        body: BlocBuilder<MediaDetailCubit, MediaDetailState>(
+          bloc: mediaDetailCubit,
           builder: (context, state) {
             return LoadingView(
               status: state.status,
               child: _MainContent(
-                movieDetailCubit: movieDetailCubit,
+                mediaDetailCubit: mediaDetailCubit,
               ),
             );
           },
@@ -68,23 +69,23 @@ class _MediaDetailScreenState extends State<MediaDetailScreen> {
 
 class _MainContent extends StatelessWidget {
   const _MainContent({
-    required this.movieDetailCubit,
+    required this.mediaDetailCubit,
   });
 
-  final MovieDetailCubit movieDetailCubit;
+  final MediaDetailCubit mediaDetailCubit;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        MediaInformationView(movieDetailCubit: movieDetailCubit),
+        MediaInformationView(mediaDetailCubit: mediaDetailCubit),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
-        MediaCastCrewView(movieDetailCubit: movieDetailCubit),
+        MediaCastCrewView(mediaDetailCubit: mediaDetailCubit),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
-        MediaTrailerVideoView(movieDetailCubit: movieDetailCubit),
+        MediaTrailerVideoView(mediaDetailCubit: mediaDetailCubit),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
@@ -92,7 +93,7 @@ class _MainContent extends StatelessWidget {
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
-        MediaSimilarView(movieDetailCubit: movieDetailCubit),
+        MediaSimilarView(mediaDetailCubit: mediaDetailCubit),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),

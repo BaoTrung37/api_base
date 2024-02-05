@@ -1,4 +1,5 @@
 import 'package:api_base/gen/assets.gen.dart';
+import 'package:api_base/presentation/pages/media_detail/cubit/media_detail_cubit.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:api_base/presentation/utilities/extensions/string_extension.dart';
 import 'package:flutter/material.dart';
@@ -9,16 +10,15 @@ import 'package:readmore/readmore.dart';
 
 class MediaInformationView extends StatelessWidget {
   const MediaInformationView({
-    required this.movieDetailCubit,
+    required this.mediaDetailCubit,
     super.key,
   });
-  final MovieDetailCubit movieDetailCubit;
+  final MediaDetailCubit mediaDetailCubit;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MovieDetailCubit, MovieDetailState>(
-      bloc: movieDetailCubit,
-      buildWhen: (previous, current) => previous.movie != current.movie,
+    return BlocBuilder<MediaDetailCubit, MediaDetailState>(
+      bloc: mediaDetailCubit,
       builder: (context, state) {
         return SliverToBoxAdapter(
           child: Column(
@@ -27,7 +27,7 @@ class MediaInformationView extends StatelessWidget {
                 height: 220.h,
                 width: double.infinity,
                 child: CustomCachedNetworkImage(
-                  imageUrl: state.movie?.backdropPath?.tmdbW1280Path,
+                  imageUrl: state.media?.backdropPath?.tmdbW1280Path,
                 ),
               ),
               Transform.translate(
@@ -41,7 +41,7 @@ class MediaInformationView extends StatelessWidget {
                         height: 150.h,
                         width: 90.w,
                         child: CustomCachedNetworkImage(
-                          imageUrl: state.movie?.posterPath?.tmdbW500Path,
+                          imageUrl: state.media?.posterPath?.tmdbW500Path,
                         ),
                       ),
                       8.horizontalSpace,
@@ -51,16 +51,16 @@ class MediaInformationView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              state.movie?.title ?? '',
+                              state.media?.title ?? '',
                               style: AppTextStyles.headingSmall,
                             ),
                             4.verticalSpace,
-                            _buildMovieRate(state),
+                            _buildMediaRate(state),
                             8.verticalSpace,
                             _buildMovieGenres(context, state),
                             8.verticalSpace,
                             ReadMoreText(
-                              state.movie?.overview ?? '',
+                              state.media?.overview ?? '',
                               trimLines: 5,
                               trimMode: TrimMode.Line,
                               trimCollapsedText: '.',
@@ -82,8 +82,8 @@ class MediaInformationView extends StatelessWidget {
     );
   }
 
-  Widget _buildMovieGenres(BuildContext context, MovieDetailState state) {
-    final genres = state.movie?.genres ?? [];
+  Widget _buildMovieGenres(BuildContext context, MediaDetailState state) {
+    final genres = state.media?.genres ?? [];
     if (genres.isEmpty) {
       return const SizedBox.shrink();
     }
@@ -110,11 +110,11 @@ class MediaInformationView extends StatelessWidget {
     );
   }
 
-  Widget _buildMovieRate(MovieDetailState state) {
+  Widget _buildMediaRate(MediaDetailState state) {
     return Row(
       children: [
         RatingBar(
-          initialRating: (state.movie?.voteAverage ?? 0) / 10 * 5,
+          initialRating: (state.media?.voteAverage ?? 0) / 10 * 5,
           direction: Axis.horizontal,
           allowHalfRating: true,
           itemCount: 5,
@@ -130,7 +130,7 @@ class MediaInformationView extends StatelessWidget {
         ),
         8.horizontalSpace,
         Text(
-          '( ${state.movie?.voteCount.toString() ?? '0'} )',
+          '( ${state.media?.voteCount.toString() ?? '0'} )',
           style: AppTextStyles.textSmallBold,
         ),
         Expanded(
@@ -141,7 +141,7 @@ class MediaInformationView extends StatelessWidget {
                 Assets.icons.icStar.svg(height: 12.sp),
                 8.horizontalSpace,
                 Text(
-                  state.movie?.voteAverage.toString() ?? '0',
+                  state.media?.voteAverage.toString() ?? '0',
                   style: AppTextStyles.textMediumBold,
                 ),
               ],

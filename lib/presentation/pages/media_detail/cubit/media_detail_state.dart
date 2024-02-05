@@ -4,7 +4,7 @@ part of 'media_detail_cubit.dart';
 class MediaDetailState with _$MediaDetailState {
   const factory MediaDetailState({
     @Default(AppStatus.initial) AppStatus status,
-    MediaResponse? movie,
+    MediaResponse? media,
     AppError? appError,
   }) = _MediaDetailState;
 }

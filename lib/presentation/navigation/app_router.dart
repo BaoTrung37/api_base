@@ -27,7 +27,6 @@ class AppRouter extends _$AppRouter {
                 AutoRoute(page: SearchRoute.page),
                 AutoRoute(page: ProfileRoute.page),
                 AutoRoute(page: ShowAllRoute.page),
-                AutoRoute(page: MovieDetailRoute.page),
               ],
             ),
             AutoRoute(

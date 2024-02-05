@@ -54,7 +54,7 @@ class _ShowAllScreenState extends State<ShowAllScreen>
   late ShowAllCubit showAllCubit;
 
   void moveToMovieDetailView(int movieId) {
-    context.pushRoute(MovieDetailRoute(movieId: movieId));
+    context.pushRoute(MediaDetailRoute(mediaId: movieId));
   }
 
   @override
