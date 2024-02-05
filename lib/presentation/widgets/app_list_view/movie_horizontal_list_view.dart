@@ -22,7 +22,7 @@ class MovieHorizontalListView extends StatelessWidget {
   });
 
   final String headingTitle;
-  final List<MovieResponse> movies;
+  final List<MediaResponse> movies;
 
   final double? height;
   final double? width;
@@ -93,7 +93,7 @@ class MovieHorizontalListView extends StatelessWidget {
 
   Widget _buildMovieItem(
     BuildContext context,
-    MovieResponse movie,
+    MediaResponse movie,
     MovieFunction onMovieTap,
   ) {
     return GestureDetector(
@@ -122,7 +122,7 @@ class MovieHorizontalListView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    movie.title,
+                    movie.title!,
                     style: AppTextStyles.labelMedium,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,

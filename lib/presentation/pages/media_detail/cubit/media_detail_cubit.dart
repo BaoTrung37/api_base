@@ -1,27 +1,28 @@
-import 'package:api_base/data/models/models.dart';
-import 'package:api_base/domain/use_cases/movie/get_movie_detail_use_case.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:api_base/data/models/media/media.dart';
+import 'package:api_base/domain/use_cases/media/get_media_detail_use_case.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'movie_detail_cubit.freezed.dart';
-part 'movie_detail_state.dart';
+part 'media_detail_cubit.freezed.dart';
+part 'media_detail_state.dart';
 
 @injectable
-class MovieDetailCubit extends Cubit<MovieDetailState> {
-  MovieDetailCubit(
-    this._getMovieDetailUseCase,
-  ) : super(const MovieDetailState());
+class MediaDetailCubit extends Cubit<MediaDetailState> {
+  MediaDetailCubit(
+    this._getMediaDetailUseCase,
+  ) : super(const MediaDetailState());
 
-  final GetMovieDetailUseCase _getMovieDetailUseCase;
+  final GetMediaDetailUseCase _getMediaDetailUseCase;
 
   Future<void> fetchData(int movieId) async {
     try {
       emit(state.copyWith(status: AppStatus.inProgress));
 
-      final movieResponse =
-          await _getMovieDetailUseCase.run(GetMovieDetailInput(
+      final mediaResponse =
+          await _getMediaDetailUseCase.run(GetMediaDetailInput(
         movieId: movieId,
         movieKeys: [
           MovieKeys.credits,
@@ -32,7 +33,7 @@ class MovieDetailCubit extends Cubit<MovieDetailState> {
 
       emit(state.copyWith(
         status: AppStatus.success,
-        movie: movieResponse,
+        media: mediaResponse,
       ));
     } on Exception catch (error) {
       emit(state.copyWith(

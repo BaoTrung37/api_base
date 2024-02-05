@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'videos.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
 class Videos {
   Videos({
     required this.id,
@@ -18,7 +18,7 @@ class Videos {
   Map<String, dynamic> toJson() => _$VideosToJson(this);
 }
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake)
 class Result {
   Result({
     required this.iso6391,

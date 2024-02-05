@@ -1,14 +1,15 @@
+import 'package:api_base/presentation/pages/media_detail/cubit/media_detail_cubit.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MovieInformationOther extends StatelessWidget {
-  const MovieInformationOther({super.key});
+class MediaInformationOther extends StatelessWidget {
+  const MediaInformationOther({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MovieDetailCubit, MovieDetailState>(
+    return BlocBuilder<MediaDetailCubit, MediaDetailState>(
       builder: (context, state) {
         return SliverToBoxAdapter(
           child: Padding(
@@ -24,12 +25,12 @@ class MovieInformationOther extends StatelessWidget {
                 _buildInformationItem(
                   context,
                   title: 'Release',
-                  description: state.movie?.releaseDate,
+                  description: state.media?.releaseDate,
                 ),
                 _buildInformationItem(
                   context,
                   title: 'Language',
-                  descriptions: (state.movie?.spokenLanguages ?? [])
+                  descriptions: (state.media?.spokenLanguages ?? [])
                       .where((element) => element.englishName.isNotEmpty)
                       .map((e) => e.englishName)
                       .toList(),
@@ -37,12 +38,12 @@ class MovieInformationOther extends StatelessWidget {
                 _buildInformationItem(
                   context,
                   title: 'Revenue',
-                  description: '\$${state.movie?.revenue}',
+                  description: '\$${state.media?.revenue}',
                 ),
                 _buildInformationItem(
                   context,
                   title: 'Production Companies',
-                  descriptions: (state.movie?.productionCompanies ?? [])
+                  descriptions: (state.media?.productionCompanies ?? [])
                       .map((e) => e.name)
                       .toList(),
                 ),

@@ -1,5 +1,5 @@
 import 'package:api_base/presentation/navigation/app_router.dart';
-import 'package:api_base/presentation/pages/movie_detail/cubit/movie_detail_cubit.dart';
+import 'package:api_base/presentation/pages/media_detail/cubit/media_detail_cubit.dart';
 import 'package:api_base/presentation/pages/show_all/screen/show_all_screen.dart';
 import 'package:api_base/presentation/utilities/utilities.dart';
 import 'package:api_base/presentation/widgets/app_list_view/movie_horizontal_list_view.dart';
@@ -8,19 +8,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SimilarMovieView extends StatelessWidget {
-  const SimilarMovieView({
-    required this.movieDetailCubit,
+class MediaSimilarView extends StatelessWidget {
+  const MediaSimilarView({
+    required this.mediaDetailCubit,
     super.key,
   });
-  final MovieDetailCubit movieDetailCubit;
+  final MediaDetailCubit mediaDetailCubit;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MovieDetailCubit, MovieDetailState>(
-      bloc: movieDetailCubit,
+    return BlocBuilder<MediaDetailCubit, MediaDetailState>(
+      bloc: mediaDetailCubit,
       builder: (context, state) {
         final similarList =
-            state.movie?.similar?.results.take(20).toList() ?? [];
+            state.media?.similar?.results.take(20).toList() ?? [];
         if (similarList.isEmpty) {
           return const SizedBox.shrink();
         }
@@ -33,14 +33,14 @@ class SimilarMovieView extends StatelessWidget {
               ShowAllRoute(
                 argument: ShowAllArgument.movie(
                   title: 'Similar',
-                  movieId: state.movie?.id,
+                  movieId: state.media?.id,
                   apiMovieType: ApiMovieType.similar,
                 ),
               ),
             );
           },
           onMovieTap: (movieId) {
-            context.pushRoute(MovieDetailRoute(movieId: movieId));
+            context.pushRoute(MediaDetailRoute(mediaId: movieId));
           },
         );
       },

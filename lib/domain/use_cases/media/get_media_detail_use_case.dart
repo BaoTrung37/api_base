@@ -6,14 +6,14 @@ import 'package:api_base/presentation/utilities/enums/movie_keys.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class GetMovieDetailUseCase
-    extends FutureUseCase<GetMovieDetailInput, MediaResponse?> {
-  GetMovieDetailUseCase(this._movieRepositoryIml);
+class GetMediaDetailUseCase
+    extends FutureUseCase<GetMediaDetailInput, MediaResponse?> {
+  GetMediaDetailUseCase(this._movieRepositoryIml);
 
   final MovieRepositoryIml _movieRepositoryIml;
 
   @override
-  Future<MediaResponse?> run(GetMovieDetailInput input) {
+  Future<MediaResponse?> run(GetMediaDetailInput input) {
     return _movieRepositoryIml.getMovieDetail(
       movieId: input.movieId,
       appendToResponse: input.appendToResponse,
@@ -21,11 +21,11 @@ class GetMovieDetailUseCase
   }
 }
 
-class GetMovieDetailInput {
+class GetMediaDetailInput {
   final int movieId;
   final List<MovieKeys>? movieKeys;
 
-  const GetMovieDetailInput({
+  const GetMediaDetailInput({
     required this.movieId,
     this.movieKeys,
   });

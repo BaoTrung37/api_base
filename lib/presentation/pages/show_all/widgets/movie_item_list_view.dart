@@ -12,7 +12,7 @@ class MovieItemListView extends StatelessWidget {
     super.key,
   });
 
-  final MovieResponse movie;
+  final MediaResponse movie;
   final VoidCallback onMovieTap;
 
   @override
@@ -42,7 +42,7 @@ class MovieItemListView extends StatelessWidget {
                       color: context.colors.primaryMain,
                     ),
                     child: Text(
-                      movie.voteAverage.toStringAsFixed(1),
+                      movie.voteAverage!.toStringAsFixed(1),
                       style: AppTextStyles.labelXSmall,
                     ),
                   ),
@@ -59,7 +59,7 @@ class MovieItemListView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        movie.title,
+                        movie.title!,
                         style: AppTextStyles.textLargeBold,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -75,7 +75,7 @@ class MovieItemListView extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    movie.releaseDate,
+                    movie.releaseDate!,
                     style: AppTextStyles.labelSmallLight,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

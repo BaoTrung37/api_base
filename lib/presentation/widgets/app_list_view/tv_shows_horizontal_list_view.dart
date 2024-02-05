@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:api_base/data/models/tv_series/tv_series_response.dart';
+import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:api_base/presentation/utilities/extensions/string_extension.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -22,7 +22,7 @@ class TvSeriesHorizontalListView extends StatelessWidget {
   });
 
   final String headingTitle;
-  final List<TvSeriesResponse> tvSeriesList;
+  final List<MediaResponse> tvSeriesList;
 
   final double? height;
   final double? width;
@@ -93,7 +93,7 @@ class TvSeriesHorizontalListView extends StatelessWidget {
 
   Widget _buildTvSeriesItem(
     BuildContext context,
-    TvSeriesResponse tvSeries,
+    MediaResponse tvSeries,
     TvSeriesFunction onMovieTap,
   ) {
     return GestureDetector(
@@ -122,7 +122,7 @@ class TvSeriesHorizontalListView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    tvSeries.name,
+                    tvSeries.name!,
                     style: AppTextStyles.labelMedium,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,

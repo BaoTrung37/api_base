@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:api_base/data/models/movie/movie_response.dart';
+import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/data/services/network_services/client/rest_client.dart';
 import 'package:api_base/domain/repositories/movie/movie_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -12,7 +12,7 @@ class MovieRepositoryIml extends MovieRepository {
   });
 
   @override
-  Future<MovieResponse> getMovieDetail({
+  Future<MediaResponse> getMovieDetail({
     required int movieId,
     String? appendToResponse,
   }) async {
@@ -25,7 +25,7 @@ class MovieRepositoryIml extends MovieRepository {
   }
 
   @override
-  Future<List<MovieResponse>> getSimilarMovieList({
+  Future<List<MediaResponse>> getSimilarMovieList({
     required int movieId,
     required int page,
   }) async {
@@ -37,7 +37,7 @@ class MovieRepositoryIml extends MovieRepository {
   }
 
   @override
-  Future<List<MovieResponse>> getPopularMovieList({
+  Future<List<MediaResponse>> getPopularMovieList({
     String language = 'en-US',
     int page = 1,
     String? region,
@@ -50,7 +50,7 @@ class MovieRepositoryIml extends MovieRepository {
   }
 
   @override
-  Future<List<MovieResponse>> getNowPlayingMovieList({
+  Future<List<MediaResponse>> getNowPlayingMovieList({
     int page = 1,
     String? region,
   }) async {
@@ -62,7 +62,7 @@ class MovieRepositoryIml extends MovieRepository {
   }
 
   @override
-  Future<List<MovieResponse>> getUpcomingMovieList({
+  Future<List<MediaResponse>> getUpcomingMovieList({
     int page = 1,
     String? region,
   }) async {
