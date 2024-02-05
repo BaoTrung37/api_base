@@ -3,7 +3,7 @@ import 'package:api_base/presentation/pages/media_detail/cubit/media_detail_cubi
 import 'package:api_base/presentation/pages/media_detail/screen/media_detail_screen.dart';
 import 'package:api_base/presentation/pages/show_all/screen/show_all_screen.dart';
 import 'package:api_base/presentation/utilities/utilities.dart';
-import 'package:api_base/presentation/widgets/app_list_view/movie_horizontal_list_view.dart';
+import 'package:api_base/presentation/widgets/app_list_view/media_horizontal_list_view.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,10 +25,10 @@ class MediaSimilarView extends StatelessWidget {
         if (similarList.isEmpty) {
           return const SizedBox.shrink();
         }
-        return MovieHorizontalListView(
+        return MediaHorizontalListView(
           padding: EdgeInsets.symmetric(horizontal: 8.w),
           headingTitle: 'Similar',
-          movies: similarList,
+          medias: similarList,
           showAllTap: () {
             context.pushRoute(
               ShowAllRoute(
@@ -40,7 +40,7 @@ class MediaSimilarView extends StatelessWidget {
               ),
             );
           },
-          onMovieTap: (movieId) {
+          onMediaTap: (movieId) {
             context.pushRoute(MediaDetailRoute(
                 argument: MediaDetailArgument(
               movieId: movieId,

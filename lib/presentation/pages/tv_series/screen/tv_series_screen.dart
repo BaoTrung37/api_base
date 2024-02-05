@@ -33,10 +33,10 @@ class TvSeriesScreen extends StatelessWidget {
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  return TvSeriesHorizontalListView(
+                  return MediaHorizontalListView(
                     headingTitle: 'Airing Today',
-                    tvSeriesList: state.airingTodayList,
-                    onTvSeriesTap: (seriesId) {
+                    medias: state.airingTodayList,
+                    onMediaTap: (seriesId) {
                       context.pushRoute(
                         MediaDetailRoute(
                           argument: MediaDetailArgument(
@@ -63,10 +63,10 @@ class TvSeriesScreen extends StatelessWidget {
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  return TvSeriesHorizontalListView(
+                  return MediaHorizontalListView(
                     headingTitle: 'On The Air',
-                    tvSeriesList: state.onTheAirList,
-                    onTvSeriesTap: (seriesId) {
+                    medias: state.onTheAirList,
+                    onMediaTap: (seriesId) {
                       context.pushRoute(
                         MediaDetailRoute(
                           argument: MediaDetailArgument(
@@ -93,10 +93,10 @@ class TvSeriesScreen extends StatelessWidget {
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  return TvSeriesHorizontalListView(
+                  return MediaHorizontalListView(
                     headingTitle: 'Popular',
-                    tvSeriesList: state.popularList,
-                    onTvSeriesTap: (seriesId) {
+                    medias: state.popularList,
+                    onMediaTap: (seriesId) {
                       context.pushRoute(
                         MediaDetailRoute(
                           argument: MediaDetailArgument(
@@ -123,10 +123,10 @@ class TvSeriesScreen extends StatelessWidget {
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  return TvSeriesHorizontalListView(
+                  return MediaHorizontalListView(
                     headingTitle: 'Top Rated',
-                    tvSeriesList: state.topRatedList,
-                    onTvSeriesTap: (seriesId) {
+                    medias: state.topRatedList,
+                    onMediaTap: (seriesId) {
                       context.pushRoute(
                         MediaDetailRoute(
                           argument: MediaDetailArgument(

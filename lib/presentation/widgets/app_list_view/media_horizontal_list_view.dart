@@ -1,18 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:api_base/data/models/media/media_response.dart';
+import 'package:api_base/data/models/models.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:api_base/presentation/utilities/extensions/string_extension.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-typedef TvSeriesFunction = Function(int seriesId);
+typedef MediaFunction = Function(int mediaId);
 
-class TvSeriesHorizontalListView extends StatelessWidget {
-  const TvSeriesHorizontalListView({
+class MediaHorizontalListView extends StatelessWidget {
+  const MediaHorizontalListView({
     required this.headingTitle,
-    required this.tvSeriesList,
-    required this.onTvSeriesTap,
+    required this.medias,
+    required this.onMediaTap,
     super.key,
     this.height,
     this.width,
@@ -22,7 +22,7 @@ class TvSeriesHorizontalListView extends StatelessWidget {
   });
 
   final String headingTitle;
-  final List<MediaResponse> tvSeriesList;
+  final List<MediaResponse> medias;
 
   final double? height;
   final double? width;
@@ -30,7 +30,7 @@ class TvSeriesHorizontalListView extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
 
   final VoidCallback? showAllTap;
-  final TvSeriesFunction onTvSeriesTap;
+  final MediaFunction onMediaTap;
   final bool isPoster;
 
   double _getWidthItem(BuildContext context) {
@@ -54,7 +54,7 @@ class TvSeriesHorizontalListView extends StatelessWidget {
           children: [
             _buildHeadingTitle(),
             16.verticalSpace,
-            if (tvSeriesList.isNotEmpty)
+            if (medias.isNotEmpty)
               _buildMovieListView()
             else
               LoadingListView(
@@ -83,22 +83,22 @@ class TvSeriesHorizontalListView extends StatelessWidget {
           // autoPlayCurve: Curves.fastOutSlowIn,
         ),
         itemBuilder: (context, index, pageViewIndex) {
-          final tvSeries = tvSeriesList[index];
-          return _buildTvSeriesItem(context, tvSeries, onTvSeriesTap);
+          final media = medias[index];
+          return _buildMediaItem(context, media, onMediaTap);
         },
-        itemCount: tvSeriesList.length,
+        itemCount: medias.length,
       ),
     );
   }
 
-  Widget _buildTvSeriesItem(
+  Widget _buildMediaItem(
     BuildContext context,
-    MediaResponse tvSeries,
-    TvSeriesFunction onMovieTap,
+    MediaResponse media,
+    MediaFunction onMediaTap,
   ) {
     return GestureDetector(
       onTap: () {
-        onMovieTap.call(tvSeries.id);
+        onMediaTap.call(media.id);
       },
       child: SizedBox(
         height: height ?? _getHeightItem(),
@@ -111,8 +111,8 @@ class TvSeriesHorizontalListView extends StatelessWidget {
               child: CustomCachedNetworkImage(
                 imageType: ImageType.movie,
                 imageUrl: isPoster
-                    ? tvSeries.backdropPath.tmdbW500Path
-                    : tvSeries.backdropPath.tmdbW500Path,
+                    ? media.posterPath?.tmdbW500Path
+                    : media.backdropPath?.tmdbW500Path,
               ),
             ),
             8.verticalSpace,
@@ -122,14 +122,14 @@ class TvSeriesHorizontalListView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    tvSeries.name!,
+                    media.title ?? media.name ?? '',
                     style: AppTextStyles.labelMedium,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                   4.verticalSpace,
                   Text(
-                    tvSeries.genresName,
+                    media.genresName,
                     style: AppTextStyles.labelSmallLight,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
