@@ -1,5 +1,4 @@
 import 'package:api_base/data/models/models.dart';
-import 'package:api_base/data/models/tv_series/tv_series_response.dart';
 import 'package:api_base/data/services/network_services/commons/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -31,19 +30,19 @@ abstract class RestClient {
 
   // Start Movie Lists
   @GET('/movie/popular')
-  Future<ApiCollectionResponse<MovieResponse>> getPopularMovies(
+  Future<ApiCollectionResponse<MediaResponse>> getPopularMovies(
     @Query('page') int? page,
     @Query('region') String? region,
   );
 
   @GET('/movie/now_playing')
-  Future<ApiCollectionResponse<MovieResponse>> getNowPlayingMovies(
+  Future<ApiCollectionResponse<MediaResponse>> getNowPlayingMovies(
     @Query('page') int? page,
     @Query('region') String? region,
   );
 
   @GET('/movie/upcoming')
-  Future<ApiCollectionResponse<MovieResponse>> getUpcomingMovies(
+  Future<ApiCollectionResponse<MediaResponse>> getUpcomingMovies(
     @Query('page') int? page,
     @Query('region') String? region,
   );
@@ -52,13 +51,13 @@ abstract class RestClient {
   // Start movie
 
   @GET('/movie/{movie_id}')
-  Future<MovieResponse> getMovieDetail(
+  Future<MediaResponse> getMovieDetail(
     @Path('movie_id') int movieId,
     @Query('append_to_response') String? appendToResponse,
   );
 
   @GET('/movie/{movie_id}/similar')
-  Future<ApiCollectionResponse<MovieResponse>> getSimilarMovies(
+  Future<ApiCollectionResponse<MediaResponse>> getSimilarMovies(
     @Path('movie_id') int movieId,
     @Query('page') int page,
   );
@@ -77,13 +76,13 @@ abstract class RestClient {
   /// Start Trending
 
   @GET('/trending/all/{time_window}')
-  Future<ApiCollectionResponse<MovieResponse>> getTrendingAll(
+  Future<ApiCollectionResponse<MediaResponse>> getTrendingAll(
     @Path('time_window') String timeWindow,
     @Query('page') int page,
   );
 
   @GET('/trending/movie/{time_window}')
-  Future<ApiCollectionResponse<MovieResponse>> getTrendingMovies(
+  Future<ApiCollectionResponse<MediaResponse>> getTrendingMovies(
     @Path('time_window') String timeWindow,
     @Query('page') int page,
   );
@@ -93,24 +92,24 @@ abstract class RestClient {
   /// Start Tv Series
 
   @GET('/tv/airing_today')
-  Future<ApiCollectionResponse<TvSeriesResponse>> getAiringTodayTvSeries(
+  Future<ApiCollectionResponse<MediaResponse>> getAiringTodayTvSeries(
     @Query('page') int page,
     @Query('timezone') String? timezone,
   );
 
   @GET('/tv/on_the_air')
-  Future<ApiCollectionResponse<TvSeriesResponse>> getOnTheAirTvSeries(
+  Future<ApiCollectionResponse<MediaResponse>> getOnTheAirTvSeries(
     @Query('page') int page,
     @Query('timezone') String? timezone,
   );
 
   @GET('/tv/popular')
-  Future<ApiCollectionResponse<TvSeriesResponse>> getPopularTvSeries(
+  Future<ApiCollectionResponse<MediaResponse>> getPopularTvSeries(
     @Query('page') int page,
   );
 
   @GET('/tv/top_rated')
-  Future<ApiCollectionResponse<TvSeriesResponse>> getTopRatedTvSeries(
+  Future<ApiCollectionResponse<MediaResponse>> getTopRatedTvSeries(
     @Query('page') int page,
   );
 

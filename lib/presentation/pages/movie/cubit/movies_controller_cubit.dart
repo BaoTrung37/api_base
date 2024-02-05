@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 
-import 'package:api_base/data/models/movie/movie_response.dart';
+import 'package:api_base/data/models/models.dart';
 import 'package:api_base/domain/use_cases/input/movie_use_case_input.dart';
 import 'package:api_base/domain/use_cases/movie/movie.dart';
 import 'package:api_base/presentation/presentation.dart';
@@ -57,25 +57,25 @@ class MoviesControllerCubit extends Cubit<MoviesControllerState> {
     }
   }
 
-  Future<List<MovieResponse>> fetchNowPlayMovies({required int page}) async {
+  Future<List<MediaResponse>> fetchNowPlayMovies({required int page}) async {
     return _getNowPlayingMovieListUseCase.run(
       MovieUseCaseInput(page: page),
     );
   }
 
-  Future<List<MovieResponse>> fetchPopularMovies({required int page}) async {
+  Future<List<MediaResponse>> fetchPopularMovies({required int page}) async {
     return _getPopularMovieListUseCase.run(
       MovieUseCaseInput(page: page),
     );
   }
 
-  Future<List<MovieResponse>> fetchTrendingMovies({required int page}) async {
+  Future<List<MediaResponse>> fetchTrendingMovies({required int page}) async {
     return _getTrendingMovieListUseCase.run(
       MovieUseCaseInput(page: page),
     );
   }
 
-  Future<List<MovieResponse>> fetchUpcomingMovies({required int page}) async {
+  Future<List<MediaResponse>> fetchUpcomingMovies({required int page}) async {
     return _getUpcomingMovieListUseCase.run(
       MovieUseCaseInput(page: page),
     );

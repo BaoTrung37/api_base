@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:api_base/data/models/tv_series/tv_series_response.dart';
+import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
@@ -54,28 +54,28 @@ class TvSeriesControllerCubit extends Cubit<TvSeriesControllerState> {
     }
   }
 
-  Future<List<TvSeriesResponse>> fetchAiringTodayTvSeriesList(
+  Future<List<MediaResponse>> fetchAiringTodayTvSeriesList(
       {required int page}) async {
     return _getAiringTodayTvSeriesListUseCase.run(
       TvSeriesUseCaseInput(page: page),
     );
   }
 
-  Future<List<TvSeriesResponse>> fetchOnTheAirTvSeriesList(
+  Future<List<MediaResponse>> fetchOnTheAirTvSeriesList(
       {required int page}) async {
     return _getOnTheAirTvSeriesListUseCase.run(
       TvSeriesUseCaseInput(page: page),
     );
   }
 
-  Future<List<TvSeriesResponse>> fetchPopularTvSeriesList(
+  Future<List<MediaResponse>> fetchPopularTvSeriesList(
       {required int page}) async {
     return _getPopularTvSeriesListUseCase.run(
       TvSeriesUseCaseInput(page: page),
     );
   }
 
-  Future<List<TvSeriesResponse>> fetchTopRatedTvSeriesList(
+  Future<List<MediaResponse>> fetchTopRatedTvSeriesList(
       {required int page}) async {
     return _getTopRatedTvSeriesListUseCase.run(
       TvSeriesUseCaseInput(page: page),

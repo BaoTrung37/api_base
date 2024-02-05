@@ -1,31 +1,31 @@
-import 'package:api_base/data/models/tv_series/tv_series_response.dart';
+import 'package:api_base/data/models/media/media_response.dart';
 
 abstract class TvSeriesRepository {
-  Future<TvSeriesResponse> getTvSeriesDetail({
+  Future<MediaResponse> getTvSeriesDetail({
     required int seriesId,
     String? appendToResponse,
   });
 
-  Future<List<TvSeriesResponse>> getSimilarList({
+  Future<List<MediaResponse>> getSimilarList({
     required int seriesId,
     required int page,
   });
 
-  Future<List<TvSeriesResponse>> getAiringTodayList({
+  Future<List<MediaResponse>> getAiringTodayList({
     required int page,
     String? timezone,
   });
 
-  Future<List<TvSeriesResponse>> getOnTheAirList({
+  Future<List<MediaResponse>> getOnTheAirList({
     required int page,
     String? timezone,
   });
 
-  Future<List<TvSeriesResponse>> getPopularList({
+  Future<List<MediaResponse>> getPopularList({
     required int page,
   });
 
-  Future<List<TvSeriesResponse>> getTopRatedList({
+  Future<List<MediaResponse>> getTopRatedList({
     required int page,
   });
 }
