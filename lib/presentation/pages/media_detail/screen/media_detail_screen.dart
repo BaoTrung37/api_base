@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/gen/assets.gen.dart';
 import 'package:api_base/injection/di.dart';
+import 'package:api_base/presentation/pages/movie_detail/widgets/widgets.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:api_base/presentation/widgets/app_indicator/app_indicator.dart';
 import 'package:auto_route/auto_route.dart';
@@ -9,24 +10,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
-class MovieDetailScreen extends StatefulWidget {
-  const MovieDetailScreen({
-    required this.movieId,
+class MediaDetailScreen extends StatefulWidget {
+  const MediaDetailScreen({
+    required this.mediaId,
     super.key,
   });
 
-  final int movieId;
+  final int mediaId;
 
   @override
-  State<MovieDetailScreen> createState() => _MovieDetailScreenState();
+  State<MediaDetailScreen> createState() => _MediaDetailScreenState();
 }
 
-class _MovieDetailScreenState extends State<MovieDetailScreen> {
+class _MediaDetailScreenState extends State<MediaDetailScreen> {
   final MovieDetailCubit movieDetailCubit = getIt<MovieDetailCubit>();
   @override
   void initState() {
     super.initState();
-    movieDetailCubit.fetchData(widget.movieId);
+    movieDetailCubit.fetchData(widget.mediaId);
   }
 
   @override

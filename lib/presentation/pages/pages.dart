@@ -1,6 +1,7 @@
 export 'favorite/favorite.dart';
 export 'let_in_you/let_in_you.dart';
 export 'main_app/main_app.dart';
+export 'media_detail/media_detail.dart';
 export 'movie/movie.dart';
 export 'movie_detail/movie_detail.dart';
 export 'profile/profile.dart';
