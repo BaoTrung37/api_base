@@ -5,12 +5,12 @@ import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:api_base/presentation/utilities/enums/time_type.dart';
 
 class GetTrendingMovieListUseCase
-    implements FutureUseCase<GetTrendingMovieListInput, List<MovieResponse>> {
+    implements FutureUseCase<GetTrendingMovieListInput, List<MediaResponse>> {
   GetTrendingMovieListUseCase({required this.trendingRepositoryIml});
 
   final TrendingRepositoryIml trendingRepositoryIml;
   @override
-  Future<List<MovieResponse>> run(GetTrendingMovieListInput input) {
+  Future<List<MediaResponse>> run(GetTrendingMovieListInput input) {
     return trendingRepositoryIml.getTrendingMovieList(
       page: input.page,
       timeWindow: input.timeWindow,

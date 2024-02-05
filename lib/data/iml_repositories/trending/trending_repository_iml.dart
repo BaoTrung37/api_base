@@ -1,4 +1,4 @@
-import 'package:api_base/data/models/movie/movie_response.dart';
+import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/data/services/network_services/client/rest_client.dart';
 import 'package:api_base/domain/repositories/trending/trending_repository.dart';
 import 'package:api_base/presentation/utilities/enums/time_type.dart';
@@ -12,7 +12,7 @@ class TrendingRepositoryIml extends TrendingRepository {
   final RestClient restClient;
 
   @override
-  Future<List<MovieResponse>> getTrendingAllList({
+  Future<List<MediaResponse>> getTrendingAllList({
     required int page,
     TimeType timeWindow = TimeType.day,
   }) async {
@@ -21,7 +21,7 @@ class TrendingRepositoryIml extends TrendingRepository {
   }
 
   @override
-  Future<List<MovieResponse>> getTrendingMovieList({
+  Future<List<MediaResponse>> getTrendingMovieList({
     required int page,
     TimeType timeWindow = TimeType.day,
   }) async {

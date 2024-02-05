@@ -1,6 +1,5 @@
 import 'package:api_base/data/data.dart';
 import 'package:api_base/data/models/genres/genres_response.dart';
-import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:injectable/injectable.dart';
 

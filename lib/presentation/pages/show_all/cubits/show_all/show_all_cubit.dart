@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:api_base/data/models/movie/movie_response.dart';
+import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/domain/use_cases/input/movie_use_case_input.dart';
 import 'package:api_base/domain/use_cases/movie/movie.dart';
 import 'package:api_base/presentation/presentation.dart';
@@ -167,7 +167,7 @@ class ShowAllCubit extends Cubit<ShowAllState> {
   }
 
   Future<List<DataSource>> getMovieDataSources(
-    List<MovieResponse> dataList,
+    List<MediaResponse> dataList,
   ) async {
     final dataSource = dataList.map((e) => MovieCell(movie: e)).toList();
 
