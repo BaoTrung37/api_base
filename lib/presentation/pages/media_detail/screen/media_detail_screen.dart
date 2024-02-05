@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/gen/assets.gen.dart';
 import 'package:api_base/injection/di.dart';
-import 'package:api_base/presentation/pages/movie_detail/widgets/widgets.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:api_base/presentation/widgets/app_indicator/app_indicator.dart';
 import 'package:auto_route/auto_route.dart';
@@ -77,23 +76,23 @@ class _MainContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        MovieInformationView(movieDetailCubit: movieDetailCubit),
+        MediaInformationView(movieDetailCubit: movieDetailCubit),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
-        FilmCastCrewView(movieDetailCubit: movieDetailCubit),
+        MediaCastCrewView(movieDetailCubit: movieDetailCubit),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
-        VideoTrailerView(movieDetailCubit: movieDetailCubit),
+        MediaTrailerVideoView(movieDetailCubit: movieDetailCubit),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
-        const MovieInformationOther(),
+        const MediaInformationOther(),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
-        SimilarMovieView(movieDetailCubit: movieDetailCubit),
+        MediaSimilarView(movieDetailCubit: movieDetailCubit),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),

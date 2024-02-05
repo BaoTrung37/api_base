@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FilmCastCrewView extends StatelessWidget {
-  const FilmCastCrewView({
+class MediaCastCrewView extends StatelessWidget {
+  const MediaCastCrewView({
     required this.movieDetailCubit,
     super.key,
   });

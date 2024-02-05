@@ -76,23 +76,23 @@ class _MainContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        MovieInformationView(movieDetailCubit: movieDetailCubit),
+        MediaInformationView(movieDetailCubit: movieDetailCubit),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
-        FilmCastCrewView(movieDetailCubit: movieDetailCubit),
+        MediaCastCrewView(movieDetailCubit: movieDetailCubit),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
-        VideoTrailerView(movieDetailCubit: movieDetailCubit),
+        MediaTrailerVideoView(movieDetailCubit: movieDetailCubit),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
-        const MovieInformationOther(),
+        const MediaInformationOther(),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),
-        SimilarMovieView(movieDetailCubit: movieDetailCubit),
+        MediaSimilarView(movieDetailCubit: movieDetailCubit),
         SliverToBoxAdapter(
           child: 24.verticalSpace,
         ),

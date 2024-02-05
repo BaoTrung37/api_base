@@ -2,8 +2,8 @@ import 'package:api_base/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MediaVideoTrailerView extends StatelessWidget {
-  const MediaVideoTrailerView({
+class MovieVideoTrailerView extends StatelessWidget {
+  const MovieVideoTrailerView({
     super.key,
   });
 

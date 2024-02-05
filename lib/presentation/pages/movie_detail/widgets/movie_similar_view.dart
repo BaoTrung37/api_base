@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SimilarMovieView extends StatelessWidget {
-  const SimilarMovieView({
+class MovieSimilarView extends StatelessWidget {
+  const MovieSimilarView({
     required this.movieDetailCubit,
     super.key,
   });
