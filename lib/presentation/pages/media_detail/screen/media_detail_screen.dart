@@ -9,15 +9,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+class MediaDetailArgument {
+  final int? movieId;
+  final int? seriesId;
+
+  MediaDetailArgument({
+    this.seriesId,
+    this.movieId,
+  });
+}
+
 @RoutePage()
 class MediaDetailScreen extends StatefulWidget {
   const MediaDetailScreen({
-    required this.mediaId,
+    required this.argument,
     super.key,
   });
 
-  final int mediaId;
-
+  final MediaDetailArgument argument;
   @override
   State<MediaDetailScreen> createState() => _MediaDetailScreenState();
 }
@@ -27,7 +36,7 @@ class _MediaDetailScreenState extends State<MediaDetailScreen> {
   @override
   void initState() {
     super.initState();
-    mediaDetailCubit.fetchData(widget.mediaId);
+    mediaDetailCubit.fetchData(widget.argument);
   }
 
   @override

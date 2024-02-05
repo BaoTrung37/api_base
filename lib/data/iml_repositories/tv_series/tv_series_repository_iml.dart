@@ -15,8 +15,12 @@ class TvSeriesRepositoryIml extends TvSeriesRepository {
   Future<MediaResponse> getTvSeriesDetail({
     required int seriesId,
     String? appendToResponse,
-  }) {
-    throw UnimplementedError();
+  }) async {
+    final response = await restClient.getTvSeriesDetail(
+      seriesId,
+      appendToResponse,
+    );
+    return response;
   }
 
   @override

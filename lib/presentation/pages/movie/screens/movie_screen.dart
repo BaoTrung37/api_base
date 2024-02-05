@@ -47,7 +47,13 @@ class _MovieScreenState extends State<MovieScreen> {
                     headingTitle: 'Popular',
                     movies: state.popularMovies,
                     onMovieTap: (movieId) {
-                      context.pushRoute(MediaDetailRoute(mediaId: movieId));
+                      context.pushRoute(
+                        MediaDetailRoute(
+                          argument: MediaDetailArgument(
+                            movieId: movieId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       context.pushRoute(
@@ -73,7 +79,13 @@ class _MovieScreenState extends State<MovieScreen> {
                     movies: movies,
                     isPoster: false,
                     onMovieTap: (movieId) {
-                      context.pushRoute(MediaDetailRoute(mediaId: movieId));
+                      context.pushRoute(
+                        MediaDetailRoute(
+                          argument: MediaDetailArgument(
+                            movieId: movieId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       context.pushRoute(
@@ -98,7 +110,13 @@ class _MovieScreenState extends State<MovieScreen> {
                     headingTitle: 'Trending',
                     movies: movies,
                     onMovieTap: (movieId) {
-                      context.pushRoute(MediaDetailRoute(mediaId: movieId));
+                      context.pushRoute(
+                        MediaDetailRoute(
+                          argument: MediaDetailArgument(
+                            movieId: movieId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       context.pushRoute(
@@ -123,7 +141,13 @@ class _MovieScreenState extends State<MovieScreen> {
                     headingTitle: 'Upcoming',
                     movies: movies,
                     onMovieTap: (movieId) {
-                      context.pushRoute(MediaDetailRoute(mediaId: movieId));
+                      context.pushRoute(
+                        MediaDetailRoute(
+                          argument: MediaDetailArgument(
+                            movieId: movieId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       context.pushRoute(

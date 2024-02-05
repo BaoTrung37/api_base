@@ -1,5 +1,6 @@
 import 'package:api_base/presentation/navigation/app_router.dart';
 import 'package:api_base/presentation/pages/media_detail/cubit/media_detail_cubit.dart';
+import 'package:api_base/presentation/pages/media_detail/screen/media_detail_screen.dart';
 import 'package:api_base/presentation/pages/show_all/screen/show_all_screen.dart';
 import 'package:api_base/presentation/utilities/utilities.dart';
 import 'package:api_base/presentation/widgets/app_list_view/movie_horizontal_list_view.dart';
@@ -40,7 +41,10 @@ class MediaSimilarView extends StatelessWidget {
             );
           },
           onMovieTap: (movieId) {
-            context.pushRoute(MediaDetailRoute(mediaId: movieId));
+            context.pushRoute(MediaDetailRoute(
+                argument: MediaDetailArgument(
+              movieId: movieId,
+            )));
           },
         );
       },

@@ -91,6 +91,12 @@ abstract class RestClient {
 
   /// Start Tv Series
 
+  @GET('/tv/{series_id}')
+  Future<MediaResponse> getTvSeriesDetail(
+    @Path('series_id') int seriesId,
+    @Query('append_to_response') String? appendToResponse,
+  );
+
   @GET('/tv/airing_today')
   Future<ApiCollectionResponse<MediaResponse>> getAiringTodayTvSeries(
     @Query('page') int page,
