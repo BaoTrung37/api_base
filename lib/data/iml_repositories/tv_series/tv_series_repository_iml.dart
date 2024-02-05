@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:api_base/data/models/tv_series/tv_series_response.dart';
+import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/data/services/network_services/client/rest_client.dart';
 import 'package:api_base/domain/repositories/tv_series/tv_series_repository.dart';
 import 'package:injectable/injectable.dart';
@@ -12,7 +12,7 @@ class TvSeriesRepositoryIml extends TvSeriesRepository {
   });
 
   @override
-  Future<TvSeriesResponse> getTvSeriesDetail({
+  Future<MediaResponse> getTvSeriesDetail({
     required int seriesId,
     String? appendToResponse,
   }) {
@@ -20,7 +20,7 @@ class TvSeriesRepositoryIml extends TvSeriesRepository {
   }
 
   @override
-  Future<List<TvSeriesResponse>> getAiringTodayList({
+  Future<List<MediaResponse>> getAiringTodayList({
     required int page,
     String? timezone,
   }) async {
@@ -32,7 +32,7 @@ class TvSeriesRepositoryIml extends TvSeriesRepository {
   }
 
   @override
-  Future<List<TvSeriesResponse>> getOnTheAirList({
+  Future<List<MediaResponse>> getOnTheAirList({
     required int page,
     String? timezone,
   }) async {
@@ -44,7 +44,7 @@ class TvSeriesRepositoryIml extends TvSeriesRepository {
   }
 
   @override
-  Future<List<TvSeriesResponse>> getPopularList({
+  Future<List<MediaResponse>> getPopularList({
     required int page,
   }) async {
     final response = await restClient.getPopularTvSeries(
@@ -54,7 +54,7 @@ class TvSeriesRepositoryIml extends TvSeriesRepository {
   }
 
   @override
-  Future<List<TvSeriesResponse>> getTopRatedList({
+  Future<List<MediaResponse>> getTopRatedList({
     required int page,
   }) async {
     final response = await restClient.getTopRatedTvSeries(
@@ -64,7 +64,7 @@ class TvSeriesRepositoryIml extends TvSeriesRepository {
   }
 
   @override
-  Future<List<TvSeriesResponse>> getSimilarList({
+  Future<List<MediaResponse>> getSimilarList({
     required int seriesId,
     required int page,
   }) {

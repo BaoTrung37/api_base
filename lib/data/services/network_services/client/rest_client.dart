@@ -1,5 +1,5 @@
+import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/data/models/models.dart';
-import 'package:api_base/data/models/tv_series/tv_series_response.dart';
 import 'package:api_base/data/services/network_services/commons/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
@@ -93,24 +93,24 @@ abstract class RestClient {
   /// Start Tv Series
 
   @GET('/tv/airing_today')
-  Future<ApiCollectionResponse<TvSeriesResponse>> getAiringTodayTvSeries(
+  Future<ApiCollectionResponse<MediaResponse>> getAiringTodayTvSeries(
     @Query('page') int page,
     @Query('timezone') String? timezone,
   );
 
   @GET('/tv/on_the_air')
-  Future<ApiCollectionResponse<TvSeriesResponse>> getOnTheAirTvSeries(
+  Future<ApiCollectionResponse<MediaResponse>> getOnTheAirTvSeries(
     @Query('page') int page,
     @Query('timezone') String? timezone,
   );
 
   @GET('/tv/popular')
-  Future<ApiCollectionResponse<TvSeriesResponse>> getPopularTvSeries(
+  Future<ApiCollectionResponse<MediaResponse>> getPopularTvSeries(
     @Query('page') int page,
   );
 
   @GET('/tv/top_rated')
-  Future<ApiCollectionResponse<TvSeriesResponse>> getTopRatedTvSeries(
+  Future<ApiCollectionResponse<MediaResponse>> getTopRatedTvSeries(
     @Query('page') int page,
   );
 

@@ -1,12 +1,12 @@
 import 'package:api_base/data/data.dart';
 import 'package:api_base/data/models/genres/genres_response.dart';
-import 'package:api_base/data/models/tv_series/tv_series_response.dart';
+import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/domain/use_cases/use_cases.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
 class GetPopularTvSeriesListUseCase
-    extends FutureUseCase<TvSeriesUseCaseInput, List<TvSeriesResponse>> {
+    extends FutureUseCase<TvSeriesUseCaseInput, List<MediaResponse>> {
   GetPopularTvSeriesListUseCase(
     this._tvSeriesRepositoryIml,
     this._genresRepositoryImp,
@@ -16,12 +16,12 @@ class GetPopularTvSeriesListUseCase
   final GenresRepositoryImp _genresRepositoryImp;
 
   @override
-  Future<List<TvSeriesResponse>> run(TvSeriesUseCaseInput input) async {
+  Future<List<MediaResponse>> run(TvSeriesUseCaseInput input) async {
     await _genresRepositoryImp.getTvSeriesGenresList();
     final responseList = await _tvSeriesRepositoryIml.getPopularList(
       page: input.page,
     );
-    final tvSeriesList = <TvSeriesResponse>[];
+    final tvSeriesList = <MediaResponse>[];
     for (final tvSeries in responseList) {
       final genres = <Genre>[];
       for (final element in tvSeries.genreIds) {

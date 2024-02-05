@@ -4,10 +4,10 @@ part of 'tv_series_controller_cubit.dart';
 class TvSeriesControllerState with _$TvSeriesControllerState {
   const factory TvSeriesControllerState({
     @Default(AppStatus.initial) AppStatus status,
-    @Default([]) List<TvSeriesResponse> airingTodayList,
-    @Default([]) List<TvSeriesResponse> onTheAirList,
-    @Default([]) List<TvSeriesResponse> popularList,
-    @Default([]) List<TvSeriesResponse> topRatedList,
+    @Default([]) List<MediaResponse> airingTodayList,
+    @Default([]) List<MediaResponse> onTheAirList,
+    @Default([]) List<MediaResponse> popularList,
+    @Default([]) List<MediaResponse> topRatedList,
     AppError? appError,
   }) = _TvSeriesControllerState;
 }
