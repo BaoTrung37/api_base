@@ -17,7 +17,12 @@ class MediaCastCrewView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final casts = media?.credits?.cast.take(15).toList() ?? [];
+    final casts = media?.credits?.cast.take(15).toList();
+    if (casts == null) {
+      return const SliverToBoxAdapter(
+        child: SizedBox.shrink(),
+      );
+    }
     return SliverToBoxAdapter(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 8.w),

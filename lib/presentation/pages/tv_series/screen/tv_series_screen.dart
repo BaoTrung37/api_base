@@ -39,7 +39,7 @@ class TvSeriesScreen extends StatelessWidget {
                     onMediaTap: (seriesId) {
                       context.pushRoute(
                         MediaDetailRoute(
-                          argument: MediaDetailArgument(
+                          argument: MediaDetailArgument.tvSeries(
                             mediaId: seriesId,
                           ),
                         ),
@@ -69,7 +69,7 @@ class TvSeriesScreen extends StatelessWidget {
                     onMediaTap: (seriesId) {
                       context.pushRoute(
                         MediaDetailRoute(
-                          argument: MediaDetailArgument(
+                          argument: MediaDetailArgument.tvSeries(
                             mediaId: seriesId,
                           ),
                         ),
@@ -99,7 +99,7 @@ class TvSeriesScreen extends StatelessWidget {
                     onMediaTap: (seriesId) {
                       context.pushRoute(
                         MediaDetailRoute(
-                          argument: MediaDetailArgument(
+                          argument: MediaDetailArgument.tvSeries(
                             mediaId: seriesId,
                           ),
                         ),
@@ -129,7 +129,7 @@ class TvSeriesScreen extends StatelessWidget {
                     onMediaTap: (seriesId) {
                       context.pushRoute(
                         MediaDetailRoute(
-                          argument: MediaDetailArgument(
+                          argument: MediaDetailArgument.tvSeries(
                             mediaId: seriesId,
                           ),
                         ),

@@ -56,7 +56,7 @@ class _ShowAllScreenState extends State<ShowAllScreen>
   void moveToMovieDetailView(int movieId) {
     context.pushRoute(
       MediaDetailRoute(
-        argument: MediaDetailArgument(
+        argument: MediaDetailArgument.movie(
           mediaId: movieId,
         ),
       ),

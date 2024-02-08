@@ -12,10 +12,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class MediaDetailArgument {
   final int mediaId;
   final bool isMovie;
-  MediaDetailArgument({
+  MediaDetailArgument.movie({
     required this.mediaId,
-    this.isMovie = true,
-  });
+  }) : isMovie = true;
+  MediaDetailArgument.tvSeries({
+    required this.mediaId,
+  }) : isMovie = false;
 }
 
 @RoutePage()
@@ -96,7 +98,7 @@ class _MainContent extends StatelessWidget {
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            MediaTrailerVideoView(mediaDetailCubit: mediaDetailCubit),
+            const MediaTrailerVideoView(),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
@@ -104,7 +106,7 @@ class _MainContent extends StatelessWidget {
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            MediaSimilarView(mediaDetailCubit: mediaDetailCubit),
+            MediaSimilarView(media: state.media),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),

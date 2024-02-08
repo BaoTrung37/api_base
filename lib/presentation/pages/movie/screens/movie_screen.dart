@@ -49,7 +49,7 @@ class _MovieScreenState extends State<MovieScreen> {
                     onMediaTap: (movieId) {
                       context.pushRoute(
                         MediaDetailRoute(
-                          argument: MediaDetailArgument(
+                          argument: MediaDetailArgument.movie(
                             mediaId: movieId,
                           ),
                         ),
@@ -81,7 +81,7 @@ class _MovieScreenState extends State<MovieScreen> {
                     onMediaTap: (movieId) {
                       context.pushRoute(
                         MediaDetailRoute(
-                          argument: MediaDetailArgument(
+                          argument: MediaDetailArgument.movie(
                             mediaId: movieId,
                           ),
                         ),
@@ -112,7 +112,7 @@ class _MovieScreenState extends State<MovieScreen> {
                     onMediaTap: (movieId) {
                       context.pushRoute(
                         MediaDetailRoute(
-                          argument: MediaDetailArgument(
+                          argument: MediaDetailArgument.movie(
                             mediaId: movieId,
                           ),
                         ),
@@ -143,7 +143,7 @@ class _MovieScreenState extends State<MovieScreen> {
                     onMediaTap: (movieId) {
                       context.pushRoute(
                         MediaDetailRoute(
-                          argument: MediaDetailArgument(
+                          argument: MediaDetailArgument.movie(
                             mediaId: movieId,
                           ),
                         ),
