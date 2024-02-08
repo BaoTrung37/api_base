@@ -50,7 +50,7 @@ class _MovieScreenState extends State<MovieScreen> {
                       context.pushRoute(
                         MediaDetailRoute(
                           argument: MediaDetailArgument(
-                            movieId: movieId,
+                            mediaId: movieId,
                           ),
                         ),
                       );
@@ -82,7 +82,7 @@ class _MovieScreenState extends State<MovieScreen> {
                       context.pushRoute(
                         MediaDetailRoute(
                           argument: MediaDetailArgument(
-                            movieId: movieId,
+                            mediaId: movieId,
                           ),
                         ),
                       );
@@ -113,7 +113,7 @@ class _MovieScreenState extends State<MovieScreen> {
                       context.pushRoute(
                         MediaDetailRoute(
                           argument: MediaDetailArgument(
-                            movieId: movieId,
+                            mediaId: movieId,
                           ),
                         ),
                       );
@@ -144,7 +144,7 @@ class _MovieScreenState extends State<MovieScreen> {
                       context.pushRoute(
                         MediaDetailRoute(
                           argument: MediaDetailArgument(
-                            movieId: movieId,
+                            mediaId: movieId,
                           ),
                         ),
                       );

@@ -24,10 +24,10 @@ class MediaDetailCubit extends Cubit<MediaDetailState> {
       emit(state.copyWith(status: AppStatus.inProgress));
 
       MediaResponse? mediaResponse;
-      if (argument.movieId != null) {
+      if (argument.isMovie) {
         mediaResponse = await _getMovieDetailUseCase.run(
           GetMovieDetailInput(
-            movieId: argument.movieId!,
+            movieId: argument.mediaId,
             movieKeys: [
               MovieDetailKeys.credits,
               MovieDetailKeys.images,
@@ -38,7 +38,7 @@ class MediaDetailCubit extends Cubit<MediaDetailState> {
       } else {
         mediaResponse = await _getTvSeriesDetailUseCase.run(
           GetTvSeriesDetailInput(
-            seriesId: argument.seriesId!,
+            seriesId: argument.mediaId,
             tvSeriesKeys: [],
           ),
         );

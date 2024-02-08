@@ -40,11 +40,15 @@ class MediaSimilarView extends StatelessWidget {
               ),
             );
           },
-          onMediaTap: (movieId) {
-            context.pushRoute(MediaDetailRoute(
+          onMediaTap: (mediaId) {
+            context.pushRoute(
+              MediaDetailRoute(
                 argument: MediaDetailArgument(
-              movieId: movieId,
-            )));
+                  mediaId: mediaId,
+                  isMovie: true,
+                ),
+              ),
+            );
           },
         );
       },

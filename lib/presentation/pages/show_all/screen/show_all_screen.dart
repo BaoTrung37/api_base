@@ -57,7 +57,7 @@ class _ShowAllScreenState extends State<ShowAllScreen>
     context.pushRoute(
       MediaDetailRoute(
         argument: MediaDetailArgument(
-          movieId: movieId,
+          mediaId: movieId,
         ),
       ),
     );

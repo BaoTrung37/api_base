@@ -10,12 +10,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MediaDetailArgument {
-  final int? movieId;
-  final int? seriesId;
-
+  final int mediaId;
+  final bool isMovie;
   MediaDetailArgument({
-    this.seriesId,
-    this.movieId,
+    required this.mediaId,
+    this.isMovie = true,
   });
 }
 
@@ -46,7 +45,7 @@ class _MediaDetailScreenState extends State<MediaDetailScreen> {
       child: Scaffold(
         appBar: BaseAppBar.customTitleView(
           title: Text(
-            'Movie Detail',
+            'Detail',
             style: AppTextStyles.headingSmall
                 .copyWith(color: context.colors.textPrimary),
           ),
@@ -84,29 +83,34 @@ class _MainContent extends StatelessWidget {
   final MediaDetailCubit mediaDetailCubit;
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        MediaInformationView(mediaDetailCubit: mediaDetailCubit),
-        SliverToBoxAdapter(
-          child: 24.verticalSpace,
-        ),
-        MediaCastCrewView(mediaDetailCubit: mediaDetailCubit),
-        SliverToBoxAdapter(
-          child: 24.verticalSpace,
-        ),
-        MediaTrailerVideoView(mediaDetailCubit: mediaDetailCubit),
-        SliverToBoxAdapter(
-          child: 24.verticalSpace,
-        ),
-        const MediaInformationOther(),
-        SliverToBoxAdapter(
-          child: 24.verticalSpace,
-        ),
-        MediaSimilarView(mediaDetailCubit: mediaDetailCubit),
-        SliverToBoxAdapter(
-          child: 24.verticalSpace,
-        ),
-      ],
+    return BlocBuilder<MediaDetailCubit, MediaDetailState>(
+      bloc: mediaDetailCubit,
+      builder: (context, state) {
+        return CustomScrollView(
+          slivers: [
+            MediaInformationView(media: state.media),
+            SliverToBoxAdapter(
+              child: 24.verticalSpace,
+            ),
+            MediaCastCrewView(media: state.media),
+            SliverToBoxAdapter(
+              child: 24.verticalSpace,
+            ),
+            MediaTrailerVideoView(mediaDetailCubit: mediaDetailCubit),
+            SliverToBoxAdapter(
+              child: 24.verticalSpace,
+            ),
+            const MediaInformationOther(),
+            SliverToBoxAdapter(
+              child: 24.verticalSpace,
+            ),
+            MediaSimilarView(mediaDetailCubit: mediaDetailCubit),
+            SliverToBoxAdapter(
+              child: 24.verticalSpace,
+            ),
+          ],
+        );
+      },
     );
   }
 }
