@@ -6,13 +6,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-typedef MovieFunction = Function(int movieId);
+typedef MediaFunction = Function(int mediaId);
 
-class MovieHorizontalListView extends StatelessWidget {
-  const MovieHorizontalListView({
+class MediaHorizontalListView extends StatelessWidget {
+  const MediaHorizontalListView({
     required this.headingTitle,
-    required this.movies,
-    required this.onMovieTap,
+    required this.medias,
+    required this.onMediaTap,
     super.key,
     this.height,
     this.width,
@@ -22,7 +22,7 @@ class MovieHorizontalListView extends StatelessWidget {
   });
 
   final String headingTitle;
-  final List<MediaResponse> movies;
+  final List<MediaResponse> medias;
 
   final double? height;
   final double? width;
@@ -30,7 +30,7 @@ class MovieHorizontalListView extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
 
   final VoidCallback? showAllTap;
-  final MovieFunction onMovieTap;
+  final MediaFunction onMediaTap;
   final bool isPoster;
 
   double _getWidthItem(BuildContext context) {
@@ -54,7 +54,7 @@ class MovieHorizontalListView extends StatelessWidget {
           children: [
             _buildHeadingTitle(),
             16.verticalSpace,
-            if (movies.isNotEmpty)
+            if (medias.isNotEmpty)
               _buildMovieListView()
             else
               LoadingListView(
@@ -83,22 +83,22 @@ class MovieHorizontalListView extends StatelessWidget {
           // autoPlayCurve: Curves.fastOutSlowIn,
         ),
         itemBuilder: (context, index, pageViewIndex) {
-          final movie = movies[index];
-          return _buildMovieItem(context, movie, onMovieTap);
+          final media = medias[index];
+          return _buildMediaItem(context, media, onMediaTap);
         },
-        itemCount: movies.length,
+        itemCount: medias.length,
       ),
     );
   }
 
-  Widget _buildMovieItem(
+  Widget _buildMediaItem(
     BuildContext context,
-    MediaResponse movie,
-    MovieFunction onMovieTap,
+    MediaResponse media,
+    MediaFunction onMediaTap,
   ) {
     return GestureDetector(
       onTap: () {
-        onMovieTap.call(movie.id);
+        onMediaTap.call(media.id);
       },
       child: SizedBox(
         height: height ?? _getHeightItem(),
@@ -111,8 +111,8 @@ class MovieHorizontalListView extends StatelessWidget {
               child: CustomCachedNetworkImage(
                 imageType: ImageType.movie,
                 imageUrl: isPoster
-                    ? movie.posterPath?.tmdbW154Path
-                    : movie.backdropPath?.tmdbW300Path,
+                    ? media.posterPath?.tmdbW500Path
+                    : media.backdropPath?.tmdbW500Path,
               ),
             ),
             8.verticalSpace,
@@ -122,14 +122,14 @@ class MovieHorizontalListView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    movie.title!,
+                    media.title ?? media.name ?? '',
                     style: AppTextStyles.labelMedium,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                   4.verticalSpace,
                   Text(
-                    movie.genresName,
+                    media.genresName,
                     style: AppTextStyles.labelSmallLight,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

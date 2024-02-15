@@ -2,7 +2,7 @@
 import 'package:api_base/data/iml_repositories/iml_repositories.dart';
 import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/domain/use_cases/use_cases.dart';
-import 'package:api_base/presentation/utilities/enums/movie_keys.dart';
+import 'package:api_base/presentation/utilities/enums/detail/movie_detail_keys.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
@@ -23,7 +23,7 @@ class GetMovieDetailUseCase
 
 class GetMovieDetailInput {
   final int movieId;
-  final List<MovieKeys>? movieKeys;
+  final List<MovieDetailKeys>? movieKeys;
 
   const GetMovieDetailInput({
     required this.movieId,

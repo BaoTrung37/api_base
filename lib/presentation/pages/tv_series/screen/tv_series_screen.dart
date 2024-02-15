@@ -20,7 +20,11 @@ class TvSeriesScreen extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        appBar: const BaseAppBar.titleOnly(title: 'Tv Shows'),
+        appBar: const BaseAppBar.titleOnly(
+          title: 'Tv Shows',
+          isCenterTitle: false,
+          shouldShowBottomDivider: false,
+        ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: CustomScrollView(
@@ -29,11 +33,17 @@ class TvSeriesScreen extends StatelessWidget {
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  return TvSeriesHorizontalListView(
+                  return MediaHorizontalListView(
                     headingTitle: 'Airing Today',
-                    tvSeriesList: state.airingTodayList,
-                    onTvSeriesTap: (movieId) {
-                      // context.pushRoute(MovieDetailRoute(movieId: movieId));
+                    medias: state.airingTodayList,
+                    onMediaTap: (seriesId) {
+                      context.pushRoute(
+                        MediaDetailRoute(
+                          argument: MediaDetailArgument.tvSeries(
+                            mediaId: seriesId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       // context.pushRoute(
@@ -53,11 +63,17 @@ class TvSeriesScreen extends StatelessWidget {
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  return TvSeriesHorizontalListView(
+                  return MediaHorizontalListView(
                     headingTitle: 'On The Air',
-                    tvSeriesList: state.onTheAirList,
-                    onTvSeriesTap: (movieId) {
-                      // context.pushRoute(MovieDetailRoute(movieId: movieId));
+                    medias: state.onTheAirList,
+                    onMediaTap: (seriesId) {
+                      context.pushRoute(
+                        MediaDetailRoute(
+                          argument: MediaDetailArgument.tvSeries(
+                            mediaId: seriesId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       // context.pushRoute(
@@ -77,11 +93,17 @@ class TvSeriesScreen extends StatelessWidget {
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  return TvSeriesHorizontalListView(
+                  return MediaHorizontalListView(
                     headingTitle: 'Popular',
-                    tvSeriesList: state.popularList,
-                    onTvSeriesTap: (movieId) {
-                      // context.pushRoute(MovieDetailRoute(movieId: movieId));
+                    medias: state.popularList,
+                    onMediaTap: (seriesId) {
+                      context.pushRoute(
+                        MediaDetailRoute(
+                          argument: MediaDetailArgument.tvSeries(
+                            mediaId: seriesId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       // context.pushRoute(
@@ -101,11 +123,17 @@ class TvSeriesScreen extends StatelessWidget {
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  return TvSeriesHorizontalListView(
+                  return MediaHorizontalListView(
                     headingTitle: 'Top Rated',
-                    tvSeriesList: state.topRatedList,
-                    onTvSeriesTap: (movieId) {
-                      // context.pushRoute(MovieDetailRoute(movieId: movieId));
+                    medias: state.topRatedList,
+                    onMediaTap: (seriesId) {
+                      context.pushRoute(
+                        MediaDetailRoute(
+                          argument: MediaDetailArgument.tvSeries(
+                            mediaId: seriesId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       // context.pushRoute(

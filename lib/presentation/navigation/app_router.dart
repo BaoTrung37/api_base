@@ -38,18 +38,21 @@ class AppRouter extends _$AppRouter {
               page: FavoriteNavigationRoute.page,
               children: [
                 AutoRoute(page: FavoriteRoute.page, initial: true),
+                AutoRoute(page: ShowAllRoute.page),
               ],
             ),
             AutoRoute(
               page: SearchNavigationRoute.page,
               children: [
                 AutoRoute(page: SearchRoute.page, initial: true),
+                AutoRoute(page: ShowAllRoute.page),
               ],
             ),
             AutoRoute(
               page: ProfileNavigationRoute.page,
               children: [
                 AutoRoute(page: ProfileRoute.page, initial: true),
+                AutoRoute(page: ShowAllRoute.page),
               ],
             ),
           ],

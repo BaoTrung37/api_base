@@ -1,57 +1,57 @@
-import 'package:api_base/presentation/pages/media_detail/cubit/media_detail_cubit.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:api_base/data/data.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MediaInformationOther extends StatelessWidget {
-  const MediaInformationOther({super.key});
+  const MediaInformationOther({
+    super.key,
+    this.media,
+  });
 
+  final MediaResponse? media;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MediaDetailCubit, MediaDetailState>(
-      builder: (context, state) {
-        return SliverToBoxAdapter(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  'Information',
-                  style: AppTextStyles.headingXSmall,
-                ),
-                _buildInformationItem(
-                  context,
-                  title: 'Release',
-                  description: state.media?.releaseDate,
-                ),
-                _buildInformationItem(
-                  context,
-                  title: 'Language',
-                  descriptions: (state.media?.spokenLanguages ?? [])
-                      .where((element) => element.englishName.isNotEmpty)
-                      .map((e) => e.englishName)
-                      .toList(),
-                ),
-                _buildInformationItem(
-                  context,
-                  title: 'Revenue',
-                  description: '\$${state.media?.revenue}',
-                ),
-                _buildInformationItem(
-                  context,
-                  title: 'Production Companies',
-                  descriptions: (state.media?.productionCompanies ?? [])
-                      .map((e) => e.name)
-                      .toList(),
-                ),
-              ],
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+              'Information',
+              style: AppTextStyles.headingXSmall,
             ),
-          ),
-        );
-      },
+            _buildInformationItem(
+              context,
+              title: 'Release',
+              description: media?.releaseDate,
+            ),
+            _buildInformationItem(
+              context,
+              title: 'Language',
+              descriptions: (media?.spokenLanguages ?? [])
+                  .where((element) => element.englishName.isNotEmpty)
+                  .map((e) => e.englishName)
+                  .toList(),
+            ),
+            _buildInformationItem(
+              context,
+              title: 'Revenue',
+              description: '\$${media?.revenue}',
+            ),
+            _buildInformationItem(
+              context,
+              title: 'Production Companies',
+              descriptions: (media?.productionCompanies ?? [])
+                  .map((e) => e.name)
+                  .toList(),
+            ),
+          ],
+        ),
+      ),
     );
   }
 

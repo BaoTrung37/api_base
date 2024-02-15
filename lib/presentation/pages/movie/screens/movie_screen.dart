@@ -43,11 +43,17 @@ class _MovieScreenState extends State<MovieScreen> {
                 buildWhen: (previous, current) =>
                     previous.status != current.status,
                 builder: (context, state) {
-                  return MovieHorizontalListView(
+                  return MediaHorizontalListView(
                     headingTitle: 'Popular',
-                    movies: state.popularMovies,
-                    onMovieTap: (movieId) {
-                      context.pushRoute(MediaDetailRoute(mediaId: movieId));
+                    medias: state.popularMovies,
+                    onMediaTap: (movieId) {
+                      context.pushRoute(
+                        MediaDetailRoute(
+                          argument: MediaDetailArgument.movie(
+                            mediaId: movieId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       context.pushRoute(
@@ -68,12 +74,18 @@ class _MovieScreenState extends State<MovieScreen> {
                     previous.status != current.status,
                 builder: (context, state) {
                   final movies = state.nowPlayingMovies;
-                  return MovieHorizontalListView(
+                  return MediaHorizontalListView(
                     headingTitle: 'Playing In Theatres',
-                    movies: movies,
+                    medias: movies,
                     isPoster: false,
-                    onMovieTap: (movieId) {
-                      context.pushRoute(MediaDetailRoute(mediaId: movieId));
+                    onMediaTap: (movieId) {
+                      context.pushRoute(
+                        MediaDetailRoute(
+                          argument: MediaDetailArgument.movie(
+                            mediaId: movieId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       context.pushRoute(
@@ -94,11 +106,17 @@ class _MovieScreenState extends State<MovieScreen> {
                     previous.status != current.status,
                 builder: (context, state) {
                   final movies = state.trendingMovies;
-                  return MovieHorizontalListView(
+                  return MediaHorizontalListView(
                     headingTitle: 'Trending',
-                    movies: movies,
-                    onMovieTap: (movieId) {
-                      context.pushRoute(MediaDetailRoute(mediaId: movieId));
+                    medias: movies,
+                    onMediaTap: (movieId) {
+                      context.pushRoute(
+                        MediaDetailRoute(
+                          argument: MediaDetailArgument.movie(
+                            mediaId: movieId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       context.pushRoute(
@@ -119,11 +137,17 @@ class _MovieScreenState extends State<MovieScreen> {
                     previous.status != current.status,
                 builder: (context, state) {
                   final movies = state.upcomingMovies;
-                  return MovieHorizontalListView(
+                  return MediaHorizontalListView(
                     headingTitle: 'Upcoming',
-                    movies: movies,
-                    onMovieTap: (movieId) {
-                      context.pushRoute(MediaDetailRoute(mediaId: movieId));
+                    medias: movies,
+                    onMediaTap: (movieId) {
+                      context.pushRoute(
+                        MediaDetailRoute(
+                          argument: MediaDetailArgument.movie(
+                            mediaId: movieId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       context.pushRoute(

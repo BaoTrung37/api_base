@@ -1,15 +1,11 @@
-import 'package:api_base/presentation/pages/media_detail/cubit/media_detail_cubit.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MediaTrailerVideoView extends StatelessWidget {
   const MediaTrailerVideoView({
-    required this.mediaDetailCubit,
     super.key,
   });
-
-  final MediaDetailCubit mediaDetailCubit;
 
   @override
   Widget build(BuildContext context) {
