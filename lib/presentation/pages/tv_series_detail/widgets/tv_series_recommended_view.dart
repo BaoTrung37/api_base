@@ -7,8 +7,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class TvSeriesSimilarView extends StatelessWidget {
-  const TvSeriesSimilarView({
+class TvSeriesRecommendedView extends StatelessWidget {
+  const TvSeriesRecommendedView({
     this.media,
     super.key,
   });
@@ -23,15 +23,15 @@ class TvSeriesSimilarView extends StatelessWidget {
     }
     return MediaHorizontalListView(
       padding: EdgeInsets.symmetric(horizontal: 8.w),
-      headingTitle: 'Similar',
+      headingTitle: 'Recommended',
       medias: similarList,
       showAllTap: () {
         context.pushRoute(
           ShowAllRoute(
-            argument: ShowAllArgument.tvSeries(
+            argument: ShowAllArgument.movie(
               title: 'Similar',
               movieId: media?.id,
-              apiTvShowsType: ApiTvSeriesType.similar,
+              apiMovieType: ApiMovieType.similar,
             ),
           ),
         );

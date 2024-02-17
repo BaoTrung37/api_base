@@ -34,6 +34,7 @@ class MediaResponse with _$MediaResponse {
     String? tagline,
     bool? video,
     SimilarResponse? similar,
+    RecommendationsResponse? recommendations,
     Videos? videos,
     CreditsResponse? credits,
     String? mediaType,

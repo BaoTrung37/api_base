@@ -102,7 +102,7 @@ class _MainContent extends StatelessWidget {
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            // MediaSimilarView(media: state.media),
+            MovieSimilarView(media: state.media),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),

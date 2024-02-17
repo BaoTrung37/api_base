@@ -9,6 +9,7 @@ enum TvSeriesDetailKeys {
   keywords,
   translations,
   videos,
+  recommendations,
 }
 
 extension TvSeriesDetailKeysExtension on TvSeriesDetailKeys {
@@ -34,6 +35,8 @@ extension TvSeriesDetailKeysExtension on TvSeriesDetailKeys {
         return 'translations';
       case TvSeriesDetailKeys.videos:
         return 'videos';
+      case TvSeriesDetailKeys.recommendations:
+        return 'recommendations';
     }
   }
 }

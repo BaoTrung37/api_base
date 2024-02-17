@@ -28,6 +28,7 @@ class TvSeriesDetailCubit extends Cubit<TvSeriesDetailState> {
           seriesId: argument.seriesId,
           tvSeriesKeys: [
             TvSeriesDetailKeys.similar,
+            TvSeriesDetailKeys.recommendations,
           ],
         ),
       );

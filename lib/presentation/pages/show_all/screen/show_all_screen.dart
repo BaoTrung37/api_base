@@ -13,7 +13,7 @@ class ShowAllArgument {
   final int? movieId;
   final ApiMovieType? apiMovieType;
   final ApiPeopleType? apiPeopleType;
-  final ApiTvShowsType? apiTvShowsType;
+  final ApiTvSeriesType? apiTvShowsType;
 
   ShowAllArgument.movie({
     required this.title,
@@ -29,7 +29,7 @@ class ShowAllArgument {
   })  : apiMovieType = null,
         apiTvShowsType = null;
 
-  ShowAllArgument.tvShows({
+  ShowAllArgument.tvSeries({
     required this.title,
     required this.apiTvShowsType,
     this.movieId,

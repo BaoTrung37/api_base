@@ -52,15 +52,16 @@ class MediaHorizontalListView extends StatelessWidget {
         padding: padding,
         child: Column(
           children: [
-            _buildHeadingTitle(),
-            16.verticalSpace,
-            if (medias.isNotEmpty)
+            if (medias.isNotEmpty) ...[
+              _buildHeadingTitle(),
+              16.verticalSpace,
               _buildMovieListView()
-            else
-              LoadingListView(
-                height: height ?? _getHeightItem(),
-                width: width ?? _getWidthItem(context),
-              ),
+            ],
+            // else
+            //   LoadingListView(
+            //     height: height ?? _getHeightItem(),
+            //     width: width ?? _getWidthItem(context),
+            //   ),
           ],
         ),
       ),
