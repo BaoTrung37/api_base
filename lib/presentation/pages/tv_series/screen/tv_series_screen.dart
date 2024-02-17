@@ -37,13 +37,13 @@ class TvSeriesScreen extends StatelessWidget {
                     headingTitle: 'Airing Today',
                     medias: state.airingTodayList,
                     onMediaTap: (seriesId) {
-                      // context.pushRoute(
-                      //   MediaDetailRoute(
-                      //     argument: MediaDetailArgument.tvSeries(
-                      //       mediaId: seriesId,
-                      //     ),
-                      //   ),
-                      // );
+                      context.pushRoute(
+                        TvSeriesDetailRoute(
+                          argument: TvSeriesDetailArgument(
+                            seriesId: seriesId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       // context.pushRoute(
@@ -67,13 +67,13 @@ class TvSeriesScreen extends StatelessWidget {
                     headingTitle: 'On The Air',
                     medias: state.onTheAirList,
                     onMediaTap: (seriesId) {
-                      // context.pushRoute(
-                      //   MediaDetailRoute(
-                      //     argument: MediaDetailArgument.tvSeries(
-                      //       mediaId: seriesId,
-                      //     ),
-                      //   ),
-                      // );
+                      context.pushRoute(
+                        TvSeriesDetailRoute(
+                          argument: TvSeriesDetailArgument(
+                            seriesId: seriesId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       // context.pushRoute(
@@ -97,13 +97,13 @@ class TvSeriesScreen extends StatelessWidget {
                     headingTitle: 'Popular',
                     medias: state.popularList,
                     onMediaTap: (seriesId) {
-                      // context.pushRoute(
-                      //   MediaDetailRoute(
-                      //     argument: MediaDetailArgument.tvSeries(
-                      //       mediaId: seriesId,
-                      //     ),
-                      //   ),
-                      // );
+                      context.pushRoute(
+                        TvSeriesDetailRoute(
+                          argument: TvSeriesDetailArgument(
+                            seriesId: seriesId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       // context.pushRoute(
@@ -127,13 +127,13 @@ class TvSeriesScreen extends StatelessWidget {
                     headingTitle: 'Top Rated',
                     medias: state.topRatedList,
                     onMediaTap: (seriesId) {
-                      // context.pushRoute(
-                      //   MediaDetailRoute(
-                      //     argument: MediaDetailArgument.tvSeries(
-                      //       mediaId: seriesId,
-                      //     ),
-                      //   ),
-                      // );
+                      context.pushRoute(
+                        TvSeriesDetailRoute(
+                          argument: TvSeriesDetailArgument(
+                            seriesId: seriesId,
+                          ),
+                        ),
+                      );
                     },
                     showAllTap: () {
                       // context.pushRoute(

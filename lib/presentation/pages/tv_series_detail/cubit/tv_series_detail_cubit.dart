@@ -26,7 +26,9 @@ class TvSeriesDetailCubit extends Cubit<TvSeriesDetailState> {
       mediaResponse = await _getTvSeriesDetailUseCase.run(
         GetTvSeriesDetailInput(
           seriesId: argument.seriesId,
-          tvSeriesKeys: [],
+          tvSeriesKeys: [
+            TvSeriesDetailKeys.similar,
+          ],
         ),
       );
 
