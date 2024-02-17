@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/injection/di.dart';
 import 'package:api_base/presentation/pages/movie/cubit/movies_controller_cubit.dart';
+import 'package:api_base/presentation/pages/movie_detail/screen/movie_detail_screen.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -48,9 +49,9 @@ class _MovieScreenState extends State<MovieScreen> {
                     medias: state.popularMovies,
                     onMediaTap: (movieId) {
                       context.pushRoute(
-                        MediaDetailRoute(
-                          argument: MediaDetailArgument.movie(
-                            mediaId: movieId,
+                        MovieDetailRoute(
+                          argument: MovieDetailArgument(
+                            movieId: movieId,
                           ),
                         ),
                       );
@@ -80,9 +81,9 @@ class _MovieScreenState extends State<MovieScreen> {
                     isPoster: false,
                     onMediaTap: (movieId) {
                       context.pushRoute(
-                        MediaDetailRoute(
-                          argument: MediaDetailArgument.movie(
-                            mediaId: movieId,
+                        MovieDetailRoute(
+                          argument: MovieDetailArgument(
+                            movieId: movieId,
                           ),
                         ),
                       );
@@ -111,9 +112,9 @@ class _MovieScreenState extends State<MovieScreen> {
                     medias: movies,
                     onMediaTap: (movieId) {
                       context.pushRoute(
-                        MediaDetailRoute(
-                          argument: MediaDetailArgument.movie(
-                            mediaId: movieId,
+                        MovieDetailRoute(
+                          argument: MovieDetailArgument(
+                            movieId: movieId,
                           ),
                         ),
                       );
@@ -142,9 +143,9 @@ class _MovieScreenState extends State<MovieScreen> {
                     medias: movies,
                     onMediaTap: (movieId) {
                       context.pushRoute(
-                        MediaDetailRoute(
-                          argument: MediaDetailArgument.movie(
-                            mediaId: movieId,
+                        MovieDetailRoute(
+                          argument: MovieDetailArgument(
+                            movieId: movieId,
                           ),
                         ),
                       );

@@ -4,8 +4,8 @@ import 'package:api_base/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MediaInformationOther extends StatelessWidget {
-  const MediaInformationOther({
+class TvSeriesInformationOther extends StatelessWidget {
+  const TvSeriesInformationOther({
     super.key,
     this.media,
   });

@@ -1,7 +1,6 @@
 export 'favorite/favorite.dart';
 export 'let_in_you/let_in_you.dart';
 export 'main_app/main_app.dart';
-export 'media_detail/media_detail.dart';
 export 'movie/movie.dart';
 export 'profile/profile.dart';
 export 'search/search.dart';
@@ -10,3 +9,4 @@ export 'sign_in/sign_in.dart';
 export 'sign_up/sign_up.dart';
 export 'splash/splash.dart';
 export 'tv_series/tv_series.dart';
+export 'tv_series_detail/tv_series_detail.dart';

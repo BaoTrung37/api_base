@@ -8,8 +8,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 
-class MediaInformationView extends StatelessWidget {
-  const MediaInformationView({
+class MovieInformationView extends StatelessWidget {
+  const MovieInformationView({
     this.media,
     super.key,
   });

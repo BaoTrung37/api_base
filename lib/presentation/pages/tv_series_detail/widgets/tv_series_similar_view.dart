@@ -1,6 +1,5 @@
 import 'package:api_base/data/models/models.dart';
 import 'package:api_base/presentation/navigation/app_router.dart';
-import 'package:api_base/presentation/pages/media_detail/screen/media_detail_screen.dart';
 import 'package:api_base/presentation/pages/show_all/screen/show_all_screen.dart';
 import 'package:api_base/presentation/utilities/utilities.dart';
 import 'package:api_base/presentation/widgets/app_list_view/media_horizontal_list_view.dart';
@@ -8,8 +7,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MediaSimilarView extends StatelessWidget {
-  const MediaSimilarView({
+class TvSeriesSimilarView extends StatelessWidget {
+  const TvSeriesSimilarView({
     this.media,
     super.key,
   });
@@ -38,13 +37,13 @@ class MediaSimilarView extends StatelessWidget {
         );
       },
       onMediaTap: (mediaId) {
-        context.pushRoute(
-          MediaDetailRoute(
-            argument: MediaDetailArgument.movie(
-              mediaId: mediaId,
-            ),
-          ),
-        );
+        // context.pushRoute(
+        //   MediaDetailRoute(
+        //     argument: MediaDetailArgument.movie(
+        //       mediaId: mediaId,
+        //     ),
+        //   ),
+        // );
       },
     );
   }

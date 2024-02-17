@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/gen/assets.gen.dart';
 import 'package:api_base/injection/di.dart';
-import 'package:api_base/presentation/pages/media_detail/cubit/media_detail_cubit.dart';
+import 'package:api_base/presentation/pages/tv_series_detail/cubit/tv_series_detail_cubit.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:api_base/presentation/widgets/app_indicator/loading_view.dart';
 import 'package:auto_route/auto_route.dart';
@@ -9,41 +9,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MediaDetailArgument {
-  final int mediaId;
-  final bool isMovie;
-  MediaDetailArgument.movie({
-    required this.mediaId,
-  }) : isMovie = true;
-  MediaDetailArgument.tvSeries({
-    required this.mediaId,
-  }) : isMovie = false;
+class TvSeriesDetailArgument {
+  TvSeriesDetailArgument({required this.seriesId});
+
+  final int seriesId;
 }
 
 @RoutePage()
-class MediaDetailScreen extends StatefulWidget {
-  const MediaDetailScreen({
+class TvSeriesDetailScreen extends StatefulWidget {
+  const TvSeriesDetailScreen({
     required this.argument,
     super.key,
   });
 
-  final MediaDetailArgument argument;
+  final TvSeriesDetailArgument argument;
   @override
-  State<MediaDetailScreen> createState() => _MediaDetailScreenState();
+  State<TvSeriesDetailScreen> createState() => _TvSeriesDetailScreenState();
 }
 
-class _MediaDetailScreenState extends State<MediaDetailScreen> {
-  final MediaDetailCubit mediaDetailCubit = getIt<MediaDetailCubit>();
+class _TvSeriesDetailScreenState extends State<TvSeriesDetailScreen> {
+  final TvSeriesDetailCubit tvSeriesDetailCubit = getIt<TvSeriesDetailCubit>();
   @override
   void initState() {
     super.initState();
-    mediaDetailCubit.fetchData(widget.argument);
+    tvSeriesDetailCubit.fetchData(widget.argument);
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => mediaDetailCubit,
+      create: (context) => tvSeriesDetailCubit,
       child: Scaffold(
         appBar: BaseAppBar.customTitleView(
           title: Text(
@@ -61,13 +56,13 @@ class _MediaDetailScreenState extends State<MediaDetailScreen> {
             16.horizontalSpace,
           ],
         ),
-        body: BlocBuilder<MediaDetailCubit, MediaDetailState>(
-          bloc: mediaDetailCubit,
+        body: BlocBuilder<TvSeriesDetailCubit, TvSeriesDetailState>(
+          bloc: tvSeriesDetailCubit,
           builder: (context, state) {
             return LoadingView(
               status: state.status,
               child: _MainContent(
-                mediaDetailCubit: mediaDetailCubit,
+                tvSeriesDetailCubit: tvSeriesDetailCubit,
               ),
             );
           },
@@ -79,34 +74,34 @@ class _MediaDetailScreenState extends State<MediaDetailScreen> {
 
 class _MainContent extends StatelessWidget {
   const _MainContent({
-    required this.mediaDetailCubit,
+    required this.tvSeriesDetailCubit,
   });
 
-  final MediaDetailCubit mediaDetailCubit;
+  final TvSeriesDetailCubit tvSeriesDetailCubit;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MediaDetailCubit, MediaDetailState>(
-      bloc: mediaDetailCubit,
+    return BlocBuilder<TvSeriesDetailCubit, TvSeriesDetailState>(
+      bloc: tvSeriesDetailCubit,
       builder: (context, state) {
         return CustomScrollView(
           slivers: [
-            MediaInformationView(media: state.media),
+            TvSeriesInformationView(media: state.media),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            MediaCastCrewView(media: state.media),
+            TvSeriesCastCrewView(media: state.media),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            const MediaTrailerVideoView(),
+            const TvSeriesTrailerVideoView(),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            const MediaInformationOther(),
+            const TvSeriesInformationOther(),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            MediaSimilarView(media: state.media),
+            TvSeriesSimilarView(media: state.media),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),

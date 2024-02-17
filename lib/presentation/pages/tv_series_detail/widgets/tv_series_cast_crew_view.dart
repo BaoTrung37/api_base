@@ -8,8 +8,8 @@ import 'package:api_base/presentation/widgets/images/custom_cached_network_image
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MediaCastCrewView extends StatelessWidget {
-  const MediaCastCrewView({
+class TvSeriesCastCrewView extends StatelessWidget {
+  const TvSeriesCastCrewView({
     this.media,
     super.key,
   });
