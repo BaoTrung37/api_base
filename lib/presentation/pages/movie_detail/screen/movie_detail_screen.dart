@@ -43,7 +43,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
       child: Scaffold(
         appBar: BaseAppBar.customTitleView(
           title: Text(
-            'Detail',
+            'Movie Detail',
             style: AppTextStyles.headingSmall
                 .copyWith(color: context.colors.textPrimary),
           ),
@@ -98,7 +98,7 @@ class _MainContent extends StatelessWidget {
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            const MovieInformationOther(),
+            MovieInformationOther(media: state.media),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),

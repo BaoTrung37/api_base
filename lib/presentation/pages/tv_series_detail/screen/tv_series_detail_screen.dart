@@ -42,7 +42,7 @@ class _TvSeriesDetailScreenState extends State<TvSeriesDetailScreen> {
       child: Scaffold(
         appBar: BaseAppBar.customTitleView(
           title: Text(
-            'Detail',
+            'Tv Series Detail',
             style: AppTextStyles.headingSmall
                 .copyWith(color: context.colors.textPrimary),
           ),
@@ -97,7 +97,7 @@ class _MainContent extends StatelessWidget {
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            const TvSeriesInformationOther(),
+            TvSeriesInformationOther(media: state.media),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),

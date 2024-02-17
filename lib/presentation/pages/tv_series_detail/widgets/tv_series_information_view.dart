@@ -48,7 +48,7 @@ class TvSeriesInformationView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          media?.title ?? '',
+                          media?.name ?? '',
                           style: AppTextStyles.headingSmall,
                         ),
                         4.verticalSpace,
