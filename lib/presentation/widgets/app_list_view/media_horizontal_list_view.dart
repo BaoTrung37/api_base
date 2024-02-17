@@ -2,7 +2,6 @@
 import 'package:api_base/data/models/models.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:api_base/presentation/utilities/extensions/string_extension.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -72,22 +71,14 @@ class MediaHorizontalListView extends StatelessWidget {
     return SizedBox(
       height: height ?? _getHeightItem(),
       width: double.infinity,
-      child: CarouselSlider.builder(
-        options: CarouselOptions(
-          scrollDirection: Axis.horizontal,
-          enableInfiniteScroll: true,
-          enlargeCenterPage: true,
-          viewportFraction: isPoster ? 0.35 : 0.5,
-          // autoPlay: true,
-          // autoPlayInterval: const Duration(seconds: 3),
-          // autoPlayAnimationDuration: const Duration(milliseconds: 800),
-          // autoPlayCurve: Curves.fastOutSlowIn,
-        ),
-        itemBuilder: (context, index, pageViewIndex) {
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
           final media = medias[index];
           return _buildMediaItem(context, media, onMediaTap);
         },
         itemCount: medias.length,
+        separatorBuilder: (context, index) => 16.horizontalSpace,
       ),
     );
   }
