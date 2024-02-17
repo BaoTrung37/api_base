@@ -29,6 +29,7 @@ class TvSeriesDetailCubit extends Cubit<TvSeriesDetailState> {
           tvSeriesKeys: [
             TvSeriesDetailKeys.similar,
             TvSeriesDetailKeys.recommendations,
+            TvSeriesDetailKeys.credits,
           ],
         ),
       );

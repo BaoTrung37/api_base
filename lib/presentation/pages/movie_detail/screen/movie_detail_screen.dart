@@ -90,11 +90,16 @@ class _MainContent extends StatelessWidget {
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            MovieCastCrewView(media: state.media),
-            SliverToBoxAdapter(
-              child: 24.verticalSpace,
+            CastCrewListView(
+              castList: state.media?.credits?.cast.take(15).toList(),
+              onShowAllTap: () {
+                //
+              },
             ),
-            const MovieTrailerVideoView(),
+            // SliverToBoxAdapter(
+            //   child: 24.verticalSpace,
+            // ),
+            // const MovieTrailerVideoView(),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
