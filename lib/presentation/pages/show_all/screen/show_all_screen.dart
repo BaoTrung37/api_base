@@ -10,29 +10,29 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ShowAllArgument {
   final String title;
-  final int? movieId;
+  final int? mediaId;
   final ApiMovieType? apiMovieType;
   final ApiPeopleType? apiPeopleType;
-  final ApiTvSeriesType? apiTvShowsType;
+  final ApiTvSeriesType? apiTvSeriesType;
 
   ShowAllArgument.movie({
     required this.title,
     required this.apiMovieType,
-    this.movieId,
+    this.mediaId,
   })  : apiPeopleType = null,
-        apiTvShowsType = null;
+        apiTvSeriesType = null;
 
   ShowAllArgument.people({
     required this.title,
     required this.apiPeopleType,
-    this.movieId,
+    this.mediaId,
   })  : apiMovieType = null,
-        apiTvShowsType = null;
+        apiTvSeriesType = null;
 
   ShowAllArgument.tvSeries({
     required this.title,
-    required this.apiTvShowsType,
-    this.movieId,
+    required this.apiTvSeriesType,
+    this.mediaId,
   })  : apiMovieType = null,
         apiPeopleType = null;
 }

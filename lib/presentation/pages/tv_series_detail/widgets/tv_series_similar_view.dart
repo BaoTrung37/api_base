@@ -1,6 +1,7 @@
 import 'package:api_base/data/models/models.dart';
 import 'package:api_base/presentation/navigation/app_router.dart';
 import 'package:api_base/presentation/pages/show_all/screen/show_all_screen.dart';
+import 'package:api_base/presentation/pages/tv_series_detail/screen/tv_series_detail_screen.dart';
 import 'package:api_base/presentation/utilities/utilities.dart';
 import 'package:api_base/presentation/widgets/app_list_view/media_horizontal_list_view.dart';
 import 'package:auto_route/auto_route.dart';
@@ -30,20 +31,20 @@ class TvSeriesSimilarView extends StatelessWidget {
           ShowAllRoute(
             argument: ShowAllArgument.tvSeries(
               title: 'Similar',
-              movieId: media?.id,
-              apiTvShowsType: ApiTvSeriesType.similar,
+              mediaId: media?.id,
+              apiTvSeriesType: ApiTvSeriesType.similar,
             ),
           ),
         );
       },
       onMediaTap: (mediaId) {
-        // context.pushRoute(
-        //   MediaDetailRoute(
-        //     argument: MediaDetailArgument.movie(
-        //       mediaId: mediaId,
-        //     ),
-        //   ),
-        // );
+        context.pushRoute(
+          TvSeriesDetailRoute(
+            argument: TvSeriesDetailArgument(
+              seriesId: mediaId,
+            ),
+          ),
+        );
       },
     );
   }

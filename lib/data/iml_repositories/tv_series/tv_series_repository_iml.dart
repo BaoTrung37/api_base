@@ -71,7 +71,11 @@ class TvSeriesRepositoryIml extends TvSeriesRepository {
   Future<List<MediaResponse>> getSimilarList({
     required int seriesId,
     required int page,
-  }) {
-    throw UnimplementedError();
+  }) async {
+    final response = await restClient.getSimilarTvSeries(
+      seriesId,
+      page,
+    );
+    return response.results;
   }
 }
