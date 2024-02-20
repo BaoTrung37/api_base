@@ -3,7 +3,7 @@ import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/domain/use_cases/input/movie_use_case_input.dart';
 import 'package:api_base/domain/use_cases/input/tv_series_use_case_input.dart';
 import 'package:api_base/domain/use_cases/movie/movie.dart';
-import 'package:api_base/domain/use_cases/tv_series/get_simlilar_tv_series_list_use_case.dart';
+import 'package:api_base/domain/use_cases/tv_series/get_similar_tv_series_list_use_case.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
