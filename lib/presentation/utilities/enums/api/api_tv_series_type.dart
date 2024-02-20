@@ -1,0 +1,1 @@
+enum ApiTvSeriesType { popular, similar }

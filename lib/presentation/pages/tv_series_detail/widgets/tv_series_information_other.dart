@@ -4,8 +4,8 @@ import 'package:api_base/presentation/presentation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MediaInformationOther extends StatelessWidget {
-  const MediaInformationOther({
+class TvSeriesInformationOther extends StatelessWidget {
+  const TvSeriesInformationOther({
     super.key,
     this.media,
   });
@@ -26,28 +26,37 @@ class MediaInformationOther extends StatelessWidget {
             ),
             _buildInformationItem(
               context,
-              title: 'Release',
-              description: media?.releaseDate,
+              title: 'Create By',
+              descriptions: media?.createdBy.map((e) => e.name).toList(),
+            ),
+            _buildInformationItem(
+              context,
+              title: 'First Air Date',
+              description: '${media?.firstAirDate}',
             ),
             _buildInformationItem(
               context,
               title: 'Language',
-              descriptions: (media?.spokenLanguages ?? [])
+              descriptions: media?.spokenLanguages
                   .where((element) => element.englishName.isNotEmpty)
                   .map((e) => e.englishName)
                   .toList(),
             ),
             _buildInformationItem(
               context,
-              title: 'Revenue',
-              description: '\$${media?.revenue}',
+              title: 'Country of Origin',
+              descriptions: media?.originCountry,
+            ),
+            _buildInformationItem(
+              context,
+              title: 'Networks',
+              descriptions: media?.networks.map((e) => e.name).toList(),
             ),
             _buildInformationItem(
               context,
               title: 'Production Companies',
-              descriptions: (media?.productionCompanies ?? [])
-                  .map((e) => e.name)
-                  .toList(),
+              descriptions:
+                  media?.productionCompanies.map((e) => e.name).toList(),
             ),
           ],
         ),
@@ -61,6 +70,9 @@ class MediaInformationOther extends StatelessWidget {
     String? description,
     List<String>? descriptions,
   }) {
+    if (description == null && descriptions == null) {
+      return const SizedBox.shrink();
+    }
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

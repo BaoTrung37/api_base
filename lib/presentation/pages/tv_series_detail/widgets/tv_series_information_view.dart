@@ -8,8 +8,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:readmore/readmore.dart';
 
-class MediaInformationView extends StatelessWidget {
-  const MediaInformationView({
+class TvSeriesInformationView extends StatelessWidget {
+  const TvSeriesInformationView({
     this.media,
     super.key,
   });
@@ -48,7 +48,7 @@ class MediaInformationView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          media?.title ?? '',
+                          media?.name ?? '',
                           style: AppTextStyles.headingSmall,
                         ),
                         4.verticalSpace,

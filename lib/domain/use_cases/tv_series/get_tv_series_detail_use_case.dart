@@ -15,7 +15,10 @@ class GetTvSeriesDetailUseCase
 
   @override
   Future<MediaResponse> run(GetTvSeriesDetailInput input) {
-    return _tvSeriesRepositoryIml.getTvSeriesDetail(seriesId: input.seriesId);
+    return _tvSeriesRepositoryIml.getTvSeriesDetail(
+      seriesId: input.seriesId,
+      appendToResponse: input.appendToResponse,
+    );
   }
 }
 

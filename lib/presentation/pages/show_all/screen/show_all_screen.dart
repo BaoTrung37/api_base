@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/injection/di.dart';
+import 'package:api_base/presentation/pages/movie_detail/screen/movie_detail_screen.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ class ShowAllArgument {
   final int? movieId;
   final ApiMovieType? apiMovieType;
   final ApiPeopleType? apiPeopleType;
-  final ApiTvShowsType? apiTvShowsType;
+  final ApiTvSeriesType? apiTvShowsType;
 
   ShowAllArgument.movie({
     required this.title,
@@ -28,7 +29,7 @@ class ShowAllArgument {
   })  : apiMovieType = null,
         apiTvShowsType = null;
 
-  ShowAllArgument.tvShows({
+  ShowAllArgument.tvSeries({
     required this.title,
     required this.apiTvShowsType,
     this.movieId,
@@ -55,9 +56,9 @@ class _ShowAllScreenState extends State<ShowAllScreen>
 
   void moveToMovieDetailView(int movieId) {
     context.pushRoute(
-      MediaDetailRoute(
-        argument: MediaDetailArgument.movie(
-          mediaId: movieId,
+      MovieDetailRoute(
+        argument: MovieDetailArgument(
+          movieId: movieId,
         ),
       ),
     );

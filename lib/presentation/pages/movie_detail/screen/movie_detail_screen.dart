@@ -1,7 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:api_base/gen/assets.gen.dart';
 import 'package:api_base/injection/di.dart';
-import 'package:api_base/presentation/pages/media_detail/cubit/media_detail_cubit.dart';
+import 'package:api_base/presentation/pages/movie_detail/cubit/movie_detail_cubit.dart';
+import 'package:api_base/presentation/pages/movie_detail/widgets/widgets.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:api_base/presentation/widgets/app_indicator/loading_view.dart';
 import 'package:auto_route/auto_route.dart';
@@ -9,45 +10,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MediaDetailArgument {
-  final int mediaId;
-  final bool isMovie;
-  MediaDetailArgument.movie({
-    required this.mediaId,
-  }) : isMovie = true;
-  MediaDetailArgument.tvSeries({
-    required this.mediaId,
-  }) : isMovie = false;
+class MovieDetailArgument {
+  MovieDetailArgument({required this.movieId});
+
+  final int movieId;
 }
 
 @RoutePage()
-class MediaDetailScreen extends StatefulWidget {
-  const MediaDetailScreen({
+class MovieDetailScreen extends StatefulWidget {
+  const MovieDetailScreen({
     required this.argument,
     super.key,
   });
 
-  final MediaDetailArgument argument;
+  final MovieDetailArgument argument;
   @override
-  State<MediaDetailScreen> createState() => _MediaDetailScreenState();
+  State<MovieDetailScreen> createState() => _MovieDetailScreenState();
 }
 
-class _MediaDetailScreenState extends State<MediaDetailScreen> {
-  final MediaDetailCubit mediaDetailCubit = getIt<MediaDetailCubit>();
+class _MovieDetailScreenState extends State<MovieDetailScreen> {
+  final MovieDetailCubit movieDetailCubit = getIt<MovieDetailCubit>();
   @override
   void initState() {
     super.initState();
-    mediaDetailCubit.fetchData(widget.argument);
+    movieDetailCubit.fetchData(widget.argument);
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => mediaDetailCubit,
+      create: (context) => movieDetailCubit,
       child: Scaffold(
         appBar: BaseAppBar.customTitleView(
           title: Text(
-            'Detail',
+            'Movie Detail',
             style: AppTextStyles.headingSmall
                 .copyWith(color: context.colors.textPrimary),
           ),
@@ -61,13 +57,13 @@ class _MediaDetailScreenState extends State<MediaDetailScreen> {
             16.horizontalSpace,
           ],
         ),
-        body: BlocBuilder<MediaDetailCubit, MediaDetailState>(
-          bloc: mediaDetailCubit,
+        body: BlocBuilder<MovieDetailCubit, MovieDetailState>(
+          bloc: movieDetailCubit,
           builder: (context, state) {
             return LoadingView(
               status: state.status,
               child: _MainContent(
-                mediaDetailCubit: mediaDetailCubit,
+                movieDetailCubit: movieDetailCubit,
               ),
             );
           },
@@ -79,34 +75,39 @@ class _MediaDetailScreenState extends State<MediaDetailScreen> {
 
 class _MainContent extends StatelessWidget {
   const _MainContent({
-    required this.mediaDetailCubit,
+    required this.movieDetailCubit,
   });
 
-  final MediaDetailCubit mediaDetailCubit;
+  final MovieDetailCubit movieDetailCubit;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MediaDetailCubit, MediaDetailState>(
-      bloc: mediaDetailCubit,
+    return BlocBuilder<MovieDetailCubit, MovieDetailState>(
+      bloc: movieDetailCubit,
       builder: (context, state) {
         return CustomScrollView(
           slivers: [
-            MediaInformationView(media: state.media),
+            MovieInformationView(media: state.media),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            MediaCastCrewView(media: state.media),
+            CastCrewListView(
+              castList: state.media?.credits?.cast.take(15).toList(),
+              onShowAllTap: () {
+                //
+              },
+            ),
+            // SliverToBoxAdapter(
+            //   child: 24.verticalSpace,
+            // ),
+            // const MovieTrailerVideoView(),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            const MediaTrailerVideoView(),
+            MovieInformationOther(media: state.media),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),
-            const MediaInformationOther(),
-            SliverToBoxAdapter(
-              child: 24.verticalSpace,
-            ),
-            MediaSimilarView(media: state.media),
+            MovieSimilarView(media: state.media),
             SliverToBoxAdapter(
               child: 24.verticalSpace,
             ),

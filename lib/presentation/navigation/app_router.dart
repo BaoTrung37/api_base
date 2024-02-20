@@ -1,5 +1,6 @@
 import 'package:api_base/presentation/navigation/navigation.dart';
 import 'package:api_base/presentation/pages/api_test/api_test_screen.dart';
+import 'package:api_base/presentation/pages/movie_detail/screen/movie_detail_screen.dart';
 import 'package:api_base/presentation/pages/pages.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
@@ -23,7 +24,7 @@ class AppRouter extends _$AppRouter {
               children: [
                 AutoRoute(page: MovieRoute.page, initial: true),
                 AutoRoute(page: ShowAllRoute.page),
-                AutoRoute(page: MediaDetailRoute.page),
+                AutoRoute(page: MovieDetailRoute.page),
               ],
             ),
             AutoRoute(
@@ -31,7 +32,7 @@ class AppRouter extends _$AppRouter {
               children: [
                 AutoRoute(page: TvSeriesRoute.page, initial: true),
                 AutoRoute(page: ShowAllRoute.page),
-                AutoRoute(page: MediaDetailRoute.page),
+                AutoRoute(page: TvSeriesDetailRoute.page),
               ],
             ),
             AutoRoute(

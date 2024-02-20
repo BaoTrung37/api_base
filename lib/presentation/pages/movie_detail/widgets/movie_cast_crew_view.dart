@@ -8,8 +8,8 @@ import 'package:api_base/presentation/widgets/images/custom_cached_network_image
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MediaCastCrewView extends StatelessWidget {
-  const MediaCastCrewView({
+class MovieCastCrewView extends StatelessWidget {
+  const MovieCastCrewView({
     this.media,
     super.key,
   });
@@ -37,38 +37,45 @@ class MediaCastCrewView extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   final cast = casts[index];
-                  return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CustomCachedNetworkImage(
-                        height: 100.r,
-                        width: 100.r,
-                        isBorder: true,
-                        imageUrl: cast.profilePath?.tmdbW300Path,
-                        imageType: ImageType.profile,
-                        isCircleImage: true,
-                      ),
-                      const Spacer(),
-                      Text(
-                        cast.originalName,
-                        style: AppTextStyles.textMediumBold,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        cast.character ?? '',
-                        style: AppTextStyles.textSmall,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  );
+                  return _buildCastCrewItem(cast);
                 },
                 separatorBuilder: (context, index) => 16.horizontalSpace,
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildCastCrewItem(Cast cast) {
+    return SizedBox(
+      width: 120.w,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CustomCachedNetworkImage(
+            height: 100.r,
+            width: 100.r,
+            isBorder: true,
+            imageUrl: cast.profilePath?.tmdbW300Path,
+            imageType: ImageType.profile,
+            isCircleImage: true,
+          ),
+          const Spacer(),
+          Text(
+            cast.originalName,
+            style: AppTextStyles.textMediumBold,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          Text(
+            cast.character ?? '',
+            style: AppTextStyles.textSmall,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
       ),
     );
   }

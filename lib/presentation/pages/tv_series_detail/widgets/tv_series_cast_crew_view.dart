@@ -1,23 +1,24 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:api_base/data/models/media/credits_response.dart';
-import 'package:api_base/presentation/presentation.dart';
+import 'package:api_base/data/data.dart';
+import 'package:api_base/presentation/resources/app_text_styles.dart';
+import 'package:api_base/presentation/utilities/enums/image_type.dart';
 import 'package:api_base/presentation/utilities/extensions/string_extension.dart';
+import 'package:api_base/presentation/widgets/buttons/see_all_button.dart';
+import 'package:api_base/presentation/widgets/images/custom_cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CastCrewListView extends StatelessWidget {
-  const CastCrewListView({
-    required this.castList,
-    required this.onShowAllTap,
+class TvSeriesCastCrewView extends StatelessWidget {
+  const TvSeriesCastCrewView({
+    this.media,
     super.key,
   });
-
-  final List<Cast>? castList;
-  final VoidCallback onShowAllTap;
+  final MediaResponse? media;
 
   @override
   Widget build(BuildContext context) {
-    if (castList == null && castList!.isEmpty) {
+    final casts = media?.credits?.cast.take(15).toList();
+    if (casts == null) {
       return const SliverToBoxAdapter(
         child: SizedBox.shrink(),
       );
@@ -32,10 +33,10 @@ class CastCrewListView extends StatelessWidget {
             SizedBox(
               height: 160.h,
               child: ListView.separated(
-                itemCount: castList!.length,
+                itemCount: casts.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  final cast = castList![index];
+                  final cast = casts[index];
                   return _buildCastCrewItem(cast);
                 },
                 separatorBuilder: (context, index) => 16.horizontalSpace,
@@ -88,7 +89,7 @@ class CastCrewListView extends StatelessWidget {
           style: AppTextStyles.headingSmall,
         ),
         SeeAllButton(
-          onTap: onShowAllTap,
+          onTap: () {},
         ),
       ],
     );

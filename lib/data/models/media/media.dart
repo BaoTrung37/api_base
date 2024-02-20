@@ -6,6 +6,7 @@ export 'media_response.dart';
 export 'network.dart';
 export 'production_company.dart';
 export 'production_country.dart';
+export 'recommendations_response.dart';
 export 'season.dart';
 export 'similar_response.dart';
 export 'spoken_language.dart';
