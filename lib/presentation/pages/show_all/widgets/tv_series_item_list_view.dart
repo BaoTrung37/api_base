@@ -5,20 +5,20 @@ import 'package:api_base/presentation/utilities/extensions/string_extension.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MovieItemListView extends StatelessWidget {
-  const MovieItemListView({
-    required this.movie,
-    required this.onMovieTap,
+class TvSeriesItemListView extends StatelessWidget {
+  const TvSeriesItemListView({
+    required this.tvSeries,
+    required this.onTvSeriesTap,
     super.key,
   });
 
-  final MediaResponse movie;
-  final VoidCallback onMovieTap;
+  final MediaResponse tvSeries;
+  final VoidCallback onTvSeriesTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onMovieTap,
+      onTap: onTvSeriesTap,
       child: SizedBox(
         height: 120.h,
         width: 80.w,
@@ -30,7 +30,7 @@ class MovieItemListView extends StatelessWidget {
                 CustomCachedNetworkImage(
                   height: 120.h,
                   width: 80.w,
-                  imageUrl: movie.posterPath.tmdbW300Path,
+                  imageUrl: tvSeries.posterPath.tmdbW300Path,
                   imageType: ImageType.media,
                   isBorder: true,
                 ),
@@ -42,7 +42,7 @@ class MovieItemListView extends StatelessWidget {
                       color: context.colors.primaryMain,
                     ),
                     child: Text(
-                      movie.voteAverage!.toStringAsFixed(1),
+                      tvSeries.voteAverage!.toStringAsFixed(1),
                       style: AppTextStyles.labelXSmall,
                     ),
                   ),
@@ -59,13 +59,13 @@ class MovieItemListView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        movie.title!,
+                        tvSeries.name!,
                         style: AppTextStyles.textLargeBold,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        movie.genresName,
+                        tvSeries.genresName,
                         style: AppTextStyles.labelMedium.copyWith(
                           color: context.colors.textSecondary,
                         ),
@@ -74,12 +74,12 @@ class MovieItemListView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Text(
-                    movie.releaseDate!,
-                    style: AppTextStyles.labelSmallLight,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                  // Text(
+                  //   tvSeries.releaseDate!,
+                  //   style: AppTextStyles.labelSmallLight,
+                  //   maxLines: 1,
+                  //   overflow: TextOverflow.ellipsis,
+                  // ),
                 ],
               ),
             ),

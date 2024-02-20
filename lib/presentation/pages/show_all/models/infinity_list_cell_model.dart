@@ -3,25 +3,25 @@ import 'package:api_base/presentation/widgets/infinite_list/infinite_list.dart';
 import 'package:api_base/presentation/widgets/infinite_list/infinite_list_view.dart';
 
 class MovieCell with DataSource<MediaResponse> {
-  MovieCell({required this.movie});
+  MovieCell({required this.media});
 
-  final MediaResponse movie;
+  final MediaResponse media;
   @override
-  MediaResponse get getData => movie;
+  MediaResponse get getData => media;
 }
 
-class TvShowSCell with DataSource<MediaResponse> {
-  TvShowSCell({required this.movie});
+class TvSeriesCell with DataSource<MediaResponse> {
+  TvSeriesCell({required this.media});
 
-  final MediaResponse movie;
+  final MediaResponse media;
   @override
-  MediaResponse get getData => movie;
+  MediaResponse get getData => media;
 }
 
 class PeopleCell with DataSource<MediaResponse> {
-  PeopleCell({required this.movie});
+  PeopleCell({required this.people});
 
-  final MediaResponse movie;
+  final MediaResponse people;
   @override
-  MediaResponse get getData => movie;
+  MediaResponse get getData => people;
 }

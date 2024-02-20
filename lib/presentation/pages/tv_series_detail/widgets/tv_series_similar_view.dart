@@ -31,7 +31,7 @@ class TvSeriesSimilarView extends StatelessWidget {
           ShowAllRoute(
             argument: ShowAllArgument.tvSeries(
               title: 'Similar',
-              mediaId: media?.id,
+              mediaId: media!.id,
               apiTvSeriesType: ApiTvSeriesType.similar,
             ),
           ),

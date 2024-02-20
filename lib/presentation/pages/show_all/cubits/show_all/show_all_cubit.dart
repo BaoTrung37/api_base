@@ -105,7 +105,7 @@ class ShowAllCubit extends Cubit<ShowAllState> {
       final mediaList = await _getSimilarTvSeriesListUseCase
           .run(TvSeriesUseCaseInput(seriesId: seriesId, page: page));
 
-      final dataSource = getMovieDataSources(mediaList);
+      final dataSource = getTvSeriesDataSources(mediaList);
 
       emit(state.copyWith(mediaList: mediaList, status: AppStatus.success));
 
@@ -206,7 +206,15 @@ class ShowAllCubit extends Cubit<ShowAllState> {
   Future<List<DataSource>> getMovieDataSources(
     List<MediaResponse> dataList,
   ) async {
-    final dataSource = dataList.map((e) => MovieCell(movie: e)).toList();
+    final dataSource = dataList.map((e) => MovieCell(media: e)).toList();
+
+    return dataSource;
+  }
+
+  Future<List<DataSource>> getTvSeriesDataSources(
+    List<MediaResponse> dataList,
+  ) async {
+    final dataSource = dataList.map((e) => TvSeriesCell(media: e)).toList();
 
     return dataSource;
   }
