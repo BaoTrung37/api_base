@@ -72,7 +72,10 @@ class ShowAllCubit extends Cubit<ShowAllState> {
     return [];
   }
 
-  Future<List<DataSource>> getSimilarMoviesData(int? movieId, int page) async {
+  Future<List<DataSource>> getSimilarMoviesData(
+    int? movieId,
+    int page,
+  ) async {
     emit(state.copyWith(status: AppStatus.inProgress));
     if (movieId == null) {
       return [];
@@ -96,7 +99,9 @@ class ShowAllCubit extends Cubit<ShowAllState> {
   }
 
   Future<List<DataSource>> getSimilarTvSeriesData(
-      int? seriesId, int page) async {
+    int? seriesId,
+    int page,
+  ) async {
     emit(state.copyWith(status: AppStatus.inProgress));
     if (seriesId == null) {
       return [];
