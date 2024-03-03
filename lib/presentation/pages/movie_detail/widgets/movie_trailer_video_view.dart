@@ -16,7 +16,7 @@ class MovieTrailerVideoView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Videos',
+              'Videos ',
               style: AppTextStyles.headingSmall,
             ),
             16.verticalSpace,
