@@ -3,6 +3,7 @@ import 'package:api_base/data/models/media/media_response.dart';
 import 'package:api_base/domain/use_cases/input/movie_use_case_input.dart';
 import 'package:api_base/domain/use_cases/input/tv_series_use_case_input.dart';
 import 'package:api_base/domain/use_cases/movie/movie.dart';
+import 'package:api_base/domain/use_cases/tv_series/get_airing_today_tv_series_list_use_case.dart';
 import 'package:api_base/domain/use_cases/tv_series/get_similar_tv_series_list_use_case.dart';
 import 'package:api_base/presentation/presentation.dart';
 import 'package:bloc/bloc.dart';
@@ -21,6 +22,7 @@ class ShowAllCubit extends Cubit<ShowAllState> {
     this._getTrendingMovieListUseCase,
     this._getUpcomingMovieListUseCase,
     this._getSimilarTvSeriesListUseCase,
+    this._getAiringTodayTvSeriesListUseCase,
   ) : super(const ShowAllState());
 
   final GetSimilarMovieListUseCase _getSimilarMovieListUseCase;
@@ -30,6 +32,7 @@ class ShowAllCubit extends Cubit<ShowAllState> {
   final GetUpcomingMovieListUseCase _getUpcomingMovieListUseCase;
 
   final GetSimilarTvSeriesListUseCase _getSimilarTvSeriesListUseCase;
+  final GetAiringTodayTvSeriesListUseCase _getAiringTodayTvSeriesListUseCase;
 
   Future<List<DataSource>> fetchData(
       ShowAllArgument allArgument, int page) async {
@@ -59,6 +62,8 @@ class ShowAllCubit extends Cubit<ShowAllState> {
           case ApiTvSeriesType.popular:
           case ApiTvSeriesType.similar:
             return getSimilarTvSeriesData(mediaId, page);
+          case ApiTvSeriesType.airingToday:
+          case ApiTvSeriesType.trending:
           case null:
             return [];
         }
@@ -85,32 +90,6 @@ class ShowAllCubit extends Cubit<ShowAllState> {
           .run(MovieUseCaseInput(movieId: movieId, page: page));
 
       final dataSource = getMovieDataSources(mediaList);
-
-      emit(state.copyWith(mediaList: mediaList, status: AppStatus.success));
-
-      return dataSource;
-    } on Exception catch (error) {
-      emit(state.copyWith(
-        status: AppStatus.error,
-        appError: error.appError,
-      ));
-      return [];
-    }
-  }
-
-  Future<List<DataSource>> getSimilarTvSeriesData(
-    int? seriesId,
-    int page,
-  ) async {
-    emit(state.copyWith(status: AppStatus.inProgress));
-    if (seriesId == null) {
-      return [];
-    }
-    try {
-      final mediaList = await _getSimilarTvSeriesListUseCase
-          .run(TvSeriesUseCaseInput(seriesId: seriesId, page: page));
-
-      final dataSource = getTvSeriesDataSources(mediaList);
 
       emit(state.copyWith(mediaList: mediaList, status: AppStatus.success));
 
@@ -214,6 +193,54 @@ class ShowAllCubit extends Cubit<ShowAllState> {
     final dataSource = dataList.map((e) => MovieCell(media: e)).toList();
 
     return dataSource;
+  }
+
+  Future<List<DataSource>> getSimilarTvSeriesData(
+    int? seriesId,
+    int page,
+  ) async {
+    emit(state.copyWith(status: AppStatus.inProgress));
+    if (seriesId == null) {
+      return [];
+    }
+    try {
+      final mediaList = await _getSimilarTvSeriesListUseCase
+          .run(TvSeriesUseCaseInput(seriesId: seriesId, page: page));
+
+      final dataSource = getTvSeriesDataSources(mediaList);
+
+      emit(state.copyWith(mediaList: mediaList, status: AppStatus.success));
+
+      return dataSource;
+    } on Exception catch (error) {
+      emit(state.copyWith(
+        status: AppStatus.error,
+        appError: error.appError,
+      ));
+      return [];
+    }
+  }
+
+  Future<List<DataSource>> getAiringTodayTvSeriesData(int page) async {
+    emit(state.copyWith(status: AppStatus.inProgress));
+
+    try {
+      final mediaList = await _getAiringTodayTvSeriesListUseCase.run(
+        TvSeriesUseCaseInput(page: page),
+      );
+
+      final dataSource = getTvSeriesDataSources(mediaList);
+
+      emit(state.copyWith(mediaList: mediaList, status: AppStatus.success));
+
+      return dataSource;
+    } on Exception catch (error) {
+      emit(state.copyWith(
+        status: AppStatus.error,
+        appError: error.appError,
+      ));
+      return [];
+    }
   }
 
   Future<List<DataSource>> getTvSeriesDataSources(
