@@ -31,7 +31,7 @@ class MovieSimilarView extends StatelessWidget {
           ShowAllRoute(
             argument: ShowAllArgument.movie(
               title: 'Similar',
-              movieId: media?.id,
+              mediaId: media?.id,
               apiMovieType: ApiMovieType.similar,
             ),
           ),

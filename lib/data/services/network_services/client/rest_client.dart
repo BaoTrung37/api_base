@@ -119,5 +119,11 @@ abstract class RestClient {
     @Query('page') int page,
   );
 
+  @GET('/tv/{series_id}/similar')
+  Future<ApiCollectionResponse<MediaResponse>> getSimilarTvSeries(
+    @Path('series_id') int seriesId,
+    @Query('page') int page,
+  );
+
   /// End Tv Series
 }

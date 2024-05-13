@@ -101,7 +101,7 @@ class MediaHorizontalListView extends StatelessWidget {
           children: [
             Expanded(
               child: CustomCachedNetworkImage(
-                imageType: ImageType.movie,
+                imageType: ImageType.media,
                 imageUrl: isPoster
                     ? media.posterPath?.tmdbW500Path
                     : media.backdropPath?.tmdbW500Path,

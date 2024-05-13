@@ -1,1 +1,4 @@
-enum ApiTvSeriesType { popular, similar }
+enum ApiTvSeriesType {
+  popular,
+  similar,
+}

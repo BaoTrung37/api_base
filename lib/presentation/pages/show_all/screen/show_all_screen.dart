@@ -10,29 +10,29 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ShowAllArgument {
   final String title;
-  final int? movieId;
+  final int? mediaId;
   final ApiMovieType? apiMovieType;
   final ApiPeopleType? apiPeopleType;
-  final ApiTvSeriesType? apiTvShowsType;
+  final ApiTvSeriesType? apiTvSeriesType;
 
   ShowAllArgument.movie({
     required this.title,
     required this.apiMovieType,
-    this.movieId,
+    this.mediaId,
   })  : apiPeopleType = null,
-        apiTvShowsType = null;
+        apiTvSeriesType = null;
 
   ShowAllArgument.people({
     required this.title,
     required this.apiPeopleType,
-    this.movieId,
+    this.mediaId,
   })  : apiMovieType = null,
-        apiTvShowsType = null;
+        apiTvSeriesType = null;
 
   ShowAllArgument.tvSeries({
     required this.title,
-    required this.apiTvShowsType,
-    this.movieId,
+    required this.apiTvSeriesType,
+    this.mediaId,
   })  : apiMovieType = null,
         apiPeopleType = null;
 }
@@ -54,11 +54,21 @@ class _ShowAllScreenState extends State<ShowAllScreen>
     with InfiniteListDelegate {
   late ShowAllCubit showAllCubit;
 
-  void moveToMovieDetailView(int movieId) {
+  void navigateToMovieDetailView(int movieId) {
     context.pushRoute(
       MovieDetailRoute(
         argument: MovieDetailArgument(
           movieId: movieId,
+        ),
+      ),
+    );
+  }
+
+  void navigateToTvSeriesDetailView(int seriesId) {
+    context.pushRoute(
+      TvSeriesDetailRoute(
+        argument: TvSeriesDetailArgument(
+          seriesId: seriesId,
         ),
       ),
     );
@@ -105,6 +115,8 @@ class _ShowAllScreenState extends State<ShowAllScreen>
   Widget _buildCell(DataSource item, int index) {
     if (item is MovieCell) {
       return _buildMovieCell(item.getData);
+    } else if (item is TvSeriesCell) {
+      return _buildTvSeriesCell(item.getData);
     }
     return Container();
   }
@@ -113,7 +125,14 @@ class _ShowAllScreenState extends State<ShowAllScreen>
         padding: EdgeInsets.symmetric(horizontal: 8.w),
         child: MovieItemListView(
           movie: movie,
-          onMovieTap: () => moveToMovieDetailView(movie.id),
+          onMovieTap: () => navigateToMovieDetailView(movie.id),
+        ),
+      );
+  Widget _buildTvSeriesCell(MediaResponse tvSeries) => Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        child: TvSeriesItemListView(
+          tvSeries: tvSeries,
+          onTvSeriesTap: () => navigateToTvSeriesDetailView(tvSeries.id),
         ),
       );
 }
