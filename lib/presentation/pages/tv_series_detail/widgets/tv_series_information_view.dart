@@ -62,7 +62,6 @@ class TvSeriesInformationView extends StatelessWidget {
                           trimMode: TrimMode.Line,
                           trimCollapsedText: '.',
                           trimExpandedText: '.',
-                          callback: (val) {},
                           moreStyle: AppTextStyles.textMedium,
                         ),
                       ],

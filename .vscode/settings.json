@@ -1,20 +1,18 @@
 {
-    "dart.flutterSdkPath": ".fvm/flutter_sdk",
-    // Remove .fvm files from search
-    "search.exclude": {
-      "**/.fvm": true
-    },
-    // Remove from file watching
-    "files.watcherExclude": {
-      "**/.fvm": true
-    },
-    "cSpell.words": [
-      "cupertino",
-      "datetime",
-      "dotenv",
-      "imdb",
-      "readmore",
-      "screenutil",
-      "tmdb"
-    ]
+  "dart.flutterSdkPath": ".fvm/versions/3.19.2",
+  "search.exclude": {
+    "**/.fvm": true
+  },
+  "files.watcherExclude": {
+    "**/.fvm": true
+  },
+  "cSpell.words": [
+    "cupertino",
+    "datetime",
+    "dotenv",
+    "imdb",
+    "readmore",
+    "screenutil",
+    "tmdb"
+  ]
 }
