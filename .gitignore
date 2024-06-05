@@ -6,7 +6,6 @@
 *.iws
 .idea/
 
-
 # Flutter/Dart/Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
@@ -24,7 +23,6 @@ build/
 **/*.gr.dart
 
 # FVM
-.fvm/flutter_sdk
 
 # iOS related
 ios/Podfile.lock
@@ -42,3 +40,6 @@ ios/Podfile.lock
 .monarch/
 
 **/ios/Flutter/Environments/DartDefines.xcconfig
+
+# FVM Version Cache
+.fvm/
