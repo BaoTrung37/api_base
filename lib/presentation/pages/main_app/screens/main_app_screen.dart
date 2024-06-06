@@ -27,8 +27,8 @@ class _MainAppScreenState extends State<MainAppScreen> {
         routes: const [
           MovieNavigationRoute(),
           TvShowsNavigationRoute(),
+          PeopleNavigationRoute(),
           SearchNavigationRoute(),
-          FavoriteNavigationRoute(),
           ProfileNavigationRoute(),
         ],
         transitionBuilder: (context, child, animation) => FadeTransition(

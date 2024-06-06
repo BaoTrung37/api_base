@@ -36,9 +36,9 @@ class AppRouter extends _$AppRouter {
               ],
             ),
             AutoRoute(
-              page: FavoriteNavigationRoute.page,
+              page: PeopleNavigationRoute.page,
               children: [
-                AutoRoute(page: FavoriteRoute.page, initial: true),
+                AutoRoute(page: PeopleRoute.page, initial: true),
                 AutoRoute(page: ShowAllRoute.page),
               ],
             ),
