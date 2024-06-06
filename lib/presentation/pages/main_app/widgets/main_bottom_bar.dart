@@ -23,18 +23,18 @@ class MainBottomBar extends StatelessWidget {
         text: 'Tv Shows',
       ),
       TabItem(
-        iconSvg: Assets.icons.icBookmarkOutline,
-        iconSvgSelected: Assets.icons.icBookmark,
+        iconSvg: Assets.icons.icPeopleOutline,
+        iconSvgSelected: Assets.icons.icPeople,
+        text: 'People',
+      ),
+      TabItem(
+        iconSvg: Assets.icons.icSearchOutline,
+        iconSvgSelected: Assets.icons.icSearch,
         text: 'Search',
       ),
       TabItem(
-        iconSvg: Assets.icons.icDownloadOutline,
-        iconSvgSelected: Assets.icons.icDownload,
-        text: 'Favorite',
-      ),
-      TabItem(
-        iconSvg: Assets.icons.icProfileOutline,
-        iconSvgSelected: Assets.icons.icProfile,
+        iconSvg: Assets.icons.icResumeOutline,
+        iconSvgSelected: Assets.icons.icResume,
         text: 'Profile',
       ),
     ];

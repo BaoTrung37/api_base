@@ -76,9 +76,23 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_mail.svg
   SvgGenImage get icMail => const SvgGenImage('assets/icons/ic_mail.svg');
 
+  /// File path: assets/icons/ic_movie.svg
+  SvgGenImage get icMovie => const SvgGenImage('assets/icons/ic_movie.svg');
+
+  /// File path: assets/icons/ic_movie_outline.svg
+  SvgGenImage get icMovieOutline =>
+      const SvgGenImage('assets/icons/ic_movie_outline.svg');
+
   /// File path: assets/icons/ic_no_image.svg
   SvgGenImage get icNoImage =>
       const SvgGenImage('assets/icons/ic_no_image.svg');
+
+  /// File path: assets/icons/ic_people.svg
+  SvgGenImage get icPeople => const SvgGenImage('assets/icons/ic_people.svg');
+
+  /// File path: assets/icons/ic_people_outline.svg
+  SvgGenImage get icPeopleOutline =>
+      const SvgGenImage('assets/icons/ic_people_outline.svg');
 
   /// File path: assets/icons/ic_profile.svg
   SvgGenImage get icProfile => const SvgGenImage('assets/icons/ic_profile.svg');
@@ -87,15 +101,25 @@ class $AssetsIconsGen {
   SvgGenImage get icProfileGrey =>
       const SvgGenImage('assets/icons/ic_profile_grey.svg');
 
-  /// File path: assets/icons/ic_profile_outline.svg
-  SvgGenImage get icProfileOutline =>
-      const SvgGenImage('assets/icons/ic_profile_outline.svg');
-
   /// File path: assets/icons/ic_refresh.svg
   SvgGenImage get icRefresh => const SvgGenImage('assets/icons/ic_refresh.svg');
 
+  /// File path: assets/icons/ic_resume.svg
+  SvgGenImage get icResume => const SvgGenImage('assets/icons/ic_resume.svg');
+
+  /// File path: assets/icons/ic_resume_outline.svg
+  SvgGenImage get icResumeOutline =>
+      const SvgGenImage('assets/icons/ic_resume_outline.svg');
+
   /// File path: assets/icons/ic_retry.svg
   SvgGenImage get icRetry => const SvgGenImage('assets/icons/ic_retry.svg');
+
+  /// File path: assets/icons/ic_search.svg
+  SvgGenImage get icSearch => const SvgGenImage('assets/icons/ic_search.svg');
+
+  /// File path: assets/icons/ic_search_outline.svg
+  SvgGenImage get icSearchOutline =>
+      const SvgGenImage('assets/icons/ic_search_outline.svg');
 
   /// File path: assets/icons/ic_star.svg
   SvgGenImage get icStar => const SvgGenImage('assets/icons/ic_star.svg');
@@ -107,6 +131,13 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ic_star_outline.svg
   SvgGenImage get icStarOutline =>
       const SvgGenImage('assets/icons/ic_star_outline.svg');
+
+  /// File path: assets/icons/ic_tvshow.svg
+  SvgGenImage get icTvshow => const SvgGenImage('assets/icons/ic_tvshow.svg');
+
+  /// File path: assets/icons/ic_tvshow_outline.svg
+  SvgGenImage get icTvshowOutline =>
+      const SvgGenImage('assets/icons/ic_tvshow_outline.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [
@@ -127,15 +158,24 @@ class $AssetsIconsGen {
         icHomeOutline,
         icLock,
         icMail,
+        icMovie,
+        icMovieOutline,
         icNoImage,
+        icPeople,
+        icPeopleOutline,
         icProfile,
         icProfileGrey,
-        icProfileOutline,
         icRefresh,
+        icResume,
+        icResumeOutline,
         icRetry,
+        icSearch,
+        icSearchOutline,
         icStar,
         icStarHalf,
-        icStarOutline
+        icStarOutline,
+        icTvshow,
+        icTvshowOutline
       ];
 }
 
