@@ -52,14 +52,14 @@ class TvSeriesScreen extends StatelessWidget {
                             );
                           },
                           showAllTap: () {
-                            // context.pushRoute(
-                            //   ShowAllRoute(
-                            //     argument: ShowAllArgument.movie(
-                            //       title: 'Airing Today',
-                            //       apiMovieType: ApiMovieType.popular,
-                            //     ),
-                            //   ),
-                            // );
+                            context.pushRoute(
+                              ShowAllRoute(
+                                argument: ShowAllArgument.tvSeries(
+                                  title: 'Airing Today',
+                                  apiTvSeriesType: ApiTvSeriesType.airingToday,
+                                ),
+                              ),
+                            );
                           },
                         );
                       },
